@@ -1,0 +1,42 @@
+.nav {
+    font-family: comfortaa;
+
+    &__top {
+        @include flex-around;
+        position: fixed;
+        right: 5vw;
+        top: 5vh;
+        z-index: 10;
+
+        li {
+            a {
+                padding: 25px;
+                font-size: 17px;
+                color: $white06;
+                transition: $cubic;
+                cursor: none;
+
+                &:hover {
+                    color: $white08;
+                    color: black;
+                    color: #fdffe0;
+                    cursor: none;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    &__side {
+        position: fixed;
+        left: 2vw;
+        bottom: 5vh;
+        z-index: 10;
+        transform: rotate(-90deg);
+
+        a {
+            text-decoration: none;
+            color: $white08;
+        }
+    }
+}

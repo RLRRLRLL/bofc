@@ -1,0 +1,43 @@
+// white
+$white01: rgba(white, .1);
+$white02: rgba(white, .2);
+$white03: rgba(white, .3);
+$white04: rgba(white, .4);
+$white05: rgba(white, .5);
+$white06: rgba(white, .6);
+$white07: rgba(white, .7);
+$white08: rgba(white, .8);
+$white09: rgba(white, .9);
+
+// black
+$black01: rgba(black, .1);
+$black02: rgba(black, .2);
+$black03: rgba(black, .3);
+$black04: rgba(black, .4);
+$black05: rgba(black, .5);
+$black06: rgba(black, .6);
+$black07: rgba(black, .7);
+$black08: rgba(black, .8);
+$black09: rgba(black, .9);
+//
+$material-black: #272727;
+
+
+// stuff
+$cubic: .3s cubic-bezier(.8, .02, .16, .99);
+
+$gold-gradient: 
+radial-gradient(
+    ellipse farthest-corner at right bottom, 
+    #FEDB37 0%, 
+    #FDB931 8%, 
+    #9f7928 30%, 
+    #8A6E2F 40%, 
+    transparent 80%),
+radial-gradient(
+    ellipse farthest-corner at left top, 
+    #FFFFFF 0%, 
+    #FFFFAC 8%, 
+    #D1B464 25%, 
+    #5d4a1f 62.5%, 
+    #5d4a1f 100%);

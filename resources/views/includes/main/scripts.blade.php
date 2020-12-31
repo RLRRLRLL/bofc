@@ -1,0 +1,1 @@
+<script src="{{asset('js/scripts/main.js')}}" defer></script>

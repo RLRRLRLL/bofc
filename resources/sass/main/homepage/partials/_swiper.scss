@@ -1,0 +1,24 @@
+.swiper
+{
+    &-container {
+        width: 100vw!important;
+        height: 100vh!important;
+        max-width: 100vw!important;
+        max-height: 100vh!important;
+        padding: 50px;
+    }
+    
+    &-wrapper {
+        
+    }
+
+    &-slide {
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+    }
+}

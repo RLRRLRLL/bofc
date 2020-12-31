@@ -1,0 +1,21 @@
+.cursor {
+    width: 0;
+    height: 0;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9;
+    transform-origin: 100% 100%;
+    transition: width $cubic, 
+                height $cubic, 
+                background $cubic;
+
+    &.grow {
+        width: 50px;
+        height: 50px;
+        border: 2px solid #5d4a1f;
+        background: $gold-gradient;
+    }
+}

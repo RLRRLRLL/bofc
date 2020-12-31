@@ -1,0 +1,19 @@
+.wrapper {
+    position: relative;
+
+    .content {
+        background: $material-black;
+    }
+}
+
+// navigation
+@import './partials/navigation';
+
+// brand
+@import './partials/brand';
+
+// cursor
+@import './partials/cursor';
+
+// swiper slider
+@import './partials/swiper';

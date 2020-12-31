@@ -1,0 +1,39 @@
+.brand {
+    position: absolute;
+    left: 5vw;
+    top: 10vh;
+    padding: 25px;
+    z-index: 3;
+    
+    &__title {
+        font-family: allura;
+        font-size: 50px;
+        color: white;
+        margin-bottom: 25px;
+    }
+
+    &__subtitle.brand__shine {
+        font-family: comfortaa;
+        font-size: 16px;
+        position: relative;
+        text-transform: uppercase;
+        overflow: hidden;
+        background: linear-gradient(90deg, #252525, #e0cb84, #fff, #e0cb84, #252525);
+        background-repeat: no-repeat;
+        background-size: 80%;
+        animation: animate 6s linear infinite;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: rgba(255, 255, 255, 0);
+        margin-bottom: 0;
+
+        @keyframes animate {
+            0% {
+                background-position: -500%
+            }
+            100% {
+                background-position: 500%
+            }
+        }
+    }
+}
