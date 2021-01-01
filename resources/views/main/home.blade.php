@@ -24,10 +24,10 @@
     <div class="swiper-wrapper">
         <!-- Slides -->
         <div class="swiper-slide">
-        	<img src="{{ asset('images/pom-1.jpg') }}">
+        	<img src="{{ asset('images/random-dog.jpg') }}">
         </div>
         <div class="swiper-slide">
-        	<img src="{{ asset('images/pom-1.jpg') }}">
+        	<img src="{{ asset('images/random-dog.jpg') }}">
         </div>
     </div>
     <!-- If we need navigation buttons -->
