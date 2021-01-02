@@ -1,42 +1,177 @@
 .nav {
+    position: fixed;
+    top: 0; left: 0;
+    bottom: 0; right:0;
+    background: $black08;
+    @include flex-center;
+    flex-direction: column;
     font-family: comfortaa;
+    transition: all 1s;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+    opacity: 0;
+    visibility: hidden;
 
-    &__top {
-        @include flex-around;
-        position: fixed;
-        right: 5vw;
-        top: 5vh;
+    // show nav 
+    &.show {
+        width: 100%;
+        height: 100%;
         z-index: 10;
+        opacity: 1;
+        visibility: visible;
+    }
 
-        li {
-            a {
-                padding: 25px;
-                font-size: 17px;
-                color: $white06;
-                transition: $cubic;
-                cursor: none;
+    // brand
+    &__brand {
+        height: 30%;
+        @include flex-center;
+        flex-direction: column;
+        padding: 50px;
 
-                &:hover {
-                    color: $white08;
-                    color: black;
-                    color: #fdffe0;
-                    cursor: none;
-                    text-decoration: none;
-                }
+        h1 {
+            font-family: 'cormorant';
+            position: relative;
+            color: white;
+            font-size: 35px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+
+            &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 100%;
+                left: 10%;
+                right: 10%;
+                margin-top: 20px;
+                width: 80%;
+                height: 1px;
+                background-color: $white08;
+            }
+        }
+
+        &--subtitle {
+            font-family: 'comforta-lighter';
+            margin-top: 50px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 15px;
+        }
+    }
+
+    // close button
+    &__close {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        padding: 15px;
+        height: 100%;
+        background: $black05;
+        text-decoration: none;
+        transition: background .25s;
+
+        svg {
+            width: 25px;
+            height: 25px;
+            fill: beige;
+            transition: fill .5s;
+        }
+
+        &:hover {
+            background: $white02;
+
+            svg {
+                fill: black;
             }
         }
     }
 
-    &__side {
-        position: fixed;
-        left: 2vw;
-        bottom: 5vh;
-        z-index: 10;
-        transform: rotate(-90deg);
+    // navigation sections
+    &__sections {
+        height: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 80px;
 
-        a {
-            text-decoration: none;
-            color: $white08;
+        &--ul {
+            display: inline-flex;
+            flex-direction: column;
+            
+            &--title {
+                font-family: 'cormorant-bold';
+                color: $white01;
+                // text-transform: uppercase;
+                font-size: 19px;
+                // letter-spacing: 1px;
+                margin-bottom: 15px;
+                background: $gold-gradient;
+                background-clip: text;
+                position: relative;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 100%;
+                    display: block;
+                    background: $gold-gradient;
+                    margin-top: 5px;
+                    height: 1px;
+                    width: 90%;
+                }
+            }
+
+            li {
+                display: inline;
+
+                a {
+                    display: block;
+                    font-family: 'cormorant-light';
+                    color: $white07;
+                    color: #AFAFAF;
+                    font-size: 15px;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    letter-spacing: 1.5px;
+                    padding: 5px 0;
+                    position: relative;
+
+                    &::after {
+                        content: "\2715";
+                        position: absolute;
+                        bottom: 5px; // from padding
+                        right: 100%;
+                        display: block;
+                        margin-right: 10px;
+                        font-size: 14px;
+                        display: none;
+                    }
+
+                    &:focus {
+                        color: #FFC0CB;
+                        transition: .8s;
+                        outline: none;
+                    }
+
+                    &.active:hover::after {
+                        display: none;
+                    }
+
+                    &:hover {
+                        color: white;
+
+                        &::after {
+                            display: block;
+                        }
+                    }
+
+                    &.active {
+                        text-decoration: line-through;
+                    }
+                }
+            }
         }
     }
 }

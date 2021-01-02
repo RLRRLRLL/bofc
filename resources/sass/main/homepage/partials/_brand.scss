@@ -1,9 +1,21 @@
 .brand {
     position: absolute;
-    left: 3vw;
-    top: 10vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include flex-center;
+    flex-direction: column;
+    text-decoration: none;
+    background: $black04;
+    padding: 10px;
+    border-radius: 5px;
     padding: 25px;
     z-index: 3;
+
+    // effect on hide
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s, visibility 0.5s;
     
     &__title {
         font-family: allura;
@@ -18,7 +30,8 @@
         position: relative;
         text-transform: uppercase;
         overflow: hidden;
-        background: linear-gradient(90deg, #252525, #e0cb84, #fff, #e0cb84, #252525);
+        // background: linear-gradient(90deg, #252525, #e0cb84, #fff, #e0cb84, #252525);
+        background: $gold-gradient;
         background-repeat: no-repeat;
         background-size: 80%;
         animation: animate 6s linear infinite;
@@ -35,5 +48,14 @@
                 background-position: 500%
             }
         }
+    }
+
+    &.hide {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &:hover {
+        background: $black09;
     }
 }

@@ -1,5 +1,11 @@
+/*
+ *
+ * Cormorant / Sans-Serif / Base Font
+ *
+ */
+
 @font-face {
-    font-family: 'comforta';
+    font-family: 'comforta-lighter';
     font-weight: 300;
     src: url('/fonts/Comfortaa/Comfortaa-Light.ttf');
 }
@@ -11,30 +17,46 @@
 }
 
 @font-face {
-    font-family: 'comforta';
+    font-family: 'comforta-medium';
     font-weight: 500;
+    src: url('/fonts/Comfortaa/Comfortaa-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'comforta-bold';
+    font-weight: 600;
     src: url('/fonts/Comfortaa/Comfortaa-Bold.ttf');
 }
 
+/*
+ *
+ * Cormorant / Serif
+ *
+ */
 
-// curly 
-// @font-face {
-//     font-family: 'adios';
-//     font-weight: 400;
-//     src: url('/fonts/Adios/Adios.otf');
-// }
+@font-face {
+    font-family: 'cormorant-light';
+    font-weight: 300;
+    src: url('/fonts/Cormorant/CormorantSC-Light.ttf');
+}
 
-// @font-face {
-//     font-family: 'flaemi';
-//     font-weight: 600;
-//     src: url('/fonts/Flaemische/Flaemi.ttf');
-// }
+@font-face {
+    font-family: 'cormorant';
+    font-weight: 400;
+    src: url('/fonts/Cormorant/CormorantSC-Medium.ttf');
+}
 
-// @font-face {
-//     font-family: 'nycd';
-//     font-weight: 400;
-//     src: url('/fonts/NothingYouCouldDo/NothingYouCouldDo-Regular.ttf');
-// }
+@font-face {
+    font-family: 'cormorant-bold';
+    font-weight: 600;
+    src: url('/fonts/Cormorant/CormorantSC-Bold.ttf');
+}
+
+/*
+ *
+ * Allura / Curly / Used for brand font only
+ *
+ */
 
 @font-face {
     font-family: 'allura';

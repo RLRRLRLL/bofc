@@ -7,10 +7,6 @@
         max-height: 100vh!important;
         padding: 50px;
     }
-    
-    &-wrapper {
-        
-    }
 
     &-slide {
         img {
@@ -18,7 +14,14 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
+            transform: scale(1);
+            transition: transform 3s;
         }
-        
+
+        &-active {
+            img {
+                transform: scale(1.07);
+            }
+        }
     }
 }
