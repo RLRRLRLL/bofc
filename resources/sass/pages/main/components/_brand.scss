@@ -1,0 +1,120 @@
+.brand {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include flex-center;
+    flex-direction: column;
+    background: $black04;
+    padding: 10px;
+    border-radius: 5px;
+    padding: 25px;
+    z-index: 3;
+
+    cursor: pointer;
+
+    // effect on hide
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s, visibility 0.5s;
+
+    &__logotype {
+        width: 100px;
+        height: auto;
+        margin-top: 25px;
+    }
+    
+    &__title {
+        font-family: allura;
+        font-size: 50px;
+        // color: white;
+        margin-bottom: 25px;
+        background-image: repeating-linear-gradient(to right, #a2682a 0%, #be8c3c 8%, #be8c3c 18%, #d3b15f 27%, #faf0a0 35%, #ffffc2 40%, #faf0a0 50%, #d3b15f 58%, #be8c3c 67%, #b17b32 77%, #bb8332 83%, #d4a245 88%, #e1b453 93%, #a4692a 100%);
+        background-size: 150%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 1px rgba(255, 200, 0, .3));
+        animation: MoveBackgroundPosition 6s ease-in-out infinite;
+
+        @keyframes MoveBackgroundPosition { 
+            0% {
+                background-position: 0% 50%
+            }
+            
+            50% {
+                background-position: 100% 50%
+            }
+            
+            100% {
+                background-position: 0% 50%
+            }
+        }
+    }
+
+    &__subtitle.brand__shine {
+        font-size: 27px;
+        font-family: 'comfortaa';
+        font-weight: 500;
+        text-align: center;
+
+        span {
+            background: $gold-gradient;
+            background-clip: text;
+            -webkit-background-clip: text;
+            display: inline-block;
+            color: $white01;
+            margin: 0 -.05em;
+            animation: shine 2.7s infinite alternate;
+            @for $i from 0 through 27 {
+                &:nth-child(#{$i+1}) {
+                    animation-delay: #{$i*.1}s;
+                }
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    }
+
+    // &__subtitle.brand__shine {
+    //     font-family: comfortaa;
+    //     font-size: 16px;
+    //     position: relative;
+    //     text-transform: uppercase;
+    //     overflow: hidden;
+    //     // background: linear-gradient(90deg, #252525, #e0cb84, #fff, #e0cb84, #252525);
+    //     background: $gold-gradient;
+    //     background-repeat: no-repeat;
+    //     background-size: 80%;
+    //     animation: animate 6s linear infinite;
+    //     background-clip: text;
+    //     -webkit-background-clip: text;
+    //     -webkit-text-fill-color: rgba(255, 255, 255, 0);
+    //     margin-bottom: 0;
+
+    //     @keyframes animate {
+    //         0% {
+    //             background-position: -500%
+    //         }
+    //         100% {
+    //             background-position: 500%
+    //         }
+    //     }
+    // }
+
+    &.hide {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &:hover {
+        background: $black09;
+    }
+}

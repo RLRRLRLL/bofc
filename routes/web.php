@@ -15,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [MainPagesController::class, 'homepage']);
+
+Route::get('/pomeranians/all', [MainPagesController::class, 'poms'])->name('poms.all');

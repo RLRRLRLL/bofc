@@ -11,4 +11,9 @@ class MainPagesController extends Controller
     {
         return view('main.home');
     }
+
+    public function poms() 
+    {
+        return view('main.poms');
+    }
 }

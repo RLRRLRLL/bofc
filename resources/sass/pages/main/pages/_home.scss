@@ -1,0 +1,12 @@
+
+.wrapper.home {
+    position: relative;
+    overflow: hidden;
+
+    .content {
+        background: $material-black;
+    }
+}
+
+// slider
+@import '../components/home/swiper';

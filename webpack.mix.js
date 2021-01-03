@@ -13,6 +13,5 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/main.js', 'public/js/scripts')
     .js('resources/js/admin.js', 'public/js/scripts')
-    .sass('resources/sass/main/main.scss', 'public/css/styles')
-    .sass('resources/sass/admin/admin.scss', 'public/css/styles')
+    .sass('resources/sass/app.scss', 'public/css')
     .browserSync('http://127.0.0.1:8000');

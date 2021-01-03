@@ -22,7 +22,7 @@
                 Welcome
             </h3>
             <li>
-                <a href="#" class="active">
+                <a href="/">
                     Home
                 </a>
             </li>
@@ -50,6 +50,11 @@
             <h3 class="nav__sections--ul--title">
                 Pomeranian
             </h3>
+            <li>
+                <a href="/pomeranians/all">
+                    All
+                </a>
+            </li>
             <li>
                 <a href="#">
                     Males

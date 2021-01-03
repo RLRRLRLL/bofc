@@ -93,65 +93,113 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// bubble on cursor
-var cursor = document.querySelector('.cursor');
-var nav_links = document.querySelectorAll('.nav__top li');
-window.addEventListener('mousemove', listenToCursorMove);
+// links: prevent default if '#' and add active class if current page
+var anchorTags = document.querySelectorAll('a');
+var currentUrl = window.location.pathname;
+anchorTags.forEach(function (element) {
+  var anchorAttr = element.getAttribute('href');
+  element.addEventListener('click', function (e) {
+    if (anchorAttr === '#') {
+      // this is for removing # from url
+      e.preventDefault();
+    } else {
+      // this is for smooth transition between pages
+      var thisTargetUrl = e.target.href;
+      e.preventDefault();
+      console.log(thisTargetUrl);
+      setTimeout(function () {
+        document.querySelector('.main').classList.remove('main__on-load');
+        window.location = thisTargetUrl;
+      }, 250);
+    }
+  });
 
-function listenToCursorMove(e) {
-  cursor.style.top = e.pageY + 'px';
-  cursor.style.left = e.pageX + 'px';
+  if (anchorAttr == currentUrl) {
+    element.closest('a').classList.add('active');
+  }
+}); // cursor into bubble on hover
+
+function cursorIntoBubble(targetElements) {
+  var cursor = document.querySelector('.cursor');
+  var targets = document.querySelectorAll(targetElements);
+  window.addEventListener('mousemove', listenToCursorMove);
+
+  function listenToCursorMove(e) {
+    cursor.style.top = e.pageY + 'px';
+    cursor.style.left = e.pageX + 'px';
+  }
+
+  targets.forEach(function (l) {
+    l.addEventListener('mouseover', function () {
+      cursor.classList.add('grow');
+    });
+    l.addEventListener('mouseleave', function () {
+      cursor.classList.remove('grow');
+    });
+  });
+} // generate random num
+
+
+function randomNum(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-nav_links.forEach(function (l) {
-  l.addEventListener('mouseover', function () {
-    cursor.classList.add('grow');
-  });
-  l.addEventListener('mouseleave', function () {
-    cursor.classList.remove('grow');
-  });
-}); // slider
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelector('.main').classList.add('main__on-load'); // home page
 
-var swiper = new Swiper('.swiper-container', {
-  effect: 'fade',
-  speed: 1500,
-  observer: true,
-  observeParents: true,
-  loop: true,
-  autoplay: {
-    delay: 4000,
-    disableOnInteraction: false
-  }
-});
-$(document).mousemove(function (event) {
-  // Detect mouse position
-  var xPos = event.clientX / $(window).width() - 0.5; // var yPos = (event.clientY / $(window).height()) - 0.5;
+  if (document.querySelector('.wrapper.home')) {
+    console.log('this page is home page');
+    var swiperOptions = {
+      effect: 'fade',
+      speed: 1500,
+      observer: true,
+      observeParents: true,
+      loop: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false
+      }
+    };
+    var swiper = new Swiper('.swiper-container', swiperOptions);
+    document.addEventListener('mousemove', function (event) {
+      var positionX = event.offsetX / window.innerWidth - 0.5;
 
-  if (xPos >= 0) {
-    document.body.classList.remove('left-arr');
-    document.body.classList.add('right-arr');
-  } else {
-    document.body.classList.add('left-arr');
-    document.body.classList.remove('right-arr');
+      if (positionX >= 0) {
+        document.body.classList = 'right-arr';
+      } else {
+        document.body.classList = 'left-arr';
+      }
+    });
+    document.addEventListener('click', function (e) {
+      if (document.body.classList === 'left-arr') {
+        swiper.slidePrev();
+      } else {
+        swiper.slideNext();
+      }
+    });
+  } // pomeranians page
+
+
+  if (document.querySelector('.wrapper.poms')) {
+    console.log('there are my poms!'); // gallery
+    // const galleryItems = document.querySelectorAll('.gallery__item');
+    // galleryItems.forEach((el) => {
+    //     // el.style.width = randomNum(10, 20) + '%';
+    //     el.style.height = randomNum(300, 500) + 'px';
+    //     el.style.marginTop = randomNum(5, 45) + 'px';
+    // });
   }
-});
-$('body').on('click', function (e) {
-  if ($('body').hasClass('left-arr')) {
-    swiper.slidePrev();
-  } else if ($('body').hasClass('right-arr')) {
-    swiper.slideNext();
-  }
-}); // menu trigger / brand 
+}); /////////////////
+////////////////////
+// menu trigger / brand 
 
 var brand = document.querySelector('.brand');
 var menu = document.querySelector('.nav');
-var closeMenu = document.querySelector('.nav__close');
 brand.addEventListener('click', function (e) {
-  e.stopPropagation();
   brand.classList.add('hide');
   menu.classList.add('show');
 });
-closeMenu.addEventListener('click', function (e) {
+document.querySelector('.nav__close').addEventListener('click', function (e) {
   e.stopPropagation();
   brand.classList.remove('hide');
   menu.classList.remove('show');
@@ -159,21 +207,10 @@ closeMenu.addEventListener('click', function (e) {
 
 /***/ }),
 
-/***/ "./resources/sass/admin/admin.scss":
-/*!*****************************************!*\
-  !*** ./resources/sass/admin/admin.scss ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/main/main.scss":
-/*!***************************************!*\
-  !*** ./resources/sass/main/main.scss ***!
-  \***************************************/
+/***/ "./resources/sass/app.scss":
+/*!*********************************!*\
+  !*** ./resources/sass/app.scss ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -182,15 +219,14 @@ closeMenu.addEventListener('click', function (e) {
 /***/ }),
 
 /***/ 0:
-/*!******************************************************************************************************!*\
-  !*** multi ./resources/js/main.js ./resources/sass/main/main.scss ./resources/sass/admin/admin.scss ***!
-  \******************************************************************************************************/
+/*!**************************************************************!*\
+  !*** multi ./resources/js/main.js ./resources/sass/app.scss ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\xampp\htdocs\bofc\resources\js\main.js */"./resources/js/main.js");
-__webpack_require__(/*! C:\xampp\htdocs\bofc\resources\sass\main\main.scss */"./resources/sass/main/main.scss");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\bofc\resources\sass\admin\admin.scss */"./resources/sass/admin/admin.scss");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\bofc\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

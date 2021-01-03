@@ -1,1 +1,1 @@
-<link rel="stylesheet" href="{{asset('css/styles/main.css')}}">
+<link rel="stylesheet" href="{{asset('css/app.css')}}">

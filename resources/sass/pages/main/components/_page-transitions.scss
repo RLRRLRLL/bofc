@@ -1,0 +1,17 @@
+.main 
+{
+    transform: translateZ(1.1);
+    opacity: 0;
+    visibility: hidden;
+    overflow-x: hidden!important;
+    
+    transition: transform 1s ease,
+                opacity .5s $cubic,
+                visibility .3s $cubic;
+
+    &__on-load {
+        transform: translateZ(1);
+        opacity: 1;
+        visibility: visible;
+    }
+}
