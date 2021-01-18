@@ -1,37 +1,11 @@
 .wrapper.poms {
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
-    background: $black-13;
-    overflow-x: hidden;
-    max-width: 100vw;
-
-    // remove slogan
-    .brand {
-        position: fixed;
-        background: $black01;
-        transition: background .5s;
-        z-index: 40;
-
-        &:hover {
-            background: $black07;
-        }
-        
-        &__title {
-            margin-bottom: 15px;
-            font-size: 39px;
-        }
-
-        &__subtitle {
-            display: none;
-        }
-
-        &__logotype {
-            margin-top: 0;
-            width: 75px;
-            height: 100%;
-        }
-    }
+	width: 100%;
+	min-height: 100vh;
+	position: relative;
+	background: #050505;
+	overflow-x: hidden;
+	max-width: 100vw;
 }
 
-@import '../components/poms/gallery';
+@import "../components/poms/gallery";
+@import "../components/poms/change-view";

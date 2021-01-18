@@ -106,7 +106,6 @@ anchorTags.forEach(function (element) {
       // this is for smooth transition between pages
       var thisTargetUrl = e.target.href;
       e.preventDefault();
-      console.log(thisTargetUrl);
       setTimeout(function () {
         document.querySelector('.main').classList.remove('main__on-load');
         window.location = thisTargetUrl;
@@ -145,10 +144,9 @@ function randomNum(min, max) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelector('.main').classList.add('main__on-load'); // home page
+  document.querySelector('.main').classList.add('main-loaded'); // home page
 
   if (document.querySelector('.wrapper.home')) {
-    console.log('this page is home page');
     var swiperOptions = {
       effect: 'fade',
       speed: 1500,
@@ -181,16 +179,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   if (document.querySelector('.wrapper.poms')) {
-    console.log('there are my poms!'); // gallery
-    // const galleryItems = document.querySelectorAll('.gallery__item');
-    // galleryItems.forEach((el) => {
-    //     // el.style.width = randomNum(10, 20) + '%';
-    //     el.style.height = randomNum(300, 500) + 'px';
-    //     el.style.marginTop = randomNum(5, 45) + 'px';
-    // });
+    var galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach(function (el) {
+      el.style.width = randomNum(10, 20) + '%';
+      el.style.height = randomNum(300, 500) + 'px';
+      el.style.marginTop = randomNum(5, 45) + 'px';
+    });
   }
 }); /////////////////
-////////////////////
 // menu trigger / brand 
 
 var brand = document.querySelector('.brand');

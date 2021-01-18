@@ -8,16 +8,14 @@
         @include('includes.common.favicon')
         @include('includes.main.styles')
         
-        @yield('page-styles')
+        @yield('styles')
     </head>
     <body>
         <main class="main">
             @include('includes.main.nav')
-            
-            @yield('page-content')
+            @yield('content')
         </main>
         
-        @stack('page-scripts')
         @include('includes.main.scripts')
     </body>
 </html>

@@ -1,45 +1,50 @@
 <div class="gallery">
-    <a class="gallery__item" href="#">
-        <h5 class="gallery__item--title">
-            Test Pom
-        </h5>
-        <img 
-            class="gallery__item--image" 
-            src="{{ asset('images/random-dogs/1.jpg') }}" 
-            alt="#">
+    <a class="gallery-item" href="#">
+        <h5 class="gallery-item__title">Test Pom</h5>
+        <img class="gallery-item__image" src="{{ asset('images/random-dogs/1.jpg') }}" alt="#">
     </a>
-    <a class="gallery__item" href="#">
-        <h5 class="gallery__item--title">Test Pom</h5>
-        <img class="gallery__item--image" src="{{ asset('images/random-dogs/2.jpg') }}" alt="#">
-    </a><a class="gallery__item" href="#">
-        <h5 class="gallery__item--title">Test Pom</h5>
-        <img class="gallery__item--image" src="{{ asset('images/random-dogs/2.jpg') }}" alt="#">
-    </a><a class="gallery__item" href="#">
-        <h5 class="gallery__item--title">Test Pom</h5>
-        <img class="gallery__item--image" src="{{ asset('images/random-dogs/2.jpg') }}" alt="#">
-    </a><a class="gallery__item" href="#">
-        <h5 class="gallery__item--title">Test Pom</h5>
-        <img class="gallery__item--image" src="{{ asset('images/random-dogs/2.jpg') }}" alt="#">
-    </a><a class="gallery__item" href="#">
-        <h5 class="gallery__item--title">Test Pom</h5>
-        <img class="gallery__item--image" src="{{ asset('images/random-dogs/2.jpg') }}" alt="#">
-    </a><a class="gallery__item" href="#">
-        <h5 class="gallery__item--title">Test Pom</h5>
-        <img class="gallery__item--image" src="{{ asset('images/random-dogs/2.jpg') }}" alt="#">
-    </a><a class="gallery__item" href="#">
-        <h5 class="gallery__item--title">Test Pom</h5>
-        <img class="gallery__item--image" src="{{ asset('images/random-dogs/2.jpg') }}" alt="#">
-    </a><a class="gallery__item" href="#">
-        <h5 class="gallery__item--title">Test Pom</h5>
-        <img class="gallery__item--image" src="{{ asset('images/random-dogs/2.jpg') }}" alt="#">
-    </a><a class="gallery__item" href="#">
-        <h5 class="gallery__item--title">Test Pom</h5>
-        <img class="gallery__item--image" src="{{ asset('images/random-dogs/2.jpg') }}" alt="#">
-    </a><a class="gallery__item" href="#">
-        <h5 class="gallery__item--title">Test Pom</h5>
-        <img class="gallery__item--image" src="{{ asset('images/random-dogs/2.jpg') }}" alt="#">
-    </a><a class="gallery__item" href="#">
-        <h5 class="gallery__item--title">Test Pom</h5>
-        <img class="gallery__item--image" src="{{ asset('images/random-dogs/2.jpg') }}" alt="#">
+    <a class="gallery-item" href="#">
+        <h5 class="gallery-item__title">Test Pom</h5>
+        <img class="gallery-item__image" src="{{ asset('images/random-dogs/2.jpg') }}" alt="#">
+	</a>
+	<a class="gallery-item" href="#">
+        <h5 class="gallery-item__title">Test Pom</h5>
+        <img class="gallery-item__image" src="{{ asset('images/random-dogs/3.jpg') }}" alt="#">
+	</a>
+	<a class="gallery-item" href="#">
+        <h5 class="gallery-item__title">Test Pom</h5>
+        <img class="gallery-item__image" src="{{ asset('images/random-dogs/5.jpg') }}" alt="#">
+	</a>
+	<a class="gallery-item" href="#">
+        <h5 class="gallery-item__title">Test Pom</h5>
+        <img class="gallery-item__image" src="{{ asset('images/random-dogs/1.jpg') }}" alt="#">
+	</a>
+	<a class="gallery-item" href="#">
+        <h5 class="gallery-item__title">Test Pom</h5>
+        <img class="gallery-item__image" src="{{ asset('images/random-dogs/3.jpg') }}" alt="#">
+	</a>
+	<a class="gallery-item" href="#">
+        <h5 class="gallery-item__title">Test Pom</h5>
+        <img class="gallery-item__image" src="{{ asset('images/random-dogs/2.jpg') }}" alt="#">
+	</a>
+	<a class="gallery-item" href="#">
+        <h5 class="gallery-item__title">Test Pom</h5>
+        <img class="gallery-item__image" src="{{ asset('images/random-dogs/4.jpg') }}" alt="#">
+	</a>
+	<a class="gallery-item" href="#">
+        <h5 class="gallery-item__title">Test Pom</h5>
+        <img class="gallery-item__image" src="{{ asset('images/random-dogs/4.jpg') }}" alt="#">
+	</a>
+	<a class="gallery-item" href="#">
+        <h5 class="gallery-item__title">Test Pom</h5>
+        <img class="gallery-item__image" src="{{ asset('images/random-dogs/5.jpg') }}" alt="#">
+	</a>
+	<a class="gallery-item" href="#">
+        <h5 class="gallery-item__title">Test Pom</h5>
+        <img class="gallery-item__image" src="{{ asset('images/random-dogs/1.jpg') }}" alt="#">
+	</a>
+	<a class="gallery-item" href="#">
+        <h5 class="gallery-item__title">Test Pom</h5>
+        <img class="gallery-item__image" src="{{ asset('images/random-dogs/2.jpg') }}" alt="#">
     </a>
 </div>

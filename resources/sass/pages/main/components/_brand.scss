@@ -1,35 +1,34 @@
 .brand {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    position: fixed;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     @include flex-center;
     flex-direction: column;
-    background: $black04;
     padding: 10px;
-    border-radius: 5px;
     padding: 25px;
-    z-index: 3;
+    z-index: 40;
 
     cursor: pointer;
+    background: $black05;
+    border-radius: 5px;
 
     // effect on hide
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.5s, visibility 0.5s;
+    transition-property: opacity, visibility, background;
+    transition-duration: .5s, .5s, .5s;
 
     &__logotype {
-        width: 100px;
+        width: 67px;
         height: auto;
         margin-top: 25px;
     }
     
     &__title {
+        margin-bottom: 15px;
         font-family: allura;
-        font-size: 50px;
-        // color: white;
-        margin-bottom: 25px;
-        background-image: repeating-linear-gradient(to right, #a2682a 0%, #be8c3c 8%, #be8c3c 18%, #d3b15f 27%, #faf0a0 35%, #ffffc2 40%, #faf0a0 50%, #d3b15f 58%, #be8c3c 67%, #b17b32 77%, #bb8332 83%, #d4a245 88%, #e1b453 93%, #a4692a 100%);
+        font-size: 39px;
+        background-image: $gradient-two;
         background-size: 150%;
         background-clip: text;
         -webkit-background-clip: text;
@@ -38,35 +37,27 @@
         animation: MoveBackgroundPosition 6s ease-in-out infinite;
 
         @keyframes MoveBackgroundPosition { 
-            0% {
-                background-position: 0% 50%
-            }
-            
-            50% {
-                background-position: 100% 50%
-            }
-            
-            100% {
-                background-position: 0% 50%
-            }
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
         }
     }
 
     &__subtitle.brand__shine {
-        font-size: 27px;
-        font-family: 'comfortaa';
-        font-weight: 500;
+        font-size: 16px;
+        font-family: cormorant-bold;
+        font-weight: 600;
         text-align: center;
 
         span {
-            background: $gold-gradient;
+            background: $gradient-two;
             background-clip: text;
             -webkit-background-clip: text;
             display: inline-block;
             color: $white01;
             margin: 0 -.05em;
             animation: shine 2.7s infinite alternate;
-            @for $i from 0 through 27 {
+            @for $i from 0 through 30 {
                 &:nth-child(#{$i+1}) {
                     animation-delay: #{$i*.1}s;
                 }
@@ -74,40 +65,10 @@
         }
 
         @keyframes shine {
-            0% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-            }
+            0% { opacity: 1 }
+            100% { opacity: 0 }
         }
     }
-
-    // &__subtitle.brand__shine {
-    //     font-family: comfortaa;
-    //     font-size: 16px;
-    //     position: relative;
-    //     text-transform: uppercase;
-    //     overflow: hidden;
-    //     // background: linear-gradient(90deg, #252525, #e0cb84, #fff, #e0cb84, #252525);
-    //     background: $gold-gradient;
-    //     background-repeat: no-repeat;
-    //     background-size: 80%;
-    //     animation: animate 6s linear infinite;
-    //     background-clip: text;
-    //     -webkit-background-clip: text;
-    //     -webkit-text-fill-color: rgba(255, 255, 255, 0);
-    //     margin-bottom: 0;
-
-    //     @keyframes animate {
-    //         0% {
-    //             background-position: -500%
-    //         }
-    //         100% {
-    //             background-position: 500%
-    //         }
-    //     }
-    // }
 
     &.hide {
         opacity: 0;
@@ -115,6 +76,6 @@
     }
 
     &:hover {
-        background: $black09;
+        background: $black07;;
     }
 }
