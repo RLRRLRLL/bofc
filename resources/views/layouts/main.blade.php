@@ -7,7 +7,6 @@
 
         @include('includes.common.favicon')
         @include('includes.main.styles')
-        
         @yield('styles')
     </head>
     <body>

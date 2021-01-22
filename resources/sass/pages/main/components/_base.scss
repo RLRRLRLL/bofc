@@ -7,7 +7,7 @@
 body {
 	margin: 0;
 	padding: 0;
-	background-color: #050505;
+	font-family: 'sans-400';
 
 	&.cursor-hidden {
 		cursor: none;
@@ -19,6 +19,10 @@ body {
 
 	&.right-arr {
 		cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" height="35" viewBox="0 0 476.213 476.213" width="35"><polygon points="405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 "/></svg>'), auto;
+	}
+
+	&.no-arr {
+		cursor: auto;
 	}
 
 	// scroll bar

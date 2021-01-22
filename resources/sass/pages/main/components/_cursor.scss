@@ -1,23 +1,21 @@
 .cursor {
 	position: absolute;
-	width: 35px;
-	height: 35px;
-	// border: 2px solid transparent;
 	border-radius: 50%;
-	// background: rgba()
-	background: $gradient-one__bubble;
 	transform: translate(-50%, -50%);
 	pointer-events: none;
 	z-index: 9;
 	transform-origin: 100% 100%;
-	transition: width .5s ease,
-		height .5s ease,
+	transition: width .25s ease .25s,
+		height .25s ease .25s,
 		background $cubic;
+	width: 30px;
+	height: 30px;
+	background: $gradient-one__bubble;
+	border: 1px solid #252525;
+	backdrop-filter: saturate(1.5) contrast(120%);
 
 	&.grow {
-		width: 100px;
-		height: 100px;
-		// border: 2px solid #5d4a1f;
-		// background: $gradient-one;
+		width: 125px;
+		height: 125px;
 	}
 }

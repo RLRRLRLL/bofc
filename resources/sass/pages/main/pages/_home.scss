@@ -1,11 +1,11 @@
-
 .wrapper.home {
-    position: relative;
-    overflow: hidden;
+	position: relative;
+	overflow: hidden;
+	width: 100vw;
+	min-height: 100vh;
+	background: $matte-black;
 
-    .content {
-        background: $material-black;
-    }
+	.content {}
 }
 
 // slider

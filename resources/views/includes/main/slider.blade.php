@@ -3,7 +3,7 @@
     <div class="swiper-wrapper">
         <!-- Slides -->
         <div class="swiper-slide">
-            <img src="{{ asset('images/random-dogs/1.jpg') }}">
+            <img src="{{ asset('images/random-dogs/3.jpg') }}">
         </div>
         <div class="swiper-slide">
             <img src="{{ asset('images/random-dogs/2.jpg') }}">
