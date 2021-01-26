@@ -1,14 +1,14 @@
 import { randomNum } from "./../Utils";
 
 function createBubbles() {
-	const area = document.querySelector(".nav__brand");
+	const area = document.querySelector(".brand");
 	const bubble = document.createElement("span");
 	let maxWidth = area.offsetWidth * 0.9;
-	let size = randomNum(15, 50);
+	let size = randomNum(15, 25);
 
 	bubble.className = "b";
-	bubble.style.width = 5 + size + "px";
-	bubble.style.height = 5 + size + "px";
+	bubble.style.width = size + "px";
+	bubble.style.height = size + "px";
 	bubble.style.left = Math.random() * maxWidth + "px";
 	area.appendChild(bubble);
 
@@ -18,7 +18,7 @@ function createBubbles() {
 }
 
 let interval = null;
-const runBubbles = () => (interval = setInterval(createBubbles, 300));
+const runBubbles = () => (interval = setInterval(createBubbles, 150));
 const stopBubbles = () => clearInterval(interval);
 
 export { runBubbles, stopBubbles };

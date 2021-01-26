@@ -1,10 +1,9 @@
 // components
 @import "./components/base";
-@import "./components/brand";
-@import "./components/cursor";
-@import "./components/bubbles";
-@import "./components/navigation";
+// @import "./components/cursor";
+// @import "./components/navigation/navigation";
+@import "./components/header/header";
 
 // pages
-@import "./pages/home";
-@import "./pages/poms";
+@import "./pages/home/home";
+@import "./pages/poms/poms";

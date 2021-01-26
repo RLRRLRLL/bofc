@@ -90,7 +90,7 @@
 /*!******************************************!*\
   !*** ./resources/js/components/Utils.js ***!
   \******************************************/
-/*! exports provided: randomNum, cursorIntoArrows, keepLinksActive */
+/*! exports provided: randomNum, cursorIntoArrows, keepLinksActive, smoothScroll */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,6 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "randomNum", function() { return randomNum; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cursorIntoArrows", function() { return cursorIntoArrows; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "keepLinksActive", function() { return keepLinksActive; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "smoothScroll", function() { return smoothScroll; });
 // generate random num
 var randomNum = function randomNum(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -133,6 +134,33 @@ function keepLinksActive() {
       element.closest("a").classList.add("active");
     }
   });
+} // scroll to section
+
+function smoothScroll() {
+  var aboutTrigger = document.querySelector(".stripes");
+  aboutTrigger.addEventListener("click", function (e) {
+    e.preventDefault();
+    var targetPos = document.getElementById("about").offsetTop;
+    var startPos = window.pageYOffset;
+    var distance = targetPos - startPos;
+    var duration = 700;
+    var start = null;
+    window.requestAnimationFrame(step);
+
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      var progress = timestamp - start;
+      window.scrollTo(0, exponentialEasing(progress, startPos, distance, duration));
+      if (progress < duration) window.requestAnimationFrame(step);
+    }
+  }); // easing fns reference: http://www.gizma.com/easing/
+
+  function exponentialEasing(t, b, c, d) {
+    t /= d / 2;
+    if (t < 1) return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
+    t--;
+    return c / 2 * (-Math.pow(2, -10 * t) + 2) + b;
+  }
 }
 
 /***/ }),
@@ -152,13 +180,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function createBubbles() {
-  var area = document.querySelector(".nav__brand");
+  var area = document.querySelector(".brand");
   var bubble = document.createElement("span");
   var maxWidth = area.offsetWidth * 0.9;
-  var size = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["randomNum"])(15, 50);
+  var size = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["randomNum"])(15, 25);
   bubble.className = "b";
-  bubble.style.width = 5 + size + "px";
-  bubble.style.height = 5 + size + "px";
+  bubble.style.width = size + "px";
+  bubble.style.height = size + "px";
   bubble.style.left = Math.random() * maxWidth + "px";
   area.appendChild(bubble);
   setTimeout(function () {
@@ -169,7 +197,7 @@ function createBubbles() {
 var interval = null;
 
 var runBubbles = function runBubbles() {
-  return interval = setInterval(createBubbles, 300);
+  return interval = setInterval(createBubbles, 150);
 };
 
 var stopBubbles = function stopBubbles() {
@@ -180,32 +208,37 @@ var stopBubbles = function stopBubbles() {
 
 /***/ }),
 
-/***/ "./resources/js/components/main/CursorIntoBubble.js":
-/*!**********************************************************!*\
-  !*** ./resources/js/components/main/CursorIntoBubble.js ***!
-  \**********************************************************/
-/*! exports provided: default */
+/***/ "./resources/js/components/main/SelectPoms.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/main/SelectPoms.js ***!
+  \****************************************************/
+/*! exports provided: selectPoms */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return cursorIntoBubble; });
-// cursor into bubble on hover
-function cursorIntoBubble(targets) {
-  window.addEventListener('mousemove', listenToCursorMove);
-  var cursor = document.getElementById('cursor');
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectPoms", function() { return selectPoms; });
+function selectPoms() {
+  var select = document.querySelector(".select");
+  var selectList = document.querySelector(".select_list");
+  var selected = document.querySelector(".select_selected");
+  var selectedSpan = document.querySelector(".select_naming");
+  var listItems = document.querySelectorAll(".select_list li");
+  listItems.forEach(function (li) {
+    li.addEventListener("click", function (e) {
+      e.preventDefault();
+      var i = e.target;
+      var data = i.getAttribute("data-poms");
+      var naming = data.toUpperCase(); // come up with a better approach later
 
-  function listenToCursorMove(e) {
-    cursor.style.top = e.pageY + 'px';
-    cursor.style.left = e.pageX + 'px';
-  }
+      for (var _i = 0; _i < listItems.length; _i++) {
+        listItems[_i].classList.remove("show");
+      }
 
-  targets.forEach(function (l) {
-    l.addEventListener('mouseover', function () {
-      cursor.classList.add('grow');
-    });
-    l.addEventListener('mouseleave', function () {
-      cursor.classList.remove('grow');
+      i.classList.add("show");
+      selectedSpan.innerText = naming;
+      selected.removeAttribute("data-poms");
+      selected.setAttribute("data-poms", data);
     });
   });
 }
@@ -226,22 +259,15 @@ __webpack_require__.r(__webpack_exports__);
  // menu trigger / brand
 
 function toggleMenu() {
-  var brand = document.querySelector(".brand");
+  var navTrigger = document.querySelector(".nav__trigger");
   var menu = document.querySelector(".nav");
-  var cursor = document.getElementById("cursor");
-  brand.addEventListener("click", function (e) {
-    Object(_common_Bubbles__WEBPACK_IMPORTED_MODULE_0__["runBubbles"])();
-    brand.classList.add("hide");
-    menu.classList.add("show");
-    if (cursor) cursor.classList.remove("cursor");
-    document.body.classList = "no-arr";
-  });
-  document.querySelector(".nav__close").addEventListener("click", function (e) {
-    e.stopPropagation();
-    Object(_common_Bubbles__WEBPACK_IMPORTED_MODULE_0__["stopBubbles"])();
-    brand.classList.remove("hide");
-    menu.classList.remove("show");
-    if (cursor) cursor.classList.add("cursor");
+  navTrigger.addEventListener("click", function (e) {
+    navTrigger.classList.toggle("show");
+    menu.classList.toggle("show"); // if (navTrigger.classList.contains("show")) {
+    // 	runBubbles();
+    // } else {
+    // 	stopBubbles();
+    // }
   });
 }
 
@@ -257,42 +283,31 @@ function toggleMenu() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_main_ToggleMenu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/main/ToggleMenu */ "./resources/js/components/main/ToggleMenu.js");
-/* harmony import */ var _components_main_CursorIntoBubble__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/main/CursorIntoBubble */ "./resources/js/components/main/CursorIntoBubble.js");
-/* harmony import */ var _components_Utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Utils */ "./resources/js/components/Utils.js");
+/* harmony import */ var _components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/common/Bubbles */ "./resources/js/components/common/Bubbles.js");
+/* harmony import */ var _components_main_SelectPoms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/main/SelectPoms */ "./resources/js/components/main/SelectPoms.js");
+/* harmony import */ var _components_Utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Utils */ "./resources/js/components/Utils.js");
+
 
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  Object(_components_main_ToggleMenu__WEBPACK_IMPORTED_MODULE_0__["default"])();
-  Object(_components_Utils__WEBPACK_IMPORTED_MODULE_2__["keepLinksActive"])();
+  Object(_components_Utils__WEBPACK_IMPORTED_MODULE_3__["keepLinksActive"])(); // toggleMenu();
+
   document.querySelector(".main").classList.add("main-loaded"); // home page
 
-  if (document.querySelector(".wrapper.home")) {// const swiper = new Swiper('.swiper-container', {
-    // 	effect: 'fade',
-    // 	speed: 1500,
-    // 	observer: true,
-    // 	observeParents: true,
-    // 	loop: true,
-    // 	autoplay: {
-    // 		delay: 4000,
-    // 		disableOnInteraction: false
-    // 	},
-    // });
-    // document.addEventListener('mousemove', cursorIntoArrows);
-    // document.addEventListener('click', () => {
-    // 	return document.body.classList == 'left-arr' ? swiper.slidePrev() : swiper.slideNext();
+  if (document.querySelector(".wrapper.home")) {
+    Object(_components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__["runBubbles"])();
+    Object(_components_Utils__WEBPACK_IMPORTED_MODULE_3__["smoothScroll"])(); // const desktopLinks = document.querySelectorAll(".d-link");
+    // desktopLinks.forEach(i => {
+    // 	i.addEventListener("mouseleave", e => {
+    // 		i.classList.add("mouse-leave");
+    // 	});
     // });
   } // pomeranians page
 
 
   if (document.querySelector(".wrapper.poms")) {
-    var galleryItems = document.querySelectorAll(".gallery-item");
-    Object(_components_main_CursorIntoBubble__WEBPACK_IMPORTED_MODULE_1__["default"])(galleryItems);
-    galleryItems.forEach(function (el) {
-      el.style.width = randomNum(10, 20) + "%";
-      el.style.height = randomNum(300, 500) + "px";
-      el.style.marginTop = randomNum(5, 105) + "px";
-    });
+    Object(_components_main_SelectPoms__WEBPACK_IMPORTED_MODULE_2__["selectPoms"])();
   }
 });
 

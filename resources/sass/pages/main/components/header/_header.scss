@@ -1,0 +1,80 @@
+.header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: $high;
+	padding: 20px 40px;
+	background: linear-gradient(to bottom, $material-black, transparent);
+
+	// desktop
+	&__desktop {
+		width: 100%;
+		ul {
+			@include flex-center;
+
+			li {
+				display: inline-flex;
+
+				a {
+					display: inline-block;
+					padding: 20px 20px 5px 20px;
+					font-size: 18px;
+					color: $white07;
+					overflow: hidden;
+					position: relative;
+					transition: color 0.15s;
+
+					&.active {
+						color: lighten($cream, 10%);
+					}
+
+					&:hover {
+						color: $white09;
+						background: radial-gradient(
+							$material-black,
+							transparent
+						);
+					}
+
+					// slide
+					&.slidin {
+						&::before,
+						&::after {
+							content: "";
+							display: block;
+							position: absolute;
+							bottom: 0;
+							width: 0;
+							height: 1px;
+							transition: width 0.25s ease;
+						}
+
+						&::before {
+							left: 0;
+							background: $cream;
+						}
+
+						&::after {
+							right: 0;
+							background: darken($cream, 20%);
+							transition-delay: 0.25s;
+							z-index: -1;
+						}
+
+						&:hover::before {
+							width: 100%;
+							transition: width 0.25s ease;
+						}
+
+						&:hover::after {
+							width: 100%;
+							background: transparent;
+							transition: all 0s ease;
+						}
+					}
+				}
+			}
+		}
+	}
+}

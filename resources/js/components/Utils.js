@@ -42,3 +42,38 @@ export function keepLinksActive() {
 		}
 	});
 }
+
+// scroll to section
+export function smoothScroll() {
+	const aboutTrigger = document.querySelector(".stripes");
+
+	aboutTrigger.addEventListener("click", function(e) {
+		e.preventDefault();
+
+		const targetPos = document.getElementById("about").offsetTop;
+		const startPos = window.pageYOffset;
+		const distance = targetPos - startPos;
+		const duration = 700;
+		let start = null;
+
+		window.requestAnimationFrame(step);
+
+		function step(timestamp) {
+			if (!start) start = timestamp;
+			const progress = timestamp - start;
+			window.scrollTo(
+				0,
+				exponentialEasing(progress, startPos, distance, duration)
+			);
+			if (progress < duration) window.requestAnimationFrame(step);
+		}
+	});
+
+	// easing fns reference: http://www.gizma.com/easing/
+	function exponentialEasing(t, b, c, d) {
+		t /= d / 2;
+		if (t < 1) return (c / 2) * Math.pow(2, 10 * (t - 1)) + b;
+		t--;
+		return (c / 2) * (-Math.pow(2, -10 * t) + 2) + b;
+	}
+}

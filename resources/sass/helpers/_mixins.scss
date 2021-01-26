@@ -1,17 +1,50 @@
 @mixin flex-around {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
 
 @mixin flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 @mixin flex-between {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
+
+@mixin fill-effect($color) {
+	position: relative;
+
+	&::before {
+		content: attr(data-text);
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		transition: all 0.3s ease-out;
+		color: $color;
+		width: 0%;
+		overflow: hidden;
+	}
+
+	&:hover::before {
+		width: 100%;
+	}
+}
+
+// @mixin underline() {
+// 	position: relative;
+
+// 	&::after {
+// 		content: "";
+// 		position: absolute;
+// 		top: 110%;
+// 		left: 0; right: 0;
+
+// 	}
+// }

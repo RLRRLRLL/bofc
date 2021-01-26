@@ -1,44 +1,50 @@
-// *** Poppins [ sans ]
+// *** nunito 2 [ sans ]
 @font-face {
-	font-family: 'sans-300';
+	font-family: "nunito";
 	font-weight: 300;
-	src: url('/fonts/Poppins/Poppins-Light.ttf');
+	src: url("/fonts/Nunito/Nunito-Light.ttf");
 }
 
 @font-face {
-	font-family: 'sans-400';
+	font-family: "nunito";
 	font-weight: 400;
-	src: url('/fonts/Poppins/Poppins-Regular.ttf');
+	src: url("/fonts/Nunito/Nunito-Regular.ttf");
 }
 
 @font-face {
-	font-family: 'sans-500';
+	font-family: "nunito";
 	font-weight: 500;
-	src: url('/fonts/Poppins/Poppins-Medium.ttf');
+	src: url("/fonts/Nunito/Nunito-SemiBold.ttf");
+}
+
+@font-face {
+	font-family: "nunito";
+	font-weight: 900;
+	src: url("/fonts/Nunito/Nunito-Black.ttf");
 }
 
 // *** Playfair Display [ serif ]
 @font-face {
-	font-family: 'serif-400';
+	font-family: "play";
 	font-weight: 400;
-	src: url('/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf');
+	src: url("/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf");
 }
 
 @font-face {
-	font-family: 'serif-500';
+	font-family: "play";
 	font-weight: 500;
-	src: url('/fonts/Playfair_Display/PlayfairDisplay-Medium.ttf');
+	src: url("/fonts/Playfair_Display/PlayfairDisplay-Medium.ttf");
 }
 
 @font-face {
-	font-family: 'serif-600';
+	font-family: "play";
 	font-weight: 600;
-	src: url('/fonts/Playfair_Display/PlayfairDisplay-Bold.ttf');
+	src: url("/fonts/Playfair_Display/PlayfairDisplay-Bold.ttf");
 }
 
 // *** allura [ curly ]
 @font-face {
-	font-family: 'curly';
+	font-family: "allura";
 	font-weight: 400;
-	src: url('/fonts/Allura/Allura-Regular.ttf');
+	src: url("/fonts/Allura/Allura-Regular.ttf");
 }

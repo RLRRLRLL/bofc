@@ -1,4 +1,14 @@
-.li {
-    list-style: none;
-    display: inline;
+li {
+	list-style: none;
+	display: inline;
+}
+
+a,
+a:focus,
+a:visited {
+	text-decoration: none;
+}
+
+.is_fillable {
+	@include fill-effect($white08);
 }

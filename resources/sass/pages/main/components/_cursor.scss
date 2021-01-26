@@ -3,10 +3,9 @@
 	border-radius: 50%;
 	transform: translate(-50%, -50%);
 	pointer-events: none;
-	z-index: 9;
+	z-index: $low;
 	transform-origin: 100% 100%;
-	transition: width .25s ease .25s,
-		height .25s ease .25s,
+	transition: width 0.25s ease 0.25s, height 0.25s ease 0.25s,
 		background $cubic;
 	width: 30px;
 	height: 30px;

@@ -1,0 +1,41 @@
+&__brand {
+	height: 30%;
+	@include flex-center;
+	flex-direction: column;
+	padding: 50px;
+	border: 1px solid white;
+	position: relative;
+
+	h1 {
+		font-family: "play";
+		font-weight: 500;
+		position: relative;
+		color: white;
+		font-size: clamp(30px, 35px, 40px);
+		text-transform: uppercase;
+		letter-spacing: 5px;
+
+		&::after {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 100%;
+			left: 10%;
+			right: 10%;
+			margin-top: 20px;
+			width: 80%;
+			height: 1px;
+			background-color: $white08;
+		}
+	}
+
+	&--subtitle {
+		font-family: "nunito";
+		font-weight: 300;
+		margin-top: 50px;
+		color: rgba(255, 255, 255, 0.7);
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-size: 18px;
+	}
+}

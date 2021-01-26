@@ -3,7 +3,7 @@
         {{ config('app.name') }}
     </h2>
 
-    <span class="brand__subtitle brand__shine">
+    {{-- <span class="brand__subtitle brand__shine">
         <span>T</span>
         <span>H</span>
         <span>E</span>
@@ -34,7 +34,11 @@
         <span>N</span>
         <span>E</span>
         <span>L</span>
-    </span>
+	</span> --}}
+	
+	<span class="brand__subtitle">
+		The pomeranian breed kennel
+	</span>
 
     {{-- <img src="{{ asset('images/logo-circle.png') }}" alt="Pomeranian dog breed kennel"
         class="brand__logotype"> --}}
