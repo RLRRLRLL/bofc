@@ -16,62 +16,87 @@
 			li {
 				display: inline-flex;
 
+				&:not(.enough-padding) {
+					padding: 15px;
+				}
+
 				a {
 					display: inline-block;
-					padding: 20px 20px 5px 20px;
-					font-size: 18px;
-					color: $white07;
 					overflow: hidden;
-					position: relative;
-					transition: color 0.15s;
+					padding: 0px 5px;
 
+					&:hover,
 					&.active {
-						color: lighten($cream, 10%);
-					}
-
-					&:hover {
-						color: $white09;
-						background: radial-gradient(
-							$material-black,
-							transparent
-						);
-					}
-
-					// slide
-					&.slidin {
-						&::before,
-						&::after {
-							content: "";
-							display: block;
-							position: absolute;
-							bottom: 0;
-							width: 0;
-							height: 1px;
-							transition: width 0.25s ease;
+						span {
+							-webkit-transform: translateY(-100%);
+							-moz-transform: translateY(-100%);
+							transform: translateY(-100%);
 						}
+					}
+
+					&.active:hover {
+						color: lighten($cream, 20%);
+					}
+
+					&:focus {
+						span,
+						span::before {
+							color: $white03;
+						}
+					}
+
+					span {
+						position: relative;
+						display: inline-block;
+						-webkit-transition: -webkit-transform 0.3s;
+						-moz-transition: -moz-transform 0.3s;
+						transition: transform 0.3s;
+						// color: $white06;
+						color: white;
+						font-family: sans;
+						font-weight: 300;
+						font-size: 18px;
+						letter-spacing: 0.5px;
+						pointer-events: none;
 
 						&::before {
-							left: 0;
-							background: $cream;
+							content: attr(data-text);
+							position: absolute;
+							top: 100%;
+							font-family: sans;
+							font-weight: 400;
+							color: white;
+							-webkit-transform: translate3d(0, 0, 0);
+							-moz-transform: translate3d(0, 0, 0);
+							transform: translate3d(0, 0, 0);
 						}
+					}
+				}
 
-						&::after {
-							right: 0;
-							background: darken($cream, 20%);
-							transition-delay: 0.25s;
-							z-index: -1;
-						}
+				// cta
+				.desk_cta {
+					$cream-lighter: lighten($cream, 10%);
 
-						&:hover::before {
-							width: 100%;
-							transition: width 0.25s ease;
-						}
+					@include pop-thingy(lighten($cream, 50%));
 
-						&:hover::after {
-							width: 100%;
-							background: transparent;
-							transition: all 0s ease;
-						}
+					cursor: pointer;
+					padding: 5px 7px;
+					margin-left: 15px;
+
+					border: 1px solid $cream-lighter;
+					border-radius: 3px !important;
+
+					background: transparent;
+					color: $cream-lighter;
+					font-size: 15px;
+					font-weight: 500;
+					text-transform: uppercase;
+					letter-spacing: 0.9px;
+					transition: all 0.25s ease;
+
+					&:hover {
+						background: $cream-lighter;
+						color: black;
 					}
 				}
 			}

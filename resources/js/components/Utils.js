@@ -1,3 +1,7 @@
+// aliases for js selectors
+export const query = document.querySelector.bind(document);
+export const queryAll = document.querySelectorAll.bind(document);
+
 // generate random num
 export let randomNum = (min, max) =>
 	Math.floor(Math.random() * (max - min + 1) + min);
@@ -14,7 +18,7 @@ export function cursorIntoArrows(e) {
 
 // links: prevent default if '#' and add active class if current page
 export function keepLinksActive() {
-	const anchorTags = document.querySelectorAll("a");
+	const anchorTags = queryAll("a");
 	let currentUrl = window.location.pathname;
 
 	anchorTags.forEach(function(element) {
@@ -45,11 +49,16 @@ export function keepLinksActive() {
 
 // scroll to section
 export function smoothScroll() {
-	const aboutTrigger = document.querySelector(".stripes");
+	const aboutTrigger = query(".stripes");
+	/**
+	 * not reuseable.
+	 * reason: e.preventDefault() doesnt prevent
+	 * from affecting url, which breaks gallery somehow.
+	 * make reuseable in the future if needed, -
+	 * bind click to div and use "data-href" attr.
+	 */
 
 	aboutTrigger.addEventListener("click", function(e) {
-		e.preventDefault();
-
 		const targetPos = document.getElementById("about").offsetTop;
 		const startPos = window.pageYOffset;
 		const distance = targetPos - startPos;

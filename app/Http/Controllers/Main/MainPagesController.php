@@ -9,11 +9,11 @@ class MainPagesController extends Controller
 {
     public function homepage()
     {
-        return view('main.home');
+        return view('pages.main.home');
     }
 
     public function poms() 
     {
-        return view('main.poms');
+        return view('pages.main.poms');
     }
 }

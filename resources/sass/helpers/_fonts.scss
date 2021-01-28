@@ -1,27 +1,27 @@
-// *** nunito 2 [ sans ]
+// *** open sans [ sans ]
 @font-face {
-	font-family: "nunito";
+	font-family: "sans";
 	font-weight: 300;
-	src: url("/fonts/Nunito/Nunito-Light.ttf");
+	src: url("/fonts/Sans/OpenSans-Light.ttf");
 }
 
 @font-face {
-	font-family: "nunito";
+	font-family: "sans";
 	font-weight: 400;
-	src: url("/fonts/Nunito/Nunito-Regular.ttf");
+	src: url("/fonts/Sans/OpenSans-Regular.ttf");
 }
 
 @font-face {
-	font-family: "nunito";
+	font-family: "sans";
 	font-weight: 500;
-	src: url("/fonts/Nunito/Nunito-SemiBold.ttf");
+	src: url("/fonts/Sans/OpenSans-SemiBold.ttf");
 }
 
-@font-face {
-	font-family: "nunito";
-	font-weight: 900;
-	src: url("/fonts/Nunito/Nunito-Black.ttf");
-}
+// @font-face {
+// 	font-family: "sans";
+// 	font-weight: 900;
+// 	src: url("/fonts/Sans/OpenSans-Black.ttf");
+// }
 
 // *** Playfair Display [ serif ]
 @font-face {

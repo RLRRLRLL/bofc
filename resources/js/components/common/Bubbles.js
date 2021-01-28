@@ -1,7 +1,7 @@
-import { randomNum } from "./../Utils";
+import { query, randomNum } from "./../Utils";
 
 function createBubbles() {
-	const area = document.querySelector(".brand");
+	const area = query(".brand");
 	const bubble = document.createElement("span");
 	let maxWidth = area.offsetWidth * 0.9;
 	let size = randomNum(15, 25);

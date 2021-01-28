@@ -16,10 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainPagesController::class, 'homepage']);
 
-Route::get('/pomeranians/all', [MainPagesController::class, 'poms'])->name('poms.all');
+Route::get('/pomeranian', [MainPagesController::class, 'poms'])->name('poms.all');
 
 // start demo
 Route::get('/demo', function() {
-	return view('main.slider');
+	return view('pages.main.slider');
+});
+
+Route::get('/gal', function() {
+	return view('pages.main.gal');
 });
 // end demo

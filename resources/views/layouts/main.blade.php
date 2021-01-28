@@ -5,15 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>[@yield('page-title')] {{ config('app.name') }}</title>
         @include('includes.common.favicon')
-        @include('includes.main.styles')
+        @include('includes.main.sns.styles')
         @yield('styles')
     </head>
     <body>
         <main class="main">
-			@include('includes.main.header')
+			@include('includes.main.partials.header')
 			@yield('content')
         </main>
         
-        @include('includes.main.scripts')
+        @include('includes.main.sns.scripts')
     </body>
 </html>

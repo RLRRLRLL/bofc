@@ -14,12 +14,12 @@
 	&:hover {
 		background: linear-gradient(
 			0deg,
-			rgba(255, 255, 255, 0.1) 0%,
-			rgba(24, 21, 19, 0.1) 100%
+			rgba(255, 255, 255, 0.03) 0%,
+			rgba(24, 21, 19, 0.03) 100%
 		);
 
-		.stripes__text::before {
-			width: 100%;
+		.stripes__text {
+			color: $white06;
 		}
 	}
 
@@ -34,9 +34,10 @@
 		color: $cream;
 		font-size: 23px;
 		letter-spacing: 2px;
-		font-family: nunito;
+		font-family: sans;
 		font-weight: 300;
 		margin-bottom: 10px;
+		opacity: 0.8;
 	}
 
 	.arrow {

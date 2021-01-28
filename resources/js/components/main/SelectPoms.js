@@ -1,9 +1,21 @@
+import { query, queryAll } from "./../Utils";
+
+// TODO: write another script for no-js browsers
+
 export function selectPoms() {
-	const select = document.querySelector(".select");
-	const selectList = document.querySelector(".select_list");
-	const selected = document.querySelector(".select_selected");
-	const selectedSpan = document.querySelector(".select_naming");
-	const listItems = document.querySelectorAll(".select_list li");
+	const select = query(".select__in"),
+		selected = query(".select__in--selected"),
+		selectedSpan = query(".select__in--selected-naming"),
+		listItems = queryAll(".select__in--list li"),
+		hoverClass = "mouse-over";
+
+	select.addEventListener("mouseover", e => {
+		select.classList.add(hoverClass);
+	});
+
+	select.addEventListener("mouseleave", e => {
+		select.classList.remove(hoverClass);
+	});
 
 	listItems.forEach(li => {
 		li.addEventListener("click", e => {
@@ -22,6 +34,8 @@ export function selectPoms() {
 			selectedSpan.innerText = naming;
 			selected.removeAttribute("data-poms");
 			selected.setAttribute("data-poms", data);
+
+			select.classList.remove(hoverClass);
 		});
 	});
 }

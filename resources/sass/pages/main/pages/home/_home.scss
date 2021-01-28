@@ -1,6 +1,7 @@
 .wrapper.home {
 	position: relative;
 	background: $matte-black;
+	overflow: hidden;
 	// background-image: url("/images/transparent/textures/brilliant.png");
 
 	.section {
@@ -16,15 +17,6 @@
 
 		// header sec
 		&-header {
-			background: linear-gradient(
-					0deg,
-					rgba(20, 19, 18, 1) 0%,
-					rgba(20, 19, 18, 0.2) 100%
-				),
-				url("/images/random-dogs/2.jpg");
-			background-position: center bottom;
-			background-size: cover;
-
 			&__inner {
 				display: flex;
 				justify-content: center;
@@ -35,15 +27,16 @@
 
 		// about sec
 		&-about {
-			background: rgb(20, 19, 18);
-			background: linear-gradient(
-				0deg,
-				rgba(20, 19, 18, 1) 0%,
-				rgba(24, 21, 19, 1) 100%
-			);
+			//
 		}
 	}
 }
+
+// social cta
+@import "./includes/social-cta";
+
+// parallax gallery
+@import "./includes/grid";
 
 // brand
 @import "./includes/brand";
@@ -51,10 +44,11 @@
 // stripes
 @import "./includes/stripes";
 
-// demo
-// @import "./includes/planet";
-
 /* Section About */
 
 // about
 @import "./includes/about";
+
+////////////////
+// demo
+// @import "./includes/planet";
