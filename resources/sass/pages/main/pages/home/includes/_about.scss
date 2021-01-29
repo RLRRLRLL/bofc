@@ -3,15 +3,13 @@
 
 .static {
 	height: 100%;
-	@include flex-center;
+	@include flex-center(row);
 
 	// info
 	.info {
 		height: 70%;
 		position: relative;
-		@include flex-center;
-		flex-direction: column;
-		// background: $black01;
+		@include flex-center(column);
 
 		&-title {
 			margin-bottom: 25px;
@@ -47,6 +45,62 @@
 
 				&:not(:last-child) {
 					margin-bottom: 15px;
+				}
+			}
+		}
+
+		&-btn {
+			margin-top: 50px;
+			font-size: 16px;
+			color: $white05;
+			border: 1px solid $white05;
+			border-radius: 3px;
+			background: $black02;
+			padding: 10px 20px;
+			cursor: pointer;
+			text-transform: uppercase;
+			@include flex-center(column);
+
+			&:hover {
+				color: white;
+				border-color: white;
+			}
+
+			.arrow {
+				width: 20px;
+				height: 20px;
+				margin-top: 25px;
+				transform: rotate(225deg);
+				-webkit-transform: rotate(225deg);
+				border-left: none;
+				border-top: none;
+				border-right: 2px $white07 solid;
+				border-bottom: 2px $white07 solid;
+				&:before {
+					content: "";
+					position: absolute;
+					left: 50%;
+					width: 15px;
+					height: 15px;
+					top: 50%;
+					margin: -10px 0 0 -10px;
+					border-left: none;
+					border-top: none;
+					border-right: 1px $white07 solid;
+					border-bottom: 1px $white07 solid;
+					animation-duration: 2s;
+					animation-iteration-count: infinite;
+					animation-name: arrow;
+				}
+			}
+
+			@keyframes arrow {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+					transform: translate(-10px, -10px);
 				}
 			}
 		}

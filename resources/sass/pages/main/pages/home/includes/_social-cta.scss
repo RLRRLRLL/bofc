@@ -2,7 +2,7 @@
 	position: fixed;
 	left: -100px;
 	bottom: 30%;
-	@include flex-center;
+	@include flex-center(row);
 	z-index: $high;
 
 	// rotate -90
@@ -15,7 +15,7 @@
 
 	// links
 	&__item {
-		@include flex-center;
+		@include flex-center(row);
 		// typography
 		font-family: sans;
 		font-size: 13px;
@@ -23,6 +23,8 @@
 		text-transform: uppercase;
 		letter-spacing: 1px;
 		color: white;
+
+		transition: all 0.2s;
 
 		&:hover {
 			color: lighten($sky-blue, 15%);
@@ -41,7 +43,7 @@
 			width: 15px;
 			height: 15px;
 			margin: 0 0 3px 10px;
-			// filter: grayscale(100%);
+			filter: grayscale(100%);
 		}
 
 		&.inst {
@@ -53,8 +55,8 @@
 
 		&.inst {
 			svg {
-				width: 20px;
-				height: 20px;
+				width: 18px;
+				height: 18px;
 				margin: 0 0 0 10px;
 			}
 		}

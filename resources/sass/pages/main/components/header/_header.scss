@@ -5,13 +5,13 @@
 	right: 0;
 	z-index: $high;
 	padding: 20px 40px;
-	background: linear-gradient(to bottom, $material-black, transparent);
+	// background: linear-gradient(to bottom, $material-black, transparent);
 
 	// desktop
 	&__desktop {
 		width: 100%;
 		ul {
-			@include flex-center;
+			@include flex-center(row);
 
 			li {
 				display: inline-flex;
@@ -51,8 +51,7 @@
 						-webkit-transition: -webkit-transform 0.3s;
 						-moz-transition: -moz-transform 0.3s;
 						transition: transform 0.3s;
-						// color: $white06;
-						color: white;
+						color: $white06;
 						font-family: sans;
 						font-weight: 300;
 						font-size: 18px;
@@ -80,19 +79,25 @@
 					@include pop-thingy(lighten($cream, 50%));
 
 					cursor: pointer;
-					padding: 5px 7px;
+					padding: 7px 10px;
 					margin-left: 15px;
 
-					border: 1px solid $cream-lighter;
+					// border: 1px solid $cream-lighter;
 					border-radius: 3px !important;
 
 					background: transparent;
+					// background: $cream-lighter;
+					// color: $cream-lighter;
+					// color: #111;
 					color: $cream-lighter;
 					font-size: 15px;
 					font-weight: 500;
 					text-transform: uppercase;
 					letter-spacing: 0.9px;
 					transition: all 0.25s ease;
+					position: relative;
+					overflow: hidden;
+					box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
 
 					&:hover {
 						background: $cream-lighter;

@@ -1,7 +1,6 @@
 .brand {
 	max-width: 35%;
-	@include flex-center;
-	flex-direction: column;
+	@include flex-center(column);
 	padding: 35px;
 	border: 1px solid $white07;
 	position: relative;
@@ -14,6 +13,7 @@
 		font-family: "play";
 		font-weight: 600;
 		// text-transform: uppercase;
+		text-align: center;
 		font-size: 40px;
 		letter-spacing: 1px;
 		background-image: $gradient-two;
@@ -58,6 +58,7 @@
 		margin-top: 50px;
 		color: $white09;
 		text-transform: uppercase;
+		text-align: center;
 		letter-spacing: 2px;
 		font-size: 18px;
 	}

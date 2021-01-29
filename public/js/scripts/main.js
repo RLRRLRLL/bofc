@@ -6027,30 +6027,33 @@ function keepLinksActive() {
 } // scroll to section
 
 function smoothScroll() {
-  var aboutTrigger = query(".stripes");
-  /**
-   * not reuseable.
-   * reason: e.preventDefault() doesnt prevent
-   * from affecting url, which breaks gallery somehow.
-   * make reuseable in the future if needed, -
-   * bind click to div and use "data-href" attr.
-   */
+  var aboutTrigger = query(".stripes"),
+      backToTop = query("#backToTop");
 
-  aboutTrigger.addEventListener("click", function (e) {
-    var targetPos = document.getElementById("about").offsetTop;
-    var startPos = window.pageYOffset;
-    var distance = targetPos - startPos;
-    var duration = 700;
-    var start = null;
-    window.requestAnimationFrame(step);
+  function scrollToSection(trigger) {
+    trigger.addEventListener("click", function (e) {
+      e.preventDefault();
+      var thisAttr = this.getAttribute("data-target"),
+          target = document.querySelector(thisAttr),
+          targetPos = target.offsetTop,
+          startPos = window.pageYOffset,
+          distance = targetPos - startPos,
+          duration = 700;
+      var start = null;
+      window.requestAnimationFrame(step);
 
-    function step(timestamp) {
-      if (!start) start = timestamp;
-      var progress = timestamp - start;
-      window.scrollTo(0, exponentialEasing(progress, startPos, distance, duration));
-      if (progress < duration) window.requestAnimationFrame(step);
-    }
-  }); // easing fns reference: http://www.gizma.com/easing/
+      function step(timestamp) {
+        if (!start) start = timestamp;
+        var progress = timestamp - start;
+        window.scrollTo(0, exponentialEasing(progress, startPos, distance, duration));
+        if (progress < duration) window.requestAnimationFrame(step);
+      }
+    });
+  } // element which will be clicked passed to fn
+
+
+  scrollToSection(backToTop);
+  scrollToSection(aboutTrigger); // easing fns reference: http://www.gizma.com/easing/
 
   function exponentialEasing(t, b, c, d) {
     t /= d / 2;
@@ -6183,90 +6186,55 @@ function homeParallaxGallery() {
 
 /***/ }),
 
-/***/ "./resources/js/components/main/PopThingy.js":
-/*!***************************************************!*\
-  !*** ./resources/js/components/main/PopThingy.js ***!
-  \***************************************************/
-/*! exports provided: default */
+/***/ "./resources/js/components/main/RippleEffect.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/main/RippleEffect.js ***!
+  \******************************************************/
+/*! exports provided: rippleButtonsInit */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return popThingy; });
-/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Utils */ "./resources/js/components/Utils.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rippleButtonsInit", function() { return rippleButtonsInit; });
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
-function popThingy() {
-  var isSafari = /constructor/i.test(window.HTMLElement);
-  if (isSafari) document.getElementsByTagName("html")[0].classList.add("safari"); // Remove click on button for demo purpose
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-  Array.prototype.slice.call(document.querySelectorAll(".pop-thingy"), 0).forEach(function (bt) {
-    bt.addEventListener("click", function (e) {
-      e.preventDefault();
-    });
-  });
-  initBt2();
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-  function initBt2() {
-    var bt = document.querySelectorAll("#pop-btn")[0];
-    var filter = document.querySelectorAll("#pop feGaussianBlur")[0];
-    var particleCount = 20;
-    var colors = ["#fedb37", "#fdb931", "#9f7928", "#8a6e2f"];
-    bt.addEventListener("click", function () {
-      var particles = [];
-      var tl = new TimelineLite({
-        onUpdate: function onUpdate() {
-          filter.setAttribute("x", 0);
-        }
-      });
-      tl.to(bt.querySelectorAll(".pop-thingy__bg"), 0.6, {
-        scaleX: 1.05
-      });
-      tl.to(bt.querySelectorAll(".pop-thingy__bg"), 0.9, {
-        scale: 1,
-        ease: Elastic.easeOut.config(1.2, 0.4)
-      }, 0.6);
+function createRipple(event) {
+  var button = event.currentTarget;
+  var circle = document.createElement("span");
+  var diameter = Math.max(button.clientWidth, button.clientHeight);
+  var radius = diameter / 2;
+  circle.style.width = circle.style.height = "".concat(diameter, "px");
+  circle.style.left = "".concat(event.clientX - button.offsetLeft - radius, "px");
+  circle.style.top = "".concat(event.clientY - button.offsetTop - radius, "px");
+  circle.classList.add("ripple");
+  var ripple = button.getElementsByClassName("ripple")[0];
 
-      for (var i = 0; i < particleCount; i++) {
-        particles.push(document.createElement("span"));
-        bt.appendChild(particles[i]);
-        particles[i].classList.add(i % 2 ? "left" : "right");
-        var dir = i % 2 ? "-" : "+";
-        var r = i % 2 ? Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["randomNum"])(-1, 1) * i / 2 : Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["randomNum"])(-1, 1) * i;
-        var size = i < 2 ? 1 : Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["randomNum"])(0.4, 0.8);
-        var tl = new TimelineLite({
-          onComplete: function onComplete(i) {
-            particles[i].parentNode.removeChild(particles[i]);
-            this.kill();
-          },
-          onCompleteParams: [i]
-        });
-        tl.set(particles[i], {
-          scale: size
-        });
-        tl.to(particles[i], 0.15, {
-          x: dir + 20,
-          scaleX: 3,
-          ease: SlowMo.ease.config(0.1, 0.7, false)
-        });
-        tl.to(particles[i], 0.1, {
-          scale: size,
-          x: dir + "=25"
-        }, "-=0.1");
-        if (i >= 2) tl.set(particles[i], {
-          backgroundColor: colors[Math.round(Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["randomNum"])(0, 3))]
-        });
-        tl.to(particles[i], 0.6, {
-          x: dir + Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["randomNum"])(60, 100),
-          y: r * 10,
-          scale: 0.1,
-          ease: Power3.easeOut
-        });
-        tl.to(particles[i], 0.2, {
-          opacity: 0,
-          ease: Power3.easeOut
-        }, "-=0.2");
-      }
-    });
+  if (ripple) {
+    ripple.remove();
+  }
+
+  button.appendChild(circle);
+}
+
+function rippleButtonsInit() {
+  var btns = document.querySelectorAll(".btn-ripple");
+
+  var _iterator = _createForOfIteratorHelper(btns),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var btn = _step.value;
+      btn.addEventListener("click", createRipple);
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
   }
 }
 
@@ -6286,35 +6254,25 @@ __webpack_require__.r(__webpack_exports__);
  // TODO: write another script for no-js browsers
 
 function selectPoms() {
-  var select = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".select__in"),
-      selected = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".select__in--selected"),
-      selectedSpan = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".select__in--selected-naming"),
-      listItems = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["queryAll"])(".select__in--list li"),
-      hoverClass = "mouse-over";
-  select.addEventListener("mouseover", function (e) {
-    select.classList.add(hoverClass);
-  });
-  select.addEventListener("mouseleave", function (e) {
-    select.classList.remove(hoverClass);
-  });
-  listItems.forEach(function (li) {
-    li.addEventListener("click", function (e) {
-      e.preventDefault();
-      var i = e.target;
-      var data = i.getAttribute("data-poms");
-      var naming = data.toUpperCase(); // come up with a better approach later
+  var classOptions = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["queryAll"])(".select__section--class li");
+  var colorOptions = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["queryAll"])(".select__section--color li");
+  highlightSelected(classOptions);
+  highlightSelected(colorOptions);
 
-      for (var _i = 0; _i < listItems.length; _i++) {
-        listItems[_i].classList.remove("show");
-      }
+  function highlightSelected(o) {
+    o.forEach(function (li) {
+      li.addEventListener("click", function (e) {
+        e.preventDefault();
+        var i = e.target; // let data = i.getAttribute("data-poms");
 
-      i.classList.add("show");
-      selectedSpan.innerText = naming;
-      selected.removeAttribute("data-poms");
-      selected.setAttribute("data-poms", data);
-      select.classList.remove(hoverClass);
+        for (var _i = 0; _i < o.length; _i++) {
+          o[_i].classList.remove("active");
+        }
+
+        i.classList.add("active");
+      });
     });
-  });
+  }
 }
 
 /***/ }),
@@ -6544,7 +6502,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Utils */ "./resources/js/components/Utils.js");
 /* harmony import */ var _components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/common/Bubbles */ "./resources/js/components/common/Bubbles.js");
 /* harmony import */ var _components_main_SelectPoms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/main/SelectPoms */ "./resources/js/components/main/SelectPoms.js");
-/* harmony import */ var _components_main_PopThingy__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/main/PopThingy */ "./resources/js/components/main/PopThingy.js");
+/* harmony import */ var _components_main_RippleEffect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/main/RippleEffect */ "./resources/js/components/main/RippleEffect.js");
 /* harmony import */ var _components_main_Gallery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/main/Gallery */ "./resources/js/components/main/Gallery.js");
 /* harmony import */ var _components_main_Animation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/main/Animation */ "./resources/js/components/main/Animation.js");
  // import toggleMenu from "./components/main/ToggleMenu";
@@ -6555,8 +6513,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["keepLinksActive"])();
-  Object(_components_main_PopThingy__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["keepLinksActive"])(); // popThingy();
+
+  Object(_components_main_RippleEffect__WEBPACK_IMPORTED_MODULE_3__["rippleButtonsInit"])();
   Object(_components_main_Animation__WEBPACK_IMPORTED_MODULE_5__["default"])(); // toggleMenu();
 
   Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".main").classList.add("main-loaded"); // home page
@@ -6568,7 +6527,8 @@ document.addEventListener("DOMContentLoaded", function () {
   } // pomeranians page
 
 
-  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".wrapper.poms")) {// selectPoms();
+  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".wrapper.pomeranian")) {
+    Object(_components_main_SelectPoms__WEBPACK_IMPORTED_MODULE_2__["selectPoms"])();
   }
 }, false);
 

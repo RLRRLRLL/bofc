@@ -49,34 +49,38 @@ export function keepLinksActive() {
 
 // scroll to section
 export function smoothScroll() {
-	const aboutTrigger = query(".stripes");
-	/**
-	 * not reuseable.
-	 * reason: e.preventDefault() doesnt prevent
-	 * from affecting url, which breaks gallery somehow.
-	 * make reuseable in the future if needed, -
-	 * bind click to div and use "data-href" attr.
-	 */
+	const aboutTrigger = query(".stripes"),
+		backToTop = query("#backToTop");
 
-	aboutTrigger.addEventListener("click", function(e) {
-		const targetPos = document.getElementById("about").offsetTop;
-		const startPos = window.pageYOffset;
-		const distance = targetPos - startPos;
-		const duration = 700;
-		let start = null;
+	function scrollToSection(trigger) {
+		trigger.addEventListener("click", function(e) {
+			e.preventDefault();
 
-		window.requestAnimationFrame(step);
+			const thisAttr = this.getAttribute("data-target"),
+				target = document.querySelector(thisAttr),
+				targetPos = target.offsetTop,
+				startPos = window.pageYOffset,
+				distance = targetPos - startPos,
+				duration = 700;
+			let start = null;
 
-		function step(timestamp) {
-			if (!start) start = timestamp;
-			const progress = timestamp - start;
-			window.scrollTo(
-				0,
-				exponentialEasing(progress, startPos, distance, duration)
-			);
-			if (progress < duration) window.requestAnimationFrame(step);
-		}
-	});
+			window.requestAnimationFrame(step);
+
+			function step(timestamp) {
+				if (!start) start = timestamp;
+				const progress = timestamp - start;
+				window.scrollTo(
+					0,
+					exponentialEasing(progress, startPos, distance, duration)
+				);
+				if (progress < duration) window.requestAnimationFrame(step);
+			}
+		});
+	}
+
+	// element which will be clicked passed to fn
+	scrollToSection(backToTop);
+	scrollToSection(aboutTrigger);
 
 	// easing fns reference: http://www.gizma.com/easing/
 	function exponentialEasing(t, b, c, d) {

@@ -6,9 +6,8 @@
 	height: 20vh;
 	padding: 15px;
 	// padding-bottom: 25px;
-	@include flex-center;
+	@include flex-center(column);
 	justify-self: flex-end;
-	flex-direction: column;
 	cursor: pointer;
 
 	&:hover {

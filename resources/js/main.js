@@ -2,7 +2,7 @@ import { query, keepLinksActive, smoothScroll } from "./components/Utils";
 // import toggleMenu from "./components/main/ToggleMenu";
 import { runBubbles } from "./components/common/Bubbles";
 import { selectPoms } from "./components/main/SelectPoms";
-import popThingy from "./components/main/PopThingy";
+import { rippleButtonsInit } from "./components/main/RippleEffect";
 import { homeParallaxGallery } from "./components/main/Gallery";
 import slidesAndFades from "./components/main/Animation";
 
@@ -10,7 +10,8 @@ document.addEventListener(
 	"DOMContentLoaded",
 	() => {
 		keepLinksActive();
-		popThingy();
+		// popThingy();
+		rippleButtonsInit();
 		slidesAndFades();
 		// toggleMenu();
 		query(".main").classList.add("main-loaded");
@@ -23,8 +24,8 @@ document.addEventListener(
 		}
 
 		// pomeranians page
-		if (query(".wrapper.poms")) {
-			// selectPoms();
+		if (query(".wrapper.pomeranian")) {
+			selectPoms();
 		}
 	},
 	false

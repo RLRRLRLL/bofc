@@ -1,0 +1,63 @@
+&__header {
+	grid-column: span 2;
+	display: grid;
+	grid-template-columns: 1fr max-content;
+
+	&--title {
+		font-family: sans;
+		font-weight: 700;
+		font-size: 40px;
+		color: $white;
+	}
+
+	&--view {
+		display: grid;
+		grid-gap: 8px;
+		grid-template-columns: repeat(2, 1fr);
+		cursor: pointer;
+	}
+	.option__btn {
+		display: grid;
+		grid-gap: 5px;
+		width: 55px;
+		height: 75px;
+		border-radius: 5px;
+		padding: 10px;
+		overflow: hidden;
+		transition: 0.2s ease;
+		> span {
+			background: $white;
+			color: $white;
+			transition: 0.2s ease;
+			&:last-child {
+				background: none !important;
+				text-align: center;
+				text-transform: uppercase;
+				font: 500 14px/1 "Poppins", sans-serif;
+				display: block;
+				margin-top: 2px;
+			}
+		}
+		&:hover {
+			> span {
+				color: rgba(#f6ee58, 0.5);
+				background: rgba(#f6ee58, 0.5);
+			}
+		}
+		&.selected {
+			> span {
+				color: #f6ee58;
+				background: #f6ee58;
+			}
+		}
+	}
+	.option--grid {
+		grid: repeat(2, 1fr) min-content / repeat(2, 1fr);
+		span:last-child {
+			grid-column: span 2;
+		}
+	}
+	.option--list {
+		grid: repeat(3, 1fr) min-content / 100%;
+	}
+}

@@ -1,21 +1,29 @@
-@mixin flex-around {
+@mixin flex-around($dir) {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
+	flex-direction: $dir;
 }
 
-@mixin flex-center {
+@mixin flex-center($dir) {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-direction: $dir;
 }
 
-@mixin flex-between {
+@mixin flex-between($dir) {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	flex-direction: $dir;
 }
 
+/**
+ * Effects
+ */
+
+// fill
 @mixin fill-effect($color) {
 	position: relative;
 
@@ -36,18 +44,6 @@
 		width: 100%;
 	}
 }
-
-// @mixin underline() {
-// 	position: relative;
-
-// 	&::after {
-// 		content: "";
-// 		position: absolute;
-// 		top: 110%;
-// 		left: 0; right: 0;
-
-// 	}
-// }
 
 // pop thingy
 @mixin pop-thingy($span_bg) {
@@ -75,12 +71,13 @@
 	}
 
 	.left,
-	.right {
+	.right,
+	.bottom {
 		position: absolute;
 		width: 15px;
 		height: 15px;
 		border-radius: 15px;
-		background: rgba($cream, 0.4); // gold
+		// background: rgba($cream, 0.4); // gold
 		-webkit-transition: background 0.1s ease-out;
 		-moz-transition: background 0.1s ease-out;
 		transition: background 0.1s ease-out;
@@ -99,6 +96,12 @@
 		right: 0;
 	}
 
+	.bottom {
+		top: 100%;
+		left: 0;
+		right: 0;
+	}
+
 	&__bg {
 		content: "";
 		background: transparent;
@@ -112,21 +115,5 @@
 		-moz-transition: background 0.1s ease-out;
 		transition: background 0.1s ease-out;
 		border-radius: 0 !important;
-	}
-
-	//
-	@keyframes hue-rotate {
-		from {
-			-webkit-filter: hue-rotate(0);
-			-moz-filter: hue-rotate(0);
-			-ms-filter: hue-rotate(0);
-			filter: hue-rotate(0);
-		}
-		to {
-			-webkit-filter: hue-rotate(360deg);
-			-moz-filter: hue-rotate(360deg);
-			-ms-filter: hue-rotate(360deg);
-			filter: hue-rotate(360deg);
-		}
 	}
 }

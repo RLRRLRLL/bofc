@@ -4,38 +4,8 @@
 
 @section('content')
 	<div class="wrapper home">
-		<div class="grid">
-			<div class="grid__item pos-1">
-				<div class="grid__item-img" style="background-image:url('/images/temp/1.jpg');"></div>
-			</div>
-			<div class="grid__item pos-2">
-				<div class="grid__item-img" style="background-image:url('/images/temp/2.jpg');"></div>
-			</div>
-			<div class="grid__item pos-3">
-				<div class="grid__item-img" style="background-image:url('/images/temp/3.jpg');"></div>
-			</div>
-			<div class="grid__item pos-4">
-				<div class="grid__item-img" style="background-image:url('/images/temp/4.jpg');"></div>
-			</div>
-			<div class="grid__item pos-5">
-				<div class="grid__item-img" style="background-image:url('/images/temp/5.jpg');"></div>
-			</div>
-			<div class="grid__item pos-6">
-				<div class="grid__item-img" style="background-image:url('/images/temp/6.jpg');"></div>
-			</div>
-			<div class="grid__item pos-7">
-				<div class="grid__item-img" style="background-image:url('/images/temp/7.jpg');"></div>
-			</div>
-			<div class="grid__item pos-8">
-				<div class="grid__item-img" style="background-image:url('/images/temp/8.jpg');"></div>
-			</div>
-			<div class="grid__item pos-9">
-				<div class="grid__item-img" style="background-image:url('/images/temp/9.jpg');"></div>
-			</div>
-			<div class="grid__item pos-10">
-				<div class="grid__item-img" style="background-image:url('/images/temp/10.jpg');"></div>
-			</div>
-		</div>
+		@include('includes.main.partials.grid')
+		@include('includes.common.special-svgs')
 		
 		<div class="social_ctas">
 			<a class="social_ctas__item fb" href="https://facebook.com">
@@ -49,7 +19,8 @@
 			<a class="social_ctas__item inst" href="https://instagram.com">
 				or Instagram
 				<svg class="social_ctas__item--svg">
-					<use xlink:href="/sprite.svg#instagram">
+					<use xlink:href="#inst">
+
 					</use>
 				</svg>
 			</a>
@@ -94,13 +65,15 @@
 								<p>
 									Собаки для нас - это образ жизни. Нашим питомцам уделяется очень много времени. Спортивной дрессировкой и разведением собак мы занимаемся с 1991 года. Породой Померанский шпиц с 2006 года и Ротвейлер с 2017 года.
 								</p>
-								{{-- <p>
-									Производители нашего питомника несут крови ведущих питомников США, Канады, Италии, Германии, России и многих других стран… Основные цели и задачи питомника внести вклад в развитие, а так же поддержание высокой породности наших производителей. Мы прикладываем все силы и знания для достижения этой цели. Большое поголовье собак - это не наш принцип разведения. Ответственность, качественный уход и самое главное это безграничная любовь к питомцам. Мы надеемся, что наши Шпицы и Ротвейлеры не оставят Вас равнодушными.
-								</p> --}}
 								<p>
 									За своих маленьких питомцев, мы выражаем огромную благодарность за доверие, веру в нас и наших собак заводчикам: Калининой Марине Валентиновне, Шеиной Марине, Турбиной Елене и Стрельцовой Яне!
 								</p>
 							</div>
+
+							<button class="info-btn" data-target="#header" id="backToTop">
+								back to top
+								<div class="arrow"></div>
+							</button>
 						</div>
 					</div>
 					

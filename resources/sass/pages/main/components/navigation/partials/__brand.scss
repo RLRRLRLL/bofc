@@ -1,7 +1,6 @@
 &__brand {
 	height: 30%;
-	@include flex-center;
-	flex-direction: column;
+	@include flex-center(column);
 	padding: 50px;
 	border: 1px solid white;
 	position: relative;

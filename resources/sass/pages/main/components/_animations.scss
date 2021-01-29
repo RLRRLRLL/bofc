@@ -3,6 +3,10 @@
 	opacity: 0;
 	transition: all ease 0.7s 0s;
 
+	&__with-delay {
+		transition: all 0.7s ease 0.25s;
+	}
+
 	&__active {
 		transform: perspective(1px) translateZ(0);
 		backface-visibility: hidden;
