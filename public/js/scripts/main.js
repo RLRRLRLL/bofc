@@ -6202,34 +6202,30 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function createRipple(event) {
-  var button = event.currentTarget;
+function createRipple(e) {
+  var button = e.currentTarget;
   var circle = document.createElement("span");
   var diameter = Math.max(button.clientWidth, button.clientHeight);
   var radius = diameter / 2;
   circle.style.width = circle.style.height = "".concat(diameter, "px");
-  circle.style.left = "".concat(event.clientX - button.offsetLeft - radius, "px");
-  circle.style.top = "".concat(event.clientY - button.offsetTop - radius, "px");
+  circle.style.left = "".concat(e.clientX - button.offsetLeft - radius, "px");
+  circle.style.top = "".concat(e.clientY - button.offsetTop - radius, "px");
   circle.classList.add("ripple");
   var ripple = button.getElementsByClassName("ripple")[0];
-
-  if (ripple) {
-    ripple.remove();
-  }
-
+  if (ripple) ripple.remove();
   button.appendChild(circle);
 }
 
 function rippleButtonsInit() {
-  var btns = document.querySelectorAll(".btn-ripple");
+  var buttons = document.querySelectorAll(".btn-ripple");
 
-  var _iterator = _createForOfIteratorHelper(btns),
+  var _iterator = _createForOfIteratorHelper(buttons),
       _step;
 
   try {
     for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var btn = _step.value;
-      btn.addEventListener("click", createRipple);
+      var button = _step.value;
+      button.addEventListener("click", createRipple);
     }
   } catch (err) {
     _iterator.e(err);

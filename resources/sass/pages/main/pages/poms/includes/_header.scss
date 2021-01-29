@@ -40,14 +40,14 @@
 		}
 		&:hover {
 			> span {
-				color: rgba(#f6ee58, 0.5);
-				background: rgba(#f6ee58, 0.5);
+				color: rgba($accent, 0.5);
+				background: rgba($accent, 0.5);
 			}
 		}
 		&.selected {
 			> span {
-				color: #f6ee58;
-				background: #f6ee58;
+				color: $accent;
+				background: $accent;
 			}
 		}
 	}

@@ -76,31 +76,22 @@
 				.desk_cta {
 					$cream-lighter: lighten($cream, 10%);
 
-					@include pop-thingy(lighten($cream, 50%));
-
 					cursor: pointer;
 					padding: 7px 10px;
 					margin-left: 15px;
 
-					// border: 1px solid $cream-lighter;
 					border-radius: 3px !important;
-
-					background: transparent;
-					// background: $cream-lighter;
-					// color: $cream-lighter;
-					// color: #111;
-					color: $cream-lighter;
+					background: $cream-lighter;
+					color: $material-black;
 					font-size: 15px;
 					font-weight: 500;
 					text-transform: uppercase;
 					letter-spacing: 0.9px;
+					box-shadow: 0 0 5px 0 rgba($cream-lighter, 0.7);
 					transition: all 0.25s ease;
-					position: relative;
-					overflow: hidden;
-					box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
 
 					&:hover {
-						background: $cream-lighter;
+						background: darken($cream, 5%);
 						color: black;
 					}
 				}

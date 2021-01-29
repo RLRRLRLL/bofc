@@ -38,7 +38,7 @@
 				</a>
 			</li>
 			<li class="enough-padding">
-				<button href="#" class="desk_cta btn-ripple">
+				<button class="desk_cta btn-ripple">
 					Get in touch
 				</button>
 			</li>
