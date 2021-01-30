@@ -6,16 +6,30 @@
 
 		<div class="filter">
 			<h2 class="filter__title">
-				Pomeranian Type
+				Pomeranian Gender
 			</h2>
 
 			<div class="filter__item">
 				<div class="checkbox">
-					<input id="all" type="checkbox" checked="checked" />
-					<label for="all">All<span class="box"></span></label>
+					<input id="male" type="checkbox" checked="checked" />
+					<label for="male">Male<span class="box"></span></label>
 				</div>
 				<span class="badge status-primary"></span>
 			</div>
+
+			<div class="filter__item">
+				<div class="checkbox">
+					<input id="female" type="checkbox" />
+					<label for="female">Female<span class="box"></span></label>
+				</div>
+				<span class="badge status-primary"></span>
+			</div>
+		</div>
+
+		<div class="filter">
+			<h2 class="filter__title">
+				Pomeranian Type
+			</h2>
 
 			<div class="filter__item">
 				<div class="checkbox">

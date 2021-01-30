@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Main\MainPagesController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Main\MainPagesController;
+use App\Http\Controllers\Admin\AdminPagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [MainPagesController::class, 'homepage']);
-
 Route::get('/pomeranian', [MainPagesController::class, 'poms'])->name('poms.all');
 
-// start demo
-Route::get('/demo', function() {
-	return view('pages.main.slider');
-});
+/**
+ * Admin
+ */
+Auth::routes();
+Route::resource('/admin', AdminEntryController::class);
 
-Route::get('/gal', function() {
-	return view('pages.main.gal');
+// admin pages
+Route::middleware('auth')->group(function() {
+	Route::get('/d9b385f076754c5', [AdminPagesController::class, 'index'])->name('admin');
 });
-// end demo

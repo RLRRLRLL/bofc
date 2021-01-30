@@ -6,9 +6,6 @@
 				<h3>Sevdaliza</h3>
 				<svg><use xlink:href="/sprite.svg#male"></use></svg>
 			</div>
-			<p class="item__desc--desc">
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos, quam.
-			</p>
 			<div class="item__desc--indications">
 				<div class="indi__el">
 					<span class="indi__el--title">Type</span>
@@ -24,7 +21,7 @@
 				</div>
 			</div>
 			<button class="item__desc--cta btn-ripple">
-				Learn more
+				<span class="idc-text">Learn more</span>
 			</button>
 		</div>
 	</figure>

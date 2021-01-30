@@ -44,6 +44,11 @@ body {
 	&::-webkit-scrollbar-thumb {
 		background: $white04;
 	}
+
+	// admin
+	&.body-admin {
+		background: rgba(0, 0, 0, 0.1);
+	}
 }
 
 // page transition

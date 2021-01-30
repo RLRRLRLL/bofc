@@ -71,7 +71,6 @@
 							</div>
 
 							<button class="info-btn" data-target="#header" id="backToTop">
-								back to top
 								<div class="arrow"></div>
 							</button>
 						</div>

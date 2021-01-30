@@ -6548,8 +6548,8 @@ document.addEventListener("DOMContentLoaded", function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\bofc\resources\js\main.js */"./resources/js/main.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\bofc\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/bofc/resources/js/main.js */"./resources/js/main.js");
+module.exports = __webpack_require__(/*! /var/www/bofc/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
