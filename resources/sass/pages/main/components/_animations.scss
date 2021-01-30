@@ -1,0 +1,38 @@
+// anim items [ai]
+.ai {
+	opacity: 0;
+	transition: all ease 0.7s 0s;
+
+	&__with-delay {
+		transition: all 0.7s ease 0.25s;
+	}
+
+	&__active {
+		transform: perspective(1px) translateZ(0);
+		backface-visibility: hidden;
+		transform: translateZ(0);
+		-webkit-transform: translateZ(0);
+		filter: blur(0.000001px);
+		-webkit-filter: blur(0.000001px);
+
+		&.ai__from-bottom,
+		&.ai__from-right,
+		&.ai__scale {
+			opacity: 1;
+			transform: translate(0, 0) scale(1);
+		}
+	}
+
+	// dimensions
+	&__from-bottom {
+		transform: translate(0, 20%);
+	}
+
+	&__from-right {
+		transform: translate(20%, 0);
+	}
+
+	&__scale {
+		transform: scale(0.8);
+	}
+}

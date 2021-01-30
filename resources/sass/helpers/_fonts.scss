@@ -1,0 +1,56 @@
+// *** open sans [ sans ]
+@font-face {
+	font-family: "sans";
+	font-weight: 300;
+	src: url("/fonts/Sans/OpenSans-Light.ttf");
+}
+
+@font-face {
+	font-family: "sans";
+	font-weight: 400;
+	src: url("/fonts/Sans/OpenSans-Regular.ttf");
+}
+
+@font-face {
+	font-family: "sans";
+	font-weight: 500;
+	src: url("/fonts/Sans/OpenSans-SemiBold.ttf");
+}
+
+@font-face {
+	font-family: "sans";
+	font-weight: 700;
+	src: url("/fonts/Sans/OpenSans-ExtraBold.ttf");
+}
+
+// @font-face {
+// 	font-family: "sans";
+// 	font-weight: 900;
+// 	src: url("/fonts/Sans/OpenSans-Black.ttf");
+// }
+
+// *** Playfair Display [ serif ]
+@font-face {
+	font-family: "play";
+	font-weight: 400;
+	src: url("/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf");
+}
+
+@font-face {
+	font-family: "play";
+	font-weight: 500;
+	src: url("/fonts/Playfair_Display/PlayfairDisplay-Medium.ttf");
+}
+
+@font-face {
+	font-family: "play";
+	font-weight: 600;
+	src: url("/fonts/Playfair_Display/PlayfairDisplay-Bold.ttf");
+}
+
+// *** allura [ curly ]
+@font-face {
+	font-family: "allura";
+	font-weight: 400;
+	src: url("/fonts/Allura/Allura-Regular.ttf");
+}

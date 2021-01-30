@@ -1,0 +1,79 @@
+.stripes {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 20vh;
+	padding: 15px;
+	// padding-bottom: 25px;
+	@include flex-center(column);
+	justify-self: flex-end;
+	cursor: pointer;
+
+	&:hover {
+		background: linear-gradient(
+			0deg,
+			rgba(255, 255, 255, 0.03) 0%,
+			rgba(24, 21, 19, 0.03) 100%
+		);
+
+		.stripes__text {
+			color: $white06;
+		}
+	}
+
+	&__text,
+	&__inner {
+		pointer-events: none;
+	}
+
+	// text
+	&__text {
+		display: block;
+		color: $cream;
+		font-size: 23px;
+		letter-spacing: 2px;
+		font-family: sans;
+		font-weight: 300;
+		margin-bottom: 10px;
+		opacity: 0.8;
+	}
+
+	.arrow {
+		width: 30px;
+		height: 30px;
+		// margin: -20px 0 0 -20px;
+		transform: rotate(45deg);
+		-webkit-transform: rotate(45deg);
+		border-left: none;
+		border-top: none;
+		border-right: 2px $white07 solid;
+		border-bottom: 2px $white07 solid;
+		&:before {
+			content: "";
+			position: absolute;
+			left: 50%;
+			width: 15px;
+			height: 15px;
+			top: 50%;
+			margin: -10px 0 0 -10px;
+			border-left: none;
+			border-top: none;
+			border-right: 1px $white07 solid;
+			border-bottom: 1px $white07 solid;
+			animation-duration: 2s;
+			animation-iteration-count: infinite;
+			animation-name: arrow;
+		}
+	}
+
+	@keyframes arrow {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+			transform: translate(-10px, -10px);
+		}
+	}
+}

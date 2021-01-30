@@ -1,0 +1,64 @@
+.social_ctas {
+	position: fixed;
+	left: -100px;
+	bottom: 30%;
+	@include flex-center(row);
+	z-index: $high;
+
+	// rotate -90
+	transform: translateZ(0) rotate(-90deg) perspective(1px);
+	transform-origin: 50% 53%;
+	-webkit-transform-origin: 50% 53%;
+	backface-visibility: hidden;
+	filter: blur(0.000001px);
+	-webkit-filter: blur(0.000001px);
+
+	// links
+	&__item {
+		@include flex-center(row);
+		// typography
+		font-family: sans;
+		font-size: 13px;
+		font-weight: 400;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		color: white;
+
+		transition: all 0.2s;
+
+		&:hover {
+			color: lighten($sky-blue, 15%);
+			// color: #1976d2; // exact same color as icon
+			svg {
+				filter: grayscale(0);
+			}
+		}
+
+		&:not(:last-child) {
+			margin-right: 30px;
+		}
+
+		//
+		&--svg {
+			width: 15px;
+			height: 15px;
+			margin: 0 0 3px 10px;
+			filter: grayscale(100%);
+		}
+
+		&.inst {
+			&:hover {
+				// TODO: make gradient
+				color: #ffa47d;
+			}
+		}
+
+		&.inst {
+			svg {
+				width: 18px;
+				height: 18px;
+				margin: 0 0 0 10px;
+			}
+		}
+	}
+}
