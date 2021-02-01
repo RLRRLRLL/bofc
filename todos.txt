@@ -1,0 +1,1 @@
+For security sake rename AuthRouteMethods.php uris to prefixed

@@ -23,6 +23,7 @@ export function keepLinksActive() {
 
 	anchorTags.forEach(function(element) {
 		let anchorAttr = element.getAttribute("href");
+		let cropped;
 
 		element.addEventListener("click", e => {
 			if (anchorAttr === "#") {
@@ -35,13 +36,19 @@ export function keepLinksActive() {
 				setTimeout(() => {
 					document
 						.querySelector(".main")
-						.classList.remove("main__on-load");
+						.classList.remove("main-loaded");
 					window.location = thisTargetUrl;
 				}, 250);
 			}
 		});
 
-		if (anchorAttr == currentUrl) {
+		if (anchorAttr.includes("//localhost:3000")) {
+			cropped = anchorAttr.replace("//localhost:3000", "");
+		} else if (anchorAttr.includes("//bubblesofchampain.com")) {
+			cropped = anchorAttr.replace("//bubblesofchampain.com", "");
+		}
+
+		if (cropped == currentUrl || anchorAttr == currentUrl) {
 			element.closest("a").classList.add("active");
 		}
 	});
@@ -88,5 +95,14 @@ export function smoothScroll() {
 		if (t < 1) return (c / 2) * Math.pow(2, 10 * (t - 1)) + b;
 		t--;
 		return (c / 2) * (-Math.pow(2, -10 * t) + 2) + b;
+	}
+}
+
+// class toggler
+export function classToggler(el, className) {
+	if (el.classList.contains(className)) {
+		el.classList.remove(className);
+	} else {
+		el.classList.add(className);
 	}
 }

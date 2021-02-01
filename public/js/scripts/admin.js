@@ -90,10 +90,152 @@
 /*!*******************************!*\
   !*** ./resources/js/admin.js ***!
   \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Utils */ "./resources/js/components/Utils.js");
+/* harmony import */ var _components_admin_Burger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/admin/Burger */ "./resources/js/components/admin/Burger.js");
 
 
+document.addEventListener("DOMContentLoaded", function () {
+  Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["keepLinksActive"])();
+  Object(_components_admin_Burger__WEBPACK_IMPORTED_MODULE_1__["default"])();
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/Utils.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Utils.js ***!
+  \******************************************/
+/*! exports provided: query, queryAll, randomNum, cursorIntoArrows, keepLinksActive, smoothScroll, classToggler */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "query", function() { return query; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "queryAll", function() { return queryAll; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "randomNum", function() { return randomNum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cursorIntoArrows", function() { return cursorIntoArrows; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "keepLinksActive", function() { return keepLinksActive; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "smoothScroll", function() { return smoothScroll; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "classToggler", function() { return classToggler; });
+// aliases for js selectors
+var query = document.querySelector.bind(document);
+var queryAll = document.querySelectorAll.bind(document); // generate random num
+
+var randomNum = function randomNum(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}; // cursor into arrows on home page
+
+function cursorIntoArrows(e) {
+  var positionX = e.offsetX / window.innerWidth - 0.5;
+  var b = document.body;
+  return positionX >= 0 ? b.className = "right-arr" : b.className = "left-arr";
+} // links: prevent default if '#' and add active class if current page
+
+function keepLinksActive() {
+  var anchorTags = queryAll("a");
+  var currentUrl = window.location.pathname;
+  anchorTags.forEach(function (element) {
+    var anchorAttr = element.getAttribute("href");
+    var cropped;
+    element.addEventListener("click", function (e) {
+      if (anchorAttr === "#") {
+        // this is for removing # from url
+        e.preventDefault();
+      } else {
+        // this is for smooth transition between pages
+        var thisTargetUrl = e.target.href;
+        e.preventDefault();
+        setTimeout(function () {
+          document.querySelector(".main").classList.remove("main-loaded");
+          window.location = thisTargetUrl;
+        }, 250);
+      }
+    });
+
+    if (anchorAttr.includes("//localhost:3000")) {
+      cropped = anchorAttr.replace("//localhost:3000", "");
+    } else if (anchorAttr.includes("//bubblesofchampain.com")) {
+      cropped = anchorAttr.replace("//bubblesofchampain.com", "");
+    }
+
+    if (cropped == currentUrl || anchorAttr == currentUrl) {
+      element.closest("a").classList.add("active");
+    }
+  });
+} // scroll to section
+
+function smoothScroll() {
+  var aboutTrigger = query(".stripes"),
+      backToTop = query("#backToTop");
+
+  function scrollToSection(trigger) {
+    trigger.addEventListener("click", function (e) {
+      e.preventDefault();
+      var thisAttr = this.getAttribute("data-target"),
+          target = document.querySelector(thisAttr),
+          targetPos = target.offsetTop,
+          startPos = window.pageYOffset,
+          distance = targetPos - startPos,
+          duration = 700;
+      var start = null;
+      window.requestAnimationFrame(step);
+
+      function step(timestamp) {
+        if (!start) start = timestamp;
+        var progress = timestamp - start;
+        window.scrollTo(0, exponentialEasing(progress, startPos, distance, duration));
+        if (progress < duration) window.requestAnimationFrame(step);
+      }
+    });
+  } // element which will be clicked passed to fn
+
+
+  scrollToSection(backToTop);
+  scrollToSection(aboutTrigger); // easing fns reference: http://www.gizma.com/easing/
+
+  function exponentialEasing(t, b, c, d) {
+    t /= d / 2;
+    if (t < 1) return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
+    t--;
+    return c / 2 * (-Math.pow(2, -10 * t) + 2) + b;
+  }
+} // class toggler
+
+function classToggler(el, className) {
+  if (el.classList.contains(className)) {
+    el.classList.remove(className);
+  } else {
+    el.classList.add(className);
+  }
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/Burger.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/admin/Burger.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Burger; });
+/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Utils */ "./resources/js/components/Utils.js");
+
+function Burger() {
+  var burgerTrigger = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".burger");
+  var grid = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".grid");
+  burgerTrigger.addEventListener("click", function (e) {
+    e.preventDefault();
+    grid.classList.toggle("nav-close");
+  });
+}
 
 /***/ }),
 

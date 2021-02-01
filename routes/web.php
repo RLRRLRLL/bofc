@@ -22,9 +22,9 @@ Route::get('/pomeranian', [MainPagesController::class, 'poms'])->name('poms.all'
  * Admin
  */
 Auth::routes();
-Route::resource('/admin', AdminEntryController::class);
 
 // admin pages
-Route::middleware('auth')->group(function() {
-	Route::get('/d9b385f076754c5', [AdminPagesController::class, 'index'])->name('admin');
+Route::middleware('auth')->prefix('/admin')->group(function() {
+	Route::get('/', [AdminPagesController::class, 'index'])->name('admin');
+	Route::get('/add', [AdminPagesController::class, 'addNew'])->name('add.new.pom');
 }); 

@@ -20,7 +20,11 @@ class AdminPagesController extends Controller
     public function index()
     {
         return view('pages.admin.dashboard');
-    }
+	}
+	
+	public function addNew() {
+		return view('pages.admin.add');
+	}
 
     /**
      * Show the form for creating a new resource.

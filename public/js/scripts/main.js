@@ -5975,7 +5975,7 @@ return ImagesLoaded;
 /*!******************************************!*\
   !*** ./resources/js/components/Utils.js ***!
   \******************************************/
-/*! exports provided: query, queryAll, randomNum, cursorIntoArrows, keepLinksActive, smoothScroll */
+/*! exports provided: query, queryAll, randomNum, cursorIntoArrows, keepLinksActive, smoothScroll, classToggler */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5986,6 +5986,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cursorIntoArrows", function() { return cursorIntoArrows; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "keepLinksActive", function() { return keepLinksActive; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "smoothScroll", function() { return smoothScroll; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "classToggler", function() { return classToggler; });
 // aliases for js selectors
 var query = document.querySelector.bind(document);
 var queryAll = document.querySelectorAll.bind(document); // generate random num
@@ -6005,6 +6006,7 @@ function keepLinksActive() {
   var currentUrl = window.location.pathname;
   anchorTags.forEach(function (element) {
     var anchorAttr = element.getAttribute("href");
+    var cropped;
     element.addEventListener("click", function (e) {
       if (anchorAttr === "#") {
         // this is for removing # from url
@@ -6014,13 +6016,19 @@ function keepLinksActive() {
         var thisTargetUrl = e.target.href;
         e.preventDefault();
         setTimeout(function () {
-          document.querySelector(".main").classList.remove("main__on-load");
+          document.querySelector(".main").classList.remove("main-loaded");
           window.location = thisTargetUrl;
         }, 250);
       }
     });
 
-    if (anchorAttr == currentUrl) {
+    if (anchorAttr.includes("//localhost:3000")) {
+      cropped = anchorAttr.replace("//localhost:3000", "");
+    } else if (anchorAttr.includes("//bubblesofchampain.com")) {
+      cropped = anchorAttr.replace("//bubblesofchampain.com", "");
+    }
+
+    if (cropped == currentUrl || anchorAttr == currentUrl) {
       element.closest("a").classList.add("active");
     }
   });
@@ -6060,6 +6068,14 @@ function smoothScroll() {
     if (t < 1) return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
     t--;
     return c / 2 * (-Math.pow(2, -10 * t) + 2) + b;
+  }
+} // class toggler
+
+function classToggler(el, className) {
+  if (el.classList.contains(className)) {
+    el.classList.remove(className);
+  } else {
+    el.classList.add(className);
   }
 }
 
@@ -6530,6 +6546,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /***/ }),
 
+/***/ "./resources/sass/admin.scss":
+/*!***********************************!*\
+  !*** ./resources/sass/admin.scss ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -6542,14 +6569,15 @@ document.addEventListener("DOMContentLoaded", function () {
 /***/ }),
 
 /***/ 0:
-/*!**************************************************************!*\
-  !*** multi ./resources/js/main.js ./resources/sass/app.scss ***!
-  \**************************************************************/
+/*!******************************************************************************************!*\
+  !*** multi ./resources/js/main.js ./resources/sass/app.scss ./resources/sass/admin.scss ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /var/www/bofc/resources/js/main.js */"./resources/js/main.js");
-module.exports = __webpack_require__(/*! /var/www/bofc/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/bofc/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /var/www/bofc/resources/sass/admin.scss */"./resources/sass/admin.scss");
 
 
 /***/ })

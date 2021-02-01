@@ -358,7 +358,7 @@ body.body-admin {
   transition: transform 0.3s;
   color: rgba(255, 255, 255, 0.6);
   font-family: sans;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 18px;
   letter-spacing: 0.5px;
   pointer-events: none;
@@ -368,7 +368,7 @@ body.body-admin {
   position: absolute;
   top: 100%;
   font-family: sans;
-  font-weight: 400;
+  font-weight: 500;
   color: white;
   transform: translate3d(0, 0, 0);
 }
