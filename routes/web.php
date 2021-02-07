@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Main\MainPagesController;
 use App\Http\Controllers\Admin\AdminPagesController;
+use App\Http\Controllers\Admin\CreateNewPomCtrl;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,16 +17,20 @@ use App\Http\Controllers\Admin\AdminPagesController;
 |
 */
 
+//
+Route::get('/cache', function() {
+	Artisan::call('config:cache');
+	return 'OK';
+});
+
 Route::get('/', [MainPagesController::class, 'homepage']);
 Route::get('/pomeranian', [MainPagesController::class, 'poms'])->name('poms.all');
 
-/**
- * Admin
- */
+// auth
 Auth::routes();
 
 // admin pages
 Route::middleware('auth')->prefix('/admin')->group(function() {
 	Route::get('/', [AdminPagesController::class, 'index'])->name('admin');
-	Route::get('/add', [AdminPagesController::class, 'addNew'])->name('add.new.pom');
+	Route::get('/create', [AdminPagesController::class, 'createPom'])->name('create.new.pom');
 }); 

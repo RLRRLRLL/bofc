@@ -9,6 +9,10 @@ use App\Models\Pom;
 class Image extends Model
 {
 	use HasFactory;
+
+	protected $fillable = [
+		'url', 'is_avatar', 'pom_id'
+	];
 	
 	public function pom()
 	{

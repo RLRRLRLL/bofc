@@ -1,3 +1,7 @@
+window._ = require("lodash");
+window.axios = require("axios");
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+
 import { query, keepLinksActive, smoothScroll } from "./components/Utils";
 // import toggleMenu from "./components/main/ToggleMenu";
 import { runBubbles } from "./components/common/Bubbles";

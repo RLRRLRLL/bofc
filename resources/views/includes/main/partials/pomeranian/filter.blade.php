@@ -6,7 +6,7 @@
 
 		<div class="filter">
 			<h2 class="filter__title">
-				Pomeranian Gender
+				Dog Gender
 			</h2>
 
 			<div class="filter__item">
@@ -28,7 +28,7 @@
 
 		<div class="filter">
 			<h2 class="filter__title">
-				Pomeranian Type
+				Dog Type
 			</h2>
 
 			<div class="filter__item">
@@ -50,7 +50,7 @@
 
 		<div class="filter">
 			<h2 class="filter__title">
-				Pomeranian Size
+				Dog Size
 			</h2>
 
 			<div class="filter__item">

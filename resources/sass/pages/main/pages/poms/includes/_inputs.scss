@@ -23,7 +23,7 @@ input:disabled {
 		display: inline-block;
 		width: 20px;
 		border-radius: 5px;
-		border: 1px solid $grayColor;
+		border: 1px solid $gray;
 		width: 24px;
 		height: 24px;
 		vertical-align: middle;
@@ -67,8 +67,8 @@ input:disabled {
 		}
 	}
 	input:disabled:checked + span.box {
-		background: $grayColor;
-		border: $grayColor;
+		background: $gray;
+		border: $gray;
 	}
 	input:disabled:checked ~ label {
 		&:before,

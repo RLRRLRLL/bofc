@@ -1,0 +1,262 @@
+.container-create {
+	padding: 0 30px;
+}
+
+// add pom page
+#addPomForm {
+	display: flex;
+	flex-direction: column;
+	.card {
+		margin-bottom: 20px;
+		box-shadow: 0 0 3px 0 rgba(#151515, 0.2);
+
+		&-header {
+			font-size: 21px;
+		}
+
+		&-body {
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
+}
+
+.add-pom-group {
+	label {
+		margin-left: 5px;
+		margin-bottom: 7px;
+
+		span {
+			color: $materialGreen;
+		}
+	}
+
+	.text-muted {
+		margin-left: 5px;
+		font-size: 13px;
+	}
+
+	&__radio {
+		@include flex-center(column);
+		align-items: flex-start;
+		margin: 0 auto;
+	}
+}
+
+// images
+#wireImages {
+	// wire images component
+	width: 100%;
+}
+
+// previewed images and cta btn design
+.upload-imgs {
+	background: transparent;
+	border: 1px dashed $gray;
+	border-radius: 7px;
+	@include flex-center(column);
+
+	&:hover {
+		transition: all 0.15s ease;
+		background: rgba(#151515, 0.01);
+		.upload-imgs__cta {
+			color: rgba(darken($sky-blue, 5%), 0.8);
+		}
+	}
+
+	&__cta,
+	&__cont {
+		width: 100%;
+		padding: 20px;
+		border-radius: 7px;
+		border: 1px solid rgba($material-black, 0.01);
+	}
+
+	&__alert-item {
+		align-self: flex-start;
+		display: flex;
+		width: 100%;
+		margin-top: 15px;
+		margin-bottom: 0;
+
+		position: relative;
+
+		span {
+			width: 100%;
+		}
+
+		a {
+			position: absolute;
+			right: 3px;
+			top: 0;
+			color: #721c24;
+
+			&:hover {
+				color: $material-black;
+			}
+
+			i {
+				pointer-events: none;
+			}
+		}
+	}
+
+	&__cta {
+		@include flex-center(row);
+		cursor: pointer;
+		// typography
+		color: darken($gray, 10%);
+		text-align: center;
+		font-size: 18px;
+		font-weight: 500;
+		text-decoration: none;
+		background: transparent;
+
+		&:hover {
+			border-color: white;
+			color: white;
+		}
+	}
+
+	&__cont {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		justify-content: flex-start;
+		margin-top: 25px;
+
+		&.hide {
+			display: none;
+		}
+	}
+
+	&__item {
+		width: 19%;
+		margin: 5px;
+		position: relative;
+		@include flex-center(column);
+		width: 175px;
+		height: 175px;
+
+		&--img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+			border-radius: 5px;
+		}
+
+		button {
+			background: transparent;
+			color: $sky-blue;
+			width: 100%;
+			&:hover {
+				color: #252525;
+			}
+		}
+
+		&--cancel {
+			position: absolute;
+			top: 0;
+			right: 0;
+			font-size: 18px;
+			color: $white09;
+			background: rgba($gray, 0.3);
+			line-height: 0.7;
+			padding: 5px;
+			border-radius: 5px;
+
+			i {
+				pointer-events: none;
+			}
+
+			&:hover {
+				color: white;
+				background: rgba($gray, 0.5);
+			}
+		}
+	}
+}
+
+// relations
+.rel {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+
+		&--title {
+			color: $gray;
+			font-size: 18px;
+			border: 1px solid rgba($gray, 0.5);
+			border-radius: 5px;
+			padding: 7px 18px;
+			cursor: pointer;
+
+			&:hover,
+			&.active {
+				color: $material-black;
+				border-color: $material-black;
+			}
+		}
+
+		&--list {
+			display: flex;
+			flex-direction: column;
+			background: rgba($gray, 0.05);
+
+			li {
+				padding: 7px 18px;
+				cursor: pointer;
+				color: lighten($material-black, 10%);
+
+				&:hover {
+					color: black;
+					background: rgba($gray, 0.1);
+				}
+			}
+		}
+	}
+}
+
+// Checkboxes and Radios
+.car {
+	// width: auto;
+	// min-width: 30%;
+	@include flex-center(row);
+	padding: 10px;
+	margin: 0 15px;
+	border-radius: 5px;
+	background: rgba(white, 0.03);
+
+	&__radio,
+	&__check {
+		width: 48%;
+	}
+}
+
+.submit-btn {
+	width: 100%;
+	border: 1px solid rgba($gray, 0.5);
+	padding: 20px;
+	font-size: 25px;
+	@include flex-center(row);
+
+	background: transparent;
+	color: $gray;
+
+	i {
+		margin-top: 3px;
+		margin-left: 10px;
+	}
+
+	&:hover {
+		background: rgba(black, 0.1);
+		color: $blue;
+		border: 1px dashed $blue;
+	}
+}

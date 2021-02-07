@@ -18,11 +18,11 @@ class CreateImagesTable extends Migration
 			$table->string('url', 100);
 			$table->tinyInteger('is_avatar')->default(0);
 			$table->timestamps();
-			$table->unsignedBigInteger('pom_id')->nullable();
+			$table->bigInteger('pom_id')->unsigned();
             $table->foreign('pom_id')
                     ->references('id')
                     ->on('poms')
-                    ->onDelete('cascade');
+                    ->onCascade('delete');
         });
     }
 

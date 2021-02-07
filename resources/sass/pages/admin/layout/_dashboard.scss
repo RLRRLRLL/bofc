@@ -1,0 +1,139 @@
+html {
+	max-height: 100%;
+}
+
+body {
+	font-family: sans;
+	font-weight: 400;
+}
+
+.grid {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100vh;
+	max-height: 100vh;
+
+	.header {
+		width: 100%;
+		height: 10%;
+		background: #212121;
+		padding: 0 100px;
+		@include flex-between(row);
+		box-shadow: 0 0 5px 0 $material-black;
+		z-index: $medium;
+
+		&__left {
+			@include flex-center(row);
+
+			a,
+			button {
+				font-size: 17px;
+				color: $gray;
+
+				&.burger {
+					font-size: 23px;
+					margin-right: 25px;
+					background: transparent;
+
+					&:focus,
+					&:active {
+						outline: none;
+						box-shadow: none;
+					}
+
+					i {
+						pointer-events: none;
+					}
+				}
+			}
+		}
+
+		&__right {
+			a {
+				color: lighten(black, 50%);
+				font-size: 18px;
+				padding: 10px 15px;
+				border-radius: 5px;
+				text-decoration: none;
+
+				&:hover,
+				&.active {
+					color: white;
+				}
+			}
+		}
+	}
+
+	.main {
+		width: 100%;
+		height: 90%;
+		padding: 40px 100px;
+		overflow-y: scroll;
+		background: #282828;
+	}
+
+	.sidebar {
+		box-shadow: 0 1px 10px 1px black;
+		background: #252525;
+
+		// anim related
+		position: fixed;
+		left: -20vw;
+		top: 0;
+		bottom: 0;
+		width: 20vw;
+		transition: all 0.5s ease;
+		z-index: $high;
+
+		&.show {
+			left: 0;
+			transition: all 0.5s ease;
+		}
+
+		&__header {
+			height: 40%;
+			@include flex-center(column);
+			padding: 15px;
+			background-color: black;
+			background-image: url("/images/logo.jpg");
+			background-size: 200px auto;
+			background-position: center;
+			background-repeat: no-repeat;
+			opacity: 0.7;
+		}
+
+		&__nav {
+			height: 60%;
+			display: flex;
+			flex-direction: column;
+			padding: 20px 15px;
+
+			li {
+				width: 100%;
+
+				a {
+					display: block;
+					width: 100%;
+					padding: 10px 15px 10px 15px;
+					color: $gray;
+					text-decoration: none;
+					border-radius: 5px;
+					transition: all 0.15s ease;
+					border: 1px solid transparent;
+					margin-bottom: 5px;
+
+					i {
+						margin-right: 7px;
+					}
+
+					&:hover,
+					&.active {
+						color: white;
+						border: 1px solid rgba(white, 0.3);
+					}
+				}
+			}
+		}
+	}
+}

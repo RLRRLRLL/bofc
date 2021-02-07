@@ -28,12 +28,25 @@ $eerie-black: #1b1b1b;
 $black-13: #131313;
 
 // other colors
+$gitdarkLighter: #1b2129;
+$gitdark: #0d1117;
 // $cream: #c78a48;
 $cream: #e2af7f;
+
+$blue: #80bdff;
 
 $sky-blue: #41aae8;
 
 $white: #e3f2fd;
+
+////// Colors From Poms.scss
+// vars
+$gray: #999;
+$grayLighter: #eaeaea;
+$grayDarker: rgb(117, 117, 117);
+$black: #111;
+$materialGreen: #53dd6c;
+$accent: $cream;
 
 // stuff
 $cubic: 0.3s cubic-bezier(0.8, 0.02, 0.16, 0.99);
