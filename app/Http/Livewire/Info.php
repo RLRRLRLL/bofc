@@ -8,23 +8,21 @@ use Livewire\Component;
 class Info extends Component
 {
 	public $name, $color, $height, $weight, $teeth, 
-	$birthday, $fontanel, $is_for_sale, $is_puppy, $father, $mother, 
-	$grandfather, $grandmother, $breeder, $owner, $title;
-	
+	$birthday, $is_for_sale, $is_puppy, $father, $mother, 
+	$grandfather, $grandmother, $breeder, $owner;
+
+	// radio
 	public $gender = 'male';
+	public $fontanel = 'hasnt';
 
-	public $successMessage;
-
+	// rules
 	protected $rules = [
 		'name' => 'required',
 		// 'color' => 'required',
-		// 'gender' => 'required',
 		// 'height' => 'required',
 		// 'weight' => 'required',
 		// 'teeth' => 'required',
 		// 'birthday' => 'required',
-		// 'fontanel' => 'required',
-		// 'title' => 'required',
 		// 'breeder' => 'required',
 		// 'owner' => 'required',
 		// 'father' => 'required',
@@ -50,7 +48,7 @@ class Info extends Component
 			'weight' => $this->weight,
 			'teeth' => $this->teeth,
 			'birthday' => $this->birthday,
-			'fontanel' => $this->fontanel,
+			'fontanel' => ($this->fontanel == 'has') ? 1 : 0,
 			'is_for_sale' => ($this->is_for_sale) ? 1 : 0,
 			'is_puppy' => ($this->is_puppy) ? 1 : 0,
 			'father' => $this->father,
@@ -59,17 +57,13 @@ class Info extends Component
 			'grandmother' => $this->grandmother,
 			'breeder' => $this->breeder,
 			'owner' => $this->owner,
-			'title' => $this->title,
 		]);
 
-		dd($pom);
-
 		$pom->save();
-		$this->emit('pass-pom-id', $pom->id);
+		$this->emit('info-created', $pom->id);
 		$this->dispatchBrowserEvent('hide-info-section');
 
 		$this->reset();
-		$this->successMessage = 'Form submitted!';
 	}
 
     public function render()

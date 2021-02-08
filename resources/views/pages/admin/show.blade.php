@@ -1,27 +1,34 @@
 @extends('layouts.admin')
 
 @section('content')
-	<div class="main__inner">
-		<div class="poms">
-			<div class="poms-title">
-				<h4>Poms</h4>
-			</div>
-			<div class="poms-inner">
-				<a href="#" class="pom">
-					<h6 class="pom-name">
-						Pomeranian
-					</h6>
+	<div class="single">
+		<div class="single__left">
+			<h1 class="single__left--name">
+				{{ $pom->name }}
 
-					<img src="{{ asset('images/random-dogs/1.jpg') }}" 
-						alt="Bubbles of Champain | "
-						class="pom-img"
+				<svg class="gender-svgs">
+					<use 
+						xlink:href="/sprite.svg#{{ ($pom->gender == 'male') ? 'male' : 'fem' }}"
 					>
+					</use>
+				</svg>
+			</h1>
 
-					<button type="button" class="pom-cta">
-						Find out more
-					</button>
-				</a>
+			<div class="single__left--info">
+				<h3>Информация о собаке:</h3>
+				
+				<ul>
+					<li>Color: <span>{{ $pom->color }}</span></li>
+					<li>Color: <span>{{ $pom->color }}</span></li>
+					<li>Color: <span>{{ $pom->color }}</span></li>
+				</ul>
 			</div>
+			
+		</div>
+
+		<div class="single__right">
+			<img src="{{ asset('images/random-dogs/1.jpg') }}">
+			<img src="{{ asset('images/random-dogs/2.jpg') }}">
 		</div>
 	</div>
 @endsection

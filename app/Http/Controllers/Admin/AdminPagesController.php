@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pom;
 use Illuminate\Http\Request;
 
 class AdminPagesController extends Controller
@@ -19,7 +20,7 @@ class AdminPagesController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.show');
+        return view('pages.admin.index');
 	}
 	
 	public function createPom() {
@@ -55,7 +56,9 @@ class AdminPagesController extends Controller
      */
     public function show($id)
     {
-        //
+        $pom = Pom::find($id);
+		
+		return view('pages.admin.show')->with('pom', $pom);
     }
 
     /**

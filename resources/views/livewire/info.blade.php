@@ -5,250 +5,220 @@
 		<div>
 			<div class="card">
 				<div class="card-header">
-					<h5>Info</h5>
+					<h2>Info</h2>
 				</div>
-				<div class="card-body">
-					<div class="form-group add-pom-group col-md-3">
-						<label for="name">
-							Name: <span>{{ $name }}</span>
-						</label>
+				<div class="card-body card-body__info">
+					<!-- Info fill-up -->
+					<div class="inputs">
+						<div class="form-group form-over">
+							<label for="name">
+								Name: <span>{{ $name }}</span>
+							</label>
 
-						<input id="name"
-								wire:model.debounce.400ms="name"
-								name="name"
-								type="text" 
-								class="form-control" 
-								placeholder="Enter name">
+							<input id="name"
+									wire:model.debounce.400ms="name"
+									name="name"
+									type="text" 
+									class="form-control" 
+									placeholder="Enter name">
 
-						@error('name')
-							<p class="text-danger">{{ $message }}</p>
-						@enderror
-					</div> <!-- -------------------------------------- -->
+							@error('name')
+								<p class="text-danger">{{ $message }}</p>
+							@enderror
+						</div> <!-- -------------------------------------- -->
 
-					<div class="form-group add-pom-group col-md-3">
-						<label for="color">
-							Color: <span>{{ $color }}</span>
-						</label>
+						<div class="form-group form-over">
+							<label for="color">
+								Color: <span>{{ $color }}</span>
+							</label>
 
-						<input id="color"
-								wire:model.debounce.400ms="color"
-								name="color"
-								type="text" 
-								class="form-control" 
-								placeholder="Enter color">
+							<input id="color"
+									wire:model.debounce.400ms="color"
+									name="color"
+									type="text" 
+									class="form-control" 
+									placeholder="Enter color">
 
-						@error('color')
-							<p class="text-danger">{{ $message }}</p>
-						@enderror
-					</div> <!-- ------------------------------------- -->
+							@error('color')
+								<p class="text-danger">{{ $message }}</p>
+							@enderror
+						</div> <!-- ------------------------------------- -->
 
-					<div class="form-group add-pom-group col-md-3">
-						<label for="height">
-							Height: <span>{{ $height }}</span>
-						</label>
+						<div class="form-group form-over">
+							<label for="height">
+								Height: <span>{{ $height }}</span>
+							</label>
 
-						<input id="height"
-								wire:model.debounce.400ms="height"
-								name="height"
-								type="text" 
-								class="form-control" 
-								placeholder="Enter height">
+							<input id="height"
+									wire:model.debounce.400ms="height"
+									name="height"
+									type="text" 
+									class="form-control" 
+									placeholder="Enter height">
 
-						@error('height')
-							<p class="text-danger">{{ $message }}</p>
-						@enderror
-					</div> <!-- ------------------------------------- -->
+							@error('height')
+								<p class="text-danger">{{ $message }}</p>
+							@enderror
+						</div> <!-- ------------------------------------- -->
 
-					<div class="form-group add-pom-group col-md-3">
-						<label for="weight">
-							Weight: <span>{{ $weight }}</span>
-						</label>
+						<div class="form-group form-over">
+							<label for="weight">
+								Weight: <span>{{ $weight }}</span>
+							</label>
 
-						<input id="weight"
-								wire:model.debounce.400ms="weight"
-								name="weight"
-								type="text" 
-								class="form-control" 
-								placeholder="Enter weight">
+							<input id="weight"
+									wire:model.debounce.400ms="weight"
+									name="weight"
+									type="text" 
+									class="form-control" 
+									placeholder="Enter weight">
 
-						@error('weight')
-							<p class="text-danger">{{ $message }}</p>
-						@enderror
-					</div> <!-- ------------------------------------- -->
+							@error('weight')
+								<p class="text-danger">{{ $message }}</p>
+							@enderror
+						</div> <!-- ------------------------------------- -->
 
-					<div class="form-group add-pom-group col-md-3">
-						<label for="teeth">
-							Teeth: <span>{{ $teeth }}</span>
-						</label>
+						<div class="form-group form-over">
+							<label for="teeth">
+								Teeth: <span>{{ $teeth }}</span>
+							</label>
 
-						<input id="teeth"
-								wire:model.debounce.400ms="teeth"
-								name="teeth"
-								type="text" 
-								class="form-control" 
-								placeholder="Enter teeth">
+							<input id="teeth"
+									wire:model.debounce.400ms="teeth"
+									name="teeth"
+									type="text" 
+									class="form-control" 
+									placeholder="Enter teeth">
 
-						@error('teeth')
-							<p class="text-danger">{{ $message }}</p>
-						@enderror
-					</div> <!-- ------------------------------------- -->
+							@error('teeth')
+								<p class="text-danger">{{ $message }}</p>
+							@enderror
+						</div> <!-- ------------------------------------- -->
 
-					<div class="form-group add-pom-group col-md-3">
-						<label for="birthday">
-							Birthday: <span>{{ $birthday }}</span>
-						</label>
+						<div class="form-group form-over">
+							<label for="birthday">
+								Birthday: <span>{{ $birthday }}</span>
+							</label>
 
-						<input id="birthday"
-								wire:model.debounce.400ms="birthday"
-								name="birthday"
-								type="text" 
-								class="form-control" 
-								placeholder="Enter birthday">
+							<input id="birthday"
+									wire:model.debounce.400ms="birthday"
+									name="birthday"
+									type="text" 
+									class="form-control" 
+									placeholder="Enter birthday">
 
-						@error('birthday')
-							<p class="text-danger">{{ $message }}</p>
-						@enderror
-					</div> <!-- ------------------------------------- -->
+							@error('birthday')
+								<p class="text-danger">{{ $message }}</p>
+							@enderror
+						</div> <!-- ------------------------------------- -->
 
-					<div class="form-group add-pom-group col-md-3">
-						<label for="fontanel">
-							Fontanel: <span>{{ $fontanel }}</span>
-						</label>
+						<div class="form-group form-over">
+							<label for="breeder">
+								Breeder: <span>{{ $breeder }}</span>
+							</label>
 
-						<input id="fontanel"
-								wire:model.debounce.400ms="fontanel"
-								name="fontanel"
-								type="text" 
-								class="form-control" 
-								placeholder="Enter fontanel">
+							<input id="breeder"
+									wire:model.debounce.400ms="breeder"
+									name="breeder"
+									type="text" 
+									class="form-control" 
+									placeholder="Enter breeder">
 
-						@error('fontanel')
-							<p class="text-danger">{{ $message }}</p>
-						@enderror
-					</div> <!-- ------------------------------------- -->
+							@error('breeder')
+								<p class="text-danger">{{ $message }}</p>
+							@enderror
+						</div> <!-- ------------------------------------- -->
 
-					<div class="form-group add-pom-group col-md-3">
-						<label for="title">
-							Title: <span>{{ $title }}</span>
-						</label>
+						<div class="form-group form-over">
+							<label for="owner">
+								Owner: <span>{{ $owner }}</span>
+							</label>
 
-						<input id="title"
-								wire:model.debounce.400ms="title"
-								name="title"
-								type="text" 
-								class="form-control" 
-								placeholder="Enter title">
+							<input id="owner"
+									wire:model.debounce.400ms="owner"
+									name="owner"
+									type="text" 
+									class="form-control" 
+									placeholder="Enter owner">
 
-						@error('title')
-							<p class="text-danger">{{ $message }}</p>
-						@enderror
-					</div> <!-- ------------------------------------- -->
+							@error('owner')
+								<p class="text-danger">{{ $message }}</p>
+							@enderror
+						</div> <!-- ------------------------------------- -->
 
-					<div class="form-group add-pom-group col-md-3">
-						<label for="breeder">
-							Breeder: <span>{{ $breeder }}</span>
-						</label>
+						<div class="form-group form-over">
+							<label for="father">
+								Father: <span>{{ $father }}</span>
+							</label>
 
-						<input id="breeder"
-								wire:model.debounce.400ms="breeder"
-								name="breeder"
-								type="text" 
-								class="form-control" 
-								placeholder="Enter breeder">
+							<input id="father"
+									wire:model.debounce.400ms="father"
+									name="father"
+									type="text" 
+									class="form-control" 
+									placeholder="Enter father">
 
-						@error('breeder')
-							<p class="text-danger">{{ $message }}</p>
-						@enderror
-					</div> <!-- ------------------------------------- -->
+							@error('father')
+								<p class="text-danger">{{ $message }}</p>
+							@enderror
+						</div> <!-- ------------------------------------- -->
 
-					<div class="form-group add-pom-group col-md-3">
-						<label for="owner">
-							Owner: <span>{{ $owner }}</span>
-						</label>
+						<div class="form-group form-over">
+							<label for="mother">
+								Mother: <span>{{ $mother }}</span>
+							</label>
 
-						<input id="owner"
-								wire:model.debounce.400ms="owner"
-								name="owner"
-								type="text" 
-								class="form-control" 
-								placeholder="Enter owner">
+							<input id="mother"
+									wire:model.debounce.400ms="mother"
+									name="mother"
+									type="text" 
+									class="form-control" 
+									placeholder="Enter mother">
 
-						@error('owner')
-							<p class="text-danger">{{ $message }}</p>
-						@enderror
-					</div> <!-- ------------------------------------- -->
+							@error('mother')
+								<p class="text-danger">{{ $message }}</p>
+							@enderror
+						</div> <!-- ------------------------------------- -->
 
-					<div class="form-group add-pom-group col-md-3">
-						<label for="father">
-							Father: <span>{{ $father }}</span>
-						</label>
+						<div class="form-group form-over">
+							<label for="grandfather">
+								Grandfather: <span>{{ $grandfather }}</span>
+							</label>
 
-						<input id="father"
-								wire:model.debounce.400ms="father"
-								name="father"
-								type="text" 
-								class="form-control" 
-								placeholder="Enter father">
+							<input id="grandfather"
+									wire:model.debounce.400ms="grandfather"
+									name="grandfather"
+									type="text" 
+									class="form-control" 
+									placeholder="Enter grandfather">
 
-						@error('father')
-							<p class="text-danger">{{ $message }}</p>
-						@enderror
-					</div> <!-- ------------------------------------- -->
+							@error('grandfather')
+								<p class="text-danger">{{ $message }}</p>
+							@enderror
+						</div> <!-- ------------------------------------- -->
 
-					<div class="form-group add-pom-group col-md-3">
-						<label for="mother">
-							Mother: <span>{{ $mother }}</span>
-						</label>
+						<div class="form-group form-over">
+							<label for="grandmother">
+								Grandmother: <span>{{ $grandmother }}</span>
+							</label>
 
-						<input id="mother"
-								wire:model.debounce.400ms="mother"
-								name="mother"
-								type="text" 
-								class="form-control" 
-								placeholder="Enter mother">
+							<input id="grandmother"
+									wire:model.debounce.400ms="grandmother"
+									name="grandmother"
+									type="text" 
+									class="form-control" 
+									placeholder="Enter grandmother">
 
-						@error('mother')
-							<p class="text-danger">{{ $message }}</p>
-						@enderror
-					</div> <!-- ------------------------------------- -->
-
-					<div class="form-group add-pom-group col-md-3">
-						<label for="grandfather">
-							Grandfather: <span>{{ $grandfather }}</span>
-						</label>
-
-						<input id="grandfather"
-								wire:model.debounce.400ms="grandfather"
-								name="grandfather"
-								type="text" 
-								class="form-control" 
-								placeholder="Enter grandfather">
-
-						@error('grandfather')
-							<p class="text-danger">{{ $message }}</p>
-						@enderror
-					</div> <!-- ------------------------------------- -->
-
-					<div class="form-group add-pom-group col-md-3">
-						<label for="grandmother">
-							Grandmother: <span>{{ $grandmother }}</span>
-						</label>
-
-						<input id="grandmother"
-								wire:model.debounce.400ms="grandmother"
-								name="grandmother"
-								type="text" 
-								class="form-control" 
-								placeholder="Enter grandmother">
-
-						@error('grandmother')
-							<p class="text-danger">{{ $message }}</p>
-						@enderror
-					</div> <!-- ------------------------------------- -->
+							@error('grandmother')
+								<p class="text-danger">{{ $message }}</p>
+							@enderror
+						</div> <!-- ------------------------------------- -->
+					</div>
 
 					<!-- Checkboxes & Radios { car } -->
-					<div class="car col-md-5">
-						<div class="car__radio">
+					<div class="car">
+						<div class="car__item car__radio">
+							<p>Gender: </p>
 							<div class="form-check">
 								<input  id="male"
 										checked
@@ -273,13 +243,50 @@
 									Female
 								</label>
 							</div>
-							
+
 							@error('gender')
 								<p class="text-danger">{{ $message }}</p>
 							@enderror
-						</div> <!-- ------------------------------------- -->
+						</div>
 
-						<div class="car__check">
+						<hr>
+
+						<div class="car__item car__radio">
+							<p>Fontanel: </p>
+							<div class="form-check">
+								<input  id="hasnt"
+										value="hasnt"
+										wire:model="fontanel"
+										name="fontanel"
+										type="radio" 
+										class="form-check-input"
+										checked>
+
+								<label for="hasnt" 
+										class="form-check-label">
+									Hasn't
+								</label>
+							</div>
+
+							<div class="form-check">
+								<input  id="has"
+										value="has"
+										wire:model="fontanel"
+										name="fontanel"
+										type="radio" 
+										class="form-check-input">
+
+								<label for="has" 
+										class="form-check-label">
+									Has
+								</label>
+							</div>
+						</div>
+
+						<hr>
+
+						<div class="car__item car__check">
+							<p>Other: </p>
 							<div class="car__check--item form-check">
 								<input id="is_puppy"
 										wire:model.debounce.400ms="is_puppy"
@@ -318,8 +325,13 @@
 		</div>
 
 		<button type="submit"
-				class="submit-btn submit-btn__info btn btn-success mt-3 w-5">
+				class="submit-btn submit-btn__info btn btn-success mt-3 w-5"
+				wire:click.prevent="saveInfo"
+				>
 			Next
+			<div wire:loading wire:target="saveInfo">
+				@include('includes.common.spinner')
+			</div>
 			<i class="fas fa-angle-double-right"></i>
 		</button>
 	</form>

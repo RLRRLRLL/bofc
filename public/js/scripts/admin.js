@@ -19392,13 +19392,11 @@ function keepLinksActive() {
           window.location = thisTargetUrl;
         }, 250);
       }
-    });
-
-    if (anchorAttr.includes("//localhost:3000")) {
-      cropped = anchorAttr.replace("//localhost:3000", "");
-    } else if (anchorAttr.includes("//bubblesofchampain.com")) {
-      cropped = anchorAttr.replace("//bubblesofchampain.com", "");
-    }
+    }); // if (anchorAttr.includes("//localhost:3000")) {
+    // 	cropped = anchorAttr.replace("//localhost:3000", "");
+    // } else if (anchorAttr.includes("//bubblesofchampain.com")) {
+    // 	cropped = anchorAttr.replace("//bubblesofchampain.com", "");
+    // }
 
     if (cropped == currentUrl || anchorAttr == currentUrl) {
       element.closest("a").classList.add("active");

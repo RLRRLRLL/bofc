@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use Livewire\WithFileUploads;
 use Livewire\Component;
 use App\Models\Image;
-use App\Models\Pom;
 
 class Images extends Component
 {
@@ -15,7 +14,7 @@ class Images extends Component
 	public $pom_id = '';
 	public $is_avatar = 0;
 
-	protected $listeners = ['pass-pom-id' => 'receivePomID'];
+	protected $listeners = ['info-created' => 'receivePomID'];
 
 	public function receivePomID($pomID) {
 		$this->pom_id = $pomID;
@@ -24,7 +23,7 @@ class Images extends Component
 	public function storeImages()
     {
         $this->validate([
-            'images.*' => 'image|max:3500|required',
+            'images.*' => 'image|max:10000|required',
 		]);
 
 		foreach($this->images as $img)
@@ -34,11 +33,11 @@ class Images extends Component
 				'url' => $img,
 			]);
 
-			$img->store('images', 'public');
-
-			session()->flash('message', 'Images successfully uploaded.');
+			// $img->store('images', 'public');
 		}
 
+		$this->dispatchBrowserEvent('hide-images-section');
+		$this->emit('pom-created', $this->pom_id);
 		$this->images = [];
 	}
 	

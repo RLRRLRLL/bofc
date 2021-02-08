@@ -1,0 +1,42 @@
+.card {
+	background: #212121;
+	color: $grayLighter;
+
+	&-header {
+		background: #171717;
+		h5 {
+			color: $grayLighter;
+		}
+	}
+}
+
+.form-control,
+.form-group input,
+input {
+	background: #2b2c2e;
+	border: 1px solid rgba($gray, 0.5);
+	transition: background 0.25s ease;
+	color: white;
+
+	&::placeholder {
+		color: $grayDarker !important;
+	}
+
+	&:focus {
+		background: #1e1f20;
+		color: $blue;
+	}
+}
+
+.form-group label {
+	color: $blue;
+}
+
+hr {
+	border: 0;
+	clear: both;
+	display: block;
+	width: 96%;
+	background-color: rgba($blue, 0.4);
+	height: 1px;
+}

@@ -8,10 +8,16 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 		@livewireStyles
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/admin.css') }}">
+		@if (app()->isLocal())
+			<script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
+		@endif
 	</head>
 	<body>
+		
 		<!-- wrapper -->
 		<div class="grid" x-data="{open : false}">
+			{{-- @include('includes.admin.modal') --}}
+
 			<header class="header">
 				<ul class="header__left">
 					<li>
@@ -43,7 +49,7 @@
 			</header>
 
 			<aside class="sidebar"
-					x-show.transition="open"
+					x-show.transition.duration.300ms="open"
 					@click.away="open = false"
 					:class="{'show': open === true}">
 				<div class="sidebar__header">

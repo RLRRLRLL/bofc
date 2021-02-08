@@ -15,5 +15,8 @@ mix.js("resources/js/main.js", "public/js/scripts")
 	.js("resources/js/admin.js", "public/js/scripts")
 	.sass("resources/sass/app.scss", "public/css")
 	.sass("resources/sass/admin.scss", "public/css")
-	.browserSync({ proxy: "localhost:8000" })
+	.browserSync({
+		proxy: "localhost:8000",
+		open: false
+	})
 	.options({ processCssUrls: false });

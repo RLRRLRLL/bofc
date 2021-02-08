@@ -79,17 +79,11 @@ body {
 
 		// anim related
 		position: fixed;
-		left: -20vw;
+		left: 0;
 		top: 0;
 		bottom: 0;
 		width: 20vw;
-		transition: all 0.5s ease;
-		z-index: $high;
-
-		&.show {
-			left: 0;
-			transition: all 0.5s ease;
-		}
+		z-index: $medium;
 
 		&__header {
 			height: 40%;
@@ -136,4 +130,14 @@ body {
 			}
 		}
 	}
+}
+
+//////////////////////////////////
+// Little things
+// TODO: organize these things
+
+// svgs for show and index pages
+.gender-svgs {
+	width: 20px;
+	height: 20px;
 }

@@ -33,4 +33,5 @@ Auth::routes();
 Route::middleware('auth')->prefix('/admin')->group(function() {
 	Route::get('/', [AdminPagesController::class, 'index'])->name('admin');
 	Route::get('/create', [AdminPagesController::class, 'createPom'])->name('create.new.pom');
+	Route::get('/pom/{id}', [AdminPagesController::class, 'show'])->name('show.new.pom');
 }); 

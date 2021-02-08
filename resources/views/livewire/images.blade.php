@@ -1,8 +1,10 @@
 <div>
-    <form wire:submit.prevent="storeImages">
+    <form 
+		wire:submit.prevent="storeImages"
+	>
 		<div class="card">
 			<div class="card-header">
-				<h5>Images</h5>
+				<h2>Images</h2>
 			</div>
 			<div class="card-body">
 				<!-- -------------------------------------------- -->
@@ -38,11 +40,10 @@
 								<span class="alert alert-danger"
 										x-show="open">
 									{{ $message }}
-									<a href="#" 
-										class="alert-close"
+									<button class="alert-close"
 										x-on:click.prevent="open = false">
 										<i class="fas fa-times"></i>	
-									</a>
+									</button>
 								</span>
 							</div>
 						@enderror
@@ -70,7 +71,7 @@
 					</div>
 					
 					<div x-show="isUploading">
-						<progress max="100" x-bind:value="progress"></progress>
+						<progress max="100" x-bind:value="progress" style="width: 100%;"></progress>
 					</div>
 				</div>
 				<!-- -------------------------------------- -->
@@ -78,8 +79,11 @@
 						type="submit"
 						wire:click.prevent="storeImages"
 						class="submit-btn submit-btn__images mt-3 w-5">
-					Save
-					<i class="fas fa-check"></i>
+					Next
+					<div wire:loading wire:target="storeImages">
+						@include('includes.common.spinner')
+					</div>
+					<i class="fas fa-angle-double-right"></i>
 				</button>
 			</div>
 		</div>

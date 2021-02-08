@@ -42,6 +42,11 @@
 					Get in touch
 				</button>
 			</li>
+			<li class="enough-padding">
+				<a href="/admin" class="desk_cta">
+					Dashboard
+				</a>
+			</li>
 		</ul>
 	</nav>
 
