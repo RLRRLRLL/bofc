@@ -30,8 +30,8 @@
 						>
 
 						<button class="upload-imgs__cta" 
-							href="#"
-							x-on:click.prevent="$refs.fileInput.click()">
+							type="button"
+							x-on:click="$refs.fileInput.click()">
 							Upload images
 						</button>
 
@@ -41,7 +41,8 @@
 										x-show="open">
 									{{ $message }}
 									<button class="alert-close"
-										x-on:click.prevent="open = false">
+										type="button"
+										x-on:click="open = false">
 										<i class="fas fa-times"></i>	
 									</button>
 								</span>

@@ -7,6 +7,19 @@ body {
 	font-weight: 400;
 }
 
+// alpine hide
+[x-cloak] {
+	display: none;
+}
+
+/*
+this class used for reducing 
+brightness when sidebar expanded
+*/
+.darken {
+	filter: brightness(50%);
+}
+
 .grid {
 	display: flex;
 	flex-direction: column;
@@ -30,6 +43,10 @@ body {
 			button {
 				font-size: 17px;
 				color: $gray;
+
+				&:hover {
+					color: white;
+				}
 
 				&.burger {
 					font-size: 23px;
@@ -77,13 +94,20 @@ body {
 		box-shadow: 0 1px 10px 1px black;
 		background: #252525;
 
-		// anim related
 		position: fixed;
-		left: 0;
 		top: 0;
+		left: 0;
 		bottom: 0;
 		width: 20vw;
 		z-index: $medium;
+
+		left: -20vw;
+		transition: all 0.3s ease !important;
+
+		&.show {
+			left: 0;
+			transition: all 0.3s ease !important;
+		}
 
 		&__header {
 			height: 40%;
@@ -140,4 +164,5 @@ body {
 .gender-svgs {
 	width: 20px;
 	height: 20px;
+	margin-bottom: 2px;
 }

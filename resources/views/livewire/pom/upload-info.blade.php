@@ -256,8 +256,8 @@
 							<div class="form-check">
 								<input  id="hasnt"
 										value="hasnt"
-										wire:model="fontanel"
-										name="fontanel"
+										wire:model="has_fontanel"
+										name="has_fontanel"
 										type="radio" 
 										class="form-check-input"
 										checked>
@@ -271,8 +271,8 @@
 							<div class="form-check">
 								<input  id="has"
 										value="has"
-										wire:model="fontanel"
-										name="fontanel"
+										wire:model="has_fontanel"
+										name="has_fontanel"
 										type="radio" 
 										class="form-check-input">
 
@@ -320,6 +320,26 @@
 							</div>
 						</div>
 					</div>
+
+					<div class="titles">
+						<div class="form-group form-over">
+							<label for="titles">
+								Titles: <span>{{ $titles }}</span>
+							</label>
+
+							<input id="titles"
+									wire:model.debounce.400ms="titles"
+									name="titles"
+									type="text" 
+									class="form-control" 
+									placeholder="Enter titles">
+
+							@error('titles')
+								<p class="text-danger">{{ $message }}</p>
+							@enderror
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>

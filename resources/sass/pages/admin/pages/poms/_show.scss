@@ -3,42 +3,91 @@
 	height: 100%;
 	display: flex;
 	justify-content: space-around;
-	border: 1px solid $blue;
-	background: rgba(olive, 0.025);
+	border: 1px solid rgba($blue, 0.4);
+	border-radius: 5px;
+	overflow: hidden;
+	background: $gitdark;
 
-	&,
 	&__left,
 	&__right {
-		padding: 20px;
+		padding: 25px;
+		overflow-x: hidden;
+
+		// scroll bar
+		@include scrollbar;
 	}
 
 	&__left {
-		border: 1px solid green;
-		width: 37%;
-		color: $white;
+		width: 40%;
 
 		&--name {
-			color: white;
+			color: $grayLighter;
 			text-align: center;
+			font-weight: 500;
+
+			span {
+				font-weight: 400;
+				color: $gray;
+			}
 		}
 
 		&--info {
-			padding: 20px 0;
-			h3 {
-				margin-bottom: 10px;
-			}
-
-			ul {
+			& > ul {
 				display: flex;
 				flex-direction: column;
+				padding-top: 25px;
 
 				li {
-					padding: 5px;
+					padding: 5px 10px;
 					color: $blue;
+					display: flex;
+					align-items: center;
+
+					& > input,
+					textarea {
+						background: transparent;
+						border: none;
+						outline: none;
+						width: auto;
+						padding: 0 0 0 10px;
+						color: white;
+					}
+
+					& > textarea {
+						overflow: scroll;
+						overflow-x: hidden;
+						width: 100%;
+						word-break: break-all;
+					}
+
+					&:hover {
+						background: rgba(white, 0.06);
+					}
 
 					span {
 						color: $materialGreen;
+						cursor: pointer;
+						padding-left: 5px;
+
+						&:hover {
+							color: $white;
+							text-decoration: underline;
+						}
 					}
+				}
+			}
+
+			// edit line btn
+			button {
+				background: transparent;
+				padding: 5px;
+				color: rgba($gray, 0.4);
+				outline: none;
+				border: none;
+				transition: color 0.1s;
+
+				&:hover {
+					color: $grayLighter;
 				}
 			}
 		}
@@ -46,16 +95,36 @@
 
 	&__right {
 		width: 60%;
-		background: coral;
-		display: grid;
-		grid-template: repeat(auto-fill, 100px) / repeat(5, 100px);
-		grid-gap: 10px;
+		@include flex-column;
+		background: darken($gitdark, 5%);
 
-		img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			object-position: center;
+		// Upload new images
+		&--upload {
+			margin-bottom: 25px;
+
+			& > button {
+				@include cta-dashed--upload;
+				padding: 15px;
+			}
+		}
+
+		&--grid {
+			display: grid;
+			grid-template: repeat(auto-fit, 150px) / repeat(
+					auto-fit,
+					minmax(150px, 0.5fr)
+				);
+			grid-gap: 5px;
+			@include scrollbar;
+
+			img {
+				@include image;
+				border: 1px solid rgba($gray, 0.4);
+
+				&.avatar {
+					border: 1px solid $blue;
+				}
+			}
 		}
 	}
 }

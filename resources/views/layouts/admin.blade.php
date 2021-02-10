@@ -18,11 +18,12 @@
 		<div class="grid" x-data="{open : false}">
 			{{-- @include('includes.admin.modal') --}}
 
-			<header class="header">
+			<header class="header" :class="{'darken': open}">
 				<ul class="header__left">
 					<li>
-						<button class="burger"
-								@click.prevent="open = !open"
+						<button type="button"
+								class="burger"
+								@click="open = !open"
 						>
 							<i class="fas fa-bars"></i>
 						</button>
@@ -49,9 +50,11 @@
 			</header>
 
 			<aside class="sidebar"
-					x-show.transition.duration.300ms="open"
+					x-cloak
+					x-show.transition.out.duration.500ms="open"
 					@click.away="open = false"
-					:class="{'show': open === true}">
+					:class="{'show': open}"
+					>
 				<div class="sidebar__header">
 				</div>
 
@@ -103,7 +106,7 @@
 				</ul>
 			</aside>
 
-			<main class="main">
+			<main class="main" :class="{'darken': open}">
 				@yield('content')
 			</main>
 		</div>

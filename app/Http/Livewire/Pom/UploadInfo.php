@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Pom;
 
 use App\Models\Pom;
 use Livewire\Component;
 
-class Info extends Component
+class UploadInfo extends Component
 {
 	public $name, $color, $height, $weight, $teeth, 
 	$birthday, $is_for_sale, $is_puppy, $father, $mother, 
-	$grandfather, $grandmother, $breeder, $owner;
+	$grandfather, $grandmother, $breeder, $owner, $titles;
 
 	// radio
 	public $gender = 'male';
-	public $fontanel = 'hasnt';
+	public $has_fontanel = 'hasnt';
 
 	// rules
 	protected $rules = [
@@ -47,8 +47,9 @@ class Info extends Component
 			'height' => $this->height,
 			'weight' => $this->weight,
 			'teeth' => $this->teeth,
+			'titles' => $this->titles,
 			'birthday' => $this->birthday,
-			'fontanel' => ($this->fontanel == 'has') ? 1 : 0,
+			'has_fontanel' => ($this->has_fontanel == 'has') ? 1 : 0,
 			'is_for_sale' => ($this->is_for_sale) ? 1 : 0,
 			'is_puppy' => ($this->is_puppy) ? 1 : 0,
 			'father' => $this->father,
@@ -58,7 +59,7 @@ class Info extends Component
 			'breeder' => $this->breeder,
 			'owner' => $this->owner,
 		]);
-
+		
 		$pom->save();
 		$this->emit('info-created', $pom->id);
 		$this->dispatchBrowserEvent('hide-info-section');
@@ -68,6 +69,6 @@ class Info extends Component
 
     public function render()
     {
-        return view('livewire.info');
+        return view('livewire.pom.upload-info');
     }
 }

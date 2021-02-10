@@ -23,10 +23,11 @@ class CreatePomsTable extends Migration
 			$table->string('weight')->nullable();
 			$table->string('teeth')->nullable();
 			$table->string('birthday')->nullable();
+			$table->mediumText('titles')->nullable();
 
+			$table->tinyInteger('has_fontanel')->default(0);
 			$table->tinyInteger('is_published')->default(0);
 			$table->tinyInteger('is_for_sale')->default(0);
-			$table->tinyInteger('fontanel')->default(0);
 			$table->tinyInteger('is_puppy')->default(0);
 			
 			$table->string('father')->nullable();

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Pom;
 
 use Livewire\WithFileUploads;
 use Livewire\Component;
 use App\Models\Image;
 
-class Images extends Component
+class UploadImages extends Component
 {
 	use WithFileUploads;
 
@@ -28,12 +28,15 @@ class Images extends Component
 
 		foreach($this->images as $img)
 		{
+			// dd($img);
+			$fileName = $img->getClientOriginalName();
+
 			Image::create([
 				'pom_id' => $this->pom_id,
-				'url' => $img,
+				'url' => $fileName,
 			]);
 
-			// $img->store('images', 'public');
+			$img->storeAs('images/'.$this->pom_id, $fileName, 'public');
 		}
 
 		$this->dispatchBrowserEvent('hide-images-section');
@@ -48,6 +51,6 @@ class Images extends Component
 	
     public function render()
     {
-        return view('livewire.images');
+        return view('livewire.pom.upload-images');
     }
 }

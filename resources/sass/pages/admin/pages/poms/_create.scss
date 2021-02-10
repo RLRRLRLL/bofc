@@ -1,7 +1,3 @@
-.container-create {
-	padding: 0 30px;
-}
-
 // add pom page
 #addPomForm {
 	display: flex;
@@ -37,6 +33,12 @@
 			padding: 7px 0;
 			margin: 0 15px;
 		}
+	}
+
+	.titles {
+		width: 100%;
+		padding-left: 15px;
+		margin-top: 20px;
 	}
 
 	.car {
@@ -91,25 +93,34 @@
 // card body titles
 .card-body__titles {
 	button {
-		width: 100%;
 		background: transparent;
-		border: 1px dashed $gray;
+		border: 1px solid $materialGreen;
 		border-radius: 7px;
 		font-size: 18px;
 		font-weight: 500;
-		padding: 20px;
-		color: $gray;
+		padding: 4px 13px;
+		transition: all 0.2s ease;
+		outline: none;
+		color: $materialGreen;
+		margin-bottom: 20px;
 
 		&:hover {
 			color: white;
 			border-color: white;
 		}
 
-		&,
 		&:focus,
 		&:active {
-			outline: none;
+			color: $blue;
+			border-color: $blue;
 		}
+	}
+
+	&--show {
+		padding: 15px;
+		border: 1px solid rgba($gray, 0.1);
+		box-shadow: 0 0 4px 0 inset $material-black;
+		@include flex-column;
 	}
 }
 
@@ -121,84 +132,26 @@
 
 // previewed images and cta btn design
 .upload-imgs {
-	background: transparent;
-	border: 1px dashed $gray;
-	border-radius: 7px;
 	@include flex-center(column);
-
-	&:focus {
-		outline: none !important;
-		border: none !important;
-	}
-
-	&:hover {
-		transition: all 0.15s ease;
-		background: transparent;
-		border-color: white;
-		.upload-imgs__cta {
-			color: white;
-		}
-	}
-
-	&__cta,
-	&__cont {
-		width: 100%;
-		padding: 20px;
-		border-radius: 7px;
-		border: 1px solid rgba($material-black, 0.01);
-	}
-
-	&__alert-item {
-		align-self: flex-start;
-		display: flex;
-		width: 100%;
-		margin-top: 15px;
-		margin-bottom: 0;
-
-		position: relative;
-
-		span {
-			width: 100%;
-		}
-
-		a {
-			position: absolute;
-			right: 3px;
-			top: 0;
-			color: #721c24;
-
-			&:hover {
-				color: $material-black;
-			}
-
-			i {
-				pointer-events: none;
-			}
-		}
-	}
 
 	&__cta {
 		@include flex-center(row);
-		cursor: pointer;
+		@include cta-dashed--upload;
 		// typography
-		color: darken($gray, 10%);
-		text-align: center;
 		font-size: 18px;
 		font-weight: 500;
-		text-decoration: none;
-		background: transparent;
-
-		&:focus {
-			outline: none;
-		}
+		text-align: center;
 	}
 
 	&__cont {
+		width: 100%;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: flex-start;
 		justify-content: flex-start;
 		margin-top: 25px;
+		padding: 20px;
+		border-radius: 7px;
 
 		&.hide {
 			display: none;
@@ -214,10 +167,7 @@
 		height: 175px;
 
 		&--img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			object-position: center;
+			@include image;
 			border-radius: 5px;
 		}
 
@@ -251,36 +201,46 @@
 			}
 		}
 	}
+
+	&__alert-item {
+		align-self: flex-start;
+		display: flex;
+		width: 100%;
+		margin-top: 15px;
+		margin-bottom: 0;
+
+		position: relative;
+
+		span {
+			width: 100%;
+		}
+
+		a {
+			position: absolute;
+			right: 3px;
+			top: 0;
+			color: #721c24;
+
+			&:hover {
+				color: $material-black;
+			}
+
+			i {
+				pointer-events: none;
+			}
+		}
+	}
 }
 
 .submit-btn {
 	width: 100%;
-	border: 1px solid rgba($gray, 0.5);
-	padding: 20px;
 	font-size: 25px;
 	@include flex-center(row);
-
-	background: transparent;
-	color: $gray;
-	box-shadow: none;
+	@include cta-dashed;
 
 	i {
 		margin-top: 3px;
 		margin-left: 10px;
-	}
-
-	&:hover {
-		background: rgba(black, 0.1);
-		color: $blue;
-		border: 1px dashed $blue;
-	}
-
-	&:active,
-	&:focus {
-		background-color: rgba(black, 0.1) !important;
-		color: $materialGreen !important;
-		border: 1px dashed $materialGreen !important;
-		box-shadow: none !important;
 	}
 }
 

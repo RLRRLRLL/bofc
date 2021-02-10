@@ -11,10 +11,10 @@ class Pom extends Model
 {
 	use HasFactory;
 	protected $fillable = [
-		'name','color','gender','height','weight',
-		'teeth','birthday','fontanel','is_for_sale','is_puppy',
-		'father','mother','grandmother','grandfather',
-		'breeder','title','owner'
+		'name', 'color', 'gender', 'height', 'weight',
+		'teeth', 'birthday', 'has_fontanel', 'is_for_sale', 'is_puppy',
+		'father', 'mother', 'grandmother', 'grandfather',
+		'breeder', 'title', 'owner', 'titles'
 	];
 
 	public function images()
