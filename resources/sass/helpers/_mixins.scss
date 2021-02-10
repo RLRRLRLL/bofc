@@ -44,6 +44,26 @@
 	object-position: center;
 }
 
+// admin pages: Cancel image when uploading or from show page
+// parent div has to have posrel
+@mixin cancel-image-button() {
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: 30px;
+	line-height: 0.7;
+	background: transparent;
+	color: #830f0f;
+	outline: none !important;
+	border: none !important;
+	transition: color 0.15s;
+
+	&:hover {
+		color: white;
+		background: rgba(black, 0.35);
+	}
+}
+
 // admin pages: cta buttons with dashed border
 // : next or save button
 @mixin cta-dashed() {

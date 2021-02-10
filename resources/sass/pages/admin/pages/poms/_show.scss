@@ -27,6 +27,8 @@
 
 			span {
 				font-weight: 400;
+				font-size: 19px;
+				letter-spacing: 1px;
 				color: $gray;
 			}
 		}
@@ -102,9 +104,46 @@
 		&--upload {
 			margin-bottom: 25px;
 
-			& > button {
-				@include cta-dashed--upload;
-				padding: 15px;
+			& > form {
+				& > button {
+					outline: none;
+					border: none;
+					background: transparent;
+					color: lighten($gray, 10%);
+					border: 1px solid lighten($gray, 10%);
+					border-radius: 5px;
+					transition: 0.15s;
+
+					&:hover {
+						color: $materialGreen;
+						border-color: $materialGreen;
+					}
+				}
+
+				.images-cont {
+					display: grid;
+					grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+					grid-template-rows: repeat(auto-fit, 150px);
+					grid-gap: 5px;
+					margin-top: 25px;
+					padding: 10px;
+
+					background: darken($gitdark, 3%);
+					box-shadow: 0 0 5px 1px inset black;
+
+					img {
+						@include image;
+						border-radius: 3px;
+					}
+
+					&__item {
+						position: relative;
+
+						button {
+							@include cancel-image-button;
+						}
+					}
+				}
 			}
 		}
 
@@ -117,12 +156,27 @@
 			grid-gap: 5px;
 			@include scrollbar;
 
-			img {
-				@include image;
-				border: 1px solid rgba($gray, 0.4);
+			& > div {
+				position: relative;
+				cursor: pointer;
 
-				&.avatar {
-					border: 1px solid $blue;
+				&:hover img {
+					opacity: 1;
+				}
+
+				img {
+					@include image;
+					opacity: 0.6;
+					border: 1px solid rgba($gray, 0.4);
+					transition: opacity 0.15s ease-out;
+
+					&.avatar {
+						border: 1px solid $blue;
+					}
+				}
+
+				button {
+					@include cancel-image-button;
 				}
 			}
 		}

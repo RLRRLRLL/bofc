@@ -7,31 +7,10 @@ use Livewire\Component;
 
 class UpdateInfo extends Component
 {
-	public $pom;
-
-	public $name, $color, $height, $weight, $teeth, 
-	$birthday, $is_for_sale, $is_puppy, $father, $mother, 
-	$grandfather, $grandmother, $breeder, $owner, $titles;
-
-	// radio
-	public $gender = 'male';
-	public $fontanel = 'hasnt';
-
-	// rules
-	protected $rules = [
-		'name' => 'required',
-		// 'color' => 'required',
-		// 'height' => 'required',
-		// 'weight' => 'required',
-		// 'teeth' => 'required',
-		// 'birthday' => 'required',
-		// 'breeder' => 'required',
-		// 'owner' => 'required',
-		// 'father' => 'required',
-		// 'mother' => 'required',
-		// 'grandfather' => 'required',
-		// 'grandmother' => 'required',
-	];
+	public $pom, $name, $color, $height, $weight, $teeth, 
+	$birthday, $is_for_sale, $is_puppy, $father, 
+	$mother, $grandfather, $grandmother, $breeder, 
+	$owner, $titles, $gender, $fontanel;
 	
 	public function mount($id)
 	{

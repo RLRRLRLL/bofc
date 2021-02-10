@@ -23,12 +23,11 @@ class UploadImages extends Component
 	public function storeImages()
     {
         $this->validate([
-            'images.*' => 'image|max:10000|required',
+            'images.*' => 'image|max:3500|required',
 		]);
 
 		foreach($this->images as $img)
 		{
-			// dd($img);
 			$fileName = $img->getClientOriginalName();
 
 			Image::create([
