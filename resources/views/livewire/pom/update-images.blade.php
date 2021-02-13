@@ -1,6 +1,6 @@
 <div class="single__right">
 	
-	<div class="single__right--upload">
+	<div class="single__right--upload" x-data="{showSuccess:true}">
 		<form wire:submit.prevent="updateImages">
 			@if (count($images) > 0)
 				<button type="submit" wire:click.prevent="updateImages">
@@ -30,6 +30,15 @@
 				</a>
 			@endif
 
+			@if ($success) 
+				<div class="alert success-alert" x-show.transition.duration.500ms="showSuccess">
+					<span>{{ $success }}</span>
+					<a href="#" x-on:click.prevent="showSuccess = false">
+						&#10005;
+					</a>
+				</div> 
+			@endif
+
 			<input 
 				class="d-none" 
 				type="file" 
@@ -43,7 +52,7 @@
 
 	<div class="single__right--grid">
 		@foreach($pom->images as $image)
-			<div>
+			<div wire:click="makeAvatar({{ $image->id }})">
 				<img src="{{ '/storage/images/'.$pom->id.'/'.$image->url}}" alt="Bubbles of Champain | 		Pomeranian Spitz | Померанский шпиц | {{ $pom->name }}" class="{{ ($image->is_avatar === 1) ? 'avatar' : '' }}">
 				<button type="button" wire:click.prevent="removeExistingImage({{ $image->id }})">
 					&#10005;

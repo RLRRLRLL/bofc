@@ -7,8 +7,8 @@
 	padding: 15px;
 	// padding-bottom: 25px;
 	@include flex-center(column);
-	justify-self: flex-end;
 	cursor: pointer;
+	z-index: $high;
 
 	&:hover {
 		background: linear-gradient(
@@ -30,11 +30,11 @@
 	// text
 	&__text {
 		display: block;
-		color: $cream;
-		font-size: 23px;
+		color: $accent;
+		font-family: manege;
+		font-size: 33px;
 		letter-spacing: 2px;
-		font-family: sans;
-		font-weight: 300;
+
 		margin-bottom: 10px;
 		opacity: 0.8;
 	}

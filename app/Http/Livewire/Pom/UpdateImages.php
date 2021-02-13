@@ -16,6 +16,7 @@ class UpdateImages extends Component
 	public $pom;
 	public $pom_id = '';
 	public $images = [];
+	public $success;
 
 	public function mount($id)
 	{
@@ -39,6 +40,7 @@ class UpdateImages extends Component
 
 		$this->images = [];
 		$this->emit('refreshImages');
+		$this->success = 'Images successfully uploaded';
 	}
 
 	public function cancelImage($index)
@@ -50,6 +52,19 @@ class UpdateImages extends Component
 	{
 		$image = Image::find($id);
 		if ($image) $image->delete();
+	}
+
+	public function makeAvatar($id)
+	{
+		$images = $this->pom->images;
+		foreach($images as $i) {
+			$i->update(['is_avatar' => 0]);
+		}
+
+		$image = Image::find($id);
+		if ($image) $image->update(['is_avatar' => 1]);
+
+		$this->emit('refreshImages');
 	}
 
     public function render()

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Pom;
 
 class MainPagesController extends Controller
 {
@@ -14,6 +14,7 @@ class MainPagesController extends Controller
 
     public function poms() 
     {
-        return view('pages.main.poms');
+		$poms = Pom::where('is_published', 1)->get();
+        return view('pages.main.poms', ['poms' => $poms]);
     }
 }

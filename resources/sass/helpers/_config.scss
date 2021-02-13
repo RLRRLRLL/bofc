@@ -58,3 +58,51 @@ select:-webkit-autofill:focus {
 	-webkit-box-shadow: 0 0 0px 1000px #2b2c2e inset;
 	transition: background-color 5000s ease-in-out 0s;
 }
+
+// standart heading styles
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1.25;
+}
+
+h1,
+h2,
+h3 {
+	font-weight: 100;
+}
+
+h1 {
+	font-size: 32px;
+}
+
+h2 {
+	font-size: 24px;
+}
+
+h3 {
+	font-size: 19px;
+}
+
+h4 {
+	font-size: 16px;
+}
+
+h5 {
+	font-size: 14px;
+}
+
+h6 {
+	font-size: 12px;
+}
+
+// paragraph
+p {
+	line-height: 1.6;
+	font-weight: 300;
+	font-size: 17px;
+	letter-spacing: 0.7px;
+}

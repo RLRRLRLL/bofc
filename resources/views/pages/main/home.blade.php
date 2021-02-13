@@ -52,9 +52,9 @@
 					<div class="static">
 
 						<div class="info">
-							<h2 class="info-title">
+							<h1 class="info-title">
 								What we do?
-							</h2>
+							</h1>
 
 							{{-- <img class="info-cup" src="{{ asset('images/transparent/cup.png') }}" alt="Champion"> --}}
 

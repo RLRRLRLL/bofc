@@ -4,48 +4,38 @@
 		<ul>
 			<li>
 				<a href="/" >
-					<span data-text="Welcome!">
-						Welcome!
-					</span>
+					Welcome!
 				</a>
 			</li>
 			{{-- <li>
 				<a href="#">
-					<span data-text="About">
 						About
-					</span>
 				</a>
 			</li> --}}
 			<li>
 				<a href="/pomeranian">
-					<span data-text="Pomeranian">
-						Pomeranian
-					</span>
+					Pomeranian
 				</a>
 			</li>
 			<li>
 				<a href="#">
-					<span data-text="News">
-						News
-					</span>
+					News
 				</a>
 			</li>
 			<li>
 				<a href="#">
-					<span data-text="Contact">
-						Contact
-					</span>
+					Contact
 				</a>
 			</li>
-			<li class="enough-padding">
-				<button class="desk_cta btn-ripple">
-					Get in touch
-				</button>
-			</li>
-			<li class="enough-padding">
-				<a href="/admin" class="desk_cta">
+			<li>
+				<a href="/admin">
 					Dashboard
 				</a>
+			</li>
+			<li class="enough-padding">
+				<button>
+					Get in touch
+				</button>
 			</li>
 		</ul>
 	</nav>

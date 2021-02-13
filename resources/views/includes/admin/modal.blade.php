@@ -1,12 +1,5 @@
 <div 
-	class="overlay" 
-	x-data="{pomID: '', showModal : false}"
-	x-init="() => {
-		window.livewire.on('pom-created', (pom_id) => {
-			pomID = pom_id;
-			showModal = true
-		})
-	}"
+	class="overlay"
 	x-show.transition.duration.300ms="showModal"
 >
 	<figure class="modal" >
@@ -26,7 +19,7 @@
 			</div>
 
 			<div class="modal__footer">
-				<a :href="`/admin/pom/${pomID}`">Перейти</a>
+				<a :href="">Перейти</a>
 			</div>
 		</div>
 	</figure>

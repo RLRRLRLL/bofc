@@ -1,0 +1,35 @@
+// gold gradients
+$gradient-one: radial-gradient(
+		ellipse farthest-corner at right bottom,
+		#fedb37 0%,
+		#fdb931 8%,
+		#9f7928 30%,
+		#8a6e2f 40%,
+		transparent 80%
+	),
+	radial-gradient(
+		ellipse farthest-corner at left top,
+		#ffffff 0%,
+		#ffffac 8%,
+		#d1b464 25%,
+		#5d4a1f 62.5%,
+		#5d4a1f 100%
+	);
+
+$gradient-two: repeating-linear-gradient(
+	to right,
+	#a2682a 0%,
+	#be8c3c 8%,
+	#be8c3c 18%,
+	#d3b15f 27%,
+	#faf0a0 35%,
+	#ffffc2 40%,
+	#faf0a0 50%,
+	#d3b15f 58%,
+	#be8c3c 67%,
+	#b17b32 77%,
+	#bb8332 83%,
+	#d4a245 88%,
+	#e1b453 93%,
+	#a4692a 100%
+);

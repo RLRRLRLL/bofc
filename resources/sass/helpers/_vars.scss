@@ -1,109 +1,33 @@
-// white
-$white01: rgba(white, 0.1);
-$white02: rgba(white, 0.2);
-$white03: rgba(white, 0.3);
-$white04: rgba(white, 0.4);
-$white05: rgba(white, 0.5);
-$white06: rgba(white, 0.6);
-$white07: rgba(white, 0.7);
-$white08: rgba(white, 0.8);
-$white09: rgba(white, 0.9);
+@import "./alpha";
+@import "./gradients";
 
-// black
-$black01: rgba(black, 0.1);
-$black02: rgba(black, 0.2);
-$black03: rgba(black, 0.3);
-$black04: rgba(black, 0.4);
-$black05: rgba(black, 0.5);
-$black06: rgba(black, 0.6);
-$black07: rgba(black, 0.7);
-$black08: rgba(black, 0.8);
-$black09: rgba(black, 0.9);
+// <!--------- Colors ---------->
 
-// 13
-$material-black: #272727;
-$matte-black: #141312;
-$licorice-black: #1a1110;
-$eerie-black: #1b1b1b;
-$black-13: #131313;
+// main
+$accent: #e2af7f;
+$accentSecondary: #3f5b61;
+// $accent: #c78a48;
+$greenMain: #53dd6c;
+$blackMain: #272727;
+$blueMain: #80bdff;
+$grayMain: #999;
+$nedoBlack: hsl(0, 0%, 20%);
+// $brownMain: #665148;
 
 // other colors
+$grayDarker: rgb(117, 117, 117);
+$blackSecondary: #141312;
+$grayLighter: #eaeaea;
 $gitdark: #0d1117;
-// $cream: #c78a48;
-$cream: #e2af7f;
-
-$blue: #80bdff;
-
 $sky-blue: #41aae8;
-
 $white: #e3f2fd;
 
-////// Colors From Poms.scss
-// vars
-$gray: #999;
-$grayLighter: #eaeaea;
-$grayDarker: rgb(117, 117, 117);
-$black: #111;
-$materialGreen: #53dd6c;
-$accent: $cream;
+// <!--------- Colors ---------->
 
-// stuff
+// trans
 $cubic: 0.3s cubic-bezier(0.8, 0.02, 0.16, 0.99);
 
 // z-indexes
 $low: 10;
 $medium: 100;
 $high: 1000;
-
-// gold gradients
-$gradient-one: radial-gradient(
-		ellipse farthest-corner at right bottom,
-		#fedb37 0%,
-		#fdb931 8%,
-		#9f7928 30%,
-		#8a6e2f 40%,
-		transparent 80%
-	),
-	radial-gradient(
-		ellipse farthest-corner at left top,
-		#ffffff 0%,
-		#ffffac 8%,
-		#d1b464 25%,
-		#5d4a1f 62.5%,
-		#5d4a1f 100%
-	);
-
-$gradient-two: repeating-linear-gradient(
-	to right,
-	#a2682a 0%,
-	#be8c3c 8%,
-	#be8c3c 18%,
-	#d3b15f 27%,
-	#faf0a0 35%,
-	#ffffc2 40%,
-	#faf0a0 50%,
-	#d3b15f 58%,
-	#be8c3c 67%,
-	#b17b32 77%,
-	#bb8332 83%,
-	#d4a245 88%,
-	#e1b453 93%,
-	#a4692a 100%
-);
-
-$gradient-one__bubble: radial-gradient(
-		ellipse farthest-corner at right bottom,
-		rgba(#fedb37, 0.3) 0%,
-		rgba(#fdb931, 0.3) 8%,
-		rgba(#9f7928, 0.3) 30%,
-		rgba(#8a6e2f, 0.3) 40%,
-		transparent 80%
-	),
-	radial-gradient(
-		ellipse farthest-corner at left top,
-		rgba(#ffffff, 0.3) 0%,
-		rgba(#ffffac, 0.3) 8%,
-		rgba(#d1b464, 0.3) 25%,
-		rgba(#5d4a1f, 0.3) 62.5%,
-		rgba(#5d4a1f, 0.3) 100%
-	);

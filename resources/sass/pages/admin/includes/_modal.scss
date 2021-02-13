@@ -33,11 +33,11 @@
 			flex-direction: column;
 			background: white;
 			border-radius: 5px;
-			box-shadow: 0 0 5px 0 $gray;
+			box-shadow: 0 0 5px 0 $grayMain;
 			cursor: auto;
 
 			& > div:not(:last-of-type) {
-				border-bottom: 1px solid rgba($gray, 0.3);
+				border-bottom: 1px solid rgba($grayMain, 0.3);
 			}
 		}
 
@@ -46,14 +46,14 @@
 			height: 25%;
 			padding: 20px;
 			@include flex-between(row);
-			color: darken($gray, 25%);
+			color: darken($grayMain, 25%);
 
 			&--close {
 				background: transparent;
 				font-size: 30px;
 				padding: 10px;
 				line-height: 1;
-				color: darken($gray, 25%);
+				color: darken($grayMain, 25%);
 
 				&:focus,
 				&:active {
@@ -62,7 +62,7 @@
 				}
 
 				&:hover {
-					color: $material-black;
+					color: $blackMain;
 				}
 			}
 		}
@@ -84,18 +84,18 @@
 
 			a {
 				padding: 7px 13px;
-				color: $blue;
+				color: $blueMain;
 				height: auto;
 				text-align: right;
 				margin-right: 10px;
 				border-radius: 5px;
-				border: 1px solid $blue;
+				border: 1px solid $blueMain;
 				text-decoration: none;
 				transition: all 0.15s;
 
 				&:hover {
-					color: $material-black;
-					border: 1px solid $material-black;
+					color: $blackMain;
+					border: 1px solid $blackMain;
 				}
 			}
 		}

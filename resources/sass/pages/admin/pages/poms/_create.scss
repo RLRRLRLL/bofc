@@ -61,7 +61,7 @@
 
 			p {
 				margin-bottom: 8px;
-				color: rgba($gray, 0.8);
+				color: rgba($grayMain, 0.8);
 			}
 		}
 	}
@@ -73,7 +73,7 @@
 			margin-bottom: 7px;
 
 			span {
-				color: $materialGreen;
+				color: $greenMain;
 			}
 		}
 
@@ -94,14 +94,14 @@
 .card-body__titles {
 	button {
 		background: transparent;
-		border: 1px solid $materialGreen;
+		border: 1px solid $greenMain;
 		border-radius: 7px;
 		font-size: 18px;
 		font-weight: 500;
 		padding: 4px 13px;
 		transition: all 0.2s ease;
 		outline: none;
-		color: $materialGreen;
+		color: $greenMain;
 		margin-bottom: 20px;
 
 		&:hover {
@@ -111,15 +111,15 @@
 
 		&:focus,
 		&:active {
-			color: $blue;
-			border-color: $blue;
+			color: $blueMain;
+			border-color: $blueMain;
 		}
 	}
 
 	&--show {
 		padding: 15px;
-		border: 1px solid rgba($gray, 0.1);
-		box-shadow: 0 0 4px 0 inset $material-black;
+		border: 1px solid rgba($grayMain, 0.1);
+		box-shadow: 0 0 4px 0 inset $blackMain;
 		@include flex-column;
 	}
 }
@@ -186,7 +186,7 @@
 			right: 0;
 			font-size: 18px;
 			color: $white09;
-			background: rgba($gray, 0.3);
+			background: rgba($grayMain, 0.3);
 			line-height: 0.7;
 			padding: 5px;
 			border-radius: 5px;
@@ -197,7 +197,7 @@
 
 			&:hover {
 				color: white;
-				background: rgba($gray, 0.5);
+				background: rgba($grayMain, 0.5);
 			}
 		}
 	}
@@ -222,7 +222,7 @@
 			color: #721c24;
 
 			&:hover {
-				color: $material-black;
+				color: $blackMain;
 			}
 
 			i {
@@ -245,8 +245,8 @@
 }
 
 .c-alert {
-	color: $blue;
+	color: $blueMain;
 	font-size: 20px;
 	padding: 5px;
-	border: 1px solid $blue;
+	border: 1px solid $blueMain;
 }

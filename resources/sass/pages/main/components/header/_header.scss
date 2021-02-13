@@ -2,10 +2,9 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	right: 0;
+	width: 100%;
 	z-index: $high;
 	padding: 20px 40px;
-	// background: linear-gradient(to bottom, $material-black, transparent);
 
 	// desktop
 	&__desktop {
@@ -22,8 +21,60 @@
 
 				a {
 					display: inline-block;
-					overflow: hidden;
 					padding: 0px 5px;
+					position: relative;
+					color: white;
+					font-family: argesta;
+					font-weight: 400;
+					font-size: 21px;
+					cursor: pointer;
+
+					&:hover {
+						&::before,
+						&::after {
+							opacity: 1;
+							transform: translate3d(0, 0, 0);
+							transition-timing-function: cubic-bezier(
+								0.2,
+								0,
+								0.3,
+								1
+							);
+						}
+					}
+
+					&::before,
+					&::after {
+						content: "";
+						position: absolute;
+						height: 1px;
+						pointer-events: none;
+						transform-origin: 50% 0%;
+						transform: translate3d(0, 3px, 0);
+						transition-property: transform, opacity;
+						transition-duration: 0.3s;
+						transition-timing-function: cubic-bezier(
+							0.2,
+							1,
+							0.8,
+							1
+						);
+						background: white;
+						opacity: 0;
+					}
+
+					&::after {
+						top: calc(100% + 7px);
+						width: 70%;
+						left: 15%;
+					}
+
+					&::before {
+						top: calc(100% + 3px);
+						width: 90%;
+						left: 5%;
+						transition-delay: 0.1s;
+					}
 
 					&:hover,
 					&.active {
@@ -34,8 +85,12 @@
 						}
 					}
 
+					&.active,
 					&.active:hover {
-						color: lighten($cream, 20%);
+						span,
+						span::before {
+							color: $accent;
+						}
 					}
 
 					&:focus {
@@ -44,54 +99,27 @@
 							color: $white03;
 						}
 					}
-
-					span {
-						position: relative;
-						display: inline-block;
-						-webkit-transition: -webkit-transform 0.3s;
-						-moz-transition: -moz-transform 0.3s;
-						transition: transform 0.3s;
-						color: $white06;
-						font-family: sans;
-						font-weight: 400;
-						font-size: 18px;
-						letter-spacing: 0.5px;
-						pointer-events: none;
-
-						&::before {
-							content: attr(data-text);
-							position: absolute;
-							top: 100%;
-							font-family: sans;
-							font-weight: 500;
-							color: white;
-							-webkit-transform: translate3d(0, 0, 0);
-							-moz-transform: translate3d(0, 0, 0);
-							transform: translate3d(0, 0, 0);
-						}
-					}
 				}
 
 				// cta
-				.desk_cta {
-					$cream-lighter: lighten($cream, 10%);
+				& > button {
+					$accent-lighter: lighten($accent, 10%);
 
 					cursor: pointer;
 					padding: 7px 10px;
 					margin-left: 15px;
 
 					border-radius: 3px !important;
-					background: $cream-lighter;
-					color: $material-black;
+					color: $blackMain;
 					font-size: 15px;
 					font-weight: 500;
 					text-transform: uppercase;
 					letter-spacing: 0.9px;
-					box-shadow: 0 0 5px 0 rgba($cream-lighter, 0.7);
+					box-shadow: 0 0 5px 0 rgba($accent-lighter, 0.7);
 					transition: all 0.25s ease;
 
 					&:hover {
-						background: darken($cream, 5%);
+						background: darken($accent, 5%);
 						color: black;
 					}
 				}

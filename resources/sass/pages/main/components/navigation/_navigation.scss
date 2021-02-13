@@ -1,5 +1,5 @@
 // vars
-$burger-color: $cream;
+$burger-color: $accent;
 $burger-width: 35px;
 $burger-space: 9px;
 $burger-space-extended: 12px;
@@ -54,7 +54,7 @@ $burger-falling-time: 0.4s;
 		right: 20px;
 		bottom: 20px;
 		@include flex-center(column);
-		font-family: "sans";
+
 		font-weight: 400;
 		background: #080808;
 	}

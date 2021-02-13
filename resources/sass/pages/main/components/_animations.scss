@@ -1,10 +1,12 @@
 // anim items [ai]
 .ai {
+	$duration: 0.8s;
+
 	opacity: 0;
-	transition: all ease 0.7s 0s;
+	transition: all $duration ease-in-out $duration/2;
 
 	&__with-delay {
-		transition: all 0.7s ease 0.25s;
+		transition: all $duration ease-in-out $duration/1.2;
 	}
 
 	&__active {
@@ -25,11 +27,11 @@
 
 	// dimensions
 	&__from-bottom {
-		transform: translate(0, 20%);
+		transform: translate(0, 5%);
 	}
 
 	&__from-right {
-		transform: translate(20%, 0);
+		transform: translate(5%, 0);
 	}
 
 	&__scale {

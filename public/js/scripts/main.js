@@ -25212,7 +25212,7 @@ module.exports = function(module) {
 /*!******************************************!*\
   !*** ./resources/js/components/Utils.js ***!
   \******************************************/
-/*! exports provided: query, queryAll, randomNum, cursorIntoArrows, keepLinksActive, smoothScroll, classToggler */
+/*! exports provided: query, queryAll, randomNum, cursorIntoArrows, keepLinksActive, smoothScroll, classToggler, domReady */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -25224,6 +25224,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "keepLinksActive", function() { return keepLinksActive; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "smoothScroll", function() { return smoothScroll; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "classToggler", function() { return classToggler; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "domReady", function() { return domReady; });
 // aliases for js selectors
 var query = document.querySelector.bind(document);
 var queryAll = document.querySelectorAll.bind(document); // generate random num
@@ -25312,7 +25313,15 @@ function classToggler(el, className) {
   } else {
     el.classList.add(className);
   }
-}
+} // DOM Ready
+
+var domReady = function domReady(callBack) {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", callBack);
+  } else {
+    callBack();
+  }
+};
 
 /***/ }),
 
@@ -25369,11 +25378,20 @@ var stopBubbles = function stopBubbles() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return slidesAndFades; });
-// small animations across the web [slide'n'fade]
+/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Utils */ "./resources/js/components/Utils.js");
+ // small animations across the web [slide'n'fade]
+
 function slidesAndFades() {
   var animItems = document.querySelectorAll(".ai");
 
   if (animItems.length > 0) {
+    var runAnimations = function runAnimations() {
+      window.addEventListener("scroll", animateOnScroll);
+      setTimeout(function () {
+        animateOnScroll();
+      }, 300);
+    };
+
     var getOffset = function getOffset(e) {
       var rect = e.getBoundingClientRect(),
           scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
@@ -25402,10 +25420,7 @@ function slidesAndFades() {
       }
     };
 
-    window.addEventListener("scroll", animateOnScroll);
-    setTimeout(function () {
-      animateOnScroll();
-    }, 300);
+    Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["domReady"])(runAnimations);
   }
 }
 

@@ -3,14 +3,18 @@
 		Find yourself a best friend.
 	</h1>
 	<div class="poms__header--view">
-		<div class="option__btn option--grid selected">
+		<div class="option__btn option--grid "
+			:class="{'selected': gridViewActive}"
+			x-on:click="gridViewActive = true; listViewActive = false">
 			<span></span>
 			<span></span>
 			<span></span>
 			<span></span>
 			<span>Grid</span>
 		</div>
-		<div class="option__btn option--list">
+		<div class="option__btn option--list"
+			:class="{'selected': listViewActive}"
+			x-on:click="gridViewActive = false; listViewActive = true">
 			<span></span>
 			<span></span>
 			<span></span>

@@ -117,10 +117,10 @@
 
 			<hr> <!-- | -------------------------------------------- | -->
 			
-			<li x-data="{ showSpan: true, showInput: false, showButton: false, focusChange: false }" x-on:click.away="showInput = false; showSpan = true; showButton = false" x-on:click="if (!focusChange) {showSpan = false; showInput = true; setTimeout(() => $refs.titlesInput.focus())}"> 
+			<li x-data="{ showSpan: true, showInput: false, showButton: false, focusChange: false }" x-on:click.away="showInput = false; showSpan = true; showButton = false" x-on:click="if (!focusChange) {showSpan = false; showInput = true; setTimeout(() => $refs.titlesInput.focus())}" class="titles"> 
 				Titles:
 				<span x-show="showSpan">{{ $pom->titles }}</span>
-				<textarea x-show="showInput" x-on:input="showButton = true" wire:model="titles" placeholder="{{ $pom->titles }}" x-ref="titlesInput"></textarea>
+				<textarea x-show="showInput" x-on:input="showButton = true" wire:model="titles" placeholder="{{ $pom->titles }}" x-ref="titlesInput" rows="10"></textarea>
 				<button x-show="showButton" x-on:click="focusChange = true; showInput = false; showSpan = true; showButton = false" wire:click.prevent="updateInfo('titles')">Save</button>
 			</li>
 		</ul>

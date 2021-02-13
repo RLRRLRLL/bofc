@@ -1,5 +1,6 @@
-// small animations across the web [slide'n'fade]
+import { domReady } from "./../Utils";
 
+// small animations across the web [slide'n'fade]
 export default function slidesAndFades() {
 	const animItems = document.querySelectorAll(".ai");
 
@@ -37,9 +38,13 @@ export default function slidesAndFades() {
 			}
 		};
 
-		window.addEventListener("scroll", animateOnScroll);
-		setTimeout(() => {
-			animateOnScroll();
-		}, 300);
+		function runAnimations() {
+			window.addEventListener("scroll", animateOnScroll);
+			setTimeout(() => {
+				animateOnScroll();
+			}, 300);
+		}
+
+		domReady(runAnimations);
 	}
 }

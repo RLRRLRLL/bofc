@@ -106,3 +106,12 @@ export function classToggler(el, className) {
 		el.classList.add(className);
 	}
 }
+
+// DOM Ready
+export const domReady = callBack => {
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", callBack);
+	} else {
+		callBack();
+	}
+};

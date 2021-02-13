@@ -4,7 +4,7 @@
 	padding: 35px;
 	border: 1px solid $white07;
 	position: relative;
-	margin-top: 50px;
+	// margin-top: 50px;
 
 	&__title {
 		position: relative;
@@ -53,8 +53,7 @@
 	}
 
 	&__subtitle {
-		font-family: "sans";
-		font-weight: 300;
+		font-family: "manege";
 		margin-top: 50px;
 		color: $white09;
 		text-transform: uppercase;

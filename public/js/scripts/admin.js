@@ -19347,7 +19347,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /*!******************************************!*\
   !*** ./resources/js/components/Utils.js ***!
   \******************************************/
-/*! exports provided: query, queryAll, randomNum, cursorIntoArrows, keepLinksActive, smoothScroll, classToggler */
+/*! exports provided: query, queryAll, randomNum, cursorIntoArrows, keepLinksActive, smoothScroll, classToggler, domReady */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19359,6 +19359,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "keepLinksActive", function() { return keepLinksActive; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "smoothScroll", function() { return smoothScroll; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "classToggler", function() { return classToggler; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "domReady", function() { return domReady; });
 // aliases for js selectors
 var query = document.querySelector.bind(document);
 var queryAll = document.querySelectorAll.bind(document); // generate random num
@@ -19447,7 +19448,15 @@ function classToggler(el, className) {
   } else {
     el.classList.add(className);
   }
-}
+} // DOM Ready
+
+var domReady = function domReady(callBack) {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", callBack);
+  } else {
+    callBack();
+  }
+};
 
 /***/ }),
 

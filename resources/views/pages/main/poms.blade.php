@@ -5,13 +5,7 @@
 @section('content')
     <div class="wrapper pomeranian">
 		<div class="container">
-
-			<div class="poms">
-				@include('includes.main.partials.pomeranian.header')
-				@include('includes.main.partials.pomeranian.filter')
-				@include('includes.main.partials.pomeranian.catalogue')
-			</div>
-
+			<livewire:pom.user.show :poms="$poms"/>
 		</div>
     </div>
 @endsection

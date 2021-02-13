@@ -21,7 +21,8 @@ class AdminPagesController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.index');
+		$poms = Pom::all();
+        return view('pages.admin.index')->with('poms', $poms);
 	}
 	
 	public function createPom() {
@@ -57,12 +58,6 @@ class AdminPagesController extends Controller
      */
     public function show($id)
     {
-        // $pom = Pom::find($id);
-		
-		// return view('pages.admin.show', [
-		// 	'pom' => $pom
-		// ]);
-
 		return view('pages.admin.show')->with('id', $id);
     }
 

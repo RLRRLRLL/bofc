@@ -145,26 +145,6 @@ select {
 }
 
 @font-face {
-  font-family: "sans";
-  font-weight: 300;
-  src: url("/fonts/Sans/OpenSans-Light.ttf");
-}
-@font-face {
-  font-family: "sans";
-  font-weight: 400;
-  src: url("/fonts/Sans/OpenSans-Regular.ttf");
-}
-@font-face {
-  font-family: "sans";
-  font-weight: 500;
-  src: url("/fonts/Sans/OpenSans-SemiBold.ttf");
-}
-@font-face {
-  font-family: "sans";
-  font-weight: 700;
-  src: url("/fonts/Sans/OpenSans-ExtraBold.ttf");
-}
-@font-face {
   font-family: "play";
   font-weight: 400;
   src: url("/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf");
@@ -183,6 +163,14 @@ select {
   font-family: "allura";
   font-weight: 400;
   src: url("/fonts/Allura/Allura-Regular.ttf");
+}
+@font-face {
+  font-family: "argesta";
+  src: url("/fonts/Argesta/ArgestaDisplay.otf");
+}
+@font-face {
+  font-family: "manege";
+  src: url("/fonts/Manege/Manege.ttf");
 }
 /**
  * Effects
@@ -268,6 +256,52 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px #2b2c2e inset;
   -webkit-transition: background-color 5000s ease-in-out 0s;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 100;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 19px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 12px;
+}
+
+p {
+  line-height: 1.6;
+  font-weight: 300;
+  font-size: 17px;
+  letter-spacing: 0.7px;
 }
 
 .spinner-wrapper {
@@ -463,36 +497,11 @@ hr {
   height: 1px;
 }
 
-h1 {
-  font-size: 32px;
-}
-
-h2 {
-  font-size: 24px;
-}
-
-h3 {
-  font-size: 19px;
-}
-
-h4 {
-  font-size: 16px;
-}
-
-h5 {
-  font-size: 14px;
-}
-
-h6 {
-  font-size: 12px;
-}
-
 html {
   max-height: 100%;
 }
 
 body {
-  font-family: sans;
   font-weight: 400;
 }
 
@@ -567,6 +576,12 @@ brightness when sidebar expanded
 }
 .grid .header__right a:hover, .grid .header__right a.active {
   color: white;
+}
+.grid .header__right #authUserName {
+  color: rgba(153, 153, 153, 0.4);
+}
+.grid .header__right #authUserName:hover {
+  color: rgba(153, 153, 153, 0.4);
 }
 .grid .main {
   width: 100%;
@@ -646,37 +661,93 @@ brightness when sidebar expanded
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  background: #222;
+  box-shadow: 0 5px 10px 1px black;
 }
 .poms-title h1 {
-  font-size: 25px;
-  color: #272727;
+  font-family: play;
+  font-size: 4em;
+  font-weight: 600;
+  margin: 0;
+  padding: 0.25em;
+  text-align: center;
+  background: #222;
+  color: rgba(0, 0, 0, 0.6);
+  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.1);
 }
 .poms-inner {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  padding-top: 25px;
+  display: grid;
+  grid-template: repeat(auto-fill, 300px)/repeat(auto-fit, minmax(25%, 1fr));
 }
 .poms-inner .pom {
-  width: 24.88%;
-  height: 250px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 0 5px;
+  position: relative;
+  text-decoration: none;
+  background: rgba(128, 189, 255, 0.1);
+  box-shadow: 0 3px 5px 1px black;
+  border-radius: 9px;
+}
+.poms-inner .pom:hover .pom-img {
+  opacity: 1;
+}
+.poms-inner .pom:hover .pom-cta {
+  bottom: 0;
+}
+.poms-inner .pom-name, .poms-inner .pom-cta, .poms-inner .pom-img {
+  pointer-events: none;
+}
+.poms-inner .pom-name, .poms-inner .pom-cta {
+  position: absolute;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  overflow: hidden;
+  flex-direction: row;
+  width: 100%;
+  height: 15%;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.6);
+}
+.poms-inner .pom-name {
+  top: 0;
+  font-family: play;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 23px;
+  color: #d9d9d9;
+}
+.poms-inner .pom-name svg {
+  width: 17px;
+  height: 17px;
+  margin: 3px 0 0 5px;
 }
 .poms-inner .pom-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+  opacity: 0.6;
+  transition: opacity 0.3s;
 }
-.poms-inner .pom-name {
-  text-align: center;
-  font-size: 19px;
-  color: #41aae8;
+.poms-inner .pom-cta {
+  bottom: -100%;
+  transition: bottom 0.3s;
+  color: white;
 }
 
 #addPomForm {
@@ -965,7 +1036,7 @@ brightness when sidebar expanded
   border: 1px solid rgba(128, 189, 255, 0.4);
   border-radius: 5px;
   overflow: hidden;
-  background: #0d1117;
+  background: #191919;
 }
 .single__left, .single__right {
   padding: 25px;
@@ -1003,6 +1074,15 @@ brightness when sidebar expanded
   display: flex;
   align-items: center;
 }
+.single__left--info > ul li.titles {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+.single__left--info > ul li.titles span {
+  margin-top: 10px;
+}
 .single__left--info > ul li > input,
 .single__left--info > ul li textarea {
   background: transparent;
@@ -1017,6 +1097,7 @@ brightness when sidebar expanded
   overflow-x: hidden;
   width: 100%;
   word-break: break-all;
+  padding: 5px;
 }
 .single__left--info > ul li:hover {
   background: rgba(255, 255, 255, 0.06);
@@ -1045,7 +1126,7 @@ brightness when sidebar expanded
   width: 60%;
   display: flex;
   flex-direction: column;
-  background: #040507;
+  background: #101010;
 }
 .single__right--upload {
   margin-bottom: 25px;
@@ -1058,6 +1139,10 @@ brightness when sidebar expanded
   border: 1px solid #b3b3b3;
   border-radius: 5px;
   transition: 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 .single__right--upload > form > button:hover {
   color: #53dd6c;
@@ -1132,7 +1217,7 @@ brightness when sidebar expanded
   transition: opacity 0.15s ease-out;
 }
 .single__right--grid > div img.avatar {
-  border: 1px solid #80bdff;
+  border: 2px solid #80bdff;
 }
 .single__right--grid > div button {
   position: absolute;
@@ -1149,4 +1234,30 @@ brightness when sidebar expanded
 .single__right--grid > div button:hover {
   color: white;
   background: rgba(0, 0, 0, 0.35);
+}
+
+.success-alert {
+  align-self: flex-start;
+  display: flex;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 0;
+  position: relative;
+  background: rgba(83, 221, 108, 0.5);
+  color: white;
+}
+.success-alert span {
+  width: 100%;
+}
+.success-alert a {
+  position: absolute;
+  right: 3px;
+  top: 0;
+  color: white;
+}
+.success-alert a:hover {
+  color: #272727;
+}
+.success-alert a i {
+  pointer-events: none;
 }

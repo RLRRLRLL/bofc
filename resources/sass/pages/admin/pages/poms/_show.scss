@@ -3,10 +3,10 @@
 	height: 100%;
 	display: flex;
 	justify-content: space-around;
-	border: 1px solid rgba($blue, 0.4);
+	border: 1px solid rgba($blueMain, 0.4);
 	border-radius: 5px;
 	overflow: hidden;
-	background: $gitdark;
+	background: #191919;
 
 	&__left,
 	&__right {
@@ -29,7 +29,7 @@
 				font-weight: 400;
 				font-size: 19px;
 				letter-spacing: 1px;
-				color: $gray;
+				color: $grayMain;
 			}
 		}
 
@@ -41,9 +41,19 @@
 
 				li {
 					padding: 5px 10px;
-					color: $blue;
+					color: $blueMain;
 					display: flex;
 					align-items: center;
+
+					&.titles {
+						@include flex-column;
+						align-items: flex-start;
+						text-align: left;
+
+						span {
+							margin-top: 10px;
+						}
+					}
 
 					& > input,
 					textarea {
@@ -60,6 +70,7 @@
 						overflow-x: hidden;
 						width: 100%;
 						word-break: break-all;
+						padding: 5px;
 					}
 
 					&:hover {
@@ -67,7 +78,7 @@
 					}
 
 					span {
-						color: $materialGreen;
+						color: $greenMain;
 						cursor: pointer;
 						padding-left: 5px;
 
@@ -83,7 +94,7 @@
 			button {
 				background: transparent;
 				padding: 5px;
-				color: rgba($gray, 0.4);
+				color: rgba($grayMain, 0.4);
 				outline: none;
 				border: none;
 				transition: color 0.1s;
@@ -98,7 +109,7 @@
 	&__right {
 		width: 60%;
 		@include flex-column;
-		background: darken($gitdark, 5%);
+		background: #101010;
 
 		// Upload new images
 		&--upload {
@@ -109,14 +120,15 @@
 					outline: none;
 					border: none;
 					background: transparent;
-					color: lighten($gray, 10%);
-					border: 1px solid lighten($gray, 10%);
+					color: lighten($grayMain, 10%);
+					border: 1px solid lighten($grayMain, 10%);
 					border-radius: 5px;
 					transition: 0.15s;
+					@include flex-center(row);
 
 					&:hover {
-						color: $materialGreen;
-						border-color: $materialGreen;
+						color: $greenMain;
+						border-color: $greenMain;
 					}
 				}
 
@@ -167,11 +179,11 @@
 				img {
 					@include image;
 					opacity: 0.6;
-					border: 1px solid rgba($gray, 0.4);
+					border: 1px solid rgba($grayMain, 0.4);
 					transition: opacity 0.15s ease-out;
 
 					&.avatar {
-						border: 1px solid $blue;
+						border: 2px solid $blueMain;
 					}
 				}
 
@@ -179,6 +191,38 @@
 					@include cancel-image-button;
 				}
 			}
+		}
+	}
+}
+
+.success-alert {
+	align-self: flex-start;
+	display: flex;
+	width: 100%;
+	margin-top: 15px;
+	margin-bottom: 0;
+
+	position: relative;
+
+	background: rgba($greenMain, 0.5);
+	color: white;
+
+	span {
+		width: 100%;
+	}
+
+	a {
+		position: absolute;
+		right: 3px;
+		top: 0;
+		color: white;
+
+		&:hover {
+			color: $blackMain;
+		}
+
+		i {
+			pointer-events: none;
 		}
 	}
 }

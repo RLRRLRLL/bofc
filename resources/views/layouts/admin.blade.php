@@ -16,8 +16,6 @@
 		
 		<!-- wrapper -->
 		<div class="grid" x-data="{open : false}">
-			{{-- @include('includes.admin.modal') --}}
-
 			<header class="header" :class="{'darken': open}">
 				<ul class="header__left">
 					<li>
@@ -36,16 +34,36 @@
 				</ul>
 
 				<ul class="header__right">
-					<li>
-						<a href="/login">
-							Login
-						</a>
-					</li>
-					<li>
-						<a href="/register">
-							Register
-						</a>
-					</li>
+					@guest
+						<li>
+							<a href="/login">
+								Login
+							</a>
+						</li>
+						<li>
+							<a href="/register">
+								Register
+							</a>
+						</li>
+					@endguest
+					@auth
+						<li id="authUserName">
+							{{ Auth::user()->name }}
+						</li>
+						<li>
+							<a href="{{ route('logout') }}"
+								onclick="event.preventDefault();
+								document.getElementById('logout-form').submit();">
+								Sign out
+								<form id="logout-form" 
+										action="{{ route('logout') }}" 
+										method="POST" 
+										class="d-none">
+									@csrf
+								</form>
+							</a>
+						</li>
+					@endauth
 				</ul>
 			</header>
 
