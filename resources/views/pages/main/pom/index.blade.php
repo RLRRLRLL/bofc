@@ -5,7 +5,7 @@
 @section('content')
     <div class="wrapper pomeranian">
 		<div class="container">
-			<livewire:pom.user.show :poms="$poms"/>
+			<livewire:pom.user.index :poms="$poms"/>
 		</div>
     </div>
 @endsection

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" style="height: 0; width: 0; position: absolute; visibility: hidden;">
+<svg xmlns="http://www.w3.org/2000/svg" class="hidden">
     <symbol id="x" viewBox="0 0 469.333 469.333">
 		<g>
 			<path d="M426.667,0h-384C19.146,0,0,19.135,0,42.667v384c0,23.531,19.146,42.667,42.667,42.667h384

@@ -24,14 +24,14 @@
 	}
 
 	/* --------- Inputs ---------- */
-	@import "./includes/inputs";
+	@import "./includes/index/inputs";
 
 	/* --------- Header ---------- */
-	@import "./includes/header";
+	@import "./includes/index/header";
 
 	/* -------- Filters ---------- */
-	@import "./includes/filters";
+	@import "./includes/index/filters";
 
 	/* -------- Catalogue -------- */
-	@import "./includes/catalogue";
+	@import "./includes/index/catalogue";
 }

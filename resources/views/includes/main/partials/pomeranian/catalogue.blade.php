@@ -40,9 +40,9 @@
 						</div>
 					</div>
 
-					<button class="cat-item__desc--cta btn-ripple">
-						<span class="idc-text">Learn more</span>
-					</button>
+					<a href="{{ route('poms.show', ['id' => $pom->id]) }}" class="cat-item__desc--cta btn-ripple">
+						<span>Learn more</span>
+					</a>
 				</div>
 			</figure>
 

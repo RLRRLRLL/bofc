@@ -145,24 +145,52 @@ select {
 }
 
 @font-face {
-  font-family: "play";
-  font-weight: 400;
-  src: url("/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf");
+  font-family: "system";
+  font-style: normal;
+  font-weight: 300;
+  src: local(".SFNS-Light"), local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Segoe UI Light"), local("Ubuntu Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
 }
 @font-face {
-  font-family: "play";
+  font-family: "system";
+  font-style: italic;
+  font-weight: 300;
+  src: local(".SFNS-LightItalic"), local(".SFNSText-LightItalic"), local(".HelveticaNeueDeskInterface-Italic"), local(".LucidaGrandeUI"), local("Segoe UI Light Italic"), local("Ubuntu Light Italic"), local("Roboto-LightItalic"), local("DroidSans"), local("Tahoma");
+}
+@font-face {
+  font-family: "system";
+  font-style: normal;
+  font-weight: 400;
+  src: local(".SFNS-Regular"), local(".SFNSText-Regular"), local(".HelveticaNeueDeskInterface-Regular"), local(".LucidaGrandeUI"), local("Segoe UI"), local("Ubuntu"), local("Roboto-Regular"), local("DroidSans"), local("Tahoma");
+}
+@font-face {
+  font-family: "system";
+  font-style: italic;
+  font-weight: 400;
+  src: local(".SFNS-Italic"), local(".SFNSText-Italic"), local(".HelveticaNeueDeskInterface-Italic"), local(".LucidaGrandeUI"), local("Segoe UI Italic"), local("Ubuntu Italic"), local("Roboto-Italic"), local("DroidSans"), local("Tahoma");
+}
+@font-face {
+  font-family: "system";
+  font-style: normal;
   font-weight: 500;
-  src: url("/fonts/Playfair_Display/PlayfairDisplay-Medium.ttf");
+  src: local(".SFNS-Medium"), local(".SFNSText-Medium"), local(".HelveticaNeueDeskInterface-MediumP4"), local(".LucidaGrandeUI"), local("Segoe UI Semibold"), local("Ubuntu Medium"), local("Roboto-Medium"), local("DroidSans-Bold"), local("Tahoma Bold");
 }
 @font-face {
-  font-family: "play";
-  font-weight: 600;
-  src: url("/fonts/Playfair_Display/PlayfairDisplay-Bold.ttf");
+  font-family: "system";
+  font-style: italic;
+  font-weight: 500;
+  src: local(".SFNS-MediumItalic"), local(".SFNSText-MediumItalic"), local(".HelveticaNeueDeskInterface-MediumItalicP4"), local(".LucidaGrandeUI"), local("Segoe UI Semibold Italic"), local("Ubuntu Medium Italic"), local("Roboto-MediumItalic"), local("DroidSans-Bold"), local("Tahoma Bold");
 }
 @font-face {
-  font-family: "allura";
-  font-weight: 400;
-  src: url("/fonts/Allura/Allura-Regular.ttf");
+  font-family: "system";
+  font-style: normal;
+  font-weight: 700;
+  src: local(".SFNS-Bold"), local(".SFNSText-Bold"), local(".HelveticaNeueDeskInterface-Bold"), local(".LucidaGrandeUI"), local("Segoe UI Bold"), local("Ubuntu Bold"), local("Roboto-Bold"), local("DroidSans-Bold"), local("Tahoma Bold");
+}
+@font-face {
+  font-family: "system";
+  font-style: italic;
+  font-weight: 700;
+  src: local(".SFNS-BoldItalic"), local(".SFNSText-BoldItalic"), local(".HelveticaNeueDeskInterface-BoldItalic"), local(".LucidaGrandeUI"), local("Segoe UI Bold Italic"), local("Ubuntu Bold Italic"), local("Roboto-BoldItalic"), local("DroidSans-Bold"), local("Tahoma Bold");
 }
 @font-face {
   font-family: "argesta";
@@ -211,6 +239,14 @@ button {
 }
 .is_fillable:hover::before {
   width: 100%;
+}
+
+.hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  pointer-events: none;
 }
 
 .btn-ripple {
@@ -497,12 +533,22 @@ hr {
   height: 1px;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html {
   max-height: 100%;
 }
 
 body {
-  font-weight: 400;
+  font-family: "system";
+  font-weight: 300;
+  font-size: 18px;
 }
 
 [x-cloak] {
@@ -665,7 +711,7 @@ brightness when sidebar expanded
   box-shadow: 0 5px 10px 1px black;
 }
 .poms-title h1 {
-  font-family: play;
+  font-family: "argesta";
   font-size: 4em;
   font-weight: 600;
   margin: 0;
@@ -716,7 +762,7 @@ brightness when sidebar expanded
 }
 .poms-inner .pom-name {
   top: 0;
-  font-family: play;
+  font-family: "argesta";
   font-weight: 500;
   letter-spacing: 1px;
   font-size: 23px;

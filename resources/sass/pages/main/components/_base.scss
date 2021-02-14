@@ -16,10 +16,9 @@ body,
 }
 
 body {
-	font: 400 100% system-ui, sans-serif;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-		"Helvetica Neue", sans-serif;
+	font-family: "system";
+	font-weight: 400;
+	font-size: 100%;
 	overflow-x: hidden !important;
 	overflow-y: scroll;
 	background: $blackMain;

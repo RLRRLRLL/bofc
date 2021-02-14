@@ -7,7 +7,7 @@
 		@include('includes.main.partials.grid')
 		@include('includes.common.special-svgs')
 		
-		<div class="social_ctas">
+		{{-- <div class="social_ctas">
 			<a class="social_ctas__item fb" href="https://facebook.com">
 				Find us on Facebook 
 				<svg class="social_ctas__item--svg">
@@ -24,7 +24,7 @@
 					</use>
 				</svg>
 			</a>
-		</div>
+		</div> --}}
 		
 		
 		<section id="header" class="section section-header ai ai__from-bottom">

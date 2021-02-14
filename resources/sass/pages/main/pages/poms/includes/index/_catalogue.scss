@@ -65,27 +65,28 @@
 				}
 
 				&--cta {
-					background: $accentSecondary;
+					background: lighten($accentSecondary, 20%);
 					transition: background $cubic;
 					border-radius: 7px;
 					padding: 8px 15px;
 					margin-bottom: 0;
+					text-decoration: none;
+					text-align: center;
 
 					&:hover {
-						.idc-text::after {
+						& > span::after {
 							transform: translateX(0);
 							transition: transform 0.15s ease, opacity 0.15s ease;
 							opacity: 1;
 						}
-
-						background: lighten($accentSecondary, 20%);
 					}
 
-					.idc-text {
+					& > span {
 						font-size: 18px;
 						font-weight: 500;
 						color: $blackSecondary;
 						position: relative;
+						pointer-events: none;
 
 						&::after {
 							content: "\2192";

@@ -21,6 +21,16 @@ button {
 	@include fill-effect($white08);
 }
 
+// hidden class
+// used for svgs for now
+.hidden {
+	position: absolute;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	pointer-events: none;
+}
+
 // ripple effect
 .btn-ripple {
 	position: relative;

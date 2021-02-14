@@ -1,0 +1,138 @@
+&__body {
+	display: grid;
+	grid-template: 1fr / 0.4fr 0.6fr;
+	grid-gap: 15px;
+
+	&--slider,
+	&--info {
+		padding: 20px;
+		border-radius: 5px;
+		background: $background;
+	}
+
+	// Slider
+	&--slider {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(50px, 1fr));
+		grid-template-rows: repeat(auto-fill, minmax(200px, 400px));
+		grid-gap: 10px;
+
+		& > div {
+			&.big-slide-cont {
+				grid-column: 1 / -1;
+				grid-row: auto;
+				overflow: hidden;
+				margin-bottom: 20px;
+			}
+
+			img {
+				@include image;
+				box-shadow: 0 0 5px 1px black;
+			}
+
+			img.big-slide {
+				border-radius: 2.5;
+				/* start transition effect */
+				transition: all 0.15s;
+				transform: translateY(0);
+				opacity: 1;
+				&.slide-transition {
+					transform: translateY(10%);
+					opacity: 0;
+				}
+				/* end transition effect */
+			}
+
+			img.slide {
+				cursor: pointer;
+				border-radius: 5px;
+				opacity: 0.75;
+				transition: opacity 0.15s ease;
+				&:hover {
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	// Info
+	&--info {
+		@include flex-column;
+		justify-content: space-around;
+
+		.info__primary {
+			// background: rgba(olive, 0.5);
+			display: grid;
+			width: 100%;
+			grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+			grid-template-rows: repeat(auto-fill, 1fr);
+			align-items: center;
+			grid-gap: 20px 25px;
+
+			&--item {
+				@include flex-column;
+				padding-left: 10px;
+
+				.item-title {
+					font-size: 14px;
+					font-family: argesta;
+					text-transform: uppercase;
+					color: $grayMain;
+				}
+
+				.item-value {
+					font-size: 19px;
+					letter-spacing: 1px;
+					color: $white;
+					font-weight: 300;
+				}
+			}
+		}
+
+		hr {
+			border-top: 1px solid rgba($grayMain, 0.3);
+		}
+
+		.info__rels {
+			&--title {
+				color: $grayMain;
+				font-weight: 300;
+				font-family: argesta;
+				text-transform: uppercase;
+				font-size: 18px;
+				padding: 5px;
+				margin-bottom: 15px;
+			}
+
+			&--list {
+				@include flex-column;
+
+				li {
+					font-size: 18px;
+					padding: 5px;
+
+					&:not(:last-child) {
+						margin-bottom: 15px;
+					}
+
+					.info-title {
+						font-weight: 400;
+						color: $white;
+					}
+
+					.info-link {
+						text-decoration: underline;
+						font-weight: 300;
+						color: $blueMain;
+						transition: all 0.15s ease;
+
+						&:hover {
+							text-decoration: none;
+							color: lighten($blueMain, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+}
