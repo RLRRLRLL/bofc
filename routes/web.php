@@ -32,6 +32,9 @@ Auth::routes();
 
 // admin pages
 Route::middleware('auth')->prefix('/admin')->group(function() {
+	// Settings
+	Route::get('/settings', [AdminPagesController::class, 'settings'])->name('settings');
+	// Pom related
 	Route::get('/', [AdminPagesController::class, 'index'])->name('admin');
 	Route::get('/create', [AdminPagesController::class, 'createPom'])->name('create.new.pom');
 	Route::get('/pom/{id}', [AdminPagesController::class, 'show'])->name('show.new.pom');

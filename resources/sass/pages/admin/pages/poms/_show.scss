@@ -1,228 +1,32 @@
 .single {
-	width: 100%;
+	margin: 0 auto;
+	width: 85%;
 	height: 100%;
 	display: flex;
-	justify-content: space-around;
-	border: 1px solid rgba($blueMain, 0.4);
+	flex-direction: column;
+	align-items: stretch;
 	border-radius: 5px;
 	overflow: hidden;
 	background: #191919;
+	box-shadow: 0 3px 7px 2px black;
 
-	&__left,
-	&__right {
+	.info,
+	.gallery {
 		padding: 25px;
 		overflow-x: hidden;
+		width: 100%;
+		height: calc(100% - 40px);
 
 		// scroll bar
 		@include scrollbar;
 	}
 
-	&__left {
-		width: 40%;
+	// Tabs
+	@import "./../../includes/show/_tabs";
 
-		&--name {
-			color: $grayLighter;
-			text-align: center;
-			font-weight: 500;
+	// Info
+	@import "./../../includes/show/_info";
 
-			span {
-				font-weight: 400;
-				font-size: 19px;
-				letter-spacing: 1px;
-				color: $grayMain;
-			}
-		}
-
-		&--info {
-			& > ul {
-				display: flex;
-				flex-direction: column;
-				padding-top: 25px;
-
-				li {
-					padding: 5px 10px;
-					color: $blueMain;
-					display: flex;
-					align-items: center;
-
-					&.titles {
-						@include flex-column;
-						align-items: flex-start;
-						text-align: left;
-
-						span {
-							margin-top: 10px;
-						}
-					}
-
-					& > input,
-					textarea {
-						background: transparent;
-						border: none;
-						outline: none;
-						width: auto;
-						padding: 0 0 0 10px;
-						color: white;
-					}
-
-					& > textarea {
-						overflow: scroll;
-						overflow-x: hidden;
-						width: 100%;
-						word-break: break-all;
-						padding: 5px;
-					}
-
-					&:hover {
-						background: rgba(white, 0.06);
-					}
-
-					span {
-						color: $greenMain;
-						cursor: pointer;
-						padding-left: 5px;
-
-						&:hover {
-							color: $white;
-							text-decoration: underline;
-						}
-					}
-				}
-			}
-
-			// edit line btn
-			button {
-				background: transparent;
-				padding: 5px;
-				color: rgba($grayMain, 0.4);
-				outline: none;
-				border: none;
-				transition: color 0.1s;
-
-				&:hover {
-					color: $grayLighter;
-				}
-			}
-		}
-	}
-
-	&__right {
-		width: 60%;
-		@include flex-column;
-		background: #101010;
-
-		// Upload new images
-		&--upload {
-			margin-bottom: 25px;
-
-			& > form {
-				& > button {
-					outline: none;
-					border: none;
-					background: transparent;
-					color: lighten($grayMain, 10%);
-					border: 1px solid lighten($grayMain, 10%);
-					border-radius: 5px;
-					transition: 0.15s;
-					@include flex-center(row);
-
-					&:hover {
-						color: $greenMain;
-						border-color: $greenMain;
-					}
-				}
-
-				.images-cont {
-					display: grid;
-					grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-					grid-template-rows: repeat(auto-fit, 150px);
-					grid-gap: 5px;
-					margin-top: 25px;
-					padding: 10px;
-
-					background: darken($gitdark, 3%);
-					box-shadow: 0 0 5px 1px inset black;
-
-					img {
-						@include image;
-						border-radius: 3px;
-					}
-
-					&__item {
-						position: relative;
-
-						button {
-							@include cancel-image-button;
-						}
-					}
-				}
-			}
-		}
-
-		&--grid {
-			display: grid;
-			grid-template: repeat(auto-fit, 150px) / repeat(
-					auto-fit,
-					minmax(150px, 0.5fr)
-				);
-			grid-gap: 5px;
-			@include scrollbar;
-
-			& > div {
-				position: relative;
-				cursor: pointer;
-
-				&:hover img {
-					opacity: 1;
-				}
-
-				img {
-					@include image;
-					opacity: 0.6;
-					border: 1px solid rgba($grayMain, 0.4);
-					transition: opacity 0.15s ease-out;
-
-					&.avatar {
-						border: 2px solid $blueMain;
-					}
-				}
-
-				button {
-					@include cancel-image-button;
-				}
-			}
-		}
-	}
-}
-
-.success-alert {
-	align-self: flex-start;
-	display: flex;
-	width: 100%;
-	margin-top: 15px;
-	margin-bottom: 0;
-
-	position: relative;
-
-	background: rgba($greenMain, 0.5);
-	color: white;
-
-	span {
-		width: 100%;
-	}
-
-	a {
-		position: absolute;
-		right: 3px;
-		top: 0;
-		color: white;
-
-		&:hover {
-			color: $blackMain;
-		}
-
-		i {
-			pointer-events: none;
-		}
-	}
+	// Gallery
+	@import "./../../includes/show/_gallery";
 }

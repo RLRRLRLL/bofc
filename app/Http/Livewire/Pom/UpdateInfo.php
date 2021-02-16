@@ -2,15 +2,27 @@
 
 namespace App\Http\Livewire\Pom;
 
-use App\Models\Pom;
 use Livewire\Component;
+use App\Models\Breeder;
+use App\Models\Owner;
+use App\Models\Pom;
 
 class UpdateInfo extends Component
 {
-	public $pom, $name, $color, $height, $weight, $teeth, 
-	$birthday, $is_for_sale, $is_puppy, $father, 
-	$mother, $grandfather, $grandmother, $breeder, 
-	$owner, $titles, $gender, $fontanel;
+	public $pom;
+
+	// base
+	public $name, $gender, $color, $height, $weight, $teeth, $birthday, $titles;
+
+	// Collections for selects
+	public $males, $females, $owners, $breeders;
+
+	// O | B ids
+	public $owner_id, $breeder_id;
+
+	// Family ids
+	public $father_id, $mother_id, $child_id, 
+	$grandfather_id, $grandmother_id, $grandchild_id;
 	
 	public function mount($id)
 	{
@@ -30,9 +42,24 @@ class UpdateInfo extends Component
 		$this->pom->$param = $current ? 1 : 0;
 		$this->pom->update();
 	}
+
+	public function applyOption($param, $id)
+	{
+		$this->pom->update([$param => $id]);
+	}
 	
     public function render()
     {
-        return view('livewire.pom.update-info');
+		$this->females = Pom::where('gender', 'female')->get();
+		$this->males = Pom::where('gender', 'male')->get();
+		$this->breeders = Breeder::all();
+		$this->owners = Owner::all();
+		
+        return view('livewire.pom.update-info', [
+			'males' => $this->males,
+			'owners' => $this->owners,
+			'females' => $this->females,
+			'breeders' => $this->breeders,
+		]);
     }
 }

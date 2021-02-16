@@ -13,6 +13,11 @@ class AdminPagesController extends Controller
     {
         $this->middleware('auth');
 	}
+
+	public function settings()
+	{
+		return view('pages.admin.settings');
+	}
 	
     /**
      * Display a listing of the resource.

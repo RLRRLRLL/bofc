@@ -5,7 +5,9 @@
 	<figure class="modal" >
 		<div class="modal__inner" x-on:click.away="showModal = false">
 			<div class="modal__header">
-				<p class="modal__header--title">🔥</p>
+				<h2 class="modal__header--title">
+					Change main info
+				</h2>
 				<button 
 					class="modal__header--close"
 					x-on:click="showModal = false"
@@ -15,11 +17,16 @@
 			</div>
 
 			<div class="modal__body">
-				<p>Отлично! Теперь можно выбрать главное изображение для шпица и опубликовать его.</p>
+				{{-- {{  }} --}}
 			</div>
 
 			<div class="modal__footer">
-				<a :href="">Перейти</a>
+				<button type="button" class="cancel" x-on:click="showModal = false">
+					Cancel
+				</button>
+				<button type="button" class="submit" x-on:click="showModal = false">
+					Save
+				</button>
 			</div>
 		</div>
 	</figure>

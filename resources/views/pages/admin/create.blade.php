@@ -4,11 +4,12 @@
 <div class="container-create">
 	<!-- create new pom form -->
 	<div 
-		x-data="{infoShow: true, imagesShow: false}"
+		x-data="{infoShow: true, imagesShow: false, showModal: true}"
 		x-on:hide-info-section="infoShow = false; imagesShow = true"
 		x-on:hide-images-section="imagesShow = false; "
 		x-cloak
 	>
+		{{-- @include('includes.admin.modal') --}}
 
 		<div x-show.transition.in.duration.500ms="infoShow">
 			<livewire:pom.upload-info />

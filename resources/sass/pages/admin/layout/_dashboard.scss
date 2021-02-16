@@ -182,3 +182,71 @@ brightness when sidebar expanded
 	height: 20px;
 	margin-bottom: 2px;
 }
+
+// alers
+.alert-main {
+	position: relative;
+	align-self: flex-start;
+	display: flex;
+	width: 100%;
+	margin: 15px 0 0 0;
+	color: white;
+	background: $grayMain;
+
+	&.success {
+		background: rgba($greenMain, 0.5);
+	}
+
+	&.error {
+		background: rgba(#ea4335, 0.5);
+	}
+
+	span {
+		width: 100%;
+	}
+
+	a {
+		position: absolute;
+		right: 3px;
+		top: 0;
+		color: white;
+
+		&:hover {
+			color: $blackMain;
+		}
+
+		i {
+			pointer-events: none;
+		}
+	}
+}
+.success-alert {
+	position: relative;
+	align-self: flex-start;
+	display: flex;
+	width: 100%;
+	margin: 15px 0 0 0;
+	background: rgba($greenMain, 0.5);
+	color: white;
+
+	span {
+		width: 100%;
+	}
+
+	a {
+		position: absolute;
+		right: 3px;
+		top: 0;
+		color: white;
+
+		&:hover {
+			color: $blackMain;
+		}
+
+		i {
+			pointer-events: none;
+		}
+	}
+}
+
+// select dropdowns

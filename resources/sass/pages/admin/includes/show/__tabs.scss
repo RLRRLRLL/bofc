@@ -1,0 +1,35 @@
+&__tabs {
+	width: 100%;
+	height: 40px;
+	display: flex;
+	// align-items: stretch;
+
+	button {
+		@include flex-center(row);
+		width: 50%;
+		background: $blackMain;
+		color: $white04;
+		outline: none !important;
+		transition: 0.15s ease;
+		font-size: 18px;
+		font-weight: 300;
+
+		i {
+			margin-left: 10px;
+		}
+
+		&:hover {
+			background: rgba(white, 0.05);
+			color: $white07;
+		}
+
+		&.active {
+			background: $blackSecondary;
+			color: white;
+		}
+
+		&.active {
+			box-shadow: 0 0 5px 0 inset rbga($blueMain, 1);
+		}
+	}
+}

@@ -23,6 +23,9 @@
 	flex-wrap: wrap;
 	justify-content: center;
 
+	// Selects
+	@include select;
+
 	.inputs {
 		width: 75%;
 		display: flex;

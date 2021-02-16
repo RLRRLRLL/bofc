@@ -112,107 +112,244 @@
 							@enderror
 						</div> <!-- ------------------------------------- -->
 
-						<div class="form-group form-over">
-							<label for="breeder">
-								Breeder: <span>{{ $breeder }}</span>
+						<div class="form-group form-over" x-data="{expandList: false, selected: ''}">
+							<label>
+								Owner: <span x-text="selected"></span>
 							</label>
 
-							<input id="breeder"
-									wire:model.debounce.400ms="breeder"
-									name="breeder"
-									type="text" 
-									class="form-control" 
-									placeholder="Enter breeder">
+							<div class="select">
+								<button 
+									class="select__button" 
+									type="button"
+									x-on:click.prevent="expandList =! expandList"
+									:class="{'active': expandList === true}"
+									x-text="selected || 'Select owner'"
+								></button>
 
-							@error('breeder')
-								<p class="text-danger">{{ $message }}</p>
-							@enderror
-						</div> <!-- ------------------------------------- -->
+								<ul 
+									class="select__list" 
+									x-show.transition.duration.250ms="expandList"
+									x-on:click.away="expandList = false"
+								>
+									<!-- fallback option -->
+									<li x-on:click="expandList = false; selected = ''" 
+										wire:click="$set('owner_id', null)"
+										>
+										Select later
+									</li>
+									<!-- loop -->
+									@foreach($owners as $owner)
+										<li 
+											x-on:click="expandList = false; selected = '{{ $owner->owner }}'" 
+											wire:click="$set('owner_id', {{ $owner->id }})"
+											 
+										>
+											{{ $owner->owner }}
+										</li>
+									@endforeach
+								</ul>
+							</div>
+						</div>
 
-						<div class="form-group form-over">
-							<label for="owner">
-								Owner: <span>{{ $owner }}</span>
+						<div class="form-group form-over" x-data="{expandList: false, selected: ''}">
+							<label>
+								Breeder: <span x-text="selected"></span>
 							</label>
 
-							<input id="owner"
-									wire:model.debounce.400ms="owner"
-									name="owner"
-									type="text" 
-									class="form-control" 
-									placeholder="Enter owner">
+							<div class="select">
+								<button 
+									class="select__button" 
+									type="button"
+									x-on:click.prevent="expandList =! expandList"
+									:class="{'active': expandList === true}"
+									x-text="selected || 'Select breeder'"
+								></button>
 
-							@error('owner')
-								<p class="text-danger">{{ $message }}</p>
-							@enderror
-						</div> <!-- ------------------------------------- -->
+								<ul 
+									class="select__list" 
+									x-show.transition.duration.250ms="expandList"
+									x-on:click.away="expandList = false"
+								>
+									<!-- fallback option -->
+									<li x-on:click="expandList = false; selected = ''" 
+										wire:click="$set('breeder_id', null)"
+										>
+										Select later
+									</li>
+									<!-- loop -->
+									@foreach($breeders as $breeder)
+										<li 
+											x-on:click="expandList = false; selected = '{{ $breeder->breeder }}'" 
+											wire:click="$set('breeder_id', {{ $breeder->id }})"
+											 
+										>
+											{{ $breeder->breeder }}
+										</li>
+									@endforeach
+								</ul>
+							</div>
+						</div>
 
-						<div class="form-group form-over">
-							<label for="father">
-								Father: <span>{{ $father }}</span>
+						<!-- Family select relationships -->
+						<div class="form-group form-over" x-data="{expandList: false, selected: ''}">
+							<label>
+								Father: <span x-text="selected"></span>
 							</label>
 
-							<input id="father"
-									wire:model.debounce.400ms="father"
-									name="father"
-									type="text" 
-									class="form-control" 
-									placeholder="Enter father">
+							<div class="select">
+								<button 
+									class="select__button" 
+									type="button"
+									x-on:click.prevent="expandList =! expandList"
+									:class="{'active': expandList === true}"
+									x-text="selected || 'Select a pom'"
+								></button>
 
-							@error('father')
-								<p class="text-danger">{{ $message }}</p>
-							@enderror
-						</div> <!-- ------------------------------------- -->
+								<ul 
+									class="select__list" 
+									x-show.transition.duration.250ms="expandList"
+									x-on:click.away="expandList = false"
+								>
+									<!-- fallback option -->
+									<li x-on:click="
+										expandList = false; 
+										selected = ''
+									" wire:click="$set('father_id', null)">
+										Select later
+									</li>
+									<!-- loop -->
+									@foreach($males as $male)
+										<li 
+											x-on:click="expandList = false; selected = '{{ $male->name }}'" 
+											wire:click="$set('father_id', {{ $male->id }})"
+											 
+										>
+											{{ $male->name }}
+										</li>
+									@endforeach
+								</ul>
+							</div>
+						</div>
 
-						<div class="form-group form-over">
-							<label for="mother">
-								Mother: <span>{{ $mother }}</span>
+						<div class="form-group form-over" x-data="{expandList: false, selected: ''}">
+							<label>
+								Mother: <span x-text="selected"></span>
 							</label>
 
-							<input id="mother"
-									wire:model.debounce.400ms="mother"
-									name="mother"
-									type="text" 
-									class="form-control" 
-									placeholder="Enter mother">
+							<div class="select">
+								<button 
+									class="select__button" 
+									type="button"
+									x-on:click.prevent="expandList =! expandList"
+									:class="{'active': expandList === true}"
+									x-text="selected || 'Select a pom'"
+								></button>
 
-							@error('mother')
-								<p class="text-danger">{{ $message }}</p>
-							@enderror
-						</div> <!-- ------------------------------------- -->
+								<ul 
+									class="select__list" 
+									x-show.transition.duration.250ms="expandList"
+									x-on:click.away="expandList = false"
+								>
+									<!-- fallback option -->
+									<li x-on:click="
+										expandList = false; 
+										selected = ''
+									" wire:click="$set('mother_id', null)">
+										Select later
+									</li>
+									<!-- loop -->
+									@foreach($females as $fem)
+										<li 
+											x-on:click="expandList = false; selected = '{{ $fem->name }}'" 
+											wire:click="$set('mother_id', {{ $fem->id }})"
+											 
+										>
+											{{ $fem->name }}
+										</li>
+									@endforeach
+								</ul>
+							</div>
+						</div>
 
-						<div class="form-group form-over">
-							<label for="grandfather">
-								Grandfather: <span>{{ $grandfather }}</span>
+						<div class="form-group form-over" x-data="{expandList: false, selected: ''}">
+							<label>
+								Grandfather: <span x-text="selected"></span>
 							</label>
 
-							<input id="grandfather"
-									wire:model.debounce.400ms="grandfather"
-									name="grandfather"
-									type="text" 
-									class="form-control" 
-									placeholder="Enter grandfather">
+							<div class="select">
+								<button 
+									class="select__button" 
+									type="button"
+									x-on:click.prevent="expandList=!expandList"
+									:class="{'active': expandList === true}"
+									x-text="selected || 'Select a pom'"
+								></button>
 
-							@error('grandfather')
-								<p class="text-danger">{{ $message }}</p>
-							@enderror
-						</div> <!-- ------------------------------------- -->
+								<ul 
+									class="select__list" 
+									x-show.transition.duration.250ms="expandList"
+									x-on:click.away="expandList = false"
+								>
+									<!-- fallback option -->
+									<li x-on:click="
+										expandList = false;
+										selected = ''
+									" wire:click="$set('grandfather_id', null)">
+										Select later
+									</li>
+									<!-- loop -->
+									@foreach($males as $male)
+										<li 
+											x-on:click="expandList = false; selected = '{{ $male->name }}'" 
+											wire:click="$set('grandfather_id', {{ $male->id }})"
+											 
+										>
+											{{ $male->name }}
+										</li>
+									@endforeach
+								</ul>
+							</div>
+						</div>
 
-						<div class="form-group form-over">
-							<label for="grandmother">
-								Grandmother: <span>{{ $grandmother }}</span>
+						<div class="form-group form-over" x-data="{expandList: false, selected: ''}">
+							<label>
+								Grandmother: <span x-text="selected"></span>
 							</label>
 
-							<input id="grandmother"
-									wire:model.debounce.400ms="grandmother"
-									name="grandmother"
-									type="text" 
-									class="form-control" 
-									placeholder="Enter grandmother">
+							<div class="select">
+								<button 
+									class="select__button" 
+									type="button"
+									x-on:click.prevent="expandList =! expandList"
+									:class="{'active': expandList === true}"
+									x-text="selected || 'Select a pom'"
+								></button>
 
-							@error('grandmother')
-								<p class="text-danger">{{ $message }}</p>
-							@enderror
-						</div> <!-- ------------------------------------- -->
+								<ul 
+									class="select__list" 
+									x-show.transition.duration.250ms="expandList"
+									x-on:click.away="expandList = false"
+								>
+									<!-- fallback option -->
+									<li 
+										x-on:click="expandList = false; selected = ''" 
+										wire:click="$set('grandmother_id', null)"
+										 
+									>
+										Select later
+									</li>
+									<!-- loop -->
+									@foreach($females as $fem)
+										<li x-on:click="
+											expandList = false;
+											selected = '{{ $fem->name }}'
+										" wire:click="$set('grandmother_id', {{ $fem->id }})">
+											{{ $fem->name }}
+										</li>
+									@endforeach
+								</ul>
+							</div>
+						</div>
 					</div>
 
 					<!-- Checkboxes & Radios { car } -->
@@ -321,6 +458,7 @@
 						</div>
 					</div>
 
+					<!-- Titles -->
 					<div class="titles">
 						<div class="form-group form-over">
 							<label for="titles">
@@ -352,7 +490,7 @@
 			<div wire:loading wire:target="saveInfo">
 				@include('includes.common.spinner')
 			</div>
-			<i class="fas fa-angle-double-right"></i>
+			<i wire:loading.class="d-none" class="fas fa-angle-double-right"></i>
 		</button>
 	</form>
 </div>

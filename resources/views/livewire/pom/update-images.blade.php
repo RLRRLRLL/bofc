@@ -1,6 +1,6 @@
-<div class="single__right">
+<div class="gallery" x-show.transition.in.duration.350ms="activeTab == 'images'">
 	
-	<div class="single__right--upload" x-data="{showSuccess:true}">
+	<div class="gallery__upload" x-data="{showSuccess:true}">
 		<form wire:submit.prevent="updateImages">
 			@if (count($images) > 0)
 				<button type="submit" wire:click.prevent="updateImages">
@@ -25,13 +25,13 @@
 					@endif
 				</div>
 			@else
-				<a href="#" x-on:click.prevent="$refs.imagesInput.click()">
+				<a href="#" x-on:click.prevent="if($refs.imagesInput) $refs.imagesInput.click()">
 					Upload new Images
 				</a>
 			@endif
 
 			@if ($success) 
-				<div class="alert success-alert" x-show.transition.duration.500ms="showSuccess">
+				<div class="alert alert-main success" x-show.transition.duration.500ms="showSuccess">
 					<span>{{ $success }}</span>
 					<a href="#" x-on:click.prevent="showSuccess = false">
 						&#10005;
@@ -50,7 +50,7 @@
 		</form>
 	</div>
 
-	<div class="single__right--grid">
+	<div class="gallery__grid">
 		@foreach($pom->images as $image)
 			<div wire:click="makeAvatar({{ $image->id }})">
 				<img src="{{ '/storage/images/'.$pom->id.'/'.$image->url}}" alt="Bubbles of Champain | 		Pomeranian Spitz | Померанский шпиц | {{ $pom->name }}" class="{{ ($image->is_avatar === 1) ? 'avatar' : '' }}">

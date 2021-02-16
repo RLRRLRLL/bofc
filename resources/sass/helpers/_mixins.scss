@@ -36,6 +36,18 @@
 	}
 }
 
+// scroll bar with transparent bg
+@mixin scrollbar-modal() {
+	&::-webkit-scrollbar {
+		background: transparent;
+		width: 4px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $grayMain;
+	}
+}
+
 // Gradient borders
 @mixin border-gradient($gradient) {
 	border: 0px solid;
@@ -94,7 +106,7 @@
 	cursor: pointer;
 	color: $grayMain;
 	box-shadow: none;
-	border: 1px solid $grayMain;
+	border: 1px solid rgba($grayMain, 0.5);
 	border-radius: 7px;
 	padding: 20px;
 	transition: all 0.15s ease-in;
@@ -206,6 +218,71 @@
 		&::before,
 		&::after {
 			opacity: 1;
+		}
+	}
+}
+
+// select dropdown
+@mixin select() {
+	.select {
+		width: 100%;
+		position: relative;
+
+		/* Styles for create pom page START */
+		&__button,
+		&__list li {
+			padding: 10px 10px;
+		}
+
+		&__button {
+			width: 100%;
+			height: 100%;
+			border: none;
+			outline: none !important;
+			background: darken($blackMain, 4%);
+			color: rgba(white, 0.7);
+			border: 1px solid rgba(white, 0.35);
+			border-radius: 4px;
+			font-weight: 300;
+			cursor: pointer;
+			text-align: left;
+			transition: background 0.15s, border 0.15s;
+
+			&:hover,
+			&.active {
+				border-color: rgba($blueMain, 0.7);
+				color: $white08;
+			}
+		}
+
+		&__list {
+			position: absolute;
+			top: 98%;
+			left: 0;
+			right: 0;
+			width: 100%;
+			@include flex-column;
+			align-items: stretch;
+			padding: 10px 0;
+			z-index: $medium;
+
+			background: $blackSecondary;
+			box-shadow: 0 4px 5px 0 $white01;
+
+			li {
+				display: block;
+				cursor: pointer;
+				color: $white06;
+
+				&:first-child {
+					color: $white02;
+				}
+
+				&:hover {
+					color: white;
+					background: rgba(white, 0.06);
+				}
+			}
 		}
 	}
 }
