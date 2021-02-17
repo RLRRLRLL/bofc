@@ -15,21 +15,16 @@
 	<body>
 		
 		<!-- wrapper -->
-		<div class="grid" x-data="{open : false}">
-			<header class="header" :class="{'darken': open}">
+		<div class="grid">
+			<header class="header">
 				<ul class="header__left">
 					<li>
-						<button type="button"
-								class="burger"
-								@click="open = !open"
-						>
+						<button class="burger">
 							<i class="fas fa-bars"></i>
 						</button>
 					</li>
 					<li>
-						<a href="/">
-							{{ config('app.name') }}
-						</a>
+						<a href="/">{{ config('app.name') }}</a>
 					</li>
 				</ul>
 
@@ -46,33 +41,10 @@
 							</a>
 						</li>
 					@endguest
-					@auth
-						<li id="authUserName">
-							{{ Auth::user()->name }}
-						</li>
-						<li>
-							<a href="{{ route('logout') }}"
-								onclick="event.preventDefault();
-								document.getElementById('logout-form').submit();">
-								Sign out
-								<form id="logout-form" 
-										action="{{ route('logout') }}" 
-										method="POST" 
-										class="d-none">
-									@csrf
-								</form>
-							</a>
-						</li>
-					@endauth
 				</ul>
 			</header>
 
-			<aside class="sidebar"
-					x-cloak
-					x-show.transition.out.duration.500ms="open"
-					@click.away="open = false"
-					:class="{'show': open}"
-					>
+			<aside class="sidebar">
 				<div class="sidebar__header">
 				</div>
 
@@ -122,9 +94,11 @@
 						</a>
 					</li>
 				</ul>
+
+				<button class="sidebar__close">&#10005;</button>
 			</aside>
 
-			<main class="main" :class="{'darken': open}">
+			<main class="main">
 				@yield('content')
 			</main>
 		</div>

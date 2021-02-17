@@ -1,4 +1,4 @@
-<section class="poms__header ai ai__from-bottom">
+<section class="poms__header anim anim-bottom">
 	<h1 class="poms__header--title">
 		Find yourself a best friend.
 	</h1>

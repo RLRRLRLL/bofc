@@ -1,5 +1,5 @@
 <div class="show">
-	<section class="show__header">
+	<section class="show__header anim anim-bottom">
 		<h1>
 			{{ ucfirst($pom->name) }}
 		</h1>
@@ -8,7 +8,7 @@
 		</button>
 	</section>
 
-	<section class="show__body">
+	<section class="show__body anim anim-bottom anim-delay">
 		<figure class="show__body--slider" x-data="{trans: false}">
 			<!-- -->
 			<div class="big-slide-cont">
@@ -77,27 +77,51 @@
 				<ul class="info__rels--list">
 					<li>
 						<span class="info-title">Father:</span>
-						<a href="#" class="info-link">{{ $pom->father }}</a>
+						@if ($poms->find($pom->father_id) != null)
+							<a href="{{ route('poms.show', ['id' => $pom->father_id]) }}" class="info-link">{{ $poms->find($pom->father_id)->name }}</a>
+						@else
+							<span class="info-na">Not specified</span>
+						@endif
 					</li>
 					<li>
 						<span class="info-title">Mother:</span>
-						<a href="#" class="info-link">{{ $pom->mother }}</a>
+						@if ($poms->find($pom->mother_id) != null)
+							<a href="{{ route('poms.show', ['id' => $pom->mother_id]) }}" class="info-link">{{ $poms->find($pom->mother_id)->name }}</a>
+						@else
+							<span class="info-na">Not specified</span>
+						@endif	
 					</li>
 					<li>
 						<span class="info-title">Grandfather:</span>
-						<a href="#" class="info-link">{{ $pom->grandfather }}</a>
+						@if ($poms->find($pom->grandfather_id) != null)
+							<a href="{{ route('poms.show', ['id' => $pom->grandfather_id]) }}" class="info-link">{{ $poms->find($pom->grandfather_id)->name }}</a>
+						@else
+							<span class="info-na">Not specified</span>
+						@endif
 					</li>
 					<li>
 						<span class="info-title">Grandmother:</span>
-						<a href="#" class="info-link">{{ $pom->grandmother }}</a>
+						@if ($poms->find($pom->grandmother_id) != null)
+							<a href="{{ route('poms.show', ['id' => $pom->grandmother_id]) }}" class="info-link">{{ $poms->find($pom->grandmother_id)->name }}</a>
+						@else
+							<span class="info-na">Not specified</span>
+						@endif
 					</li>
 					<li>
 						<span class="info-title">Owner:</span>
-						<a href="#" class="info-link">{{ $pom->owner }}</a>
+						@if ($pom->owner)
+							<span class="info-na">{{ $pom->owner->owner }}</span>
+						@else
+							<span class="info-na">Not specified</span>
+						@endif
 					</li>
 					<li>
 						<span class="info-title">Breeder:</span>
-						<a href="#" class="info-link">{{ $pom->breeder }}</a>
+						@if ($pom->breeder)
+							<span class="info-na">{{ $pom->breeder->breeder }}</span>
+						@else
+							<span class="info-na">Not specified</span>
+						@endif
 					</li>
 				</ul>
 			</div>

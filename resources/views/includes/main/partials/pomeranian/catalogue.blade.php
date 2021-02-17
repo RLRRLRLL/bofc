@@ -1,4 +1,4 @@
-<section class="poms__catalogue ai ai__from-bottom ai__with-delay"
+<section class="poms__catalogue"
 		:class="{'poms__catalogue--grid': gridViewActive, 'poms__catalogue--list': listViewActive}"
 >
 	@if($poms)

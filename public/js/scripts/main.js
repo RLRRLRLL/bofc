@@ -25511,7 +25511,7 @@ __webpack_require__.r(__webpack_exports__);
  // small animations across the web [slide'n'fade]
 
 function slidesAndFades() {
-  var animItems = document.querySelectorAll(".ai");
+  var animItems = document.querySelectorAll(".anim");
 
   if (animItems.length > 0) {
     var runAnimations = function runAnimations() {
@@ -25544,7 +25544,7 @@ function slidesAndFades() {
         }
 
         if (pageYOffset > animItemOffset - animItemPoint && pageYOffset < animItemOffset + animItemHeight) {
-          animItem.classList.add("ai__active");
+          animItem.classList.add("anim-active");
         }
       }
     };
@@ -25946,7 +25946,9 @@ document.addEventListener("DOMContentLoaded", function () {
     Object(_components_main_SelectPoms__WEBPACK_IMPORTED_MODULE_2__["selectPoms"])();
 
     if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".show__header")) {
-      Object(_components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__["Bubbles"])(".show__header", 1500);
+      setTimeout(function () {
+        Object(_components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__["Bubbles"])(".show__header", 1500);
+      }, 1500);
     }
   }
 }, false);

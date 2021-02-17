@@ -2,7 +2,7 @@ import { domReady } from "./../Utils";
 
 // small animations across the web [slide'n'fade]
 export default function slidesAndFades() {
-	const animItems = document.querySelectorAll(".ai");
+	const animItems = document.querySelectorAll(".anim");
 
 	if (animItems.length > 0) {
 		const getOffset = e => {
@@ -33,7 +33,7 @@ export default function slidesAndFades() {
 					pageYOffset > animItemOffset - animItemPoint &&
 					pageYOffset < animItemOffset + animItemHeight
 				) {
-					animItem.classList.add("ai__active");
+					animItem.classList.add("anim-active");
 				}
 			}
 		};

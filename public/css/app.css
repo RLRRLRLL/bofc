@@ -160,7 +160,6 @@ a:visited {
 }
 
 button {
-  outline: none;
   border: none;
   box-shadow: none;
   padding: 7px 12px;
@@ -516,14 +515,14 @@ body.body-admin {
   transition: all 0.25s ease;
 }
 
-.ai {
+.anim {
   opacity: 0;
-  transition: all 0.8s ease-in-out 0.4s;
+  transition: all 0.7s ease-in-out 0.35s;
 }
-.ai__with-delay {
-  transition: all 0.8s ease-in-out 0.6666666667s;
+.anim-delay {
+  transition: all 0.7s ease-in-out 0.5833333333s;
 }
-.ai__active {
+.anim-active {
   transform: perspective(1px) translateZ(0);
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
@@ -532,17 +531,17 @@ body.body-admin {
   filter: blur(0.000001px);
   -webkit-filter: blur(0.000001px);
 }
-.ai__active.ai__from-bottom, .ai__active.ai__from-right, .ai__active.ai__scale {
+.anim-active.anim-bottom, .anim-active.anim-right, .anim-active.anim-scale {
   opacity: 1;
   transform: translate(0, 0) scale(1);
 }
-.ai__from-bottom {
-  transform: translate(0, 5%);
+.anim-bottom {
+  transform: translate(0, 1%);
 }
-.ai__from-right {
+.anim-right {
   transform: translate(5%, 0);
 }
-.ai__scale {
+.anim-scale {
   transform: scale(0.8);
 }
 
@@ -1179,6 +1178,7 @@ body.body-admin {
 }
 .poms__catalogue--grid .cat-item:hover, .poms__catalogue--list .cat-item:hover {
   box-shadow: 0 0 14px 5px black;
+  background: rgba(255, 255, 255, 0.05);
 }
 .poms__catalogue--grid .cat-item__desc, .poms__catalogue--list .cat-item__desc {
   padding: 25px;
@@ -1297,6 +1297,7 @@ body.body-admin {
 .poms__catalogue--list .cat-item {
   width: 49%;
   height: 250px;
+  margin-bottom: 25px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1309,10 +1310,10 @@ body.body-admin {
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
-  width: 35%;
+  width: 42%;
 }
 .poms__catalogue--list .cat-item__desc {
-  width: 65%;
+  width: 58%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -1508,4 +1509,8 @@ body.body-admin {
 .show__body--info .info__rels--list li .info-link:hover {
   text-decoration: none;
   color: #cde5ff;
+}
+.show__body--info .info__rels--list li .info-na {
+  color: #999;
+  font-weight: 300;
 }

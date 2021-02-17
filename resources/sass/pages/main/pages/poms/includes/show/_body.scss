@@ -131,6 +131,11 @@
 							color: lighten($blueMain, 15%);
 						}
 					}
+
+					.info-na {
+						color: $grayMain;
+						font-weight: 300;
+					}
 				}
 			}
 		}

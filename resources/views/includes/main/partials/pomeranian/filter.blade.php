@@ -1,5 +1,5 @@
 <div class="filter-wrapper">
-	<section class="poms__filter ai ai__from-bottom ai__with-delay">
+	<section class="poms__filter anim anim-bottom anim-delay">
 		<h3 class="poms__filter--title">
 			Filters
 		</h3>

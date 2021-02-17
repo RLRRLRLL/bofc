@@ -8,110 +8,56 @@
 					<h2>Info</h2>
 				</div>
 				<div class="card-body card-body__info">
+					<!-- Errors -->
+					<div class="error-wrapper">
+
+					</div>
+					
 					<!-- Info fill-up -->
 					<div class="inputs">
-						<div class="form-group form-over">
-							<label for="name">
-								Name: <span>{{ $name }}</span>
-							</label>
-
-							<input id="name"
-									wire:model.debounce.400ms="name"
-									name="name"
-									type="text" 
-									class="form-control" 
-									placeholder="Enter name">
-
-							@error('name')
-								<p class="text-danger">{{ $message }}</p>
-							@enderror
-						</div> <!-- -------------------------------------- -->
 
 						<div class="form-group form-over">
-							<label for="color">
-								Color: <span>{{ $color }}</span>
-							</label>
-
-							<input id="color"
-									wire:model.debounce.400ms="color"
-									name="color"
-									type="text" 
-									class="form-control" 
-									placeholder="Enter color">
-
-							@error('color')
-								<p class="text-danger">{{ $message }}</p>
-							@enderror
-						</div> <!-- ------------------------------------- -->
+							<label> Name: <span>{{ $name }}</span> </label>
+							<input wire:model.debounce.400ms="name" class="form-control">
+							@error('name') <p class="text-danger">{{ $message }}</p> @enderror
+						</div>
 
 						<div class="form-group form-over">
-							<label for="height">
-								Height: <span>{{ $height }}</span>
-							</label>
-
-							<input id="height"
-									wire:model.debounce.400ms="height"
-									name="height"
-									type="text" 
-									class="form-control" 
-									placeholder="Enter height">
-
-							@error('height')
-								<p class="text-danger">{{ $message }}</p>
-							@enderror
-						</div> <!-- ------------------------------------- -->
+							<label> Color: <span>{{ $color }}</span> </label>
+							<input wire:model.debounce.400ms="color" class="form-control">
+							@error('color') <p class="text-danger">{{ $message }}</p> @enderror
+						</div>
 
 						<div class="form-group form-over">
-							<label for="weight">
-								Weight: <span>{{ $weight }}</span>
-							</label>
-
-							<input id="weight"
-									wire:model.debounce.400ms="weight"
-									name="weight"
-									type="text" 
-									class="form-control" 
-									placeholder="Enter weight">
-
-							@error('weight')
-								<p class="text-danger">{{ $message }}</p>
-							@enderror
-						</div> <!-- ------------------------------------- -->
+							<label> Height: <span>{{ $height }}</span> </label>
+							<input wire:model.debounce.400ms="height" class="form-control">
+							@error('height') <p class="text-danger">{{ $message }}</p> @enderror
+						</div> 
 
 						<div class="form-group form-over">
-							<label for="teeth">
-								Teeth: <span>{{ $teeth }}</span>
-							</label>
-
-							<input id="teeth"
-									wire:model.debounce.400ms="teeth"
-									name="teeth"
-									type="text" 
-									class="form-control" 
-									placeholder="Enter teeth">
-
-							@error('teeth')
-								<p class="text-danger">{{ $message }}</p>
-							@enderror
-						</div> <!-- ------------------------------------- -->
+							<label> Weight: <span>{{ $weight }}</span> </label>
+							<input wire:model.debounce.400ms="weight" class="form-control">
+							@error('weight') <p class="text-danger">{{ $message }}</p> @enderror
+						</div>
 
 						<div class="form-group form-over">
-							<label for="birthday">
-								Birthday: <span>{{ $birthday }}</span>
-							</label>
+							<label> Teeth: <span>{{ $teeth }}</span> </label>
+							<input wire:model.debounce.400ms="teeth" class="form-control">
+							@error('teeth') <p class="text-danger">{{ $message }}</p> @enderror
+						</div>
 
-							<input id="birthday"
-									wire:model.debounce.400ms="birthday"
-									name="birthday"
-									type="text" 
-									class="form-control" 
-									placeholder="Enter birthday">
+						<div class="form-group form-over">
+							<label> Birthday: <span>{{ $birthday }}</span> </label>
+							<input wire:model.debounce.400ms="birthday" class="form-control">
+							@error('birthday') <p class="text-danger">{{ $message }}</p> @enderror
+						</div>
 
-							@error('birthday')
-								<p class="text-danger">{{ $message }}</p>
-							@enderror
-						</div> <!-- ------------------------------------- -->
+					</div>
 
+					<hr>
+
+					<!-- Selects -->
+					<div class="selects">
 						<div class="form-group form-over" x-data="{expandList: false, selected: ''}">
 							<label>
 								Owner: <span x-text="selected"></span>
@@ -119,8 +65,7 @@
 
 							<div class="select">
 								<button 
-									class="select__button" 
-									type="button"
+									class="select__button"
 									x-on:click.prevent="expandList =! expandList"
 									:class="{'active': expandList === true}"
 									x-text="selected || 'Select owner'"
@@ -133,18 +78,17 @@
 								>
 									<!-- fallback option -->
 									<li x-on:click="expandList = false; selected = ''" 
-										wire:click="$set('owner_id', null)"
+										wire:click="$set('owner', null)"
 										>
 										Select later
 									</li>
 									<!-- loop -->
-									@foreach($owners as $owner)
+									@foreach($people->where('type', 0) as $owner)
 										<li 
-											x-on:click="expandList = false; selected = '{{ $owner->owner }}'" 
-											wire:click="$set('owner_id', {{ $owner->id }})"
-											 
+											x-on:click="expandList = false; selected = '{{ $owner->name }}'" 
+											wire:click="$set('owner', {{ $owner->id }})"
 										>
-											{{ $owner->owner }}
+											{{ $owner->name }}
 										</li>
 									@endforeach
 								</ul>
@@ -172,18 +116,18 @@
 								>
 									<!-- fallback option -->
 									<li x-on:click="expandList = false; selected = ''" 
-										wire:click="$set('breeder_id', null)"
+										wire:click="$set('breeder', null)"
 										>
 										Select later
 									</li>
 									<!-- loop -->
-									@foreach($breeders as $breeder)
+									@foreach($people->where('type', 1) as $breeder)
 										<li 
-											x-on:click="expandList = false; selected = '{{ $breeder->breeder }}'" 
-											wire:click="$set('breeder_id', {{ $breeder->id }})"
+											x-on:click="expandList = false; selected = '{{ $breeder->name }}'" 
+											wire:click="$set('breeder', {{ $breeder->id }})"
 											 
 										>
-											{{ $breeder->breeder }}
+											{{ $breeder->name }}
 										</li>
 									@endforeach
 								</ul>
@@ -352,8 +296,81 @@
 						</div>
 					</div>
 
+					<hr>
+
 					<!-- Checkboxes & Radios { car } -->
 					<div class="car">
+						<div class="car__item car__radio">
+							<p>Age: </p>
+							<div class="form-check">
+								<input  id="puppy"
+										value="puppy"
+										wire:model="age"
+										type="radio" 
+										class="form-check-input"
+										checked>
+
+								<label for="puppy" 
+										class="form-check-label">
+									Puppy
+								</label>
+							</div>
+
+							<div class="form-check">
+								<input  id="junior"
+										value="junior"
+										wire:model="age"
+										type="radio" 
+										class="form-check-input">
+
+								<label for="junior" 
+										class="form-check-label">
+									Junior
+								</label>
+							</div>
+
+							<div class="form-check">
+								<input  id="adult"
+										value="adult"
+										wire:model="age"
+										type="radio" 
+										class="form-check-input">
+
+								<label for="adult" 
+										class="form-check-label">
+									Adult
+								</label>
+							</div>
+
+							<div class="form-check">
+								<input  id="mature"
+										value="mature"
+										wire:model="age"
+										type="radio" 
+										class="form-check-input">
+
+								<label for="mature" 
+										class="form-check-label">
+									Mature
+								</label>
+							</div>
+
+							<div class="form-check">
+								<input  id="senior"
+										value="senior"
+										wire:model="age"
+										type="radio" 
+										class="form-check-input">
+
+								<label for="senior" 
+										class="form-check-label">
+									Senior
+								</label>
+							</div>
+						</div>
+
+						<hr>
+
 						<div class="car__item car__radio">
 							<p>Gender: </p>
 							<div class="form-check">
@@ -421,32 +438,17 @@
 						</div>
 
 						<hr>
-
+						
 						<div class="car__item car__check">
 							<p>Other: </p>
-							<div class="car__check--item form-check">
-								<input id="is_puppy"
-										wire:model.debounce.400ms="is_puppy"
-										name="is_puppy"
-										class="form-check-input"
-										type="checkbox">
-
-								<label for="is_puppy" class="form-check-label">
-									Puppy
-								</label>
-
-								@error('is_puppy')
-										<p class="text-danger">{{ $message }}</p>
-								@enderror
-							</div>
 					
 							<div class="car__check--item form-check">
 								<input id="is_for_sale"
-										wire:model.debounce.400ms="is_for_sale"
-										name="is_for_sale"
-										class="form-check-input"
-										type="checkbox">
-
+									wire:model.debounce.400ms="is_for_sale"
+									name="is_for_sale"
+									class="form-check-input"
+									type="checkbox">
+									
 								<label for="is_for_sale" class="form-check-label">
 									For sale
 								</label>
@@ -457,6 +459,8 @@
 							</div>
 						</div>
 					</div>
+					
+					<hr>
 
 					<!-- Titles -->
 					<div class="titles">

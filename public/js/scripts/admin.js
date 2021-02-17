@@ -19333,12 +19333,15 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Utils */ "./resources/js/components/Utils.js");
+/* harmony import */ var _components_admin_Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/admin/Sidebar */ "./resources/js/components/admin/Sidebar.js");
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
+
 document.addEventListener("DOMContentLoaded", function () {
   Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["keepLinksActive"])();
+  Object(_components_admin_Sidebar__WEBPACK_IMPORTED_MODULE_1__["default"])();
 });
 
 /***/ }),
@@ -19457,6 +19460,44 @@ var domReady = function domReady(callBack) {
     callBack();
   }
 };
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/Sidebar.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/admin/Sidebar.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return sidebar; });
+/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Utils */ "./resources/js/components/Utils.js");
+
+function sidebar() {
+  var burgerTrigger = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".burger"),
+      burgerClose = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".sidebar__close"),
+      sidebar = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".sidebar"),
+      header = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".header"),
+      main = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".main");
+  var buttons = [burgerTrigger, burgerClose];
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () {
+      toggleClassName(sidebar, "show");
+      toggleClassName(header, "darken");
+      toggleClassName(main, "darken");
+    });
+  });
+
+  function toggleClassName(element, className) {
+    if (element.classList.contains(className)) {
+      element.classList.remove(className);
+    } else {
+      element.classList.add(className);
+    }
+  }
+}
 
 /***/ }),
 

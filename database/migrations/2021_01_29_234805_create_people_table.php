@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBreedersTable extends Migration
+class CreatePeopleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateBreedersTable extends Migration
      */
     public function up()
     {
-        Schema::create('breeders', function (Blueprint $table) {
+        Schema::create('people', function (Blueprint $table) {
             $table->id();
-			$table->string('breeder');
+			$table->string('name');
+			$table->tinyInteger('type')->default(0);
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateBreedersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('breeders');
+        Schema::dropIfExists('people');
     }
 }

@@ -11,6 +11,7 @@
 
 			&:hover {
 				box-shadow: 0 0 14px 5px black;
+				background: rgba(white, 0.05);
 			}
 
 			&__desc {
@@ -144,15 +145,16 @@
 		.cat-item {
 			width: 49%;
 			height: 250px;
+			margin-bottom: 25px;
 			@include flex-between(row);
 
 			&__image {
 				@include image;
-				width: 35%;
+				width: 42%;
 			}
 
 			&__desc {
-				width: 65%;
+				width: 58%;
 				height: 100%;
 				@include flex-between(column);
 				align-items: stretch;

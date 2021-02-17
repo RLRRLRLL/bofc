@@ -2,6 +2,6 @@
 
 @section('content')
 	<div class="settings">
-		<livewire:stuff.settings />
+		<livewire:rest.person />
 	</div>
 @endsection

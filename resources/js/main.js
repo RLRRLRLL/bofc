@@ -37,7 +37,9 @@ document.addEventListener(
 		if (query(".wrapper.pomeranian")) {
 			selectPoms();
 			if (query(".show__header")) {
-				Bubbles(".show__header", 1500);
+				setTimeout(() => {
+					Bubbles(".show__header", 1500);
+				}, 1500);
 			}
 		}
 	},

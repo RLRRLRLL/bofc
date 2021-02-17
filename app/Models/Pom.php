@@ -4,20 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Breeder;
-use App\Models\Image;
-use App\Models\Owner;
+use App\Models\Person;
 
 class Pom extends Model
 {
 	use HasFactory;
 
 	protected $fillable = [
-		'name', 'color', 'gender', 'height', 'weight', 'teeth', 'birthday', 
-		'has_fontanel', 'is_for_sale', 'is_puppy',
-		'breeder_id', 'owner_id', 'titles',
-		'father_id', 'mother_id', 'grandmother_id', 'grandfather_id',
-		'child_id', 'grandchild_id'
+		'name', 'color', 'gender', 'height', 'weight', 
+		'teeth', 'birthday', 'has_fontanel', 'is_for_sale', 
+		'age', 'titles', 
+		'father_id', 'mother_id', 'grandmother_id', 
+		'grandfather_id', 'child_id', 'grandchild_id'
 	];
 
 	public function images()
@@ -25,13 +23,8 @@ class Pom extends Model
 		return $this->hasMany(Image::class);
 	}
 
-	public function owner()
+	public function people()
 	{
-		return $this->belongsTo(Owner::class);
-	}
-
-	public function breeder()
-	{
-		return $this->belongsTo(Breeder::class);
+		return $this->belongsToMany(Person::class);
 	}
 }

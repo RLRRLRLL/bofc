@@ -298,9 +298,9 @@
 
 				<!-- Breeder item -->
 				<div class="pom__selects--item" x-data="{expandList: false, selected: ''}">
-					@if ($breeders->find($pom->breeder_id) != null)
+					@if ($breeder)
 						<label>
-							Breeder: <span>{{ $breeders->find($pom->breeder_id)->breeder }}</span>
+							Breeder: <span>{{ $breeder->name }}</span>
 						</label>
 					@else
 						<label>
@@ -319,15 +319,15 @@
 
 						<ul class="select__list" x-show.transition.duration.250ms="expandList" x-on:click.away="expandList = false">
 							<!-- fallback option -->
-							<li x-on:click="expandList = false; selected = ''" wire:click="applyOption('breeder_id', null)">
+							<li x-on:click="expandList = false; selected = ''" wire:click="">
 								Select later
 							</li>
 
 							<!-- loop -->
-							@if($breeders)
-								@foreach($breeders as $breeder)
-									<li x-on:click="expandList = false; selected = '{{ $breeder->breeder }}'" wire:click="applyOption('breeder_id', {{ $breeder->id }})">
-										{{ $breeder->breeder }}
+							@if($allBreeders)
+								@foreach($allBreeders as $breeder)
+									<li x-on:click="expandList = false; selected = '{{ $breeder->name }}'" wire:click="attachPerson('breeder', {{ $breeder->id }})">
+										{{ $breeder->name }}
 									</li>
 								@endforeach	
 							@endif
@@ -337,9 +337,9 @@
 
 				<!-- Owner item -->
 				<div class="pom__selects--item" x-data="{expandList: false, selected: ''}">
-					@if ($owners->find($pom->owner_id) != null)
+					@if ($owner != null)
 						<label>
-							Owner: <span>{{ $owners->find($pom->owner_id)->owner }}</span>
+							Owner: <span>{{ $owner->name }}</span>
 						</label>
 					@else
 						<label>
@@ -358,15 +358,15 @@
 
 						<ul class="select__list" x-show.transition.duration.250ms="expandList" x-on:click.away="expandList = false">
 							<!-- fallback option -->
-							<li x-on:click="expandList = false; selected = ''" wire:click="applyOption('owner_id', null)">
+							<li x-on:click="expandList = false; selected = ''" wire:click="">
 								Select later
 							</li>
 
 							<!-- loop -->
-							@if($owners)
-								@foreach($owners as $owner)
-									<li x-on:click="expandList = false; selected = '{{ $owner->owner }}'" wire:click="applyOption('owner_id', {{ $owner->id }})">
-										{{ $owner->owner }}
+							@if($allOwners)
+								@foreach($allOwners as $owner)
+									<li x-on:click="expandList = false; selected = '{{ $owner->name }}'" wire:click="attachPerson('owner', {{ $owner->id }})">
+										{{ $owner->name }}
 									</li>
 								@endforeach	
 							@endif

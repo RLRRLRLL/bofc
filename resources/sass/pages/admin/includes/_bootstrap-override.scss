@@ -32,6 +32,10 @@ input {
 	color: $blueMain;
 }
 
+button {
+	outline: none !important;
+}
+
 hr {
 	border: 0;
 	clear: both;

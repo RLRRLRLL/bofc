@@ -1,0 +1,103 @@
+.person {
+	padding: 0 25px;
+
+	&-form,
+	&-list {
+		padding: 20px 30px;
+	}
+
+	/* 
+	<!-- Form -->
+	*/
+	&-form {
+		background: rgba(black, 0.1);
+		display: grid;
+		grid-template-areas:
+			"a b"
+			"c c";
+		grid-gap: 15px;
+
+		span {
+			color: $greenMain;
+		}
+
+		& > div {
+			margin-bottom: 0;
+		}
+
+		&__radio {
+			grid-area: a;
+			@include radio;
+			@include flex-column;
+			justify-content: space-between;
+
+			& > div {
+				display: flex;
+				align-items: center;
+
+				.form-check:first-child {
+					padding-left: 0;
+				}
+			}
+		}
+
+		&__input {
+			grid-area: b;
+			label {
+				margin-bottom: 10px;
+			}
+		}
+
+		&__button {
+			grid-area: c;
+			margin-top: 15px;
+			@include cta-dashed;
+			padding: 10px 20px;
+		}
+	}
+
+	/* 
+	<!-- List -->
+	*/
+	&-list {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 25px;
+		background: rgba(black, 0.1);
+
+		ul {
+			width: 45%;
+
+			h3,
+			li {
+				padding: 10px;
+			}
+			h3 {
+				color: $accent;
+			}
+			li {
+				display: block;
+				color: $white;
+
+				&:hover {
+					background: $black01;
+				}
+
+				button {
+					margin-left: 7px;
+
+					background: rgba(red, 0.1);
+					color: $white04;
+					padding: 3px 5px;
+					font-weight: 300;
+					font-size: 15px;
+
+					&:hover {
+						color: $white09;
+						background: rgba(red, 0.15);
+					}
+				}
+			}
+		}
+	}
+}

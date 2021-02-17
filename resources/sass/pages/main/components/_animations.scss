@@ -1,15 +1,15 @@
 // anim items [ai]
-.ai {
-	$duration: 0.8s;
+.anim {
+	$duration: 0.7s;
 
 	opacity: 0;
 	transition: all $duration ease-in-out $duration/2;
 
-	&__with-delay {
+	&-delay {
 		transition: all $duration ease-in-out $duration/1.2;
 	}
 
-	&__active {
+	&-active {
 		transform: perspective(1px) translateZ(0);
 		backface-visibility: hidden;
 		transform: translateZ(0);
@@ -17,24 +17,24 @@
 		filter: blur(0.000001px);
 		-webkit-filter: blur(0.000001px);
 
-		&.ai__from-bottom,
-		&.ai__from-right,
-		&.ai__scale {
+		&.anim-bottom,
+		&.anim-right,
+		&.anim-scale {
 			opacity: 1;
 			transform: translate(0, 0) scale(1);
 		}
 	}
 
 	// dimensions
-	&__from-bottom {
-		transform: translate(0, 5%);
+	&-bottom {
+		transform: translate(0, 1%);
 	}
 
-	&__from-right {
+	&-right {
 		transform: translate(5%, 0);
 	}
 
-	&__scale {
+	&-scale {
 		transform: scale(0.8);
 	}
 }

@@ -26,7 +26,7 @@ this class used for reducing
 brightness when sidebar expanded
 */
 .darken {
-	filter: brightness(50%);
+	filter: brightness(20%);
 }
 
 .grid {
@@ -34,13 +34,12 @@ brightness when sidebar expanded
 	flex-direction: column;
 	width: 100%;
 	height: 100vh;
-	max-height: 100vh;
 
 	.header {
 		width: 100%;
-		height: 10%;
+		height: 55px;
 		background: #212121;
-		padding: 0 100px;
+		padding: 0 200px;
 		@include flex-between(row);
 		box-shadow: 0 0 5px 0 $blackMain;
 		z-index: $medium;
@@ -52,6 +51,7 @@ brightness when sidebar expanded
 			button {
 				font-size: 17px;
 				color: $grayMain;
+				transition: 0.15s;
 
 				&:hover {
 					color: white;
@@ -59,12 +59,11 @@ brightness when sidebar expanded
 
 				&.burger {
 					font-size: 23px;
-					margin-right: 25px;
+					margin-right: 10px;
 					background: transparent;
 
 					&:focus,
 					&:active {
-						outline: none;
 						box-shadow: none;
 					}
 
@@ -88,20 +87,13 @@ brightness when sidebar expanded
 					color: white;
 				}
 			}
-
-			#authUserName {
-				color: rgba($grayMain, 0.4);
-				&:hover {
-					color: rgba($grayMain, 0.4);
-				}
-			}
 		}
 	}
 
 	.main {
 		width: 100%;
-		height: 90%;
-		padding: 40px 100px;
+		height: 100%;
+		padding: 40px 200px;
 		overflow-y: scroll;
 		background: #282828;
 	}
@@ -115,26 +107,46 @@ brightness when sidebar expanded
 		left: 0;
 		bottom: 0;
 		width: 20vw;
-		z-index: $medium;
+		z-index: $high;
 
 		left: -20vw;
-		transition: all 0.3s ease !important;
+		opacity: 0;
+		visibility: hidden;
+		transition: all 0.3s ease;
 
 		&.show {
 			left: 0;
-			transition: all 0.3s ease !important;
+			opacity: 1;
+			visibility: visible;
+			transition: all 0.25s ease;
+		}
+
+		&__close {
+			position: absolute;
+			right: 5px;
+			top: 5px;
+			display: block;
+			background: transparent;
+			color: white;
+			font-size: 30px;
+			transition: transform 0.25s;
+
+			&:hover {
+				transform: rotate(125deg);
+			}
 		}
 
 		&__header {
-			height: 40%;
 			@include flex-center(column);
+			position: relative;
 			padding: 15px;
+			height: 40%;
+
 			background-color: black;
 			background-image: url("/images/logo.jpg");
 			background-size: 200px auto;
 			background-position: center;
 			background-repeat: no-repeat;
-			opacity: 0.7;
 		}
 
 		&__nav {
@@ -189,7 +201,7 @@ brightness when sidebar expanded
 	align-self: flex-start;
 	display: flex;
 	width: 100%;
-	margin: 15px 0 0 0;
+	margin: 15px 0 15px 0;
 	color: white;
 	background: $grayMain;
 
@@ -220,33 +232,3 @@ brightness when sidebar expanded
 		}
 	}
 }
-.success-alert {
-	position: relative;
-	align-self: flex-start;
-	display: flex;
-	width: 100%;
-	margin: 15px 0 0 0;
-	background: rgba($greenMain, 0.5);
-	color: white;
-
-	span {
-		width: 100%;
-	}
-
-	a {
-		position: absolute;
-		right: 3px;
-		top: 0;
-		color: white;
-
-		&:hover {
-			color: $blackMain;
-		}
-
-		i {
-			pointer-events: none;
-		}
-	}
-}
-
-// select dropdowns
