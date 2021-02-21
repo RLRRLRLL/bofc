@@ -1,5 +1,12 @@
 @extends('layouts.admin')
 
+@push('styles')
+	<link 
+		rel="stylesheet" 
+		href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css"
+	/>
+@endpush
+
 @section('content')
 <div class="container-create">
 	<!-- create new pom form -->
@@ -29,3 +36,14 @@
 	</div>
 </div>
 @endsection
+
+@push('scripts')
+	<script 
+		src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js" 
+		integrity="sha512-+ruHlyki4CepPr07VklkX/KM5NXdD16K1xVwSva5VqOVbsotyCQVKEwdQ1tAeo3UkHCXfSMtKU/mZpKjYqkxZA==" 
+		crossorigin="anonymous">
+	</script>
+	<script>
+		flatpickr('#datepicker', {});
+	</script>
+@endpush

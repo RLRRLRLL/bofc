@@ -8,31 +8,35 @@ use App\Models\Pom;
 
 class UpdateInfo extends Component
 {
-	public $pom;
-	public $allBreeders, $allOwners;
-	public $breeder, $owner;
-
 	// base
-	public $name, $gender, $color, $height, $weight, $teeth, $birthday, $titles;
-
-	// Collections for selects
-	public $males, $females;
-
-	// Family ids
-	public $father_id, $mother_id, $child_id, 
-	$grandfather_id, $grandmother_id, $grandchild_id;
-
-	protected $listeners = [
-		'reloadPeople' => '$refresh'
+	public $name, $color, $height, $teeth, $birthday, $titles;
+	public $base_info = [
+		'name', 'color', 'height', 'teeth'
 	];
+
+	// rels
+	protected $relations = [
+		'breeder' => 'people', 
+		'owner' => 'people', 
+		'father' => 'parents', 
+		'mother' => 'parents'
+	];
+
+	public $pom, $people, $poms;
+	public $father, $mother, $breeder, $owner;
+
+	protected $listeners = ['reloadVars' => '$refresh'];
 	
 	public function mount($id)
 	{
 		$this->pom = Pom::find($id);
+		$this->poms = Pom::where('id', '!=', $this->pom->id)->get();
+		$this->people = Person::all();
+		// 
+		$this->father = $this->pom->parents()->where('is_male', 1)->first();
+		$this->mother = $this->pom->parents()->where('is_male', 0)->first();
 		$this->breeder = $this->pom->people()->where('type', 1)->first();
 		$this->owner = $this->pom->people()->where('type', 0)->first();
-		$this->allBreeders = Person::where('type', 1)->get();
-		$this->allOwners = Person::where('type', 0)->get();
 	}
 	
 	public function updateInfo($string)
@@ -43,36 +47,54 @@ class UpdateInfo extends Component
 
 	public function toggleParam($param)
 	{
-		$current = $this->pom->$param;
-		$current = !$current;
-		$this->pom->$param = $current ? 1 : 0;
+		$this->pom->$param = 1 - $this->pom->$param;
 		$this->pom->update();
 	}
 
-	public function attachPerson($type, $id)
+	public function attach($anywho, $id)
 	{
-		$person = Person::find($id);
+		if ($anywho === 'father' || $anywho === 'mother') {
+			if ($anywho === 'father') {
+				if ($this->father != null) {
+					$this->pom->parents()->detach($this->father);
+				}
 
-		// checking if there's already person selected
-		// and replacing him in this case
-		if ($type === 'breeder' && $this->breeder != null) {
-			$this->pom->people()->detach($this->breeder);
-		} else if ($type === 'owner' && $this->owner != null) {
-			$this->pom->people()->detach($this->owner);
+				$this->pom->parents()->attach($id);
+			} else {
+
+				if ($this->mother != null) {
+					$this->pom->parents()->detach($this->mother);
+				}
+
+				$this->pom->parents()->attach($id);
+			}
+		} else {
+			if ($anywho === 'breeder') {
+				
+				if ($this->breeder != null) {
+					$this->pom->parents()->detach($this->breeder);
+				}
+				
+				$this->pom->parents()->attach($id);
+			} else {
+				
+				if ($this->owner != null) {
+					$this->pom->parents()->detach($this->owner);
+				}
+				
+				$this->pom->parents()->attach($id);
+			}
 		}
+	}
 
-		$this->pom->people()->attach($person);
-		$this->emitSelf('reloadPeople');
+	public function detach($anywho, $type)
+	{
+		$this->pom->$type()->detach($this->$anywho);
+		$this->emitSelf('reloadVars');
 	}
 	
     public function render()
     {
-		$this->females = Pom::where('gender', 'female')->get();
-		$this->males = Pom::where('gender', 'male')->get();
-
-		return view('livewire.pom.update-info', [
-			'males' => $this->males,
-			'females' => $this->females,
-		]);
+		return view('livewire.pom.update-info');
     }
 }

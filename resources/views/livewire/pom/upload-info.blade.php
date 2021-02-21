@@ -8,89 +8,65 @@
 					<h2>Info</h2>
 				</div>
 				<div class="card-body card-body__info">
-					<!-- Errors -->
-					<div class="error-wrapper">
-
-					</div>
-					
 					<!-- Info fill-up -->
-					<div class="inputs">
-
-						<div class="form-group form-over">
-							<label> Name: <span>{{ $name }}</span> </label>
-							<input wire:model.debounce.400ms="name" class="form-control">
-							@error('name') <p class="text-danger">{{ $message }}</p> @enderror
-						</div>
-
-						<div class="form-group form-over">
-							<label> Color: <span>{{ $color }}</span> </label>
-							<input wire:model.debounce.400ms="color" class="form-control">
-							@error('color') <p class="text-danger">{{ $message }}</p> @enderror
-						</div>
-
-						<div class="form-group form-over">
-							<label> Height: <span>{{ $height }}</span> </label>
-							<input wire:model.debounce.400ms="height" class="form-control">
-							@error('height') <p class="text-danger">{{ $message }}</p> @enderror
-						</div> 
-
-						<div class="form-group form-over">
-							<label> Weight: <span>{{ $weight }}</span> </label>
-							<input wire:model.debounce.400ms="weight" class="form-control">
-							@error('weight') <p class="text-danger">{{ $message }}</p> @enderror
-						</div>
-
-						<div class="form-group form-over">
-							<label> Teeth: <span>{{ $teeth }}</span> </label>
-							<input wire:model.debounce.400ms="teeth" class="form-control">
-							@error('teeth') <p class="text-danger">{{ $message }}</p> @enderror
-						</div>
+					<div class="inputs info-item">
+						
+						@foreach ($base_info as $item)
+							<div class="form-group form-over">
+								<label> {{ ucfirst($item) }}: <span>{{ $this->$item }}</span> </label>
+								<input wire:model.debounce.400ms="{{ $item }}" class="form-control">
+								@error($item) <p class="text-danger">{{ $message }}</p> @enderror
+							</div>
+						@endforeach
 
 						<div class="form-group form-over">
 							<label> Birthday: <span>{{ $birthday }}</span> </label>
-							<input wire:model.debounce.400ms="birthday" class="form-control">
+							<input wire:model.debounce.400ms="birthday" id="datepicker" class="form-control">
 							@error('birthday') <p class="text-danger">{{ $message }}</p> @enderror
 						</div>
 
 					</div>
 
-					<hr>
+					<!-- Alerts -->
+					<div x-cloak x-data="{ showAlert: false, message: '' }" x-on:denied.window="showAlert = true; setTimeout(() => showAlert = false, 3500); message = $event.detail.message" class="w-100">
+						<div class="alert alert-main error" x-show.transition.duration.500ms="showAlert">
+							<span x-text="message"></span>
+							<a href="#" x-on:click.prevent="showAlert = false">
+								&#10005;
+							</a>
+						</div> 
+					</div>
 
 					<!-- Selects -->
-					<div class="selects">
+					<div class="selects info-item">
+
 						<div class="form-group form-over" x-data="{expandList: false, selected: ''}">
 							<label>
 								Owner: <span x-text="selected"></span>
 							</label>
 
 							<div class="select">
-								<button 
-									class="select__button"
-									x-on:click.prevent="expandList =! expandList"
-									:class="{'active': expandList === true}"
-									x-text="selected || 'Select owner'"
-								></button>
+								<button class="select__button" x-on:click.prevent="expandList =! expandList" :class="{'active': expandList === true}">
+									<span class="select__button--txt" x-text="selected || '--- Select ---'"></span>
+									<svg class="select__button--arr">
+										<use xlink:href="/sprite.svg#arrow"></use>
+									</svg>
+								</button>
 
-								<ul 
-									class="select__list" 
-									x-show.transition.duration.250ms="expandList"
-									x-on:click.away="expandList = false"
-								>
+								<ul class="select__list" x-show.transition.duration.250ms="expandList" x-on:click.away="expandList = false">
 									<!-- fallback option -->
-									<li x-on:click="expandList = false; selected = ''" 
-										wire:click="$set('owner', null)"
-										>
+									<li x-on:click="expandList = false; selected = ''" wire:click="$set('owner', null)">
 										Select later
 									</li>
+
 									<!-- loop -->
-									@foreach($people->where('type', 0) as $owner)
-										<li 
-											x-on:click="expandList = false; selected = '{{ $owner->name }}'" 
-											wire:click="$set('owner', {{ $owner->id }})"
-										>
-											{{ $owner->name }}
-										</li>
-									@endforeach
+									@if($people)
+										@foreach($people->where('type', 0) as $owner)
+											<li x-on:click="expandList = false; selected = '{{ $owner->name }}'" wire:click="attach('owner', {{ $owner->id }})">
+												{{ $owner->name }}
+											</li>
+										@endforeach	
+									@endif
 								</ul>
 							</div>
 						</div>
@@ -101,13 +77,43 @@
 							</label>
 
 							<div class="select">
-								<button 
-									class="select__button" 
-									type="button"
-									x-on:click.prevent="expandList =! expandList"
-									:class="{'active': expandList === true}"
-									x-text="selected || 'Select breeder'"
-								></button>
+								<button class="select__button" x-on:click.prevent="expandList =! expandList" :class="{'active': expandList === true}">
+									<span class="select__button--txt" x-text="selected || '--- Select ---'"></span>
+									<svg class="select__button--arr">
+										<use xlink:href="/sprite.svg#arrow"></use>
+									</svg>
+								</button>
+
+								<ul class="select__list" x-show.transition.duration.250ms="expandList" x-on:click.away="expandList = false">
+									<!-- fallback option -->
+									<li x-on:click="expandList = false; selected = ''" wire:click="$set('breeder', null)">
+										Select later
+									</li>
+
+									<!-- loop -->
+									@if($people)
+										@foreach($people->where('type', 1) as $breeder)
+											<li x-on:click="expandList = false; selected = '{{ $breeder->name }}'" wire:click="attach('breeder', {{ $breeder->id }})">
+												{{ $breeder->name }}
+											</li>
+										@endforeach	
+									@endif
+								</ul>
+							</div>
+						</div>
+						
+						<div class="form-group form-over" x-data="{expandList: false, selected: ''}">
+							<label>
+								Father: <span x-text="selected"></span>
+							</label>
+
+							<div class="select">
+								<button class="select__button" x-on:click.prevent="expandList =! expandList" :class="{'active': expandList === true}">
+									<span class="select__button--txt" x-text="selected || '--- Select ---'"></span>
+									<svg class="select__button--arr">
+										<use xlink:href="/sprite.svg#arrow"></use>
+									</svg>
+								</button>
 
 								<ul 
 									class="select__list" 
@@ -116,78 +122,37 @@
 								>
 									<!-- fallback option -->
 									<li x-on:click="expandList = false; selected = ''" 
-										wire:click="$set('breeder', null)"
-										>
-										Select later
+										wire:click="$set('father', null)"
+										class="fallback">
+										Choose later
 									</li>
 									<!-- loop -->
-									@foreach($people->where('type', 1) as $breeder)
-										<li 
-											x-on:click="expandList = false; selected = '{{ $breeder->name }}'" 
-											wire:click="$set('breeder', {{ $breeder->id }})"
-											 
-										>
-											{{ $breeder->name }}
-										</li>
-									@endforeach
+									@if($poms)
+										@foreach($poms->where('is_male', 1) as $male)
+											<li 
+												x-on:click="expandList = false; selected = '{{ $male->name }}'" 
+												wire:click="attach('father', {{ $male->id }})"
+											>
+												{{ $male->name }}
+											</li>
+										@endforeach
+									@endif
 								</ul>
 							</div>
 						</div>
-
-						<!-- Family select relationships -->
-						<div class="form-group form-over" x-data="{expandList: false, selected: ''}">
-							<label>
-								Father: <span x-text="selected"></span>
-							</label>
-
-							<div class="select">
-								<button 
-									class="select__button" 
-									type="button"
-									x-on:click.prevent="expandList =! expandList"
-									:class="{'active': expandList === true}"
-									x-text="selected || 'Select a pom'"
-								></button>
-
-								<ul 
-									class="select__list" 
-									x-show.transition.duration.250ms="expandList"
-									x-on:click.away="expandList = false"
-								>
-									<!-- fallback option -->
-									<li x-on:click="
-										expandList = false; 
-										selected = ''
-									" wire:click="$set('father_id', null)">
-										Select later
-									</li>
-									<!-- loop -->
-									@foreach($males as $male)
-										<li 
-											x-on:click="expandList = false; selected = '{{ $male->name }}'" 
-											wire:click="$set('father_id', {{ $male->id }})"
-											 
-										>
-											{{ $male->name }}
-										</li>
-									@endforeach
-								</ul>
-							</div>
-						</div>
-
+						
 						<div class="form-group form-over" x-data="{expandList: false, selected: ''}">
 							<label>
 								Mother: <span x-text="selected"></span>
 							</label>
 
 							<div class="select">
-								<button 
-									class="select__button" 
-									type="button"
-									x-on:click.prevent="expandList =! expandList"
-									:class="{'active': expandList === true}"
-									x-text="selected || 'Select a pom'"
-								></button>
+								<button class="select__button" x-on:click.prevent="expandList =! expandList" :class="{'active': expandList === true}">
+									<span class="select__button--txt" x-text="selected || '--- Select ---'"></span>
+									<svg class="select__button--arr">
+										<use xlink:href="/sprite.svg#arrow"></use>
+									</svg>
+								</button>
 
 								<ul 
 									class="select__list" 
@@ -195,111 +160,29 @@
 									x-on:click.away="expandList = false"
 								>
 									<!-- fallback option -->
-									<li x-on:click="
-										expandList = false; 
-										selected = ''
-									" wire:click="$set('mother_id', null)">
-										Select later
+									<li x-on:click="expandList = false; selected = ''" 
+										wire:click="$set('mother', null)"
+										class="fallback">
+										Choose later
 									</li>
 									<!-- loop -->
-									@foreach($females as $fem)
-										<li 
-											x-on:click="expandList = false; selected = '{{ $fem->name }}'" 
-											wire:click="$set('mother_id', {{ $fem->id }})"
-											 
-										>
-											{{ $fem->name }}
+									@if($poms)
+										@foreach($poms->where('is_male', 0) as $female)
+											<li 
+											x-on:click="expandList = false; selected = '{{ $female->name }}'" 
+											wire:click="attach('mother', {{ $female->id }})"
+											>
+											{{ $female->name }}
 										</li>
-									@endforeach
-								</ul>
-							</div>
-						</div>
-
-						<div class="form-group form-over" x-data="{expandList: false, selected: ''}">
-							<label>
-								Grandfather: <span x-text="selected"></span>
-							</label>
-
-							<div class="select">
-								<button 
-									class="select__button" 
-									type="button"
-									x-on:click.prevent="expandList=!expandList"
-									:class="{'active': expandList === true}"
-									x-text="selected || 'Select a pom'"
-								></button>
-
-								<ul 
-									class="select__list" 
-									x-show.transition.duration.250ms="expandList"
-									x-on:click.away="expandList = false"
-								>
-									<!-- fallback option -->
-									<li x-on:click="
-										expandList = false;
-										selected = ''
-									" wire:click="$set('grandfather_id', null)">
-										Select later
-									</li>
-									<!-- loop -->
-									@foreach($males as $male)
-										<li 
-											x-on:click="expandList = false; selected = '{{ $male->name }}'" 
-											wire:click="$set('grandfather_id', {{ $male->id }})"
-											 
-										>
-											{{ $male->name }}
-										</li>
-									@endforeach
-								</ul>
-							</div>
-						</div>
-
-						<div class="form-group form-over" x-data="{expandList: false, selected: ''}">
-							<label>
-								Grandmother: <span x-text="selected"></span>
-							</label>
-
-							<div class="select">
-								<button 
-									class="select__button" 
-									type="button"
-									x-on:click.prevent="expandList =! expandList"
-									:class="{'active': expandList === true}"
-									x-text="selected || 'Select a pom'"
-								></button>
-
-								<ul 
-									class="select__list" 
-									x-show.transition.duration.250ms="expandList"
-									x-on:click.away="expandList = false"
-								>
-									<!-- fallback option -->
-									<li 
-										x-on:click="expandList = false; selected = ''" 
-										wire:click="$set('grandmother_id', null)"
-										 
-									>
-										Select later
-									</li>
-									<!-- loop -->
-									@foreach($females as $fem)
-										<li x-on:click="
-											expandList = false;
-											selected = '{{ $fem->name }}'
-										" wire:click="$set('grandmother_id', {{ $fem->id }})">
-											{{ $fem->name }}
-										</li>
-									@endforeach
+										@endforeach
+									@endif
 								</ul>
 							</div>
 						</div>
 					</div>
 
-					<hr>
-
 					<!-- Checkboxes & Radios { car } -->
-					<div class="car">
+					<div class="car info-item">
 						<div class="car__item car__radio">
 							<p>Age: </p>
 							<div class="form-check">
@@ -375,9 +258,7 @@
 							<p>Gender: </p>
 							<div class="form-check">
 								<input  id="male"
-										checked
-										wire:model="gender"
-										name="gender"
+										wire:model="is_male"
 										class="form-check-input"
 										type="radio"
 										value="male" >
@@ -388,8 +269,8 @@
 
 							<div class="form-check">
 								<input  id="female"
-										wire:model="gender"
-										name="gender"
+										checked
+										wire:model="is_male"
 										class="form-check-input" 
 										type="radio"
 										value="female">
@@ -401,40 +282,6 @@
 							@error('gender')
 								<p class="text-danger">{{ $message }}</p>
 							@enderror
-						</div>
-
-						<hr>
-
-						<div class="car__item car__radio">
-							<p>Fontanel: </p>
-							<div class="form-check">
-								<input  id="hasnt"
-										value="hasnt"
-										wire:model="has_fontanel"
-										name="has_fontanel"
-										type="radio" 
-										class="form-check-input"
-										checked>
-
-								<label for="hasnt" 
-										class="form-check-label">
-									Hasn't
-								</label>
-							</div>
-
-							<div class="form-check">
-								<input  id="has"
-										value="has"
-										wire:model="has_fontanel"
-										name="has_fontanel"
-										type="radio" 
-										class="form-check-input">
-
-								<label for="has" 
-										class="form-check-label">
-									Has
-								</label>
-							</div>
 						</div>
 
 						<hr>
@@ -457,24 +304,50 @@
 									<p class="text-danger">{{ $message }}</p>
 								@enderror
 							</div>
+					
+							<div class="car__check--item form-check">
+								<input id="has_fontanel"
+									wire:model="has_fontanel"
+									class="form-check-input"
+									type="checkbox">
+									
+								<label for="has_fontanel" class="form-check-label">
+									Has fontanel
+								</label>
+
+								@error('has_fontanel')
+									<p class="text-danger">{{ $message }}</p>
+								@enderror
+							</div>
+					
+							<div class="car__check--item form-check">
+								<input id="is_open_for_breeding"
+									wire:model="is_open_for_breeding"
+									class="form-check-input"
+									type="checkbox">
+									
+								<label for="is_open_for_breeding" class="form-check-label">
+									Open for breeding
+								</label>
+
+								@error('is_open_for_breeding')
+									<p class="text-danger">{{ $message }}</p>
+								@enderror
+							</div>
 						</div>
 					</div>
-					
-					<hr>
 
 					<!-- Titles -->
-					<div class="titles">
+					<div class="titles info-item">
 						<div class="form-group form-over">
 							<label for="titles">
-								Titles: <span>{{ $titles }}</span>
+								Titles
 							</label>
 
-							<input id="titles"
-									wire:model.debounce.400ms="titles"
-									name="titles"
-									type="text" 
-									class="form-control" 
-									placeholder="Enter titles">
+							<textarea wire:model="titles" 
+									id="titles"
+									class="form-control" >
+							</textarea>
 
 							@error('titles')
 								<p class="text-danger">{{ $message }}</p>
@@ -486,10 +359,7 @@
 			</div>
 		</div>
 
-		<button type="submit"
-				class="submit-btn submit-btn__info btn btn-success mt-3 w-5"
-				wire:click.prevent="saveInfo"
-				>
+		<button type="submit" class="submit-btn submit-btn__info btn btn-success mt-3 w-5" wire:click.prevent="saveInfo" >
 			Next
 			<div wire:loading wire:target="saveInfo">
 				@include('includes.common.spinner')

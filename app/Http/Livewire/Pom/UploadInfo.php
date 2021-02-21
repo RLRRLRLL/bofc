@@ -8,87 +8,87 @@ use App\Models\Pom;
 
 class UploadInfo extends Component
 {
+	public $base_info = [
+		'name', 'color', 'height', 'teeth'
+	];
+
+	protected $relations = [
+		'breeder' => 'people', 
+		'owner' => 'people', 
+		'father' => 'parents', 
+		'mother' => 'parents'
+	];
+
 	// Base info
-	public $name, $color, $height, $weight, $teeth, 
-	$birthday, $is_for_sale, $is_puppy, $titles;
-
+	public $name, $color, $height, $teeth, $birthday, $titles, $age = 'adult';
+	
+	// Booleans
+	public $is_for_sale = false, $has_fontanel = false, $is_open_for_breeding = false, $is_male = 'female';
+	
 	// Collections for selects
-	public $males, $females;
-
-	// O | B
-	public $owner, $breeder;
-
-	// Family ids
-	public $father_id, $mother_id, $child_id, 
-	$grandfather_id, $grandmother_id, $grandchild_id;
-
-	// Radio
-	public $gender = 'male';
-	public $has_fontanel = 'hasnt';
-	public $age = 'adult';
+	public $people, $poms;
+	
+	// Relations
+	public $father, $mother, $breeder, $owner;
 
 	// rules
 	protected $rules = [
 		'name' => 'required',
 		// 'color' => 'required',
 		// 'height' => 'required',
-		// 'weight' => 'required',
 		// 'teeth' => 'required',
-		// 'birthday' => 'required',
-		// 'breeder' => 'required',
-		// 'owner' => 'required',
+		// 'birthday' => 'required'
 	];
+
+	public function mount()
+	{
+		$this->people = Person::all();
+		$this->poms = Pom::all();
+	}
 
 	public function updated($propertyName) 
 	{
 		$this->validateOnly($propertyName);
 	}
 
+	public function attach($anywho, $id)
+	{
+		$this->$anywho = $id;
+	}
+
 	public function saveInfo()
 	{
-		// $this->validate();
-
-		// dd($this->breeder, $this->owner);
+		$this->validate();
 
 		$pom = new Pom([
 			'age' => $this->age,
 			'name' => $this->name,
 			'color' => $this->color,
-			'gender' => $this->gender,
 			'height' => $this->height,
-			'weight' => $this->weight,
 			'teeth' => $this->teeth,
 			'titles' => $this->titles,
 			'birthday' => $this->birthday,
-			'has_fontanel' => ($this->has_fontanel == 'has') ? 1 : 0,
-			'is_for_sale' => ($this->is_for_sale) ? 1 : 0,
-			// 'person_id' => $this->person_id,
-			'father_id' => $this->father_id,
-			'mother_id' => $this->mother_id,
-			'grandfather_id' => $this->grandfather_id,
-			'grandmother_id' => $this->grandmother_id,
+			'is_male' => $this->is_male === 'male' ? 1 : 0,
+			'is_for_sale' => $this->is_for_sale,
+			'has_fontanel' => $this->has_fontanel,
+			'is_open_for_breeding' => $this->is_open_for_breeding,
 		]);
 
 		$pom->save();
 
+		foreach($this->relations as $role => $relname) {
+			if (!empty($this->$role)) {
+				$pom->$relname()->attach($this->$role);
+			}
+		}
+
+		$this->reset();
 		$this->emit('info-created', $pom->id);
 		$this->dispatchBrowserEvent('hide-info-section');
-		$this->reset();
 	}
 
     public function render()
     {
-
-		// $owner = Person::where('type', 0)->find(6);
-		// dd($owner);
-		$this->females = Pom::where('gender', 'female')->get();
-		$this->males = Pom::where('gender', 'male')->get();
-		$this->people = Person::all();
-
-        return view('livewire.pom.upload-info', [
-			'males' => $this->males,
-			'people' => $this->people,
-			'females' => $this->females,
-		]);
+        return view('livewire.pom.upload-info');
     }
 }

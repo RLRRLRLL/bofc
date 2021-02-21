@@ -1,5 +1,5 @@
 <div class="filter-wrapper">
-	<section class="poms__filter anim anim-bottom anim-delay">
+	<section class="poms__filter" data-animation="slideInRight"  data-animation-delay="300ms">
 		<h3 class="poms__filter--title">
 			Filters
 		</h3>

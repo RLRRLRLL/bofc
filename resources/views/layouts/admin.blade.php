@@ -6,14 +6,14 @@
 		@include('includes.common.favicon')
 		<title>BOFC | Admin</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-		@livewireStyles
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/admin.css') }}">
 		@if (app()->isLocal())
 			<script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
 		@endif
+		@livewireStyles
+		@stack('styles')
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/admin.css') }}">
 	</head>
 	<body>
-		
 		<!-- wrapper -->
 		<div class="grid">
 			<header class="header">

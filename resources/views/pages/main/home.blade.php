@@ -27,7 +27,7 @@
 		</div> --}}
 		
 		
-		<section id="header" class="section section-header ai ai__from-bottom">
+		<section id="header" class="section section-header" data-animation="slideInUp" data-animation-delay="500ms">
 			<div class="container">
 				<div class="section-header__inner section__inner">
 					@include('includes.main.partials.brand')
@@ -46,7 +46,7 @@
 			</div>
 		</section>
 
-		<section id="about" class="section section-about ai ai__from-bottom">
+		<section id="about" class="section section-about" data-animation="slideInUp">
 			<div class="container">
 				<div class="section-about__inner section__inner">
 					<div class="static">
@@ -89,4 +89,7 @@
 @endsection
 
 @push('scripts')
+	<script>
+		//
+	</script>
 @endpush

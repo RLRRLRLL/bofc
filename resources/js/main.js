@@ -8,7 +8,7 @@ import { Bubbles } from "./components/common/Bubbles";
 import { selectPoms } from "./components/main/SelectPoms";
 import { rippleButtonsInit } from "./components/main/RippleEffect";
 import { homeParallaxGallery } from "./components/main/Gallery";
-import slidesAndFades from "./components/main/Animation";
+import Animation from "./components/main/Animation";
 import LinkDistortionCircle from "./components/common/LinkDistortionCircle";
 
 document.addEventListener(
@@ -19,10 +19,13 @@ document.addEventListener(
 			const fxObj = LinkDistortionCircle[elPosition];
 			fxObj && new fxObj(el);
 		});
-		keepLinksActive();
-		// popThingy();
+		// keepLinksActive();
 		rippleButtonsInit();
-		slidesAndFades();
+		// Initialize
+		var options = {
+			offset: 20 //percentage of window
+		};
+		var animation = new Animation(options);
 		// toggleMenu();
 		query(".main").classList.add("main-loaded");
 

@@ -1,9 +1,8 @@
 .card {
-	background: #212121;
+	background: $bg;
 	color: $grayLighter;
 
 	&-header {
-		background: #171717;
 		h5 {
 			color: $grayLighter;
 		}
@@ -13,23 +12,44 @@
 .form-control,
 .form-group input,
 input {
-	background: #2b2c2e;
-	border: 1px solid rgba($grayMain, 0.5);
-	transition: background 0.25s ease;
+	height: calc(1.5em + 0.5rem + 4px);
+	background: $bg;
+	border: $border;
+	font-weight: 300;
 	color: white;
+
+	&:checked + label {
+		color: $grayLighter;
+	}
 
 	&::placeholder {
 		color: $grayDarker !important;
 	}
 
 	&:focus {
-		background: #1e1f20;
-		color: $blueMain;
+		color: $white;
+		background: $bg;
+		border: 1px solid $blueMain;
 	}
 }
 
-.form-group label {
-	color: $blueMain;
+// checkboxes
+.form-check {
+	input {
+		display: none;
+		@include check;
+	}
+}
+
+// for datepicker
+.form-control:disabled,
+.form-control[readonly] {
+	background: $bg;
+}
+
+label {
+	font-size: 17px;
+	color: $grayMain;
 }
 
 button {

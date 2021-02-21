@@ -8,7 +8,7 @@
 
 		<svg class="gender-svgs">
 			<use xlink:href="/sprite.svg#{{ 
-				($pom->gender == 'male') ? 'male' : 'fem'
+				($pom->is_male == 1) ? 'male' : 'fem'
 				}}">
 			</use>
 		</svg>
@@ -18,97 +18,28 @@
 		<!-- inputs -->
 		<div class="info__inner--item info__inner--type">
 			<ul>
-
-				<li class="prop" x-data="{showEdit:false, focusChange:false}" x-on:click="if (!focusChange) {showEdit=true; if ($refs.nameInput) setTimeout(() => $refs.nameInput.focus(), 250)}" x-on:click.away="showEdit=false">
-					<div class="prop__current">
-						Name:<span>{{ $pom->name }}</span>
-					</div>
-					<div class="prop__edit" x-show.transition.duration.250ms="showEdit" x-cloak>
-						<input id="name" wire:model="name" x-ref="nameInput">
-						<button type="button" wire:click="updateInfo('name')" x-on:click="focusChange = true;showEdit=false; setTimeout(() => focusChange=false, 200)">
-							<svg class="prop__edit--svg">
-								<use xlink:href="/sprite.svg#check"></use>
-							</svg>
-						</button>
-					</div>
-				</li>
-
-				<li class="prop" x-data="{showEdit:false, focusChange:false}" x-on:click="if (!focusChange) {showEdit=true; if ($refs.genderInput) setTimeout(() => $refs.genderInput.focus(), 250)}" x-on:click.away="showEdit=false">
-					<div class="prop__current">
-						Gender:<span>{{ $pom->gender }}</span>
-					</div>
-					<div class="prop__edit" x-show.transition.duration.250ms="showEdit" x-cloak>
-						<input id="gender" wire:model="gender" x-ref="genderInput">
-						<button type="button" wire:click="updateInfo('gender')" x-on:click="focusChange = true;showEdit=false; setTimeout(() => focusChange=false, 200)">
-							<svg class="prop__edit--svg">
-								<use xlink:href="/sprite.svg#check"></use>
-							</svg>
-						</button>
-					</div>
-				</li>
-
-				<li class="prop" x-data="{showEdit:false, focusChange:false}" x-on:click="if (!focusChange) {showEdit=true; if ($refs.colorInput) setTimeout(() => $refs.colorInput.focus(), 250)}" x-on:click.away="showEdit=false">
-					<div class="prop__current">
-						Color:<span>{{ $pom->color }}</span>
-					</div>
-					<div class="prop__edit" x-show.transition.duration.250ms="showEdit" x-cloak>
-						<input id="color" wire:model="color" x-ref="colorInput">
-						<button type="button" wire:click="updateInfo('color')" x-on:click="focusChange = true;showEdit=false; setTimeout(() => focusChange=false, 200)">
-							<svg class="prop__edit--svg">
-								<use xlink:href="/sprite.svg#check"></use>
-							</svg>
-						</button>
-					</div>
-				</li>
-
-				<li class="prop" x-data="{showEdit:false, focusChange:false}" x-on:click="if (!focusChange) {showEdit=true; if ($refs.heightInput) setTimeout(() => $refs.heightInput.focus(), 250)}" x-on:click.away="showEdit=false">
-					<div class="prop__current">
-						Height:<span>{{ $pom->height }}</span>
-					</div>
-					<div class="prop__edit" x-show.transition.duration.250ms="showEdit" x-cloak>
-						<input id="height" wire:model="height" x-ref="heightInput">
-						<button type="button" wire:click="updateInfo('height')" x-on:click="focusChange = true;showEdit=false; setTimeout(() => focusChange=false, 200)">
-							<svg class="prop__edit--svg">
-								<use xlink:href="/sprite.svg#check"></use>
-							</svg>
-						</button>
-					</div>
-				</li>
-
-				<li class="prop" x-data="{showEdit:false, focusChange:false}" x-on:click="if (!focusChange) {showEdit=true; if ($refs.weightInput) setTimeout(() => $refs.weightInput.focus(), 250)}" x-on:click.away="showEdit=false">
-					<div class="prop__current">
-						Weight:<span>{{ $pom->weight }}</span>
-					</div>
-					<div class="prop__edit" x-show.transition.duration.250ms="showEdit" x-cloak>
-						<input id="weight" wire:model="weight" x-ref="weightInput">
-						<button type="button" wire:click="updateInfo('weight')" x-on:click="focusChange = true;showEdit=false; setTimeout(() => focusChange=false, 200)">
-							<svg class="prop__edit--svg">
-								<use xlink:href="/sprite.svg#check"></use>
-							</svg>
-						</button>
-					</div>
-				</li>
-
-				<li class="prop" x-data="{showEdit:false, focusChange:false}" x-on:click="if (!focusChange) {showEdit=true; if ($refs.teethInput) setTimeout(() => $refs.teethInput.focus(), 250)}" x-on:click.away="showEdit=false">
-					<div class="prop__current">
-						Teeth:<span>{{ $pom->teeth }}</span>
-					</div>
-					<div class="prop__edit" x-show.transition.duration.250ms="showEdit" x-cloak>
-						<input id="teeth" wire:model="teeth" x-ref="teethInput">
-						<button type="button" wire:click="updateInfo('teeth')" x-on:click="focusChange = true;showEdit=false; setTimeout(() => focusChange=false, 200)">
-							<svg class="prop__edit--svg">
-								<use xlink:href="/sprite.svg#check"></use>
-							</svg>
-						</button>
-					</div>
-				</li>
+				@foreach($base_info as $item)
+					<li class="prop" x-data="{showEdit:false, focusChange:false}" x-on:click="if (!focusChange) {showEdit=true; if ($refs.{{ $item }}Input) setTimeout(() => $refs.{{ $item }}Input.focus(), 250)}" x-on:click.away="showEdit=false">
+						<div class="prop__current">
+							{{ ucfirst($item) }}:<span>{{ $pom->$item }}</span>
+						</div>
+						<div class="prop__edit" x-show.transition.duration.250ms="showEdit" x-cloak>
+							<input id="{{ $item }}" wire:model="{{ $item }}" x-ref="{{ $item }}Input">
+							<button type="button" wire:click="updateInfo('{{ $item }}')" x-on:click="focusChange = true;showEdit=false; setTimeout(() => focusChange=false, 200)">
+								<svg class="prop__edit--svg">
+									<use xlink:href="/sprite.svg#check"></use>
+								</svg>
+							</button>
+						</div>
+					</li>
+				@endforeach
 
 				<li class="prop" x-data="{showEdit:false, focusChange:false}" x-on:click="if (!focusChange) {showEdit=true; if ($refs.birthdayInput) setTimeout(() => $refs.birthdayInput.focus(), 250)}" x-on:click.away="showEdit=false">
 					<div class="prop__current">
-						Birthday:<span>{{ $pom->birthday }}</span>
+						Birthday :<span>{{ $pom->birthday }}</span>
 					</div>
 					<div class="prop__edit" x-show.transition.duration.250ms="showEdit" x-cloak>
-						<input id="birthday" wire:model="birthday" x-ref="birthdayInput">
+						<input id="datepicker" wire:model="birthday" x-ref="birthdayInput">
 						<button type="button" wire:click="updateInfo('birthday')" x-on:click="focusChange = true;showEdit=false; setTimeout(() => focusChange=false, 200)">
 							<svg class="prop__edit--svg">
 								<use xlink:href="/sprite.svg#check"></use>
@@ -116,17 +47,17 @@
 						</button>
 					</div>
 				</li>
-				
 			</ul>
 		</div>
 
 		<!-- togglers -->
 		<div class="info__inner--item info__inner--toggler">
 			<ul>
-				<li> Published: <span wire:click="toggleParam('is_published')">{{ ($pom->is_published == 1) ? 'Yes' : 'No' }}</span></li>
-				<li> For sale: <span wire:click="toggleParam('is_for_sale')">{{ ($pom->is_for_sale == 1) ? 'Yes' : 'No' }}</span></li>
-				<li> Has fontanel: <span wire:click="toggleParam('has_fontanel')">{{ ($pom->has_fontanel == 1) ? 'Yes' : 'No' }}</span></li>
-				<li> Puppy: <span wire:click="toggleParam('is_puppy')">{{ ($pom->is_puppy == 1) ? 'Yes' : 'No' }}</span></li>
+				<li> Published: <span wire:click="toggleParam('is_published')">{{ ($pom->is_published) ? 'Yes' : 'No' }}</span></li>
+				<li> For sale: <span wire:click="toggleParam('is_for_sale')">{{ ($pom->is_for_sale) ? 'Yes' : 'No' }}</span></li>
+				<li> Has fontanel: <span wire:click="toggleParam('has_fontanel')">{{ ($pom->has_fontanel) ? 'Yes' : 'No' }}</span></li>
+				<li> Open for breeding: <span wire:click="toggleParam('is_open_for_breeding')">{{ ($pom->is_open_for_breeding) ? 'Yes' : 'No' }}</span></li>
+				<li> Gender: <span wire:click="toggleParam('is_male')">{{ ($pom->is_male) ? 'Male' : 'Female' }}</span></li>
 			</ul>
 		</div>
 
@@ -134,37 +65,34 @@
 		<div class="info__inner--item info__inner--select">
 			<ul class="pom__selects">
 
-				<!-- Select item -->
 				<div class="pom__selects--item" x-data="{expandList: false, selected: ''}">
-					@if ($males->find($pom->father_id) != null)
-						<label>
-							Father: <span>{{ $males->find($pom->father_id)->name }}</span>
-						</label>
-					@else
-						<label>
-							Father not selected
-						</label>
-					@endif
+					<label>
+						Father:
+						@if ($father != null)
+							<span>{{ $father->name }}</span>
+						@else
+							<span x-text="selected || 'Father not selected'"></span>
+						@endif	
+					</label>
 
 					<div class="select">
 						<button 
-							class="select__button" 
-							type="button"
+							class="select__button"
 							x-on:click.prevent="expandList =! expandList"
 							:class="{'active': expandList === true}"
-							x-text="selected || 'Select a pom'"
+							x-text="selected || '-- Select --'"
 						></button>
 
 						<ul class="select__list" x-show.transition.duration.250ms="expandList" x-on:click.away="expandList = false">
 							<!-- fallback option -->
-							<li x-on:click="expandList = false; selected = ''" wire:click="$set('father_id', null)">
+							<li x-on:click="expandList = false; selected = ''" wire:click="detach('father', 'parents')">
 								Select later
 							</li>
 
 							<!-- loop -->
-							@if($males)
-								@foreach($males as $male)
-									<li x-on:click="expandList = false; selected = '{{ $male->name }}'" wire:click="applyOption('father_id', {{ $male->id }})">
+							@if($poms)
+								@foreach($poms->where('is_male', 1) as $male)
+									<li x-on:click="expandList = false; selected = '{{ $male->name }}'" wire:click="attach('father', {{ $male->id }})">
 										{{ $male->name }}
 									</li>
 								@endforeach	
@@ -173,39 +101,36 @@
 					</div>
 				</div>
 
-				<!-- Select item -->
 				<div class="pom__selects--item" x-data="{expandList: false, selected: ''}">
-					@if ($females->find($pom->mother_id) != null)
-						<label>
-							Mother: <span>{{ $females->find($pom->mother_id)->name }}</span>
-						</label>
-					@else
-						<label>
-							Mother not selected
-						</label>
-					@endif
+					<label>
+						Mother:
+						@if ($mother != null)
+							<span>{{ $mother->name }}</span>
+						@else
+							<span x-text="selected || 'Mother not selected'"></span>
+						@endif	
+					</label>
+					
+					
 
 					<div class="select">
 						<button 
-							class="select__button" 
-							type="button"
+							class="select__button"
 							x-on:click.prevent="expandList =! expandList"
 							:class="{'active': expandList === true}"
-							x-text="selected || 'Select a pom'"
+							x-text="selected || '-- Select --'"
 						></button>
 
 						<ul class="select__list" x-show.transition.duration.250ms="expandList" x-on:click.away="expandList = false">
 							<!-- fallback option -->
-							<li x-on:click="expandList = false; selected = ''" wire:click="$set('mother_id', null)">
+							<li x-on:click="expandList = false; selected = ''" wire:click="detach('mother', 'parents')">
 								Select later
 							</li>
 
 							<!-- loop -->
-							@if($females)
-								@foreach($females as $female)
-									<li x-on:click="expandList = false; selected = '{{ $female->name }}'" 
-										wire:click="applyOption('mother_id', {{ $female->id }})"
-										 >
+							@if($poms)
+								@foreach($poms->where('is_male', 0) as $female)
+									<li x-on:click="expandList = false; selected = '{{ $female->name }}'" wire:click="attach('mother', {{ $female->id }})">
 										{{ $female->name }}
 									</li>
 								@endforeach	
@@ -214,119 +139,34 @@
 					</div>
 				</div>
 
-				<!-- Select item -->
 				<div class="pom__selects--item" x-data="{expandList: false, selected: ''}">
-					@if ($males->find($pom->grandfather_id) != null)
-						<label>
-							Grandfather: <span>{{ $males->find($pom->grandfather_id)->name }}</span>
-						</label>
-					@else
-						<label>
-							Grandfather not selected
-						</label>
-					@endif
+					<label>
+						Breeder:
+						@if ($breeder != null)
+							<span>{{ $breeder->name }}</span>
+						@else
+							<span x-text="selected || 'Breeder not selected'"></span>
+						@endif	
+					</label>
 
 					<div class="select">
 						<button 
-							class="select__button" 
-							type="button"
+							class="select__button"
 							x-on:click.prevent="expandList =! expandList"
 							:class="{'active': expandList === true}"
-							x-text="selected || 'Select a pom'"
+							x-text="selected || '-- Select --'"
 						></button>
 
 						<ul class="select__list" x-show.transition.duration.250ms="expandList" x-on:click.away="expandList = false">
 							<!-- fallback option -->
-							<li x-on:click="expandList = false; selected = ''" wire:click="$set('grandfather_id', null)">
+							<li x-on:click="expandList = false; selected = ''" wire:click="detach('breeder', 'people')">
 								Select later
 							</li>
 
 							<!-- loop -->
-							@if($males)
-								@foreach($males as $male)
-									<li x-on:click="expandList = false; selected = '{{ $male->name }}'" 
-										wire:click="applyOption('grandfather_id', {{ $male->id }})"
-										 >
-										{{ $male->name }} 
-									</li>
-								@endforeach	
-							@endif
-						</ul>
-					</div>
-				</div>
-
-				<!-- Select item -->
-				<div class="pom__selects--item" x-data="{expandList: false, selected: ''}">
-					@if ($females->find($pom->grandmother_id) != null)
-						<label>
-							Grandmother: <span>{{ $females->find($pom->grandmother_id)->name }}</span>
-						</label>
-					@else
-						<label>
-							Grandmother not selected
-						</label>
-					@endif
-
-					<div class="select">
-						<button 
-							class="select__button" 
-							type="button"
-							x-on:click.prevent="expandList =! expandList"
-							:class="{'active': expandList === true}"
-							x-text="selected || 'Select a pom'"
-						></button>
-
-						<ul class="select__list" x-show.transition.duration.250ms="expandList" x-on:click.away="expandList = false">
-							<!-- fallback option -->
-							<li x-on:click="expandList = false; selected = ''" wire:click="$set('grandmother_id', null)">
-								Select later
-							</li>
-
-							<!-- loop -->
-							@if($females)
-								@foreach($females as $female)
-									<li x-on:click="expandList = false; selected = '{{ $female->name }}'" 
-										wire:click="applyOption('grandmother_id', {{ $female->id }})"
-										 >
-										{{ $female->name }}
-									</li>
-								@endforeach	
-							@endif
-						</ul>
-					</div>
-				</div>
-
-				<!-- Breeder item -->
-				<div class="pom__selects--item" x-data="{expandList: false, selected: ''}">
-					@if ($breeder)
-						<label>
-							Breeder: <span>{{ $breeder->name }}</span>
-						</label>
-					@else
-						<label>
-							Breeder not selected
-						</label>
-					@endif
-
-					<div class="select">
-						<button 
-							class="select__button" 
-							type="button"
-							x-on:click.prevent="expandList =! expandList"
-							:class="{'active': expandList === true}"
-							x-text="selected || 'Select breeder'"
-						></button>
-
-						<ul class="select__list" x-show.transition.duration.250ms="expandList" x-on:click.away="expandList = false">
-							<!-- fallback option -->
-							<li x-on:click="expandList = false; selected = ''" wire:click="">
-								Select later
-							</li>
-
-							<!-- loop -->
-							@if($allBreeders)
-								@foreach($allBreeders as $breeder)
-									<li x-on:click="expandList = false; selected = '{{ $breeder->name }}'" wire:click="attachPerson('breeder', {{ $breeder->id }})">
+							@if($people)
+								@foreach($people->where('type', 1) as $breeder)
+									<li x-on:click="expandList = false; selected = '{{ $breeder->name }}'" wire:click="attach('breeder', {{ $breeder->id }})">
 										{{ $breeder->name }}
 									</li>
 								@endforeach	
@@ -335,37 +175,34 @@
 					</div>
 				</div>
 
-				<!-- Owner item -->
 				<div class="pom__selects--item" x-data="{expandList: false, selected: ''}">
-					@if ($owner != null)
-						<label>
-							Owner: <span>{{ $owner->name }}</span>
-						</label>
-					@else
-						<label>
-							Owner not selected
-						</label>
-					@endif
+					<label>
+						Owner:
+						@if ($owner != null)
+							<span>{{ $owner->name }}</span>
+						@else
+							<span x-text="selected || 'Owner not selected'"></span>
+						@endif	
+					</label>
 
 					<div class="select">
 						<button 
-							class="select__button" 
-							type="button"
+							class="select__button"
 							x-on:click.prevent="expandList =! expandList"
 							:class="{'active': expandList === true}"
-							x-text="selected || 'Select owner'"
+							x-text="selected || '-- Select --'"
 						></button>
 
 						<ul class="select__list" x-show.transition.duration.250ms="expandList" x-on:click.away="expandList = false">
 							<!-- fallback option -->
-							<li x-on:click="expandList = false; selected = ''" wire:click="">
+							<li x-on:click="expandList = false; selected = ''" wire:click="detach('owner', 'people')">
 								Select later
 							</li>
 
 							<!-- loop -->
-							@if($allOwners)
-								@foreach($allOwners as $owner)
-									<li x-on:click="expandList = false; selected = '{{ $owner->name }}'" wire:click="attachPerson('owner', {{ $owner->id }})">
+							@if($people)
+								@foreach($people->where('type', 0) as $owner)
+									<li x-on:click="expandList = false; selected = '{{ $owner->name }}'" wire:click="attach('owner', {{ $owner->id }})">
 										{{ $owner->name }}
 									</li>
 								@endforeach	
@@ -373,6 +210,7 @@
 						</ul>
 					</div>
 				</div>
+			
 			</ul>
 		</div>
 

@@ -89,6 +89,14 @@
 			}
 		}
 
+		.info__is-open {
+			padding: 10px;
+			h3 {
+				text-transform: uppercase;
+				color: $blueMain;
+			}
+		}
+
 		hr {
 			border-top: 1px solid rgba($grayMain, 0.3);
 		}

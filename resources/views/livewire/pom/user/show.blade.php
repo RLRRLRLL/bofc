@@ -1,5 +1,5 @@
 <div class="show">
-	<section class="show__header anim anim-bottom">
+	<section class="show__header" data-animation="slideInUp"  data-animation-delay="100ms">
 		<h1>
 			{{ ucfirst($pom->name) }}
 		</h1>
@@ -8,7 +8,7 @@
 		</button>
 	</section>
 
-	<section class="show__body anim anim-bottom anim-delay">
+	<section class="show__body"  data-animation="slideInUp"  data-animation-delay="500ms">
 		<figure class="show__body--slider" x-data="{trans: false}">
 			<!-- -->
 			<div class="big-slide-cont">
@@ -39,15 +39,19 @@
 				</div>
 				<div class="info__primary--item">
 					<p class="item-title">gender</p>
-					<p class="item-value">{{ ucfirst($pom->gender) }}</p>
+					<p class="item-value">{{ ($pom->is_male) ? 'Male' : 'Female' }}</p>
 				</div>
 				<div class="info__primary--item">
 					<p class="item-title">color</p>
 					<p class="item-value">{{ ucfirst($pom->color) }}</p>
 				</div>
 				<div class="info__primary--item">
-					<p class="item-title">type</p>
-					<p class="item-value">{{ $pom->is_puppy === 1 ? 'Puppy' : 'Fix it' }}</p>
+					<p class="item-title">age</p>
+					<p class="item-value">{{ ucfirst($pom->age) }}</p>
+				</div>
+				<div class="info__primary--item">
+					<p class="item-title">birthday</p>
+					<p class="item-value">{{ $pom->birthday }}</p>
 				</div>
 				<div class="info__primary--item">
 					<p class="item-title">teeth</p>
@@ -58,14 +62,16 @@
 					<p class="item-value">{{ $pom->has_fontanel === 1 ? 'Yes' : 'No' }}</p>
 				</div>
 				<div class="info__primary--item">
-					<p class="item-title">birthday</p>
-					<p class="item-value">{{ $pom->birthday }}</p>
-				</div>
-				<div class="info__primary--item">
 					<p class="item-title">for sale</p>
 					<p class="item-value">{{ $pom->is_for_sale === 1 ? 'Yes' : 'No' }}</p>
 				</div>
 			</div>
+
+			@if ($pom->is_open_for_breeding)
+				<div class="info__is-open">
+					<h3>{{ $pom->name }} is open for breeding</h3>
+				</div>
+			@endif
 
 			<hr>
 			

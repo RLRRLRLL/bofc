@@ -1,5 +1,12 @@
 @extends('layouts.admin')
 
+@push('styles')
+	<link 
+		rel="stylesheet" 
+		href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css"
+	/>
+@endpush
+
 @section('content')
 	<div class="single" x-data="{activeTab: 'info'}" x-cloak>
 		<div class="single__tabs">
@@ -27,3 +34,14 @@
 		<livewire:pom.update-images :id="$id"/>
 	</div>
 @endsection
+
+@push('scripts')
+	<script 
+		src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js" 
+		integrity="sha512-+ruHlyki4CepPr07VklkX/KM5NXdD16K1xVwSva5VqOVbsotyCQVKEwdQ1tAeo3UkHCXfSMtKU/mZpKjYqkxZA==" 
+		crossorigin="anonymous">
+	</script>
+	<script>
+		flatpickr('#datepicker', {});
+	</script>
+@endpush

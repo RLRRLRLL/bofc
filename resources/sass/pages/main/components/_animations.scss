@@ -1,40 +1,155 @@
-// anim items [ai]
-.anim {
-	$duration: 0.7s;
+// Variables
+// ---------
+$animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+$animation-duration: 1s;
 
+// Keyframes
+// ---------
+@keyframes slideInUp {
+	0% {
+		opacity: 0;
+		transform: translateY(10%);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes slideInDown {
+	0% {
+		opacity: 0;
+		transform: translateY(-50%);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes slideInleft {
+	0% {
+		opacity: 0;
+		transform: translateX(10%);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes slideInRight {
+	0% {
+		opacity: 0;
+		transform: translateX(-10%);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes zoomIn {
+	0% {
+		opacity: 0;
+		transform: scale(0.5);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes zoomReverseIn {
+	0% {
+		opacity: 0;
+		transform: scale(1.5);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes flipInY {
+	0% {
+		opacity: 0;
+		transform: rotateY(90deg);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+// Animations
+// ----------
+[data-animation] {
 	opacity: 0;
-	transition: all $duration ease-in-out $duration/2;
+	animation-timing-function: $animation-timing-function;
+	animation-fill-mode: both;
+	animation-duration: $animation-duration;
+}
 
-	&-delay {
-		transition: all $duration ease-in-out $duration/1.2;
+// Disable animation of the childs
+// Disable animation in yourself
+.animations-disabled {
+	&,
+	[data-animation] {
+		animation: none !important;
+		opacity: 1 !important;
 	}
+}
 
-	&-active {
-		transform: perspective(1px) translateZ(0);
-		backface-visibility: hidden;
-		transform: translateZ(0);
-		-webkit-transform: translateZ(0);
-		filter: blur(0.000001px);
-		-webkit-filter: blur(0.000001px);
+// Slide Animations
+.slideInUp {
+	animation-name: slideInUp;
+}
+.slideInDown {
+	animation-name: slideInDown;
+}
+.slideInLeft {
+	animation-name: slideInleft;
+}
+.slideInRight {
+	animation-name: slideInRight;
+}
 
-		&.anim-bottom,
-		&.anim-right,
-		&.anim-scale {
-			opacity: 1;
-			transform: translate(0, 0) scale(1);
-		}
-	}
+// Fade Animations
+.fadeIn {
+	animation-name: fadeIn;
+}
+.fadeOut {
+	animation-name: fadeIn;
+	animation-direction: reverse;
+}
 
-	// dimensions
-	&-bottom {
-		transform: translate(0, 1%);
-	}
+// Zoom Animations
+.zoomIn {
+	animation-name: zoomIn;
+}
+.zoomOut {
+	animation-name: zoomIn;
+	animation-direction: reverse;
+}
+.zoomReverseIn {
+	animation-name: zoomReverseIn;
+}
+.zoomReverseOut {
+	animation-name: zoomReverseIn;
+	animation-direction: reverse;
+}
 
-	&-right {
-		transform: translate(5%, 0);
-	}
-
-	&-scale {
-		transform: scale(0.8);
-	}
+// Flip Animations
+.flipInY {
+	animation-name: flipInY;
+}
+.flipOutY {
+	animation-name: flipInY;
+	animation-direction: reverse;
 }

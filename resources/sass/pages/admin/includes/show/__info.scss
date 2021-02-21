@@ -14,8 +14,6 @@
 	}
 
 	&__inner {
-		/* Info sections wrapper */
-		// height: 100%;
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-areas:
@@ -42,6 +40,11 @@
 		&--item {
 			padding: 10px;
 			background: #282828;
+			transition: background 0.3s ease-out;
+
+			&:hover {
+				background: #232323;
+			}
 
 			/* Common styles for each section */
 			li {
@@ -84,12 +87,6 @@
 		/* Content type */
 		&--type,
 		&--titles {
-			transition: background 0.3s ease-out;
-
-			&:hover {
-				background: #232323;
-			}
-
 			ul {
 				display: flex;
 				flex-wrap: wrap;

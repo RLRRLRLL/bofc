@@ -76,15 +76,14 @@
 					</div>
 				</div>
 				<!-- -------------------------------------- -->
-				<button id="submitImagesBtn"
-						type="submit"
+				<button type="submit"
 						wire:click.prevent="storeImages"
 						class="submit-btn submit-btn__images mt-3 w-5">
 					Next
 					<div wire:loading wire:target="storeImages">
 						@include('includes.common.spinner')
 					</div>
-					<i class="fas fa-angle-double-right"></i>
+					<i wire:loading.class="d-none" class="fas fa-angle-double-right"></i>
 				</button>
 			</div>
 		</div>

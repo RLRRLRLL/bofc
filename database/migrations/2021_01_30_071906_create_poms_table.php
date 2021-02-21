@@ -15,30 +15,21 @@ class CreatePomsTable extends Migration
     {
         Schema::create('poms', function (Blueprint $table) {
 			$table->id();
-			// Base info
+			
 			$table->string('name')->nullable();
 			$table->string('color')->nullable();
-			$table->string('gender')->nullable();
 			$table->string('height')->nullable();
-			$table->string('weight')->nullable();
 			$table->string('teeth')->nullable();
 			$table->string('birthday')->nullable();
 			$table->string('age')->default('adult');
 			$table->mediumText('titles')->nullable();
-			// Checkboxes
-			$table->tinyInteger('has_fontanel')->default(0);
-			$table->tinyInteger('is_published')->default(0);
-			$table->tinyInteger('is_for_sale')->default(0);
-			// Family tree
-			$table->bigInteger('grandfather_id')->unsigned()->nullable();
-			$table->bigInteger('grandmother_id')->unsigned()->nullable();
-			$table->bigInteger('grandchild_id')->unsigned()->nullable();
-			$table->bigInteger('father_id')->unsigned()->nullable();
-			$table->bigInteger('mother_id')->unsigned()->nullable();
-			$table->bigInteger('child_id')->unsigned()->nullable();
-			// People
-			// $table->foreignId('person_id')->nullable()->constrained('people');
-            // Timestamps
+			
+			$table->boolean('is_open_for_breeding')->default(false);
+			$table->boolean('has_fontanel')->default(false);
+			$table->boolean('is_published')->default(false);
+			$table->boolean('is_for_sale')->default(false);
+			$table->boolean('is_male')->default(false);
+            
 			$table->timestamps();
         });
     }

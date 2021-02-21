@@ -11,20 +11,30 @@ class Pom extends Model
 	use HasFactory;
 
 	protected $fillable = [
-		'name', 'color', 'gender', 'height', 'weight', 
-		'teeth', 'birthday', 'has_fontanel', 'is_for_sale', 
-		'age', 'titles', 
-		'father_id', 'mother_id', 'grandmother_id', 
-		'grandfather_id', 'child_id', 'grandchild_id'
+		'name', 'color', 'height', 'teeth', 'birthday', 'age', 'titles',
+		'has_fontanel', 'is_for_sale', 'is_open_for_breeding', 'is_male'
 	];
 
+	// Images
 	public function images()
 	{
 		return $this->hasMany(Image::class);
 	}
 
+	// Breeders, owners
 	public function people()
 	{
 		return $this->belongsToMany(Person::class);
+	}
+
+	// Family relations
+	public function children()
+	{
+		return $this->belongsToMany(Pom::class, 'child_parent', 'parent_id', 'child_id');
+	}
+
+	public function parents()
+	{
+		return $this->belongsToMany(Pom::class, 'child_parent', 'child_id', 'parent_id');
 	}
 }

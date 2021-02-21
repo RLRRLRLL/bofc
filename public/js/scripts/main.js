@@ -25506,52 +25506,76 @@ var circleDistortion = /*#__PURE__*/function (_LinkFx) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return slidesAndFades; });
-/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Utils */ "./resources/js/components/Utils.js");
- // small animations across the web [slide'n'fade]
+// import { domReady } from "./../Utils";
+/* harmony default export */ __webpack_exports__["default"] = (Animation = function Animation() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    offset: 10
+  },
+      offset = _ref.offset;
 
-function slidesAndFades() {
-  var animItems = document.querySelectorAll(".anim");
+  var _elements; // Define a dobra superior, inferior e laterais da tela
 
-  if (animItems.length > 0) {
-    var runAnimations = function runAnimations() {
-      window.addEventListener("scroll", animateOnScroll);
-      setTimeout(function () {
-        animateOnScroll();
-      }, 300);
-    };
 
-    var getOffset = function getOffset(e) {
-      var rect = e.getBoundingClientRect(),
-          scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-          scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      return {
-        top: rect.top + scrollTop,
-        left: rect.left + scrollLeft
-      };
-    };
+  var windowTop = offset * window.innerHeight / 100;
+  var windowBottom = window.innerHeight - windowTop;
+  var windowLeft = 0;
+  var windowRight = window.innerWidth;
 
-    var animateOnScroll = function animateOnScroll() {
-      for (var index = 0; index < animItems.length; index++) {
-        var animItem = animItems[index],
-            animItemHeight = animItem.offsetHeight,
-            animItemOffset = getOffset(animItem).top,
-            animStart = 4;
-        var animItemPoint = window.innerHeight - animItemHeight / animStart;
+  function start(element) {
+    // Seta os atributos customizados
+    element.style.animationDelay = element.dataset.animationDelay;
+    element.style.animationDuration = element.dataset.animationDuration; // Inicia a animacao setando a classe da animacao
 
-        if (animItemHeight > window.innerHeight) {
-          animItemPoint = window.innerHeight - window.innerHeight / animStart;
-        }
+    element.classList.add(element.dataset.animation); // Seta o elemento como animado
 
-        if (pageYOffset > animItemOffset - animItemPoint && pageYOffset < animItemOffset + animItemHeight) {
-          animItem.classList.add("anim-active");
-        }
-      }
-    };
-
-    Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["domReady"])(runAnimations);
+    element.dataset.animated = "true";
   }
-}
+
+  function isElementOnScreen(element) {
+    // Obtem o boundingbox do elemento
+    var elementRect = element.getBoundingClientRect();
+    var elementTop = elementRect.top + parseInt(element.dataset.animationOffset) || elementRect.top;
+    var elementBottom = elementRect.bottom - parseInt(element.dataset.animationOffset) || elementRect.bottom;
+    var elementLeft = elementRect.left;
+    var elementRight = elementRect.right; // Verifica se o elemento esta na tela
+
+    return elementTop <= windowBottom && elementBottom >= windowTop && elementLeft <= windowRight && elementRight >= windowLeft;
+  } // Percorre o array de elementos, verifica se o elemento está na tela e inicia animação
+
+
+  function checkElementsOnScreen() {
+    var els = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _elements;
+
+    for (var i = 0, len = els.length; i < len; i++) {
+      // Passa para o proximo laço se o elemento ja estiver animado
+      if (els[i].dataset.animated) continue;
+      isElementOnScreen(els[i]) && start(els[i]);
+    }
+  } // Atualiza a lista de elementos a serem animados
+
+
+  function update() {
+    _elements = document.querySelectorAll("[data-animation]:not([data-animated])");
+    checkElementsOnScreen(_elements);
+  } // Inicia os eventos
+
+
+  window.addEventListener("load", update, false);
+  window.addEventListener("scroll", function () {
+    return checkElementsOnScreen(_elements);
+  }, {
+    passive: true
+  });
+  window.addEventListener("resize", function () {
+    return checkElementsOnScreen(_elements);
+  }, false); // Retorna funcoes publicas
+
+  return {
+    start: start,
+    isElementOnScreen: isElementOnScreen,
+    update: update
+  };
+});
 
 /***/ }),
 
@@ -25926,12 +25950,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var fxObj = _components_common_LinkDistortionCircle__WEBPACK_IMPORTED_MODULE_6__["default"][elPosition];
     fxObj && new fxObj(el);
-  });
+  }); // keepLinksActive();
 
-  Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["keepLinksActive"])(); // popThingy();
 
-  Object(_components_main_RippleEffect__WEBPACK_IMPORTED_MODULE_3__["rippleButtonsInit"])();
-  Object(_components_main_Animation__WEBPACK_IMPORTED_MODULE_5__["default"])(); // toggleMenu();
+  Object(_components_main_RippleEffect__WEBPACK_IMPORTED_MODULE_3__["rippleButtonsInit"])(); // Initialize
+
+  var options = {
+    offset: 20 //percentage of window
+
+  };
+  var animation = new _components_main_Animation__WEBPACK_IMPORTED_MODULE_5__["default"](options); // toggleMenu();
 
   Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".main").classList.add("main-loaded"); // home page
 

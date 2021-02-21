@@ -3,7 +3,7 @@
 	<nav class="header__desktop">
 		<ul>
 			<li>
-				<a class="link" href="/" >
+				<a class="link {{ checkLinks('/') }}" href="/" >
 					Welcome!
 				</a>
 			</li>
@@ -13,22 +13,22 @@
 				</a>
 			</li> --}}
 			<li>
-				<a class="link" href="/pomeranian">
+				<a class="link {{ checkLinks('pomeranian') }}" href="/pomeranian">
 					Pomeranian
 				</a>
 			</li>
 			<li>
-				<a class="link" href="#">
+				<a class="link {{ checkLinks('news') }}" href="#">
 					News
 				</a>
 			</li>
 			<li>
-				<a class="link" href="#">
+				<a class="link {{ checkLinks('contact') }}" href="#">
 					Contact
 				</a>
 			</li>
 			<li>
-				<a class="link" href="/admin">
+				<a class="link {{ checkLinks('dashboard') }}" href="/admin">
 					Dashboard
 				</a>
 			</li>

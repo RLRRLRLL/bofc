@@ -15,7 +15,7 @@
 			margin-bottom: 25px;
 			// typography
 			font-size: 55px;
-			color: $grayMain;
+			color: $accent;
 			letter-spacing: 1px;
 		}
 
@@ -25,7 +25,7 @@
 			p {
 				line-height: 1.8;
 				text-align: center;
-				color: lighten($grayMain, 20%);
+				color: lighten($grayMain, 30%);
 
 				&:not(:last-child) {
 					margin-bottom: 15px;

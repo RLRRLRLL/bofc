@@ -30,11 +30,10 @@
 
 		.pom {
 			@include flex-column;
-			height: 250px;
+			height: 350px;
 			text-decoration: none;
 			background: #121212;
 			box-shadow: 0 3px 5px 1px black;
-			padding: 5px;
 
 			&:hover {
 				.pom-img {
@@ -42,29 +41,62 @@
 				}
 			}
 
-			&-name {
-				height: 15%;
-				display: flex;
-				align-items: center;
-				pointer-events: none;
-				// typography
-				letter-spacing: 1px;
-				font-size: 20px;
-				color: $white;
-
-				svg {
-					width: 17px;
-					height: 17px;
-					margin: 3px 0 0 5px;
-				}
-			}
-
 			&-img {
 				@include image;
-				height: 85%;
+				height: 65%;
 				opacity: 0.6;
 				transition: opacity 0.3s;
 				pointer-events: none;
+			}
+
+			&-info {
+				height: 35%;
+				@include flex-column;
+				align-items: center;
+				justify-content: space-between;
+				padding: 10px;
+
+				&__name {
+					display: flex;
+					align-items: center;
+					pointer-events: none;
+					// typography
+					letter-spacing: 1px;
+					font-size: 20px;
+					color: $white;
+
+					svg {
+						width: 17px;
+						height: 17px;
+						margin: 3px 0 0 5px;
+					}
+				}
+
+				&__timestamps {
+					// @include flex-column;
+					font-size: 16px;
+					color: $grayMain;
+
+					span:first-child {
+						text-transform: lowercase;
+						font-size: 14px;
+					}
+				}
+
+				&__cta {
+					width: 100%;
+					padding: 5px 15px;
+					text-decoration: none;
+					text-align: center;
+					transition: all 0.15s;
+					border-radius: 5px;
+					border: 1px solid $accentSecondary;
+					color: $accentSecondary;
+					&:hover {
+						border-color: $blueMain;
+						color: $blueMain;
+					}
+				}
 			}
 		}
 	}
