@@ -92,3 +92,14 @@
 	font-family: "manege";
 	src: url("/fonts/Manege/Manege.ttf");
 }
+
+// Nanum
+@font-face {
+	font-family: "nanum";
+	src: url("/fonts/Nanum/NanumMyeongjo-Regular.ttf");
+}
+@font-face {
+	font-family: "nanum-bold";
+	font-weight: 600;
+	src: url("/fonts/Nanum/NanumMyeongjo-Bold.ttf");
+}

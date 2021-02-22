@@ -2,14 +2,27 @@ window._ = require("lodash");
 window.axios = require("axios");
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
-import { query, keepLinksActive, smoothScroll } from "./components/Utils";
-// import toggleMenu from "./components/main/ToggleMenu";
+/**
+ * STATE: DEVELOPMENT!
+ */
+
+/**
+ * * * USED COMPONENTS:
+ */
+import { query, disableRightClick, smoothScroll } from "./components/Utils";
 import { Bubbles } from "./components/common/Bubbles";
-import { selectPoms } from "./components/main/SelectPoms";
 import { rippleButtonsInit } from "./components/main/RippleEffect";
 import { homeParallaxGallery } from "./components/main/Gallery";
 import Animation from "./components/main/Animation";
 import LinkDistortionCircle from "./components/common/LinkDistortionCircle";
+import initCarousel from "./components/main/Swiper";
+
+/**
+ * !!! NOT USED:
+ *
+ */
+// import toggleMenu from "./components/main/ToggleMenu";
+// toggleMenu();
 
 document.addEventListener(
 	"DOMContentLoaded",
@@ -19,27 +32,36 @@ document.addEventListener(
 			const fxObj = LinkDistortionCircle[elPosition];
 			fxObj && new fxObj(el);
 		});
-		// keepLinksActive();
+
+		disableRightClick();
 		rippleButtonsInit();
+
 		// Initialize
 		var options = {
 			offset: 20 //percentage of window
 		};
 		var animation = new Animation(options);
-		// toggleMenu();
 		query(".main").classList.add("main-loaded");
 
-		// home page
+		/**
+		 * * * Home page
+		 */
 		if (query(".wrapper.home")) {
 			Bubbles(".brand", 3000);
 			smoothScroll();
 			homeParallaxGallery();
 		}
 
-		// pomeranians page
+		/**
+		 * * * Pomeranians page
+		 *
+		 */
 		if (query(".wrapper.pomeranian")) {
-			selectPoms();
-			if (query(".show__header")) {
+			if (query(".show")) {
+				// Carousel
+				initCarousel();
+
+				// Bubbles on header
 				setTimeout(() => {
 					Bubbles(".show__header", 1500);
 				}, 1500);

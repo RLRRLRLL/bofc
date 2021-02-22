@@ -8,29 +8,31 @@
 		</button>
 	</section>
 
-	<section class="show__body"  data-animation="slideInUp"  data-animation-delay="500ms">
-		<figure class="show__body--slider" x-data="{trans: false}">
-			<!-- -->
-			<div class="big-slide-cont">
-				<img 
-					class="big-slide" 
-					src="{{ '/storage/images/'.$pom->id.'/'.$pom->images->find($image_id)->url}}"
-					:class="{'slide-transition': trans}"
-				>
-			</div>
-			<!-- -->
-			@foreach($pom->images as $image)
-				<div>
-					<img
-						wire:click="changeSlide({{ $image->id }})"
-						x-on:click="trans = true; setTimeout(() => trans = false, 350)"
-						class="slide"
-						src="{{ '/storage/images/'.$pom->id.'/'.$image->url}}"
-					>
+	<section class="show__body" data-animation="slideInUp"  data-animation-delay="500ms">
+		<figure class="show__body--slider">
+			
+			<!-- Swiper -->
+			<div class="swiper-container gallery-top">
+				<div class="swiper-wrapper">
+					@foreach($pom->images as $image)
+						<div class="swiper-slide" style="background-image:url({{ '/storage/images/'.$pom->id.'/'.$image->url}})"></div>
+					@endforeach
 				</div>
-			@endforeach
-		</figure>
+				<!-- Add Arrows -->
+				<div class="swiper-button-next swiper-button-white"></div>
+				<div class="swiper-button-prev swiper-button-white"></div>
+			</div>
+			<div class="swiper-container gallery-thumbs">
+				<div class="swiper-wrapper">
+					@foreach($pom->images as $image)
+						<div class="swiper-slide" style="background-image:url({{ '/storage/images/'.$pom->id.'/'.$image->url}})"></div>
+					@endforeach
+				</div>
+			</div>
 
+		</figure>
+		
+		<!-- Info -->
 		<figure class="show__body--info">
 			<div class="info__primary">
 				<div class="info__primary--item">

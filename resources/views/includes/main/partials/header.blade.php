@@ -7,11 +7,6 @@
 					Welcome!
 				</a>
 			</li>
-			{{-- <li>
-				<a class="link" href="#">
-						About
-				</a>
-			</li> --}}
 			<li>
 				<a class="link {{ checkLinks('pomeranian') }}" href="/pomeranian">
 					Pomeranian
@@ -33,9 +28,8 @@
 				</a>
 			</li>
 			<li class="enough-padding">
-				<button>
+				<button class="btn-ripple btn-split" x-on:click="$refs.overlay.classList.remove('out'); $refs.overlay.classList.add('split'); setTimeout(() => modalTransitionFinished = true, 350)">
 					Get in touch
-					<span></span>
 				</button>
 			</li>
 		</ul>

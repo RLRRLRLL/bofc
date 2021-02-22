@@ -14,8 +14,9 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         @yield('styles')
     </head>
-    <body>
+    <body x-data="{ modalTransitionFinished: false }" x-ref="body">
 		@include('includes.common.distortion-circle')
+		@include('includes.main.partials.modal')
 		
         <main class="main">
 			@include('includes.main.partials.header')

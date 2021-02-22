@@ -19350,7 +19350,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /*!******************************************!*\
   !*** ./resources/js/components/Utils.js ***!
   \******************************************/
-/*! exports provided: query, queryAll, randomNum, cursorIntoArrows, keepLinksActive, smoothScroll, classToggler, domReady */
+/*! exports provided: query, queryAll, randomNum, cursorIntoArrows, keepLinksActive, smoothScroll, classToggler, domReady, disableRightClick */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19363,6 +19363,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "smoothScroll", function() { return smoothScroll; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "classToggler", function() { return classToggler; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "domReady", function() { return domReady; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "disableRightClick", function() { return disableRightClick; });
 // aliases for js selectors
 var query = document.querySelector.bind(document);
 var queryAll = document.querySelectorAll.bind(document); // generate random num
@@ -19378,6 +19379,10 @@ function cursorIntoArrows(e) {
 } // links: prevent default if '#' and add active class if current page
 
 function keepLinksActive() {
+  /**
+   * !!! This fn is working altough not used,
+   * !!! because its cleaner to use php solution
+   */
   var anchorTags = queryAll("a");
   var currentUrl = window.location.pathname;
   anchorTags.forEach(function (element) {
@@ -19396,11 +19401,7 @@ function keepLinksActive() {
           window.location = thisTargetUrl;
         }, 250);
       }
-    }); // if (anchorAttr.includes("//localhost:3000")) {
-    // 	cropped = anchorAttr.replace("//localhost:3000", "");
-    // } else if (anchorAttr.includes("//bubblesofchampain.com")) {
-    // 	cropped = anchorAttr.replace("//bubblesofchampain.com", "");
-    // }
+    });
 
     if (cropped == currentUrl || anchorAttr == currentUrl) {
       element.closest("a").classList.add("active");
@@ -19459,7 +19460,16 @@ var domReady = function domReady(callBack) {
   } else {
     callBack();
   }
-};
+}; // Disable right click on images (make it harder to download)
+
+function disableRightClick() {
+  var allImages = document.querySelectorAll("img");
+  allImages.forEach(function (value) {
+    value.oncontextmenu = function (e) {
+      e.preventDefault();
+    };
+  });
+}
 
 /***/ }),
 

@@ -66,8 +66,7 @@
 				}
 
 				&--cta {
-					background: lighten($accentSecondary, 20%);
-					transition: background $cubic;
+					background: $accent;
 					border-radius: 7px;
 					padding: 8px 15px;
 					margin-bottom: 0;

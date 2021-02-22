@@ -4,8 +4,9 @@
 // <!--------- Colors ---------->
 
 // main
-$accent: #e2af7f;
-$accentSecondary: #3f5b61;
+// $accent: #e2af7f;
+$accent: #dea54e;
+$accentSecondary: lighten(#3f5b61, 20%);
 // $accent: #c78a48;
 $greenMain: #53dd6c;
 $blackMain: #272727;
@@ -21,9 +22,15 @@ $grayLighter: #eaeaea;
 $gitdark: #0d1117;
 $sky-blue: #41aae8;
 $white: #e3f2fd;
-// maybe temp
+// used only in header for now
 $goldMain: #f7b900;
 $goldSecondary: #f7d801;
+
+// Dashboard colors
+$background: #1d1e24;
+$background-darker: #16171c;
+$and-even-darker: darken(#16171c, 5%);
+$height: 60px;
 
 // <!--------- Colors ---------->
 

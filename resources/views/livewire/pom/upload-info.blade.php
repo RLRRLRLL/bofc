@@ -46,12 +46,7 @@
 							</label>
 
 							<div class="select">
-								<button class="select__button" x-on:click.prevent="expandList =! expandList" :class="{'active': expandList === true}">
-									<span class="select__button--txt" x-text="selected || '--- Select ---'"></span>
-									<svg class="select__button--arr">
-										<use xlink:href="/sprite.svg#arrow"></use>
-									</svg>
-								</button>
+								@include('includes.admin.select-btn')
 
 								<ul class="select__list" x-show.transition.duration.250ms="expandList" x-on:click.away="expandList = false">
 									<!-- fallback option -->
@@ -77,12 +72,7 @@
 							</label>
 
 							<div class="select">
-								<button class="select__button" x-on:click.prevent="expandList =! expandList" :class="{'active': expandList === true}">
-									<span class="select__button--txt" x-text="selected || '--- Select ---'"></span>
-									<svg class="select__button--arr">
-										<use xlink:href="/sprite.svg#arrow"></use>
-									</svg>
-								</button>
+								@include('includes.admin.select-btn')
 
 								<ul class="select__list" x-show.transition.duration.250ms="expandList" x-on:click.away="expandList = false">
 									<!-- fallback option -->
@@ -108,12 +98,7 @@
 							</label>
 
 							<div class="select">
-								<button class="select__button" x-on:click.prevent="expandList =! expandList" :class="{'active': expandList === true}">
-									<span class="select__button--txt" x-text="selected || '--- Select ---'"></span>
-									<svg class="select__button--arr">
-										<use xlink:href="/sprite.svg#arrow"></use>
-									</svg>
-								</button>
+								@include('includes.admin.select-btn')
 
 								<ul 
 									class="select__list" 
@@ -147,12 +132,7 @@
 							</label>
 
 							<div class="select">
-								<button class="select__button" x-on:click.prevent="expandList =! expandList" :class="{'active': expandList === true}">
-									<span class="select__button--txt" x-text="selected || '--- Select ---'"></span>
-									<svg class="select__button--arr">
-										<use xlink:href="/sprite.svg#arrow"></use>
-									</svg>
-								</button>
+								@include('includes.admin.select-btn')
 
 								<ul 
 									class="select__list" 

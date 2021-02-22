@@ -18,6 +18,10 @@ export function cursorIntoArrows(e) {
 
 // links: prevent default if '#' and add active class if current page
 export function keepLinksActive() {
+	/**
+	 * !!! This fn is working altough not used,
+	 * !!! because its cleaner to use php solution
+	 */
 	const anchorTags = queryAll("a");
 	let currentUrl = window.location.pathname;
 
@@ -41,12 +45,6 @@ export function keepLinksActive() {
 				}, 250);
 			}
 		});
-
-		// if (anchorAttr.includes("//localhost:3000")) {
-		// 	cropped = anchorAttr.replace("//localhost:3000", "");
-		// } else if (anchorAttr.includes("//bubblesofchampain.com")) {
-		// 	cropped = anchorAttr.replace("//bubblesofchampain.com", "");
-		// }
 
 		if (cropped == currentUrl || anchorAttr == currentUrl) {
 			element.closest("a").classList.add("active");
@@ -115,3 +113,13 @@ export const domReady = callBack => {
 		callBack();
 	}
 };
+
+// Disable right click on images (make it harder to download)
+export function disableRightClick() {
+	let allImages = document.querySelectorAll("img");
+	allImages.forEach(value => {
+		value.oncontextmenu = e => {
+			e.preventDefault();
+		};
+	});
+}

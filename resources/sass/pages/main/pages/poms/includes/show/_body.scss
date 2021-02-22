@@ -1,7 +1,6 @@
 &__body {
-	display: grid;
-	grid-template: 1fr / 0.4fr 0.6fr;
-	grid-gap: 15px;
+	display: flex;
+	justify-content: space-between;
 
 	&--slider,
 	&--info {
@@ -12,51 +11,40 @@
 
 	// Slider
 	&--slider {
-		display: grid;
-		grid-template-columns: repeat(4, minmax(50px, 1fr));
-		grid-template-rows: repeat(auto-fill, minmax(200px, 400px));
-		grid-gap: 10px;
+		width: 40%;
 
-		& > div {
-			&.big-slide-cont {
-				grid-column: 1 / -1;
-				grid-row: auto;
-				overflow: hidden;
-				margin-bottom: 20px;
-			}
-
-			img {
-				@include image;
-				box-shadow: 0 0 5px 1px black;
-			}
-
-			img.big-slide {
-				border-radius: 2.5;
-				/* start transition effect */
-				transition: all 0.15s;
-				transform: translateY(0);
-				opacity: 1;
-				&.slide-transition {
-					transform: translateY(10%);
-					opacity: 0;
-				}
-				/* end transition effect */
-			}
-
-			img.slide {
-				cursor: pointer;
-				border-radius: 5px;
-				opacity: 0.75;
-				transition: opacity 0.15s ease;
-				&:hover {
-					opacity: 1;
-				}
-			}
+		.swiper-container {
+			width: 100%;
+			height: 300px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.swiper-slide {
+			background-size: cover;
+			background-position: center;
+		}
+		.gallery-top {
+			height: 80%;
+			width: 100%;
+		}
+		.gallery-thumbs {
+			height: 20%;
+			box-sizing: border-box;
+			padding: 10px 0;
+		}
+		.gallery-thumbs .swiper-slide {
+			width: 25%;
+			height: 100%;
+			opacity: 0.4;
+		}
+		.gallery-thumbs .swiper-slide-thumb-active {
+			opacity: 1;
 		}
 	}
 
 	// Info
 	&--info {
+		width: 59%;
 		@include flex-column;
 		justify-content: space-around;
 
@@ -91,9 +79,12 @@
 
 		.info__is-open {
 			padding: 10px;
+			margin-top: 1em;
 			h3 {
 				text-transform: uppercase;
-				color: $blueMain;
+				font-weight: 400;
+				color: $accent;
+				font-size: 15px;
 			}
 		}
 

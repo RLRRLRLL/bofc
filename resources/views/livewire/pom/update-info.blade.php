@@ -76,12 +76,7 @@
 					</label>
 
 					<div class="select">
-						<button 
-							class="select__button"
-							x-on:click.prevent="expandList =! expandList"
-							:class="{'active': expandList === true}"
-							x-text="selected || '-- Select --'"
-						></button>
+						@include('includes.admin.select-btn')
 
 						<ul class="select__list" x-show.transition.duration.250ms="expandList" x-on:click.away="expandList = false">
 							<!-- fallback option -->
@@ -111,15 +106,8 @@
 						@endif	
 					</label>
 					
-					
-
 					<div class="select">
-						<button 
-							class="select__button"
-							x-on:click.prevent="expandList =! expandList"
-							:class="{'active': expandList === true}"
-							x-text="selected || '-- Select --'"
-						></button>
+						@include('includes.admin.select-btn')
 
 						<ul class="select__list" x-show.transition.duration.250ms="expandList" x-on:click.away="expandList = false">
 							<!-- fallback option -->
@@ -150,12 +138,7 @@
 					</label>
 
 					<div class="select">
-						<button 
-							class="select__button"
-							x-on:click.prevent="expandList =! expandList"
-							:class="{'active': expandList === true}"
-							x-text="selected || '-- Select --'"
-						></button>
+						@include('includes.admin.select-btn')
 
 						<ul class="select__list" x-show.transition.duration.250ms="expandList" x-on:click.away="expandList = false">
 							<!-- fallback option -->
@@ -186,12 +169,7 @@
 					</label>
 
 					<div class="select">
-						<button 
-							class="select__button"
-							x-on:click.prevent="expandList =! expandList"
-							:class="{'active': expandList === true}"
-							x-text="selected || '-- Select --'"
-						></button>
+						@include('includes.admin.select-btn')
 
 						<ul class="select__list" x-show.transition.duration.250ms="expandList" x-on:click.away="expandList = false">
 							<!-- fallback option -->
