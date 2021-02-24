@@ -26,6 +26,7 @@ Route::get('/cache', function() {
 Route::get('/', [MainPagesController::class, 'homepage']);
 Route::get('/pomeranian', [MainPagesController::class, 'index'])->name('poms.index');
 Route::get('/pomeranian/{id}', [MainPagesController::class, 'show'])->name('poms.show');
+Route::get('/gallery', [MainPagesController::class, 'gallery'])->name('gallery');
 
 // auth
 Auth::routes();

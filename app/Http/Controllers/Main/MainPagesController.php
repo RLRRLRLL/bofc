@@ -12,6 +12,15 @@ class MainPagesController extends Controller
         return view('pages.main.home');
     }
 
+    public function gallery() 
+    {
+		return view('pages.main.gallery');
+    }
+
+	/**
+	 * Pom pages stuff
+	 * TODO: move to its own controller || livewire comp
+	 */
     public function index() 
     { // show all poms
 		$poms = Pom::where('is_published', 1)->get();

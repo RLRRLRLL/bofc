@@ -1,9 +1,11 @@
 import { query, randomNum } from "./../Utils";
 
-export function Bubbles(selector, timeout) {
-	let area = query(selector);
+let interval;
 
-	function createBubbles() {
+export const runBubbles = (selector, timeout) => {
+	const area = query(selector);
+
+	interval = setInterval(() => {
 		let maxWidth = area.offsetWidth * 0.9;
 		let size = randomNum(15, 25);
 		const bubble = document.createElement("span");
@@ -16,7 +18,10 @@ export function Bubbles(selector, timeout) {
 		setTimeout(() => {
 			bubble.remove();
 		}, timeout);
-	}
+	}, 150);
+};
 
-	setInterval(createBubbles, 150);
-}
+export const stopBubbles = () => {
+	window.clearInterval(interval);
+	interval = null;
+};

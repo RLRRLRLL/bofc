@@ -109,6 +109,7 @@ module.exports = __webpack_require__(/*! ./lib/axios */ "./node_modules/axios/li
 
 var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
 var settle = __webpack_require__(/*! ./../core/settle */ "./node_modules/axios/lib/core/settle.js");
+var cookies = __webpack_require__(/*! ./../helpers/cookies */ "./node_modules/axios/lib/helpers/cookies.js");
 var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ "./node_modules/axios/lib/helpers/buildURL.js");
 var buildFullPath = __webpack_require__(/*! ../core/buildFullPath */ "./node_modules/axios/lib/core/buildFullPath.js");
 var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ "./node_modules/axios/lib/helpers/parseHeaders.js");
@@ -129,7 +130,7 @@ module.exports = function xhrAdapter(config) {
     // HTTP basic authentication
     if (config.auth) {
       var username = config.auth.username || '';
-      var password = config.auth.password || '';
+      var password = config.auth.password ? unescape(encodeURIComponent(config.auth.password)) : '';
       requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
     }
 
@@ -210,8 +211,6 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(/*! ./../helpers/cookies */ "./node_modules/axios/lib/helpers/cookies.js");
-
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(fullPath)) && config.xsrfCookieName ?
         cookies.read(config.xsrfCookieName) :
@@ -277,7 +276,7 @@ module.exports = function xhrAdapter(config) {
       });
     }
 
-    if (requestData === undefined) {
+    if (!requestData) {
       requestData = null;
     }
 
@@ -345,6 +344,9 @@ axios.all = function all(promises) {
   return Promise.all(promises);
 };
 axios.spread = __webpack_require__(/*! ./helpers/spread */ "./node_modules/axios/lib/helpers/spread.js");
+
+// Expose isAxiosError
+axios.isAxiosError = __webpack_require__(/*! ./helpers/isAxiosError */ "./node_modules/axios/lib/helpers/isAxiosError.js");
 
 module.exports = axios;
 
@@ -554,9 +556,10 @@ Axios.prototype.getUri = function getUri(config) {
 utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
   /*eslint func-names:0*/
   Axios.prototype[method] = function(url, config) {
-    return this.request(utils.merge(config || {}, {
+    return this.request(mergeConfig(config || {}, {
       method: method,
-      url: url
+      url: url,
+      data: (config || {}).data
     }));
   };
 });
@@ -564,7 +567,7 @@ utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData
 utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
   /*eslint func-names:0*/
   Axios.prototype[method] = function(url, data, config) {
-    return this.request(utils.merge(config || {}, {
+    return this.request(mergeConfig(config || {}, {
       method: method,
       url: url,
       data: data
@@ -824,7 +827,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
   error.response = response;
   error.isAxiosError = true;
 
-  error.toJSON = function() {
+  error.toJSON = function toJSON() {
     return {
       // Standard
       message: this.message,
@@ -873,59 +876,73 @@ module.exports = function mergeConfig(config1, config2) {
   config2 = config2 || {};
   var config = {};
 
-  var valueFromConfig2Keys = ['url', 'method', 'params', 'data'];
-  var mergeDeepPropertiesKeys = ['headers', 'auth', 'proxy'];
+  var valueFromConfig2Keys = ['url', 'method', 'data'];
+  var mergeDeepPropertiesKeys = ['headers', 'auth', 'proxy', 'params'];
   var defaultToConfig2Keys = [
-    'baseURL', 'url', 'transformRequest', 'transformResponse', 'paramsSerializer',
-    'timeout', 'withCredentials', 'adapter', 'responseType', 'xsrfCookieName',
-    'xsrfHeaderName', 'onUploadProgress', 'onDownloadProgress',
-    'maxContentLength', 'validateStatus', 'maxRedirects', 'httpAgent',
-    'httpsAgent', 'cancelToken', 'socketPath'
+    'baseURL', 'transformRequest', 'transformResponse', 'paramsSerializer',
+    'timeout', 'timeoutMessage', 'withCredentials', 'adapter', 'responseType', 'xsrfCookieName',
+    'xsrfHeaderName', 'onUploadProgress', 'onDownloadProgress', 'decompress',
+    'maxContentLength', 'maxBodyLength', 'maxRedirects', 'transport', 'httpAgent',
+    'httpsAgent', 'cancelToken', 'socketPath', 'responseEncoding'
   ];
+  var directMergeKeys = ['validateStatus'];
+
+  function getMergedValue(target, source) {
+    if (utils.isPlainObject(target) && utils.isPlainObject(source)) {
+      return utils.merge(target, source);
+    } else if (utils.isPlainObject(source)) {
+      return utils.merge({}, source);
+    } else if (utils.isArray(source)) {
+      return source.slice();
+    }
+    return source;
+  }
+
+  function mergeDeepProperties(prop) {
+    if (!utils.isUndefined(config2[prop])) {
+      config[prop] = getMergedValue(config1[prop], config2[prop]);
+    } else if (!utils.isUndefined(config1[prop])) {
+      config[prop] = getMergedValue(undefined, config1[prop]);
+    }
+  }
 
   utils.forEach(valueFromConfig2Keys, function valueFromConfig2(prop) {
-    if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
+    if (!utils.isUndefined(config2[prop])) {
+      config[prop] = getMergedValue(undefined, config2[prop]);
     }
   });
 
-  utils.forEach(mergeDeepPropertiesKeys, function mergeDeepProperties(prop) {
-    if (utils.isObject(config2[prop])) {
-      config[prop] = utils.deepMerge(config1[prop], config2[prop]);
-    } else if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
-    } else if (utils.isObject(config1[prop])) {
-      config[prop] = utils.deepMerge(config1[prop]);
-    } else if (typeof config1[prop] !== 'undefined') {
-      config[prop] = config1[prop];
-    }
-  });
+  utils.forEach(mergeDeepPropertiesKeys, mergeDeepProperties);
 
   utils.forEach(defaultToConfig2Keys, function defaultToConfig2(prop) {
-    if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
-    } else if (typeof config1[prop] !== 'undefined') {
-      config[prop] = config1[prop];
+    if (!utils.isUndefined(config2[prop])) {
+      config[prop] = getMergedValue(undefined, config2[prop]);
+    } else if (!utils.isUndefined(config1[prop])) {
+      config[prop] = getMergedValue(undefined, config1[prop]);
+    }
+  });
+
+  utils.forEach(directMergeKeys, function merge(prop) {
+    if (prop in config2) {
+      config[prop] = getMergedValue(config1[prop], config2[prop]);
+    } else if (prop in config1) {
+      config[prop] = getMergedValue(undefined, config1[prop]);
     }
   });
 
   var axiosKeys = valueFromConfig2Keys
     .concat(mergeDeepPropertiesKeys)
-    .concat(defaultToConfig2Keys);
+    .concat(defaultToConfig2Keys)
+    .concat(directMergeKeys);
 
   var otherKeys = Object
-    .keys(config2)
+    .keys(config1)
+    .concat(Object.keys(config2))
     .filter(function filterAxiosKeys(key) {
       return axiosKeys.indexOf(key) === -1;
     });
 
-  utils.forEach(otherKeys, function otherKeysDefaultToConfig2(prop) {
-    if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
-    } else if (typeof config1[prop] !== 'undefined') {
-      config[prop] = config1[prop];
-    }
-  });
+  utils.forEach(otherKeys, mergeDeepProperties);
 
   return config;
 };
@@ -954,7 +971,7 @@ var createError = __webpack_require__(/*! ./createError */ "./node_modules/axios
  */
 module.exports = function settle(resolve, reject, response) {
   var validateStatus = response.config.validateStatus;
-  if (!validateStatus || validateStatus(response.status)) {
+  if (!response.status || !validateStatus || validateStatus(response.status)) {
     resolve(response);
   } else {
     reject(createError(
@@ -1086,6 +1103,7 @@ var defaults = {
   xsrfHeaderName: 'X-XSRF-TOKEN',
 
   maxContentLength: -1,
+  maxBodyLength: -1,
 
   validateStatus: function validateStatus(status) {
     return status >= 200 && status < 300;
@@ -1149,7 +1167,6 @@ var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/util
 
 function encode(val) {
   return encodeURIComponent(val).
-    replace(/%40/gi, '@').
     replace(/%3A/gi, ':').
     replace(/%24/g, '$').
     replace(/%2C/gi, ',').
@@ -1330,6 +1347,29 @@ module.exports = function isAbsoluteURL(url) {
   // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
   // by any combination of letters, digits, plus, period, or hyphen.
   return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/isAxiosError.js":
+/*!********************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/isAxiosError.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Determines whether the payload is an error thrown by Axios
+ *
+ * @param {*} payload The value to test
+ * @returns {boolean} True if the payload is an error thrown by Axios, otherwise false
+ */
+module.exports = function isAxiosError(payload) {
+  return (typeof payload === 'object') && (payload.isAxiosError === true);
 };
 
 
@@ -1659,6 +1699,21 @@ function isObject(val) {
 }
 
 /**
+ * Determine if a value is a plain Object
+ *
+ * @param {Object} val The value to test
+ * @return {boolean} True if value is a plain Object, otherwise false
+ */
+function isPlainObject(val) {
+  if (toString.call(val) !== '[object Object]') {
+    return false;
+  }
+
+  var prototype = Object.getPrototypeOf(val);
+  return prototype === null || prototype === Object.prototype;
+}
+
+/**
  * Determine if a value is a Date
  *
  * @param {Object} val The value to test
@@ -1814,34 +1869,12 @@ function forEach(obj, fn) {
 function merge(/* obj1, obj2, obj3, ... */) {
   var result = {};
   function assignValue(val, key) {
-    if (typeof result[key] === 'object' && typeof val === 'object') {
+    if (isPlainObject(result[key]) && isPlainObject(val)) {
       result[key] = merge(result[key], val);
-    } else {
-      result[key] = val;
-    }
-  }
-
-  for (var i = 0, l = arguments.length; i < l; i++) {
-    forEach(arguments[i], assignValue);
-  }
-  return result;
-}
-
-/**
- * Function equal to merge with the difference being that no reference
- * to original objects is kept.
- *
- * @see merge
- * @param {Object} obj1 Object to merge
- * @returns {Object} Result of all merge properties
- */
-function deepMerge(/* obj1, obj2, obj3, ... */) {
-  var result = {};
-  function assignValue(val, key) {
-    if (typeof result[key] === 'object' && typeof val === 'object') {
-      result[key] = deepMerge(result[key], val);
-    } else if (typeof val === 'object') {
-      result[key] = deepMerge({}, val);
+    } else if (isPlainObject(val)) {
+      result[key] = merge({}, val);
+    } else if (isArray(val)) {
+      result[key] = val.slice();
     } else {
       result[key] = val;
     }
@@ -1872,6 +1905,19 @@ function extend(a, b, thisArg) {
   return a;
 }
 
+/**
+ * Remove byte order marker. This catches EF BB BF (the UTF-8 BOM)
+ *
+ * @param {string} content with BOM
+ * @return {string} content value without BOM
+ */
+function stripBOM(content) {
+  if (content.charCodeAt(0) === 0xFEFF) {
+    content = content.slice(1);
+  }
+  return content;
+}
+
 module.exports = {
   isArray: isArray,
   isArrayBuffer: isArrayBuffer,
@@ -1881,6 +1927,7 @@ module.exports = {
   isString: isString,
   isNumber: isNumber,
   isObject: isObject,
+  isPlainObject: isPlainObject,
   isUndefined: isUndefined,
   isDate: isDate,
   isFile: isFile,
@@ -1891,10 +1938,48 @@ module.exports = {
   isStandardBrowserEnv: isStandardBrowserEnv,
   forEach: forEach,
   merge: merge,
-  deepMerge: deepMerge,
   extend: extend,
-  trim: trim
+  trim: trim,
+  stripBOM: stripBOM
 };
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/splitting/dist/splitting-cells.css":
+/*!*****************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/splitting/dist/splitting-cells.css ***!
+  \*****************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".splitting.cells img { width: 100%; display: block; }\n\n@supports ( display: grid ) {\n  .splitting.cells {\n    position: relative;\n    overflow: hidden;\n    background-size: cover;\n    visibility: hidden;\n  }\n\n  .splitting .cell-grid {\n    background: inherit;\n    position: absolute;\n    top: 0; \n    left: 0; \n    width: 100%; \n    height: 100%;\n    display: grid;\n    grid-template: repeat( var(--row-total), 1fr ) / repeat( var(--col-total), 1fr );\n  }\n\n  .splitting .cell {\n    background: inherit;\n    position: relative;\n    overflow: hidden;\n  }\n\n  .splitting .cell-inner {\n    background: inherit;\n    position: absolute;\n    visibility: visible;\n    /* Size to fit the whole container size */\n    width: calc(100% * var(--col-total));\n    height: calc(100% * var(--row-total));\n    /* Position properly */\n    left: calc(-100% * var(--col-index));\n    top: calc(-100% * var(--row-index));\n  }\n\n  /* Helper variables for advanced effects */\n  .splitting .cell {\n    --center-x: calc((var(--col-total) - 1) / 2);\n    --center-y: calc((var(--row-total) - 1) / 2);\n\n    /* Offset from center, positive & negative */\n    --offset-x: calc(var(--col-index) - var(--center-x));\n    --offset-y: calc(var(--row-index) - var(--center-y));\n\n    /* Absolute distance from center, only positive */\n    --distance-x: calc( (var(--offset-x) * var(--offset-x)) / var(--center-x) );\n\n    /* Absolute distance from center, only positive */\n    --distance-y: calc( (var(--offset-y) * var(--offset-y)) / var(--center-y) );\n  }\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/splitting/dist/splitting.css":
+/*!***********************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/splitting/dist/splitting.css ***!
+  \***********************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "/* Recommended styles for Splitting */\n.splitting .word,\n.splitting .char {\n  display: inline-block;\n}\n\n/* Psuedo-element chars */\n.splitting .char {\n  position: relative;\n}\n\n/**\n * Populate the psuedo elements with the character to allow for expanded effects\n * Set to `display: none` by default; just add `display: block` when you want\n * to use the psuedo elements\n */\n.splitting .char::before,\n.splitting .char::after {\n  content: attr(data-char);\n  position: absolute;\n  top: 0;\n  left: 0;\n  visibility: hidden;\n  transition: inherit;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n\n/* Expanded CSS Variables */\n\n.splitting {\n  /* The center word index */\n  --word-center: calc((var(--word-total) - 1) / 2);\n\n  /* The center character index */\n  --char-center: calc((var(--char-total) - 1) / 2);\n\n  /* The center character index */\n  --line-center: calc((var(--line-total) - 1) / 2);\n}\n\n.splitting .word {\n  /* Pecent (0-1) of the word's position */\n  --word-percent: calc(var(--word-index) / var(--word-total));\n\n  /* Pecent (0-1) of the line's position */\n  --line-percent: calc(var(--line-index) / var(--line-total));\n}\n\n.splitting .char {\n  /* Percent (0-1) of the char's position */\n  --char-percent: calc(var(--char-index) / var(--char-total));\n\n  /* Offset from center, positive & negative */\n  --char-offset: calc(var(--char-index) - var(--char-center));\n\n  /* Absolute distance from center, only positive */\n  --distance: calc(\n     (var(--char-offset) * var(--char-offset)) / var(--char-center)\n  );\n\n  /* Distance from center where -1 is the far left, 0 is center, 1 is far right */\n  --distance-sine: calc(var(--char-offset) / var(--char-center));\n\n  /* Distance from center where 1 is far left/far right, 0 is center */\n  --distance-percent: calc((var(--distance) / var(--char-center)));\n}\n", ""]);
+
+// exports
 
 
 /***/ }),
@@ -9700,14 +9785,15 @@ return ImagesLoaded;
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.20';
+  var VERSION = '4.17.21';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
 
   /** Error message constants. */
   var CORE_ERROR_TEXT = 'Unsupported core-js use. Try https://npms.io/search?q=ponyfill.',
-      FUNC_ERROR_TEXT = 'Expected a function';
+      FUNC_ERROR_TEXT = 'Expected a function',
+      INVALID_TEMPL_VAR_ERROR_TEXT = 'Invalid `variable` option passed into `_.template`';
 
   /** Used to stand-in for `undefined` hash values. */
   var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -9840,10 +9926,11 @@ return ImagesLoaded;
   var reRegExpChar = /[\\^$.*+?()[\]{}|]/g,
       reHasRegExpChar = RegExp(reRegExpChar.source);
 
-  /** Used to match leading and trailing whitespace. */
-  var reTrim = /^\s+|\s+$/g,
-      reTrimStart = /^\s+/,
-      reTrimEnd = /\s+$/;
+  /** Used to match leading whitespace. */
+  var reTrimStart = /^\s+/;
+
+  /** Used to match a single whitespace character. */
+  var reWhitespace = /\s/;
 
   /** Used to match wrap detail comments. */
   var reWrapComment = /\{(?:\n\/\* \[wrapped with .+\] \*\/)?\n?/,
@@ -9852,6 +9939,18 @@ return ImagesLoaded;
 
   /** Used to match words composed of alphanumeric characters. */
   var reAsciiWord = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g;
+
+  /**
+   * Used to validate the `validate` option in `_.template` variable.
+   *
+   * Forbids characters which could potentially change the meaning of the function argument definition:
+   * - "()," (modification of function parameters)
+   * - "=" (default value)
+   * - "[]{}" (destructuring of function parameters)
+   * - "/" (beginning of a comment)
+   * - whitespace
+   */
+  var reForbiddenIdentifierChars = /[()=,{}\[\]\/\s]/;
 
   /** Used to match backslashes in property paths. */
   var reEscapeChar = /\\(\\)?/g;
@@ -10682,6 +10781,19 @@ return ImagesLoaded;
   }
 
   /**
+   * The base implementation of `_.trim`.
+   *
+   * @private
+   * @param {string} string The string to trim.
+   * @returns {string} Returns the trimmed string.
+   */
+  function baseTrim(string) {
+    return string
+      ? string.slice(0, trimmedEndIndex(string) + 1).replace(reTrimStart, '')
+      : string;
+  }
+
+  /**
    * The base implementation of `_.unary` without support for storing metadata.
    *
    * @private
@@ -11012,6 +11124,21 @@ return ImagesLoaded;
     return hasUnicode(string)
       ? unicodeToArray(string)
       : asciiToArray(string);
+  }
+
+  /**
+   * Used by `_.trim` and `_.trimEnd` to get the index of the last non-whitespace
+   * character of `string`.
+   *
+   * @private
+   * @param {string} string The string to inspect.
+   * @returns {number} Returns the index of the last non-whitespace character.
+   */
+  function trimmedEndIndex(string) {
+    var index = string.length;
+
+    while (index-- && reWhitespace.test(string.charAt(index))) {}
+    return index;
   }
 
   /**
@@ -22182,7 +22309,7 @@ return ImagesLoaded;
       if (typeof value != 'string') {
         return value === 0 ? value : +value;
       }
-      value = value.replace(reTrim, '');
+      value = baseTrim(value);
       var isBinary = reIsBinary.test(value);
       return (isBinary || reIsOctal.test(value))
         ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
@@ -24554,6 +24681,12 @@ return ImagesLoaded;
       if (!variable) {
         source = 'with (obj) {\n' + source + '\n}\n';
       }
+      // Throw an error if a forbidden character was found in `variable`, to prevent
+      // potential command injection attacks.
+      else if (reForbiddenIdentifierChars.test(variable)) {
+        throw new Error(INVALID_TEMPL_VAR_ERROR_TEXT);
+      }
+
       // Cleanup code by stripping empty strings.
       source = (isEvaluating ? source.replace(reEmptyStringLeading, '') : source)
         .replace(reEmptyStringMiddle, '$1')
@@ -24667,7 +24800,7 @@ return ImagesLoaded;
     function trim(string, chars, guard) {
       string = toString(string);
       if (string && (guard || chars === undefined)) {
-        return string.replace(reTrim, '');
+        return baseTrim(string);
       }
       if (!string || !(chars = baseToString(chars))) {
         return string;
@@ -24702,7 +24835,7 @@ return ImagesLoaded;
     function trimEnd(string, chars, guard) {
       string = toString(string);
       if (string && (guard || chars === undefined)) {
-        return string.replace(reTrimEnd, '');
+        return string.slice(0, trimmedEndIndex(string) + 1);
       }
       if (!string || !(chars = baseToString(chars))) {
         return string;
@@ -27035,6 +27168,572 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 process.umask = function() { return 0; };
+
+
+/***/ }),
+
+/***/ "./node_modules/splitting/dist/splitting-cells.css":
+/*!*********************************************************!*\
+  !*** ./node_modules/splitting/dist/splitting-cells.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../css-loader??ref--7-1!../../postcss-loader/src??ref--7-2!./splitting-cells.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/splitting/dist/splitting-cells.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/splitting/dist/splitting.css":
+/*!***************************************************!*\
+  !*** ./node_modules/splitting/dist/splitting.css ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../css-loader??ref--7-1!../../postcss-loader/src??ref--7-2!./splitting.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/splitting/dist/splitting.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/splitting/dist/splitting.js":
+/*!**************************************************!*\
+  !*** ./node_modules/splitting/dist/splitting.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function (global, factory) {
+	 true ? module.exports = factory() :
+	undefined;
+}(this, (function () { 'use strict';
+
+var root = document;
+var createText = root.createTextNode.bind(root);
+
+/**
+ * # setProperty
+ * Apply a CSS var
+ * @param el{HTMLElement} 
+ * @param varName {string} 
+ * @param value {string|number}  
+ */
+function setProperty(el, varName, value) {
+    el.style.setProperty(varName, value);
+} 
+
+/**
+ * 
+ * @param {Node} el 
+ * @param {Node} child 
+ */
+function appendChild(el, child) {
+  return el.appendChild(child);
+}
+
+function createElement(parent, key, text, whitespace) {
+  var el = root.createElement('span');
+  key && (el.className = key); 
+  if (text) { 
+      !whitespace && el.setAttribute("data-" + key, text);
+      el.textContent = text; 
+  }
+  return (parent && appendChild(parent, el)) || el;
+}
+
+function getData(el, key) {
+  return el.getAttribute("data-" + key)
+}
+
+/**
+ * 
+ * @param e {import('../types').Target} 
+ * @param parent {HTMLElement}
+ * @returns {HTMLElement[]}
+ */
+function $(e, parent) {
+    return !e || e.length == 0
+        ? // null or empty string returns empty array
+          []
+        : e.nodeName
+            ? // a single element is wrapped in an array
+              [e]
+            : // selector and NodeList are converted to Element[]
+              [].slice.call(e[0].nodeName ? e : (parent || root).querySelectorAll(e));
+}
+
+/**
+ * Creates and fills an array with the value provided
+ * @template {T}
+ * @param {number} len
+ * @param {() => T} valueProvider
+ * @return {T}
+ */
+function Array2D(len) {
+    var a = [];
+    for (; len--; ) {
+        a[len] = [];
+    }
+    return a;
+}
+
+function each(items, fn) {
+    items && items.some(fn);
+}
+
+function selectFrom(obj) {
+    return function (key) {
+        return obj[key];
+    }
+}
+
+/**
+ * # Splitting.index
+ * Index split elements and add them to a Splitting instance.
+ *
+ * @param element {HTMLElement}
+ * @param key {string}
+ * @param items {HTMLElement[] | HTMLElement[][]}
+ */
+function index(element, key, items) {
+    var prefix = '--' + key;
+    var cssVar = prefix + "-index";
+
+    each(items, function (items, i) {
+        if (Array.isArray(items)) {
+            each(items, function(item) {
+                setProperty(item, cssVar, i);
+            });
+        } else {
+            setProperty(items, cssVar, i);
+        }
+    });
+
+    setProperty(element, prefix + "-total", items.length);
+}
+
+/**
+ * @type {Record<string, import('./types').ISplittingPlugin>}
+ */
+var plugins = {};
+
+/**
+ * @param by {string}
+ * @param parent {string}
+ * @param deps {string[]}
+ * @return {string[]}
+ */
+function resolvePlugins(by, parent, deps) {
+    // skip if already visited this dependency
+    var index = deps.indexOf(by);
+    if (index == -1) {
+        // if new to dependency array, add to the beginning
+        deps.unshift(by);
+
+        // recursively call this function for all dependencies
+        each(plugins[by].depends, function(p) {
+            resolvePlugins(p, by, deps);
+        });
+    } else {
+        // if this dependency was added already move to the left of
+        // the parent dependency so it gets loaded in order
+        var indexOfParent = deps.indexOf(parent);
+        deps.splice(index, 1);
+        deps.splice(indexOfParent, 0, by);
+    }
+    return deps;
+}
+
+/**
+ * Internal utility for creating plugins... essentially to reduce
+ * the size of the library
+ * @param {string} by 
+ * @param {string} key 
+ * @param {string[]} depends 
+ * @param {Function} split 
+ * @returns {import('./types').ISplittingPlugin}
+ */
+function createPlugin(by, depends, key, split) {
+    return {
+        by: by,
+        depends: depends,
+        key: key,
+        split: split
+    }
+}
+
+/**
+ *
+ * @param by {string}
+ * @returns {import('./types').ISplittingPlugin[]}
+ */
+function resolve(by) {
+    return resolvePlugins(by, 0, []).map(selectFrom(plugins));
+}
+
+/**
+ * Adds a new plugin to splitting
+ * @param opts {import('./types').ISplittingPlugin}
+ */
+function add(opts) {
+    plugins[opts.by] = opts;
+}
+
+/**
+ * # Splitting.split
+ * Split an element's textContent into individual elements
+ * @param el {Node} Element to split
+ * @param key {string}
+ * @param splitOn {string}
+ * @param includeSpace {boolean}
+ * @returns {HTMLElement[]}
+ */
+function splitText(el, key, splitOn, includePrevious, preserveWhitespace) {
+    // Combine any strange text nodes or empty whitespace.
+    el.normalize();
+
+    // Use fragment to prevent unnecessary DOM thrashing.
+    var elements = [];
+    var F = document.createDocumentFragment();
+
+    if (includePrevious) {
+        elements.push(el.previousSibling);
+    }
+
+    var allElements = [];
+    $(el.childNodes).some(function(next) {
+        if (next.tagName && !next.hasChildNodes()) {
+            // keep elements without child nodes (no text and no children)
+            allElements.push(next);
+            return;
+        }
+        // Recursively run through child nodes
+        if (next.childNodes && next.childNodes.length) {
+            allElements.push(next);
+            elements.push.apply(elements, splitText(next, key, splitOn, includePrevious, preserveWhitespace));
+            return;
+        }
+
+        // Get the text to split, trimming out the whitespace
+        /** @type {string} */
+        var wholeText = next.wholeText || '';
+        var contents = wholeText.trim();
+
+        // If there's no text left after trimming whitespace, continue the loop
+        if (contents.length) {
+            // insert leading space if there was one
+            if (wholeText[0] === ' ') {
+                allElements.push(createText(' '));
+            }
+            // Concatenate the split text children back into the full array
+            each(contents.split(splitOn), function(splitText, i) {
+                if (i && preserveWhitespace) {
+                    allElements.push(createElement(F, "whitespace", " ", preserveWhitespace));
+                }
+                var splitEl = createElement(F, key, splitText);
+                elements.push(splitEl);
+                allElements.push(splitEl);
+            }); 
+            // insert trailing space if there was one
+            if (wholeText[wholeText.length - 1] === ' ') {
+                allElements.push(createText(' '));
+            }
+        }
+    });
+
+    each(allElements, function(el) {
+        appendChild(F, el);
+    });
+
+    // Clear out the existing element
+    el.innerHTML = "";
+    appendChild(el, F);
+    return elements;
+}
+
+/** an empty value */
+var _ = 0;
+
+function copy(dest, src) {
+    for (var k in src) {
+        dest[k] = src[k];
+    }
+    return dest;
+}
+
+var WORDS = 'words';
+
+var wordPlugin = createPlugin(
+    /*by: */ WORDS,
+    /*depends: */ _,
+    /*key: */ 'word', 
+    /*split: */ function(el) {
+        return splitText(el, 'word', /\s+/, 0, 1)
+    }
+);
+
+var CHARS = "chars";
+
+var charPlugin = createPlugin(
+    /*by: */ CHARS,
+    /*depends: */ [WORDS],
+    /*key: */ "char", 
+    /*split: */ function(el, options, ctx) {
+        var results = [];
+
+        each(ctx[WORDS], function(word, i) {
+            results.push.apply(results, splitText(word, "char", "", options.whitespace && i));
+        });
+
+        return results;
+    }
+);
+
+/**
+ * # Splitting
+ * 
+ * @param opts {import('./types').ISplittingOptions} 
+ */
+function Splitting (opts) {
+  opts = opts || {};
+  var key = opts.key;
+
+  return $(opts.target || '[data-splitting]').map(function(el) {
+    var ctx = el['🍌'];  
+    if (!opts.force && ctx) {
+      return ctx;
+    }
+
+    ctx = el['🍌'] = { el: el };
+    var items = resolve(opts.by || getData(el, 'splitting') || CHARS);
+    var opts2 = copy({}, opts);
+    each(items, function(plugin) {
+      if (plugin.split) {
+        var pluginBy = plugin.by;
+        var key2 = (key ? '-' + key : '') + plugin.key;
+        var results = plugin.split(el, opts2, ctx);
+        key2 && index(el, key2, results);
+        ctx[pluginBy] = results;
+        el.classList.add(pluginBy);
+      } 
+    });
+
+    el.classList.add('splitting');
+    return ctx;
+  })
+}
+
+/**
+ * # Splitting.html
+ * 
+ * @param opts {import('./types').ISplittingOptions}
+ */
+function html(opts) {
+  opts = opts || {};
+  var parent = opts.target =  createElement();
+  parent.innerHTML = opts.content;
+  Splitting(opts);
+  return parent.outerHTML
+}
+
+Splitting.html = html;
+Splitting.add = add;
+
+function detectGrid(el, options, side) {
+    var items = $(options.matching || el.children, el);
+    var c = {};
+
+    each(items, function(w) {
+        var val = Math.round(w[side]);
+        (c[val] || (c[val] = [])).push(w);
+    });
+
+    return Object.keys(c).map(Number).sort(byNumber).map(selectFrom(c));
+}
+
+function byNumber(a, b) {
+    return a - b;
+}
+
+var linePlugin = createPlugin(
+    /*by: */ 'lines',
+    /*depends: */ [WORDS],
+    /*key: */ 'line',
+    /*split: */ function(el, options, ctx) {
+      return detectGrid(el, { matching: ctx[WORDS] }, 'offsetTop')
+    }
+);
+
+var itemPlugin = createPlugin(
+    /*by: */ 'items',
+    /*depends: */ _,
+    /*key: */ 'item', 
+    /*split: */ function(el, options) {
+        return $(options.matching || el.children, el)
+    }
+);
+
+var rowPlugin = createPlugin(
+    /*by: */ 'rows',
+    /*depends: */ _,
+    /*key: */ 'row', 
+    /*split: */ function(el, options) {
+        return detectGrid(el, options, "offsetTop");
+    }
+);
+
+var columnPlugin = createPlugin(
+    /*by: */ 'cols',
+    /*depends: */ _,
+    /*key: */ "col", 
+    /*split: */ function(el, options) {
+        return detectGrid(el, options, "offsetLeft");
+    }
+);
+
+var gridPlugin = createPlugin(
+    /*by: */ 'grid',
+    /*depends: */ ['rows', 'cols']
+);
+
+var LAYOUT = "layout";
+
+var layoutPlugin = createPlugin(
+    /*by: */ LAYOUT,
+    /*depends: */ _,
+    /*key: */ _,
+    /*split: */ function(el, opts) {
+        // detect and set options
+        var rows =  opts.rows = +(opts.rows || getData(el, 'rows') || 1);
+        var columns = opts.columns = +(opts.columns || getData(el, 'columns') || 1);
+
+        // Seek out the first <img> if the value is true 
+        opts.image = opts.image || getData(el, 'image') || el.currentSrc || el.src;
+        if (opts.image) {
+            var img = $("img", el)[0];
+            opts.image = img && (img.currentSrc || img.src);
+        }
+
+        // add optional image to background
+        if (opts.image) {
+            setProperty(el, "background-image", "url(" + opts.image + ")");
+        }
+
+        var totalCells = rows * columns;
+        var elements = [];
+
+        var container = createElement(_, "cell-grid");
+        while (totalCells--) {
+            // Create a span
+            var cell = createElement(container, "cell");
+            createElement(cell, "cell-inner");
+            elements.push(cell);
+        }
+
+        // Append elements back into the parent
+        appendChild(el, container);
+
+        return elements;
+    }
+);
+
+var cellRowPlugin = createPlugin(
+    /*by: */ "cellRows",
+    /*depends: */ [LAYOUT],
+    /*key: */ "row",
+    /*split: */ function(el, opts, ctx) {
+        var rowCount = opts.rows;
+        var result = Array2D(rowCount);
+
+        each(ctx[LAYOUT], function(cell, i, src) {
+            result[Math.floor(i / (src.length / rowCount))].push(cell);
+        });
+
+        return result;
+    }
+);
+
+var cellColumnPlugin = createPlugin(
+    /*by: */ "cellColumns",
+    /*depends: */ [LAYOUT],
+    /*key: */ "col",
+    /*split: */ function(el, opts, ctx) {
+        var columnCount = opts.columns;
+        var result = Array2D(columnCount);
+
+        each(ctx[LAYOUT], function(cell, i) {
+            result[i % columnCount].push(cell);
+        });
+
+        return result;
+    }
+);
+
+var cellPlugin = createPlugin(
+    /*by: */ "cells",
+    /*depends: */ ['cellRows', 'cellColumns'],
+    /*key: */ "cell", 
+    /*split: */ function(el, opt, ctx) { 
+        // re-index the layout as the cells
+        return ctx[LAYOUT];
+    }
+);
+
+// install plugins
+// word/char plugins
+add(wordPlugin);
+add(charPlugin);
+add(linePlugin);
+// grid plugins
+add(itemPlugin);
+add(rowPlugin);
+add(columnPlugin);
+add(gridPlugin);
+// cell-layout plugins
+add(layoutPlugin);
+add(cellRowPlugin);
+add(cellColumnPlugin);
+add(cellPlugin);
+
+return Splitting;
+
+})));
 
 
 /***/ }),
@@ -37743,18 +38442,19 @@ function disableRightClick() {
 /*!***************************************************!*\
   !*** ./resources/js/components/common/Bubbles.js ***!
   \***************************************************/
-/*! exports provided: Bubbles */
+/*! exports provided: runBubbles, stopBubbles */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Bubbles", function() { return Bubbles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "runBubbles", function() { return runBubbles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "stopBubbles", function() { return stopBubbles; });
 /* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Utils */ "./resources/js/components/Utils.js");
 
-function Bubbles(selector, timeout) {
+var interval;
+var runBubbles = function runBubbles(selector, timeout) {
   var area = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(selector);
-
-  function createBubbles() {
+  interval = setInterval(function () {
     var maxWidth = area.offsetWidth * 0.9;
     var size = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["randomNum"])(15, 25);
     var bubble = document.createElement("span");
@@ -37766,10 +38466,12 @@ function Bubbles(selector, timeout) {
     setTimeout(function () {
       bubble.remove();
     }, timeout);
-  }
-
-  setInterval(createBubbles, 150);
-}
+  }, 150);
+};
+var stopBubbles = function stopBubbles() {
+  window.clearInterval(interval);
+  interval = null;
+};
 
 /***/ }),
 
@@ -37997,14 +38699,28 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************!*\
   !*** ./resources/js/components/main/Gallery.js ***!
   \*************************************************/
-/*! exports provided: homeParallaxGallery */
+/*! exports provided: homeParallaxGallery, galleryPageGallery */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "homeParallaxGallery", function() { return homeParallaxGallery; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "galleryPageGallery", function() { return galleryPageGallery; });
 /* harmony import */ var _includes_gallery_grid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./includes/gallery/grid */ "./resources/js/components/main/includes/gallery/grid.js");
 /* harmony import */ var _includes_gallery_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./includes/gallery/utils */ "./resources/js/components/main/includes/gallery/utils.js");
+/* harmony import */ var splitting_dist_splitting_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! splitting/dist/splitting.css */ "./node_modules/splitting/dist/splitting.css");
+/* harmony import */ var splitting_dist_splitting_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(splitting_dist_splitting_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var splitting_dist_splitting_cells_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! splitting/dist/splitting-cells.css */ "./node_modules/splitting/dist/splitting-cells.css");
+/* harmony import */ var splitting_dist_splitting_cells_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(splitting_dist_splitting_cells_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var splitting__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! splitting */ "./node_modules/splitting/dist/splitting.js");
+/* harmony import */ var splitting__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(splitting__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../Utils */ "./resources/js/components/Utils.js");
+// Home page
+
+ // Gallery page
+
+
+
 
 
 function homeParallaxGallery() {
@@ -38013,8 +38729,52 @@ function homeParallaxGallery() {
     // Remove loader (loading class)
     document.body.classList.remove("loading"); // Initialize grid
 
-    var grid = new _includes_gallery_grid__WEBPACK_IMPORTED_MODULE_0__["default"](document.querySelector(".grid"));
+    var grid = new _includes_gallery_grid__WEBPACK_IMPORTED_MODULE_0__["default"](document.query(".grid"));
   });
+}
+function galleryPageGallery() {
+  // const gallery = query(".gallery");
+  // const msnry = new Masonry(gallery, {
+  // 	itemSelector: ".gallery__item"
+  // });
+  // Splitting.js
+  // Splitting({
+  // 	target: ".gallery__item",
+  // 	by: "cells",
+  // 	image: true,
+  // 	rows: 3,
+  // 	columns: 3
+  // });
+
+  /* Gallery Pixi.js */
+  // get canvas el
+  var view = document.querySelector('.gallery');
+  var width, height, app; // set dimensions
+
+  function initDimensions() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+  } // init Pixi.js
+
+
+  function initApp() {
+    app = new PIXI.Application({
+      view: view
+    }); // resizes renderer view in CSS pixels to allow for resolutions other than 1
+
+    app.renderer.autoDensity = true; // resize the view to match viewport dimensions
+
+    app.renderer.resize(width, height);
+  } // init everything
+
+
+  var init = function init() {
+    initDimensions();
+    initApp();
+  }; // init call
+
+
+  init();
 }
 
 /***/ }),
@@ -38375,30 +39135,53 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 // toggleMenu();
 
 document.addEventListener("DOMContentLoaded", function () {
+  Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".main").classList.add("main-loaded");
+
   _toConsumableArray(document.querySelectorAll("a.link")).forEach(function (el) {
     var elPosition = _toConsumableArray(el.parentNode.children).indexOf(el);
 
     var fxObj = _components_common_LinkDistortionCircle__WEBPACK_IMPORTED_MODULE_5__["default"][elPosition];
     fxObj && new fxObj(el);
   });
+  /**
+   * * Disables right click for all images
+   * * the first measure for preventing download
+   * * the second one is using images as background
+   */
+  // disableRightClick();
 
-  Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["disableRightClick"])();
-  Object(_components_main_RippleEffect__WEBPACK_IMPORTED_MODULE_2__["rippleButtonsInit"])(); // Initialize
+  /**
+   * * Material ripple button effect on click
+   */
 
-  var options = {
-    offset: 20 //percentage of window
 
-  };
-  var animation = new _components_main_Animation__WEBPACK_IMPORTED_MODULE_4__["default"](options);
-  Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".main").classList.add("main-loaded");
+  Object(_components_main_RippleEffect__WEBPACK_IMPORTED_MODULE_2__["rippleButtonsInit"])();
+  /**
+   * * Initialize anim items
+   */
+
+  new _components_main_Animation__WEBPACK_IMPORTED_MODULE_4__["default"]({
+    offset: 20
+  }); // // toggle bubbles based on if modal is open or not
+  // const modalTrigger = query(".btn-split"), closeModal = query('.right__close');
+  // modalTrigger.addEventListener("click", () => {
+  // 	modalTrigger.classList.toggle("active");
+  // });
+
   /**
    * * * Home page
    */
 
   if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".wrapper.home")) {
-    Object(_components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__["Bubbles"])(".brand", 3000);
+    window.stopBubbles = _components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__["stopBubbles"];
+    window.runBubbles = _components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__["runBubbles"];
+    Object(_components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__["runBubbles"])(".brand", 3000);
     Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["smoothScroll"])();
     Object(_components_main_Gallery__WEBPACK_IMPORTED_MODULE_3__["homeParallaxGallery"])();
+  }
+
+  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".gallery")) {
+    Object(_components_main_Gallery__WEBPACK_IMPORTED_MODULE_3__["galleryPageGallery"])();
   }
   /**
    * * * Pomeranians page
@@ -38410,10 +39193,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".show")) {
       // Carousel
       Object(_components_main_Swiper__WEBPACK_IMPORTED_MODULE_6__["default"])(); // Bubbles on header
-
-      setTimeout(function () {
-        Object(_components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__["Bubbles"])(".show__header", 1500);
-      }, 1500);
+      // setTimeout(() => {
+      // 	runBubbles(".show__header", 1500);
+      // }, 1500);
     }
   }
 }, false);

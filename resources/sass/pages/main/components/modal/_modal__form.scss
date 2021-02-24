@@ -1,0 +1,148 @@
+form {
+	@include flex-column;
+
+	.form-item {
+		@include flex-column;
+		align-items: flex-start;
+		width: 100%;
+		margin-bottom: 15px;
+
+		$red: #c61218;
+
+		.wire-error {
+			width: 100%;
+			padding: 5px 10px;
+			background: rgba($red, 0.05);
+
+			&__text {
+				color: $red;
+				font-size: 16px;
+				letter-spacing: 0.8px;
+				font-weight: 400;
+			}
+		}
+	}
+
+	label {
+		font-family: bitter;
+		font-weight: 300;
+		font-size: 17px;
+		margin-bottom: 10px;
+		color: darken($accent, 25%);
+
+		span {
+			color: red;
+			font-weight: 500;
+			font-size: 24px;
+		}
+	}
+
+	input,
+	textarea {
+		width: 100%;
+		padding: 5px 10px;
+		outline: none;
+		transition: all 0.15s ease-in;
+		background: transparent;
+		color: #252525;
+
+		// typography
+		line-height: 1.5;
+		color: #252525;
+	}
+
+	input {
+		border: none;
+		outline: none;
+		box-shadow: none;
+		border-bottom: 1px solid darken($accent, 25%);
+		transition: all 0.15s ease-in;
+		font-family: bitter;
+		font-weight: 300;
+		font-size: 18px;
+
+		&:focus {
+			border-color: #252525;
+		}
+	}
+
+	textarea {
+		min-height: 7rem;
+		border: 1px solid rgba($grayMain, 0.3);
+		box-shadow: none;
+		font-family: system;
+		font-size: 17px;
+		font-weight: 300;
+		line-height: 1.5;
+
+		&:focus,
+		&:active {
+			outline: none;
+			border: 1px solid darken($accent, 25%);
+		}
+	}
+
+	button {
+		position: relative;
+		@include flex-center(row);
+		align-self: flex-start;
+		margin-top: 15px;
+		padding: 10px 10px 7px;
+		overflow: hidden;
+		z-index: $low;
+		outline: none;
+		// typography
+		font-family: bitter;
+		font-size: 1.2rem;
+		font-weight: 400;
+		//
+		background: transparent;
+		border: 1px solid darken($accent, 25%);
+		color: darken($accent, 25%);
+		line-height: 1.3;
+		transition: color 0.3s, border 0.4s;
+
+		.spinner-wrapper {
+			margin-top: 0;
+
+			.spinner {
+				border-top-color: black;
+				border-bottom-color: black;
+			}
+		}
+
+		&:hover {
+			color: black;
+			border-color: black;
+
+			&::before,
+			&::after {
+				transform: translate3d(0, -100%, 0);
+			}
+			&::after {
+				transition-delay: 0.175s;
+			}
+		}
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			top: 100%;
+			z-index: -1;
+			transition: all 0.3s;
+			transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+		}
+
+		&::before {
+			background: $accent;
+		}
+
+		&::after {
+			background: white;
+		}
+	}
+}

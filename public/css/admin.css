@@ -193,21 +193,28 @@ select {
   src: local(".SFNS-BoldItalic"), local(".SFNSText-BoldItalic"), local(".HelveticaNeueDeskInterface-BoldItalic"), local(".LucidaGrandeUI"), local("Segoe UI Bold Italic"), local("Ubuntu Bold Italic"), local("Roboto-BoldItalic"), local("DroidSans-Bold"), local("Tahoma Bold");
 }
 @font-face {
-  font-family: "argesta";
-  src: url("/fonts/Argesta/ArgestaDisplay.otf");
-}
-@font-face {
   font-family: "manege";
   src: url("/fonts/Manege/Manege.ttf");
 }
 @font-face {
-  font-family: "nanum";
-  src: url("/fonts/Nanum/NanumMyeongjo-Regular.ttf");
+  font-family: "bitter";
+  font-weight: 400;
+  src: url("/fonts/Bitter/Bitter-Regular.ttf");
 }
 @font-face {
-  font-family: "nanum-bold";
+  font-family: "bitter-300";
+  font-weight: 300;
+  src: url("/fonts/Bitter/Bitter-Light.ttf");
+}
+@font-face {
+  font-family: "bitter-500";
+  font-weight: 500;
+  src: url("/fonts/Bitter/Bitter-Medium.ttf");
+}
+@font-face {
+  font-family: "bitter-600";
   font-weight: 600;
-  src: url("/fonts/Nanum/NanumMyeongjo-Bold.ttf");
+  src: url("/fonts/Bitter/Bitter-Bold.ttf");
 }
 /**
  * Effects
@@ -768,7 +775,7 @@ brightness when sidebar expanded
   box-shadow: 0 5px 10px 1px black;
 }
 .poms-title h1 {
-  font-family: "argesta";
+  font-family: bitter;
   font-size: 35px;
   font-weight: 600;
   margin: 0;

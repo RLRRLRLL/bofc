@@ -25,7 +25,7 @@
 					position: relative;
 					cursor: pointer;
 					// typography
-					font-family: "argesta";
+					font-family: bitter;
 					font-size: 21px;
 
 					&-circle {
@@ -109,9 +109,8 @@
 					color: lighten($accentSecondary, 30%);
 
 					// typography
-					font-family: "nanum-bold";
+					font-family: bitter-500;
 					font-size: 17px;
-					// font-weight: 500;
 					text-transform: uppercase;
 					letter-spacing: 0.9px;
 

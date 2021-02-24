@@ -1,0 +1,126 @@
+// .gallery {
+// 	margin: 0 auto;
+// 	// display: grid;
+// 	max-width: 800px;
+
+// 	&::after {
+// 		/* clearfix */
+// 		content: "";
+// 		display: block;
+// 		clear: both;
+// 	}
+
+// 	&__item {
+// 		display: block;
+// 		cursor: pointer;
+// 		margin: auto;
+// 		width: 200px;
+// 		height: 200px;
+// 		border: 1px solid black;
+// 		// opacity: 0.6;
+// 		transition: opacity ease-in 0.15s;
+// 		visibility: hidden;
+
+// 		// for splitting
+// 		perspective: 600px;
+
+// 		&-overlay {
+// 			z-index: 2;
+// 		}
+
+// 		&:hover {
+// 			.cell {
+// 				transform: scale(1);
+// 				opacity: 1;
+// 			}
+// 		}
+
+// 		.cell {
+// 			pointer-events: none;
+// 			opacity: 0;
+
+// 			transform: translateZ(-15px);
+// 			transform-style: preserve-3d;
+
+// 			transition-property: transform, opacity;
+// 			transition-duration: 0.5s, 0.4s;
+// 			transition-timing-function: cubic-bezier(0.65, 0.01, 0.15, 1.33);
+
+// 			/* The center character index */
+// 			--center-x: calc((var(--col-total) - 1) / 2);
+// 			--center-y: calc((var(--row-total) - 1) / 2);
+
+// 			/* Offset from center, positive & negative */
+// 			--offset-x: calc(var(--col-index) - var(--center-x));
+// 			--offset-y: calc(var(--row-index) - var(--center-y));
+
+// 			/* Absolute distance from center, only positive */
+// 			--distance-x: calc(
+// 				(var(--offset-x) * var(--offset-x)) / var(--center-x)
+// 			);
+
+// 			/* Absolute distance from center, only positive */
+// 			--distance-y: calc(
+// 				(var(--offset-y) * var(--offset-y)) / var(--center-y)
+// 			);
+
+// 			transition-delay: calc(
+// 				0.1s * var(--distance-y) + 0.1s * var(--distance-x)
+// 			);
+
+// 			&-grid {
+				
+// 			}
+// 		}
+
+
+
+// 		// end splitting
+
+// 		&:hover {
+// 			// opacity: 1;
+
+// 			img {
+// 				// filter: grayscale(0);
+// 				transition: filter ease-in 0.15s;
+// 			}
+// 		}
+
+// 		img {
+// 			height: 100%;
+// 			width: 100%;
+// 			object-fit: cover;
+// 			object-position: center;
+// 			visibility: visible;
+// 			// @include image;
+// 			// filter: grayscale(70%);
+// 		}
+
+// 		// Msnry
+// 		&.height-x2 {
+// 			height: 290px;
+// 		}
+
+// 		&.height-x3 {
+// 			height: 350px;
+// 		}
+// 	}
+// }
+
+// .splitting .cell-grid {
+// 	background-position: center center;
+// 	margin: auto;
+// 	position: fixed!important;
+// 	top: 0;
+// 	bottom: 0;
+// 	left: 0;
+// 	right: 0;
+
+// 	z-index: 10;
+
+// 	max-width: 1000px;
+// 	max-height: 600px;
+// 	display: flex;
+
+// 	perspective: 30px;
+// }

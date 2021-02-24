@@ -1,12 +1,25 @@
-// components
+/* 
+Components
+*/
 @import "./components/base";
 @import "./components/header/header";
 @import "./components/animations";
-@import "./components/modal";
+@import "./../../helpers/spinner";
 
-// pages
+// modal
+@import "./components/modal/modal__core";
+@import "./components/modal/modal__form";
+
+/* 
+ Main pages 
+*/
+
+// home
 @import "./pages/home/home";
 
-// pomeranian
+// gallery
+@import "./pages/gallery/gallery";
+
+// poms
 @import "./pages/poms/index";
 @import "./pages/poms/show";

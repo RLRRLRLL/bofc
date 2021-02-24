@@ -10,9 +10,12 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
  * * * USED COMPONENTS:
  */
 import { query, disableRightClick, smoothScroll } from "./components/Utils";
-import { Bubbles } from "./components/common/Bubbles";
+import { runBubbles, stopBubbles } from "./components/common/Bubbles";
 import { rippleButtonsInit } from "./components/main/RippleEffect";
-import { homeParallaxGallery } from "./components/main/Gallery";
+import {
+	homeParallaxGallery,
+	galleryPageGallery
+} from "./components/main/Gallery";
 import Animation from "./components/main/Animation";
 import LinkDistortionCircle from "./components/common/LinkDistortionCircle";
 import initCarousel from "./components/main/Swiper";
@@ -27,29 +30,53 @@ import initCarousel from "./components/main/Swiper";
 document.addEventListener(
 	"DOMContentLoaded",
 	() => {
+		query(".main").classList.add("main-loaded");
+
 		[...document.querySelectorAll("a.link")].forEach(el => {
 			const elPosition = [...el.parentNode.children].indexOf(el);
 			const fxObj = LinkDistortionCircle[elPosition];
 			fxObj && new fxObj(el);
 		});
 
-		disableRightClick();
+		/**
+		 * * Disables right click for all images
+		 * * the first measure for preventing download
+		 * * the second one is using images as background
+		 */
+		// disableRightClick();
+
+		/**
+		 * * Material ripple button effect on click
+		 */
 		rippleButtonsInit();
 
-		// Initialize
-		var options = {
-			offset: 20 //percentage of window
-		};
-		var animation = new Animation(options);
-		query(".main").classList.add("main-loaded");
+		/**
+		 * * Initialize anim items
+		 */
+		new Animation({
+			offset: 20
+		});
+
+		// // toggle bubbles based on if modal is open or not
+		// const modalTrigger = query(".btn-split"), closeModal = query('.right__close');
+		// modalTrigger.addEventListener("click", () => {
+		// 	modalTrigger.classList.toggle("active");
+		// });
 
 		/**
 		 * * * Home page
 		 */
 		if (query(".wrapper.home")) {
-			Bubbles(".brand", 3000);
+			window.stopBubbles = stopBubbles;
+			window.runBubbles = runBubbles;
+
+			runBubbles(".brand", 3000);
 			smoothScroll();
 			homeParallaxGallery();
+		}
+
+		if (query(".gallery")) {
+			galleryPageGallery();
 		}
 
 		/**
@@ -62,9 +89,9 @@ document.addEventListener(
 				initCarousel();
 
 				// Bubbles on header
-				setTimeout(() => {
-					Bubbles(".show__header", 1500);
-				}, 1500);
+				// setTimeout(() => {
+				// 	runBubbles(".show__header", 1500);
+				// }, 1500);
 			}
 		}
 	},
