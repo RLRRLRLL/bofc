@@ -9,11 +9,7 @@ class LinkFx {
 				line: true
 			}
 		};
-		this.DOM.text = document.createElement("span");
-		this.DOM.text.classList = "link-text";
-		this.DOM.text.innerHTML = this.DOM.el.innerHTML;
-		this.DOM.el.innerHTML = "";
-		this.DOM.el.appendChild(this.DOM.text);
+		
 		this.DOM.line = document.createElement("span");
 		this.DOM.line.classList = "link-circle";
 		this.DOM.el.appendChild(this.DOM.line);

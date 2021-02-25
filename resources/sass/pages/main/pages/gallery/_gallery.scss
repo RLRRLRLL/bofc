@@ -1,126 +1,169 @@
-// .gallery {
-// 	margin: 0 auto;
-// 	// display: grid;
-// 	max-width: 800px;
+.wrapper.gallery {
+	position: relative;
+	background: #101010;
+	overflow: hidden;
+}
 
-// 	&::after {
-// 		/* clearfix */
-// 		content: "";
-// 		display: block;
-// 		clear: both;
-// 	}
+// circles
+#super-creative-circles {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 700px;
+	height: 700px;
+	display: block;
+	border: 1px solid rgba($grayMain, 0.25);
+	border-radius: 50%;
 
-// 	&__item {
-// 		display: block;
-// 		cursor: pointer;
-// 		margin: auto;
-// 		width: 200px;
-// 		height: 200px;
-// 		border: 1px solid black;
-// 		// opacity: 0.6;
-// 		transition: opacity ease-in 0.15s;
-// 		visibility: hidden;
+	& > span {
+		position: absolute;
+		display: block;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 500px;
+		height: 500px;
+		border: 1px solid rgba($goldMain, 0.5);
+		border-radius: 50%;
+	}
+}
 
-// 		// for splitting
-// 		perspective: 600px;
+/* our canvas will have the size of our window */
+#canvas {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: 100vh;
+	z-index: 1;
+}
 
-// 		&-overlay {
-// 			z-index: 2;
-// 		}
+/*** content ***/
+#content {
+	position: relative;
+	z-index: 2;
+	overflow: hidden;
+}
 
-// 		&:hover {
-// 			.cell {
-// 				transform: scale(1);
-// 				opacity: 1;
-// 			}
-// 		}
+#planes {
+	width: min-content;
+	min-width: 2000px;
 
-// 		.cell {
-// 			pointer-events: none;
-// 			opacity: 0;
+	padding: 0 25px;
+	height: 100vh;
 
-// 			transform: translateZ(-15px);
-// 			transform-style: preserve-3d;
+	display: flex;
+	align-items: center;
+	cursor: move;
+}
 
-// 			transition-property: transform, opacity;
-// 			transition-duration: 0.5s, 0.4s;
-// 			transition-timing-function: cubic-bezier(0.65, 0.01, 0.15, 1.33);
+.plane-wrapper {
+	position: relative;
 
-// 			/* The center character index */
-// 			--center-x: calc((var(--col-total) - 1) / 2);
-// 			--center-y: calc((var(--row-total) - 1) / 2);
+	height: 300px;
+	width: 500px;
+	margin: 0 20px;
+}
 
-// 			/* Offset from center, positive & negative */
-// 			--offset-x: calc(var(--col-index) - var(--center-x));
-// 			--offset-y: calc(var(--row-index) - var(--center-y));
+/* disable pointer events and text selection during drag */
+#planes.dragged .plane-wrapper {
+	pointer-events: none;
 
-// 			/* Absolute distance from center, only positive */
-// 			--distance-x: calc(
-// 				(var(--offset-x) * var(--offset-x)) / var(--center-x)
-// 			);
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
 
-// 			/* Absolute distance from center, only positive */
-// 			--distance-y: calc(
-// 				(var(--offset-y) * var(--offset-y)) / var(--center-y)
-// 			);
+.plane {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 
-// 			transition-delay: calc(
-// 				0.1s * var(--distance-y) + 0.1s * var(--distance-x)
-// 			);
+	img {
+		/* hide original images if there's no WebGL error */
+		display: none;
+		/* prevent original image from dragging */
+		pointer-events: none;
+		-webkit-user-drag: none;
+		-khtml-user-drag: none;
+		-moz-user-drag: none;
+		-o-user-drag: none;
+		user-drag: none;
+	}
+}
 
-// 			&-grid {
-				
-// 			}
-// 		}
+#drag-tip {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	left: 20px;
+	pointer-events: none;
+	font-size: 0.9em;
+	text-transform: uppercase;
+	color: #888;
+	text-align: center;
+}
 
+/*** handling WebGL errors ***/
 
+.no-curtains #planes {
+	transition: background-color 0.5s;
+}
 
-// 		// end splitting
+.no-curtains #planes.dragged {
+	background-color: #0d0d0d;
+}
 
-// 		&:hover {
-// 			// opacity: 1;
+.no-curtains .plane-title {
+	opacity: 1;
+}
 
-// 			img {
-// 				// filter: grayscale(0);
-// 				transition: filter ease-in 0.15s;
-// 			}
-// 		}
+.no-curtains .plane {
+	display: flex;
+	overflow: hidden;
+	transition: filter 0.5s;
+}
 
-// 		img {
-// 			height: 100%;
-// 			width: 100%;
-// 			object-fit: cover;
-// 			object-position: center;
-// 			visibility: visible;
-// 			// @include image;
-// 			// filter: grayscale(70%);
-// 		}
+.no-curtains #planes.dragged .plane {
+	filter: grayscale(1);
+}
 
-// 		// Msnry
-// 		&.height-x2 {
-// 			height: 290px;
-// 		}
+.no-curtains .plane img {
+	display: block;
+	min-width: 100%;
+	min-height: 100%;
+	object-fit: cover;
+}
 
-// 		&.height-x3 {
-// 			height: 350px;
-// 		}
-// 	}
-// }
+@media screen and (orientation: portrait) {
+	#content {
+		max-height: 100vh;
+	}
 
-// .splitting .cell-grid {
-// 	background-position: center center;
-// 	margin: auto;
-// 	position: fixed!important;
-// 	top: 0;
-// 	bottom: 0;
-// 	left: 0;
-// 	right: 0;
+	#planes {
+		overflow: hidden;
+		width: 100vw;
 
-// 	z-index: 10;
+		padding: 2.5vh 0;
+		height: auto;
+		flex-direction: column;
+	}
 
-// 	max-width: 1000px;
-// 	max-height: 600px;
-// 	display: flex;
+	.plane-wrapper {
+		position: relative;
 
-// 	perspective: 30px;
-// }
+		width: 70vw;
+		height: calc(100vh / 1.75);
+		margin: 5vw 0;
+	}
+
+	// .plane-title {
+	// 	font-size: 10vw;
+	// }
+}

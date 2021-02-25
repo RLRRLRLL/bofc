@@ -8,7 +8,7 @@ $animation-duration: 1s;
 @keyframes slideInUp {
 	0% {
 		opacity: 0;
-		transform: translateY(10%);
+		transform: translateY(25%);
 	}
 	100% {
 		opacity: 1;
@@ -18,7 +18,7 @@ $animation-duration: 1s;
 @keyframes slideInDown {
 	0% {
 		opacity: 0;
-		transform: translateY(-50%);
+		transform: translateY(-25%);
 	}
 	100% {
 		opacity: 1;
@@ -28,7 +28,7 @@ $animation-duration: 1s;
 @keyframes slideInleft {
 	0% {
 		opacity: 0;
-		transform: translateX(10%);
+		transform: translateX(25%);
 	}
 	100% {
 		opacity: 1;
@@ -38,7 +38,7 @@ $animation-duration: 1s;
 @keyframes slideInRight {
 	0% {
 		opacity: 0;
-		transform: translateX(-10%);
+		transform: translateX(-25%);
 	}
 	100% {
 		opacity: 1;

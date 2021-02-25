@@ -9,6 +9,10 @@
 		overflow: hidden;
 		width: 100%;
 		height: 100vh;
+		// background-image: url('/images/random-dogs/2.jpg');
+		// background-repeat: no-repeat;
+		// background-size: cover;
+		// background-position: center bottom;
 
 		&__inner {
 			width: 100%;
@@ -32,21 +36,21 @@
 }
 
 // social cta
-@import "./includes/social-cta";
+@import './includes/social-cta';
 
 // parallax gallery
-@import "./includes/grid";
+@import './includes/grid';
 
 // brand
-@import "./includes/brand";
+@import './includes/brand';
 
 // stripes
-@import "./includes/stripes";
+@import './includes/stripes';
 
 /* Section About */
 
 // about
-@import "./includes/about";
+@import './includes/about';
 
 ////////////////
 // demo

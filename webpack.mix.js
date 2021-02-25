@@ -1,4 +1,4 @@
-const mix = require("laravel-mix");
+const mix = require('laravel-mix')
 
 /*
  |--------------------------------------------------------------------------
@@ -11,12 +11,16 @@ const mix = require("laravel-mix");
  |
  */
 
-mix.js("resources/js/main.js", "public/js/scripts")
-	.js("resources/js/admin.js", "public/js/scripts")
-	.sass("resources/sass/app.scss", "public/css")
-	.sass("resources/sass/admin.scss", "public/css")
+mix.options({
+	processCssUrls: false,
+	watchOptions: {
+		ignored: '/node_modules/'
+	}
+})
 	.browserSync({
-		proxy: "localhost:8000",
-		open: false
+		proxy: 'localhost'
 	})
-	.options({ processCssUrls: false });
+	.js('resources/js/main.js', 'public/js/scripts')
+	.js('resources/js/admin.js', 'public/js/scripts')
+	.sass('resources/sass/app.scss', 'public/css')
+	.sass('resources/sass/admin.scss', 'public/css')

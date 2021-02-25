@@ -1,4 +1,4 @@
-<div class="brand">
+<div class="brand slideInUp" data-animation="slideInUp" data-animation-delay="500ms">
     <h2 class="brand__title">
         {{ config('app.name') }}
     </h2>

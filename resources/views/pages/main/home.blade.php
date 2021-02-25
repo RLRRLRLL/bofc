@@ -26,8 +26,7 @@
 			</a>
 		</div> --}}
 		
-		
-		<section id="header" class="section section-header" data-animation="slideInUp" data-animation-delay="500ms">
+		<section id="header" class="section section-header">
 			<div class="container">
 				<div class="section-header__inner section__inner">
 					@include('includes.main.partials.brand')
@@ -36,7 +35,7 @@
 						<div class="surface"></div>
 					</div> --}}
 
-					<div class="stripes" data-target="#about">
+					<div class="stripes slideInUp" data-target="#about" data-animation="slideInUp" data-animation-delay="700ms">
 						<p class="stripes__text">
 							[ about us ]
 						</p>

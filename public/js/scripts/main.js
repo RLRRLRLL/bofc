@@ -1946,44 +1946,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/splitting/dist/splitting-cells.css":
-/*!*****************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/splitting/dist/splitting-cells.css ***!
-  \*****************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".splitting.cells img { width: 100%; display: block; }\n\n@supports ( display: grid ) {\n  .splitting.cells {\n    position: relative;\n    overflow: hidden;\n    background-size: cover;\n    visibility: hidden;\n  }\n\n  .splitting .cell-grid {\n    background: inherit;\n    position: absolute;\n    top: 0; \n    left: 0; \n    width: 100%; \n    height: 100%;\n    display: grid;\n    grid-template: repeat( var(--row-total), 1fr ) / repeat( var(--col-total), 1fr );\n  }\n\n  .splitting .cell {\n    background: inherit;\n    position: relative;\n    overflow: hidden;\n  }\n\n  .splitting .cell-inner {\n    background: inherit;\n    position: absolute;\n    visibility: visible;\n    /* Size to fit the whole container size */\n    width: calc(100% * var(--col-total));\n    height: calc(100% * var(--row-total));\n    /* Position properly */\n    left: calc(-100% * var(--col-index));\n    top: calc(-100% * var(--row-index));\n  }\n\n  /* Helper variables for advanced effects */\n  .splitting .cell {\n    --center-x: calc((var(--col-total) - 1) / 2);\n    --center-y: calc((var(--row-total) - 1) / 2);\n\n    /* Offset from center, positive & negative */\n    --offset-x: calc(var(--col-index) - var(--center-x));\n    --offset-y: calc(var(--row-index) - var(--center-y));\n\n    /* Absolute distance from center, only positive */\n    --distance-x: calc( (var(--offset-x) * var(--offset-x)) / var(--center-x) );\n\n    /* Absolute distance from center, only positive */\n    --distance-y: calc( (var(--offset-y) * var(--offset-y)) / var(--center-y) );\n  }\n}\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/splitting/dist/splitting.css":
-/*!***********************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/splitting/dist/splitting.css ***!
-  \***********************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "/* Recommended styles for Splitting */\n.splitting .word,\n.splitting .char {\n  display: inline-block;\n}\n\n/* Psuedo-element chars */\n.splitting .char {\n  position: relative;\n}\n\n/**\n * Populate the psuedo elements with the character to allow for expanded effects\n * Set to `display: none` by default; just add `display: block` when you want\n * to use the psuedo elements\n */\n.splitting .char::before,\n.splitting .char::after {\n  content: attr(data-char);\n  position: absolute;\n  top: 0;\n  left: 0;\n  visibility: hidden;\n  transition: inherit;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n\n/* Expanded CSS Variables */\n\n.splitting {\n  /* The center word index */\n  --word-center: calc((var(--word-total) - 1) / 2);\n\n  /* The center character index */\n  --char-center: calc((var(--char-total) - 1) / 2);\n\n  /* The center character index */\n  --line-center: calc((var(--line-total) - 1) / 2);\n}\n\n.splitting .word {\n  /* Pecent (0-1) of the word's position */\n  --word-percent: calc(var(--word-index) / var(--word-total));\n\n  /* Pecent (0-1) of the line's position */\n  --line-percent: calc(var(--line-index) / var(--line-total));\n}\n\n.splitting .char {\n  /* Percent (0-1) of the char's position */\n  --char-percent: calc(var(--char-index) / var(--char-total));\n\n  /* Offset from center, positive & negative */\n  --char-offset: calc(var(--char-index) - var(--char-center));\n\n  /* Absolute distance from center, only positive */\n  --distance: calc(\n     (var(--char-offset) * var(--char-offset)) / var(--char-center)\n  );\n\n  /* Distance from center where -1 is the far left, 0 is center, 1 is far right */\n  --distance-sine: calc(var(--char-offset) / var(--char-center));\n\n  /* Distance from center where 1 is far left/far right, 0 is center */\n  --distance-percent: calc((var(--distance) / var(--char-center)));\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/swiper/swiper-bundle.css":
 /*!*******************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/swiper/swiper-bundle.css ***!
@@ -27172,572 +27134,6 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ "./node_modules/splitting/dist/splitting-cells.css":
-/*!*********************************************************!*\
-  !*** ./node_modules/splitting/dist/splitting-cells.css ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../css-loader??ref--7-1!../../postcss-loader/src??ref--7-2!./splitting-cells.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/splitting/dist/splitting-cells.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/splitting/dist/splitting.css":
-/*!***************************************************!*\
-  !*** ./node_modules/splitting/dist/splitting.css ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../css-loader??ref--7-1!../../postcss-loader/src??ref--7-2!./splitting.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/splitting/dist/splitting.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/splitting/dist/splitting.js":
-/*!**************************************************!*\
-  !*** ./node_modules/splitting/dist/splitting.js ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-(function (global, factory) {
-	 true ? module.exports = factory() :
-	undefined;
-}(this, (function () { 'use strict';
-
-var root = document;
-var createText = root.createTextNode.bind(root);
-
-/**
- * # setProperty
- * Apply a CSS var
- * @param el{HTMLElement} 
- * @param varName {string} 
- * @param value {string|number}  
- */
-function setProperty(el, varName, value) {
-    el.style.setProperty(varName, value);
-} 
-
-/**
- * 
- * @param {Node} el 
- * @param {Node} child 
- */
-function appendChild(el, child) {
-  return el.appendChild(child);
-}
-
-function createElement(parent, key, text, whitespace) {
-  var el = root.createElement('span');
-  key && (el.className = key); 
-  if (text) { 
-      !whitespace && el.setAttribute("data-" + key, text);
-      el.textContent = text; 
-  }
-  return (parent && appendChild(parent, el)) || el;
-}
-
-function getData(el, key) {
-  return el.getAttribute("data-" + key)
-}
-
-/**
- * 
- * @param e {import('../types').Target} 
- * @param parent {HTMLElement}
- * @returns {HTMLElement[]}
- */
-function $(e, parent) {
-    return !e || e.length == 0
-        ? // null or empty string returns empty array
-          []
-        : e.nodeName
-            ? // a single element is wrapped in an array
-              [e]
-            : // selector and NodeList are converted to Element[]
-              [].slice.call(e[0].nodeName ? e : (parent || root).querySelectorAll(e));
-}
-
-/**
- * Creates and fills an array with the value provided
- * @template {T}
- * @param {number} len
- * @param {() => T} valueProvider
- * @return {T}
- */
-function Array2D(len) {
-    var a = [];
-    for (; len--; ) {
-        a[len] = [];
-    }
-    return a;
-}
-
-function each(items, fn) {
-    items && items.some(fn);
-}
-
-function selectFrom(obj) {
-    return function (key) {
-        return obj[key];
-    }
-}
-
-/**
- * # Splitting.index
- * Index split elements and add them to a Splitting instance.
- *
- * @param element {HTMLElement}
- * @param key {string}
- * @param items {HTMLElement[] | HTMLElement[][]}
- */
-function index(element, key, items) {
-    var prefix = '--' + key;
-    var cssVar = prefix + "-index";
-
-    each(items, function (items, i) {
-        if (Array.isArray(items)) {
-            each(items, function(item) {
-                setProperty(item, cssVar, i);
-            });
-        } else {
-            setProperty(items, cssVar, i);
-        }
-    });
-
-    setProperty(element, prefix + "-total", items.length);
-}
-
-/**
- * @type {Record<string, import('./types').ISplittingPlugin>}
- */
-var plugins = {};
-
-/**
- * @param by {string}
- * @param parent {string}
- * @param deps {string[]}
- * @return {string[]}
- */
-function resolvePlugins(by, parent, deps) {
-    // skip if already visited this dependency
-    var index = deps.indexOf(by);
-    if (index == -1) {
-        // if new to dependency array, add to the beginning
-        deps.unshift(by);
-
-        // recursively call this function for all dependencies
-        each(plugins[by].depends, function(p) {
-            resolvePlugins(p, by, deps);
-        });
-    } else {
-        // if this dependency was added already move to the left of
-        // the parent dependency so it gets loaded in order
-        var indexOfParent = deps.indexOf(parent);
-        deps.splice(index, 1);
-        deps.splice(indexOfParent, 0, by);
-    }
-    return deps;
-}
-
-/**
- * Internal utility for creating plugins... essentially to reduce
- * the size of the library
- * @param {string} by 
- * @param {string} key 
- * @param {string[]} depends 
- * @param {Function} split 
- * @returns {import('./types').ISplittingPlugin}
- */
-function createPlugin(by, depends, key, split) {
-    return {
-        by: by,
-        depends: depends,
-        key: key,
-        split: split
-    }
-}
-
-/**
- *
- * @param by {string}
- * @returns {import('./types').ISplittingPlugin[]}
- */
-function resolve(by) {
-    return resolvePlugins(by, 0, []).map(selectFrom(plugins));
-}
-
-/**
- * Adds a new plugin to splitting
- * @param opts {import('./types').ISplittingPlugin}
- */
-function add(opts) {
-    plugins[opts.by] = opts;
-}
-
-/**
- * # Splitting.split
- * Split an element's textContent into individual elements
- * @param el {Node} Element to split
- * @param key {string}
- * @param splitOn {string}
- * @param includeSpace {boolean}
- * @returns {HTMLElement[]}
- */
-function splitText(el, key, splitOn, includePrevious, preserveWhitespace) {
-    // Combine any strange text nodes or empty whitespace.
-    el.normalize();
-
-    // Use fragment to prevent unnecessary DOM thrashing.
-    var elements = [];
-    var F = document.createDocumentFragment();
-
-    if (includePrevious) {
-        elements.push(el.previousSibling);
-    }
-
-    var allElements = [];
-    $(el.childNodes).some(function(next) {
-        if (next.tagName && !next.hasChildNodes()) {
-            // keep elements without child nodes (no text and no children)
-            allElements.push(next);
-            return;
-        }
-        // Recursively run through child nodes
-        if (next.childNodes && next.childNodes.length) {
-            allElements.push(next);
-            elements.push.apply(elements, splitText(next, key, splitOn, includePrevious, preserveWhitespace));
-            return;
-        }
-
-        // Get the text to split, trimming out the whitespace
-        /** @type {string} */
-        var wholeText = next.wholeText || '';
-        var contents = wholeText.trim();
-
-        // If there's no text left after trimming whitespace, continue the loop
-        if (contents.length) {
-            // insert leading space if there was one
-            if (wholeText[0] === ' ') {
-                allElements.push(createText(' '));
-            }
-            // Concatenate the split text children back into the full array
-            each(contents.split(splitOn), function(splitText, i) {
-                if (i && preserveWhitespace) {
-                    allElements.push(createElement(F, "whitespace", " ", preserveWhitespace));
-                }
-                var splitEl = createElement(F, key, splitText);
-                elements.push(splitEl);
-                allElements.push(splitEl);
-            }); 
-            // insert trailing space if there was one
-            if (wholeText[wholeText.length - 1] === ' ') {
-                allElements.push(createText(' '));
-            }
-        }
-    });
-
-    each(allElements, function(el) {
-        appendChild(F, el);
-    });
-
-    // Clear out the existing element
-    el.innerHTML = "";
-    appendChild(el, F);
-    return elements;
-}
-
-/** an empty value */
-var _ = 0;
-
-function copy(dest, src) {
-    for (var k in src) {
-        dest[k] = src[k];
-    }
-    return dest;
-}
-
-var WORDS = 'words';
-
-var wordPlugin = createPlugin(
-    /*by: */ WORDS,
-    /*depends: */ _,
-    /*key: */ 'word', 
-    /*split: */ function(el) {
-        return splitText(el, 'word', /\s+/, 0, 1)
-    }
-);
-
-var CHARS = "chars";
-
-var charPlugin = createPlugin(
-    /*by: */ CHARS,
-    /*depends: */ [WORDS],
-    /*key: */ "char", 
-    /*split: */ function(el, options, ctx) {
-        var results = [];
-
-        each(ctx[WORDS], function(word, i) {
-            results.push.apply(results, splitText(word, "char", "", options.whitespace && i));
-        });
-
-        return results;
-    }
-);
-
-/**
- * # Splitting
- * 
- * @param opts {import('./types').ISplittingOptions} 
- */
-function Splitting (opts) {
-  opts = opts || {};
-  var key = opts.key;
-
-  return $(opts.target || '[data-splitting]').map(function(el) {
-    var ctx = el['🍌'];  
-    if (!opts.force && ctx) {
-      return ctx;
-    }
-
-    ctx = el['🍌'] = { el: el };
-    var items = resolve(opts.by || getData(el, 'splitting') || CHARS);
-    var opts2 = copy({}, opts);
-    each(items, function(plugin) {
-      if (plugin.split) {
-        var pluginBy = plugin.by;
-        var key2 = (key ? '-' + key : '') + plugin.key;
-        var results = plugin.split(el, opts2, ctx);
-        key2 && index(el, key2, results);
-        ctx[pluginBy] = results;
-        el.classList.add(pluginBy);
-      } 
-    });
-
-    el.classList.add('splitting');
-    return ctx;
-  })
-}
-
-/**
- * # Splitting.html
- * 
- * @param opts {import('./types').ISplittingOptions}
- */
-function html(opts) {
-  opts = opts || {};
-  var parent = opts.target =  createElement();
-  parent.innerHTML = opts.content;
-  Splitting(opts);
-  return parent.outerHTML
-}
-
-Splitting.html = html;
-Splitting.add = add;
-
-function detectGrid(el, options, side) {
-    var items = $(options.matching || el.children, el);
-    var c = {};
-
-    each(items, function(w) {
-        var val = Math.round(w[side]);
-        (c[val] || (c[val] = [])).push(w);
-    });
-
-    return Object.keys(c).map(Number).sort(byNumber).map(selectFrom(c));
-}
-
-function byNumber(a, b) {
-    return a - b;
-}
-
-var linePlugin = createPlugin(
-    /*by: */ 'lines',
-    /*depends: */ [WORDS],
-    /*key: */ 'line',
-    /*split: */ function(el, options, ctx) {
-      return detectGrid(el, { matching: ctx[WORDS] }, 'offsetTop')
-    }
-);
-
-var itemPlugin = createPlugin(
-    /*by: */ 'items',
-    /*depends: */ _,
-    /*key: */ 'item', 
-    /*split: */ function(el, options) {
-        return $(options.matching || el.children, el)
-    }
-);
-
-var rowPlugin = createPlugin(
-    /*by: */ 'rows',
-    /*depends: */ _,
-    /*key: */ 'row', 
-    /*split: */ function(el, options) {
-        return detectGrid(el, options, "offsetTop");
-    }
-);
-
-var columnPlugin = createPlugin(
-    /*by: */ 'cols',
-    /*depends: */ _,
-    /*key: */ "col", 
-    /*split: */ function(el, options) {
-        return detectGrid(el, options, "offsetLeft");
-    }
-);
-
-var gridPlugin = createPlugin(
-    /*by: */ 'grid',
-    /*depends: */ ['rows', 'cols']
-);
-
-var LAYOUT = "layout";
-
-var layoutPlugin = createPlugin(
-    /*by: */ LAYOUT,
-    /*depends: */ _,
-    /*key: */ _,
-    /*split: */ function(el, opts) {
-        // detect and set options
-        var rows =  opts.rows = +(opts.rows || getData(el, 'rows') || 1);
-        var columns = opts.columns = +(opts.columns || getData(el, 'columns') || 1);
-
-        // Seek out the first <img> if the value is true 
-        opts.image = opts.image || getData(el, 'image') || el.currentSrc || el.src;
-        if (opts.image) {
-            var img = $("img", el)[0];
-            opts.image = img && (img.currentSrc || img.src);
-        }
-
-        // add optional image to background
-        if (opts.image) {
-            setProperty(el, "background-image", "url(" + opts.image + ")");
-        }
-
-        var totalCells = rows * columns;
-        var elements = [];
-
-        var container = createElement(_, "cell-grid");
-        while (totalCells--) {
-            // Create a span
-            var cell = createElement(container, "cell");
-            createElement(cell, "cell-inner");
-            elements.push(cell);
-        }
-
-        // Append elements back into the parent
-        appendChild(el, container);
-
-        return elements;
-    }
-);
-
-var cellRowPlugin = createPlugin(
-    /*by: */ "cellRows",
-    /*depends: */ [LAYOUT],
-    /*key: */ "row",
-    /*split: */ function(el, opts, ctx) {
-        var rowCount = opts.rows;
-        var result = Array2D(rowCount);
-
-        each(ctx[LAYOUT], function(cell, i, src) {
-            result[Math.floor(i / (src.length / rowCount))].push(cell);
-        });
-
-        return result;
-    }
-);
-
-var cellColumnPlugin = createPlugin(
-    /*by: */ "cellColumns",
-    /*depends: */ [LAYOUT],
-    /*key: */ "col",
-    /*split: */ function(el, opts, ctx) {
-        var columnCount = opts.columns;
-        var result = Array2D(columnCount);
-
-        each(ctx[LAYOUT], function(cell, i) {
-            result[i % columnCount].push(cell);
-        });
-
-        return result;
-    }
-);
-
-var cellPlugin = createPlugin(
-    /*by: */ "cells",
-    /*depends: */ ['cellRows', 'cellColumns'],
-    /*key: */ "cell", 
-    /*split: */ function(el, opt, ctx) { 
-        // re-index the layout as the cells
-        return ctx[LAYOUT];
-    }
-);
-
-// install plugins
-// word/char plugins
-add(wordPlugin);
-add(charPlugin);
-add(linePlugin);
-// grid plugins
-add(itemPlugin);
-add(rowPlugin);
-add(columnPlugin);
-add(gridPlugin);
-// cell-layout plugins
-add(layoutPlugin);
-add(cellRowPlugin);
-add(cellColumnPlugin);
-add(cellPlugin);
-
-return Splitting;
-
-})));
-
-
-/***/ }),
-
 /***/ "./node_modules/ssr-window/ssr-window.esm.js":
 /*!***************************************************!*\
   !*** ./node_modules/ssr-window/ssr-window.esm.js ***!
@@ -38522,11 +37918,6 @@ var LinkFx = /*#__PURE__*/function () {
         line: true
       }
     };
-    this.DOM.text = document.createElement("span");
-    this.DOM.text.classList = "link-text";
-    this.DOM.text.innerHTML = this.DOM.el.innerHTML;
-    this.DOM.el.innerHTML = "";
-    this.DOM.el.appendChild(this.DOM.text);
     this.DOM.line = document.createElement("span");
     this.DOM.line.classList = "link-circle";
     this.DOM.el.appendChild(this.DOM.line);
@@ -38644,7 +38035,7 @@ __webpack_require__.r(__webpack_exports__);
 
     element.classList.add(element.dataset.animation); // Seta o elemento como animado
 
-    element.dataset.animated = "true";
+    element.dataset.animated = 'true';
   }
 
   function isElementOnScreen(element) {
@@ -38671,18 +38062,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
   function update() {
-    _elements = document.querySelectorAll("[data-animation]:not([data-animated])");
+    _elements = document.querySelectorAll('[data-animation]:not([data-animated])');
     checkElementsOnScreen(_elements);
   } // Inicia os eventos
 
 
-  window.addEventListener("load", update, false);
-  window.addEventListener("scroll", function () {
+  window.addEventListener('load', update, false);
+  window.addEventListener('scroll', function () {
     return checkElementsOnScreen(_elements);
   }, {
     passive: true
   });
-  window.addEventListener("resize", function () {
+  window.addEventListener('resize', function () {
     return checkElementsOnScreen(_elements);
   }, false); // Retorna funcoes publicas
 
@@ -38708,73 +38099,710 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "galleryPageGallery", function() { return galleryPageGallery; });
 /* harmony import */ var _includes_gallery_grid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./includes/gallery/grid */ "./resources/js/components/main/includes/gallery/grid.js");
 /* harmony import */ var _includes_gallery_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./includes/gallery/utils */ "./resources/js/components/main/includes/gallery/utils.js");
-/* harmony import */ var splitting_dist_splitting_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! splitting/dist/splitting.css */ "./node_modules/splitting/dist/splitting.css");
-/* harmony import */ var splitting_dist_splitting_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(splitting_dist_splitting_css__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var splitting_dist_splitting_cells_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! splitting/dist/splitting-cells.css */ "./node_modules/splitting/dist/splitting-cells.css");
-/* harmony import */ var splitting_dist_splitting_cells_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(splitting_dist_splitting_cells_css__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var splitting__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! splitting */ "./node_modules/splitting/dist/splitting.js");
-/* harmony import */ var splitting__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(splitting__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../Utils */ "./resources/js/components/Utils.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 // Home page
-
- // Gallery page
-
-
-
 
 
 function homeParallaxGallery() {
-  // Preload  images
-  Object(_includes_gallery_utils__WEBPACK_IMPORTED_MODULE_1__["preloadImages"])(".grid__item-img, .bigimg").then(function () {
-    // Remove loader (loading class)
-    document.body.classList.remove("loading"); // Initialize grid
+  Object(_includes_gallery_utils__WEBPACK_IMPORTED_MODULE_1__["preloadImages"])('.grid__item-img, .bigimg').then(function () {
+    document.body.classList.remove('loading'); // init
 
-    var grid = new _includes_gallery_grid__WEBPACK_IMPORTED_MODULE_0__["default"](document.query(".grid"));
+    var grid = new _includes_gallery_grid__WEBPACK_IMPORTED_MODULE_0__["default"](document.querySelector('.grid'));
   });
 }
 function galleryPageGallery() {
-  // const gallery = query(".gallery");
-  // const msnry = new Masonry(gallery, {
-  // 	itemSelector: ".gallery__item"
-  // });
-  // Splitting.js
-  // Splitting({
-  // 	target: ".gallery__item",
-  // 	by: "cells",
-  // 	image: true,
-  // 	rows: 3,
-  // 	columns: 3
-  // });
+  var Slider = /*#__PURE__*/function () {
+    function Slider() {
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-  /* Gallery Pixi.js */
-  // get canvas el
-  var view = document.querySelector('.gallery');
-  var width, height, app; // set dimensions
+      _classCallCheck(this, Slider);
 
-  function initDimensions() {
-    width = window.innerWidth;
-    height = window.innerHeight;
-  } // init Pixi.js
+      // our options
+      this.options = {
+        // slider state and values
+        // the div we are going to translate
+        element: options.element || document.getElementById('planes'),
+        // easing value, the lower the smoother
+        easing: options.easing || 0.1,
+        // translation speed
+        // 1: will follow the mouse
+        // 2: will go twice as fast as the mouse, etc
+        dragSpeed: options.dragSpeed || 1,
+        // duration of the in animation
+        duration: options.duration || 750
+      }; // if we are currently dragging
+
+      this.isMouseDown = false; // if the slider is currently translating
+
+      this.isTranslating = false; // current position
+
+      this.currentPosition = 0; // drag start position
+
+      this.startPosition = 0; // drag end position
+
+      this.endPosition = 0; // slider translation
+
+      this.translation = 0;
+      this.animationFrame = null; // set up the slider
+
+      this.setupSlider();
+    }
+    /*** HELPERS ***/
+    // lerp function used for easing
 
 
-  function initApp() {
-    app = new PIXI.Application({
-      view: view
-    }); // resizes renderer view in CSS pixels to allow for resolutions other than 1
+    _createClass(Slider, [{
+      key: "lerp",
+      value: function lerp(value1, value2, amount) {
+        amount = amount < 0 ? 0 : amount;
+        amount = amount > 1 ? 1 : amount;
+        return (1 - amount) * value1 + amount * value2;
+      } // return our mouse or touch position
 
-    app.renderer.autoDensity = true; // resize the view to match viewport dimensions
+    }, {
+      key: "getMousePosition",
+      value: function getMousePosition(e) {
+        var mousePosition;
 
-    app.renderer.resize(width, height);
-  } // init everything
+        if (e.targetTouches) {
+          if (e.targetTouches[0]) {
+            mousePosition = [e.targetTouches[0].clientX, e.targetTouches[0].clientY];
+          } else if (e.changedTouches[0]) {
+            // handling touch end event
+            mousePosition = [e.changedTouches[0].clientX, e.changedTouches[0].clientY];
+          } else {
+            // fallback
+            mousePosition = [e.clientX, e.clientY];
+          }
+        } else {
+          mousePosition = [e.clientX, e.clientY];
+        }
+
+        return mousePosition;
+      } // set the slider boundaries
+      // we will translate it horizontally in landscape mode
+      // vertically in portrait mode
+
+    }, {
+      key: "setBoundaries",
+      value: function setBoundaries() {
+        if (window.innerWidth >= window.innerHeight) {
+          // landscape
+          this.boundaries = {
+            max: -1 * this.options.element.clientWidth + window.innerWidth,
+            min: 0,
+            sliderSize: this.options.element.clientWidth,
+            referentSize: window.innerWidth
+          }; // set our slider direction
+
+          this.direction = 0;
+        } else {
+          // portrait
+          this.boundaries = {
+            max: -1 * this.options.element.clientHeight + window.innerHeight,
+            min: 0,
+            sliderSize: this.options.element.clientHeight,
+            referentSize: window.innerHeight
+          }; // set our slider direction
+
+          this.direction = 1;
+        }
+      }
+      /*** HOOKS ***/
+      // this is called once our mousedown / touchstart event occurs and the drag started
+
+    }, {
+      key: "onDragStarted",
+      value: function onDragStarted(mousePosition) {} // this is called while we are currently dragging the slider
+
+    }, {
+      key: "onDrag",
+      value: function onDrag(mousePosition) {} // this is called once our mouseup / touchend event occurs and the drag started
+
+    }, {
+      key: "onDragEnded",
+      value: function onDragEnded(mousePosition) {} // this is called continuously while the slider is translating
+
+    }, {
+      key: "onTranslation",
+      value: function onTranslation() {} // this is called once the translation has ended
+
+    }, {
+      key: "onTranslationEnded",
+      value: function onTranslationEnded() {} // this is called before our slider has been resized
+
+    }, {
+      key: "onBeforeResize",
+      value: function onBeforeResize() {} // this is called after our slider has been resized
+
+    }, {
+      key: "onSliderResized",
+      value: function onSliderResized() {}
+      /*** ANIMATIONS ***/
+      // this will translate our slider HTML element and set up our hooks
+
+    }, {
+      key: "translateSlider",
+      value: function translateSlider(translation) {
+        translation = Math.floor(translation * 200) / 200; // should we translate it horizontally or vertically?
+
+        var direction = this.direction === 0 ? 'translateX' : 'translateY'; // apply translation
+
+        this.options.element.style.transform = direction + '(' + translation + 'px)'; // if the slider translation is different than the translation to apply
+        // that means the slider is still translating
+
+        if (this.translation !== translation) {
+          // hook function to execute while we are translating
+          this.onTranslation();
+        } else if (this.isTranslating && !this.isMouseDown) {
+          // if those conditions are met, that means the slider is no longer translating
+          this.isTranslating = false; // hook function to execute after translation has ended
+
+          this.onTranslationEnded();
+        } // finally set our translation
 
 
-  var init = function init() {
-    initDimensions();
-    initApp();
-  }; // init call
+        this.translation = translation;
+      } // this is our request animation frame loop where we will translate our slider
+
+    }, {
+      key: "animate",
+      value: function animate() {
+        // interpolate values
+        var translation = this.lerp(this.translation, this.currentPosition, this.options.easing); // apply our translation
+
+        this.translateSlider(translation);
+        this.animationFrame = requestAnimationFrame(this.animate.bind(this));
+      }
+      /*** EVENTS ***/
+      // on mouse down or touch start
+
+    }, {
+      key: "onMouseDown",
+      value: function onMouseDown(e) {
+        // start dragging
+        this.isMouseDown = true; // apply specific styles
+
+        this.options.element.classList.add('dragged'); // get our touch/mouse start position
+
+        var mousePosition = this.getMousePosition(e); // use our slider direction to determine if we need X or Y value
+
+        this.startPosition = mousePosition[this.direction]; // drag start hook
+
+        this.onDragStarted(mousePosition);
+      } // on mouse or touch move
+
+    }, {
+      key: "onMouseMove",
+      value: function onMouseMove(e) {
+        // if we are not dragging, we don't do nothing
+        if (!this.isMouseDown) return; // get our touch/mouse position
+
+        var mousePosition = this.getMousePosition(e); // get our current position
+
+        this.currentPosition = this.endPosition + (mousePosition[this.direction] - this.startPosition) * this.options.dragSpeed; // if we're not hitting the boundaries
+
+        if (this.currentPosition > this.boundaries.min && this.currentPosition < this.boundaries.max) {
+          // if we moved that means we have started translating the slider
+          this.isTranslating = true;
+        } else {
+          // clamp our current position with boundaries
+          this.currentPosition = Math.min(this.currentPosition, this.boundaries.min);
+          this.currentPosition = Math.max(this.currentPosition, this.boundaries.max);
+        } // drag hook
 
 
-  init();
+        this.onDrag(mousePosition);
+      } // on mouse up or touchend
+
+    }, {
+      key: "onMouseUp",
+      value: function onMouseUp(e) {
+        // we have finished dragging
+        this.isMouseDown = false; // remove specific styles
+
+        this.options.element.classList.remove('dragged'); // update our end position
+
+        this.endPosition = this.currentPosition; // send our mouse/touch position to our hook
+
+        var mousePosition = this.getMousePosition(e); // drag ended hook
+
+        this.onDragEnded(mousePosition);
+      } // on resize we will need to apply old translation value to new sizes
+
+    }, {
+      key: "onResize",
+      value: function onResize(e) {
+        this.onBeforeResize(); // get our old translation ratio
+
+        var ratio = this.translation / this.boundaries.sliderSize; // reset boundaries and properties bound to window size
+
+        this.setBoundaries(); // reset all translations
+
+        this.options.element.style.transform = 'tanslate3d(0, 0, 0)'; // calculate our new translation based on the old translation ratio
+
+        var newTranslation = ratio * this.boundaries.sliderSize; // clamp translation to the new boundaries
+
+        newTranslation = Math.min(newTranslation, this.boundaries.min);
+        newTranslation = Math.max(newTranslation, this.boundaries.max); // apply our new translation
+
+        this.translateSlider(newTranslation); // reset current and end positions
+
+        this.currentPosition = newTranslation;
+        this.endPosition = newTranslation; // call our resize hook
+
+        this.onSliderResized();
+      }
+      /*** SET UP AND DESTROY ***/
+      // set up our slider
+      // init its boundaries, add event listeners and start raf loop
+
+    }, {
+      key: "setupSlider",
+      value: function setupSlider() {
+        this.setBoundaries(); // event listeners
+        // mouse events
+
+        window.addEventListener('mousemove', this.onMouseMove.bind(this), {
+          passive: true
+        });
+        window.addEventListener('mousedown', this.onMouseDown.bind(this));
+        window.addEventListener('mouseup', this.onMouseUp.bind(this)); // touch events
+
+        window.addEventListener('touchmove', this.onMouseMove.bind(this), {
+          passive: true
+        });
+        window.addEventListener('touchstart', this.onMouseDown.bind(this), {
+          passive: true
+        });
+        window.addEventListener('touchend', this.onMouseUp.bind(this)); // resize event
+
+        window.addEventListener('resize', this.onResize.bind(this)); // launch our request animation frame loop
+
+        this.animate();
+      } // will be called silently to cleanly remove the slider
+
+    }, {
+      key: "destroySlider",
+      value: function destroySlider() {
+        // remove event listeners
+        // mouse events
+        window.removeEventListener('mousemove', this.onMouseMove, {
+          passive: true
+        });
+        window.removeEventListener('mousedown', this.onMouseDown);
+        window.removeEventListener('mouseup', this.onMouseUp); // touch events
+
+        window.removeEventListener('touchmove', this.onMouseMove, {
+          passive: true
+        });
+        window.removeEventListener('touchstart', this.onMouseDown, {
+          passive: true
+        });
+        window.removeEventListener('touchend', this.onMouseUp); // resize event
+
+        window.removeEventListener('resize', this.onResize); // cancel request animation frame
+
+        cancelAnimationFrame(this.animationFrame);
+      } // call this method publicly to destroy our slider
+
+    }, {
+      key: "destroy",
+      value: function destroy() {
+        // destroy everything related to the slider
+        this.destroySlider();
+      }
+    }]);
+
+    return Slider;
+  }();
+
+  var WebGLSlider = /*#__PURE__*/function (_Slider) {
+    _inherits(WebGLSlider, _Slider);
+
+    var _super = _createSuper(WebGLSlider);
+
+    /*** CONSTRUCTOR ***/
+    function WebGLSlider(options) {
+      var _this;
+
+      _classCallCheck(this, WebGLSlider);
+
+      _this = _super.call(this, options); // tweening
+
+      _this.animation = null; // value from 0 to 1 to pass as uniform to the WebGL
+      // will be tweened on mousedown / touchstart and mouseup / touchend events
+
+      _this.effect = 0; // our WebGL variables
+
+      _this.curtains = null;
+      _this.planes = []; // we will keep track of the previous translation values on resize
+
+      _this.previousTranslation = {
+        x: 0,
+        y: 0
+      };
+      _this.shaderPass = null; // set up the WebGL part
+
+      _this.setupWebGL();
+
+      return _this;
+    }
+    /*** WEBGL INIT ***/
+    // set up WebGL context and scene
+
+
+    _createClass(WebGLSlider, [{
+      key: "setupWebGL",
+      value: function setupWebGL() {
+        // set up our WebGL context, append the canvas to our wrapper and create a requestAnimationFrame loop
+        // the canvas will be our scene containing all our planes
+        // this is the scene we will post process
+        this.curtains = new Curtains({
+          container: 'canvas'
+        });
+        this.curtains.onError(function () {
+          // onError handles all errors during WebGL context initialization or plane creation
+          // we will add a class to the document body to display original images (see CSS)
+          document.body.classList.add('no-curtains');
+        }); // planes and shader pass
+
+        this.setupPlanes();
+        this.setupShaderPass();
+      }
+      /*** PLANES CREATION ***/
+
+    }, {
+      key: "setupPlanes",
+      value: function setupPlanes() {
+        // Planes
+        // each plane is bound to a HTML element to copy its size and position
+        // in this case this will be the slider inner items
+        // it will automatically create a WebGL texture for each image, canvas and video child of that element
+        var planeElements = document.getElementsByClassName('plane'); // our planes params
+        // we just pass our shaders tag ID and a uniform to animate opacity on load
+
+        var params = {
+          vertexShaderID: 'slider-planes-vs',
+          fragmentShaderID: 'slider-planes-fs',
+          uniforms: {
+            opacity: {
+              name: 'uOpacity',
+              // variable name inside our shaders
+              type: '1f',
+              // this means our uniform is a float
+              value: 0
+            }
+          }
+        }; // add all our planes and handle them
+
+        for (var i = 0; i < planeElements.length; i++) {
+          // addPlane method adds a plane to our WebGL scene
+          // takes 2 params: our HTML referent element and the params set above
+          // it returns a Plane class object if creation is successful, false otherwise
+          var plane = this.curtains.addPlane(planeElements[i], params); // if our plane has been successfully created
+
+          if (plane) {
+            // push it into our planes array
+            this.planes.push(plane); // onReady is called once our plane is ready and all its texture have been created
+
+            plane.onReady(function () {
+              // inside our onReady function scope, this represents our plane
+              var currentPlane = this; // add a "loaded" class to display the title
+
+              currentPlane.htmlElement.closest('.plane-wrapper').classList.add('loaded'); // animate plane opacity once they are loaded
+
+              var opacity = {
+                value: 0
+              };
+              anime({
+                targets: opacity,
+                value: 1,
+                easing: 'linear',
+                duration: 1050,
+                update: function update() {
+                  // continualy increase opacity from 0 to 1
+                  currentPlane.uniforms.opacity.value = opacity.value;
+                }
+              });
+            });
+          }
+        }
+      }
+      /*** SHADER PASS CREATION ***/
+
+    }, {
+      key: "setupShaderPass",
+      value: function setupShaderPass() {
+        // Shader pass
+        // we will post process our scene
+        // that means we will apply shaders to our whole scene
+        // like for regular planes we will need params
+        // they will contain vertex and fragment shaders ID and our uniforms
+        var shaderPassParams = {
+          vertexShaderID: 'distortion-vs',
+          fragmentShaderID: 'distortion-fs',
+          uniforms: {
+            // apply the whole effect
+            // 0: no effect
+            // 1: full effect
+            dragEffect: {
+              name: 'uDragEffect',
+              // variable name inside our shaders
+              type: '1f',
+              // this means our uniform is a float
+              value: 0
+            },
+            // our mouse position (in WebGL clip space coordinates)
+            mousePos: {
+              name: 'uMousePos',
+              type: '2f',
+              // this means our uniform is a length 2 array of floats
+              value: [0, 0]
+            },
+            // direction of our slider
+            // 0: horizontal drag
+            // 1: vertical drag
+            direction: {
+              name: 'uDirection',
+              type: '1f',
+              value: this.direction
+            },
+            // the background color when effect is applied
+            bgColor: {
+              name: 'uBgColor',
+              type: '3f',
+              // this means our uniform is a length 3 array of floats
+              value: [13, 13, 13] // rgb values
+
+            },
+            // our displacement texture offset
+            offset: {
+              name: 'uOffset',
+              type: '2f',
+              value: [0, 0]
+            }
+          }
+        }; // addShaderPass adds a shader pass (Frame Buffer Object) to our WebGL scene
+        // returns a ShaderPass class object if successful, false otherwise
+
+        this.shaderPass = this.curtains.addShaderPass(shaderPassParams); // if our shader pass has been successfully created
+
+        if (this.shaderPass) {
+          // we will add our displacement map texture
+          // first we load a new image
+          var image = new Image();
+          image.src = 'https://www.martin-laxenaire.fr/medium/medias/skylines-displacement.jpg'; // then we set its data-sampler attribute to use in fragment shader
+
+          image.setAttribute('data-sampler', 'displacementTexture'); // finally we load it into our shader pass via the loadImage method
+
+          this.shaderPass.loadImage(image);
+          var self = this; // onRender is called at each requestAnimationFrame call
+
+          this.shaderPass.onRender(function () {
+            // we will continuously offset our displacement texture on secondary axis
+            var secondaryDirection = self.direction === 0 ? 1 : 0;
+            self.shaderPass.uniforms.offset.value[secondaryDirection] = self.shaderPass.uniforms.offset.value[secondaryDirection] + 1;
+          });
+        }
+      }
+      /*** HELPER ***/
+      // this will update our shader pass mouse position uniform
+
+    }, {
+      key: "updateMousePosUniform",
+      value: function updateMousePosUniform(mousePosition) {
+        // if our shader pass exists, update the mouse position uniform
+        if (this.shaderPass) {
+          // mouseToPlaneCoords converts window coordinates to WebGL clip space
+          var relativeMousePos = this.shaderPass.mouseToPlaneCoords(mousePosition[0], mousePosition[1]);
+          this.shaderPass.uniforms.mousePos.value = [relativeMousePos.x, relativeMousePos.y];
+        }
+      }
+      /*** HOOKS ***/
+      // this is called once our mousedown / touchstart event occurs and the drag started
+
+    }, {
+      key: "onDragStarted",
+      value: function onDragStarted(mousePosition) {
+        // pause and remove previous animation
+        if (this.animation) this.animation.pause();
+        anime.remove(slider); // get a ref
+
+        var self = this; // animate our mouse down effect
+
+        this.animation = anime({
+          targets: self,
+          effect: 1,
+          easing: 'easeOutCubic',
+          duration: self.options.duration,
+          update: function update() {
+            if (self.shaderPass) {
+              // update our shader pass uniforms
+              self.shaderPass.uniforms.dragEffect.value = self.effect;
+            }
+          }
+        }); // enableDrawing to re-enable drawing again if we disabled it earlier
+
+        this.curtains.enableDrawing(); // update our shader pass mouse position uniform
+
+        this.updateMousePosUniform(mousePosition);
+      } // this is called while we are currently dragging the slider
+
+    }, {
+      key: "onDrag",
+      value: function onDrag(mousePosition) {
+        // update our shader pass mouse position uniform
+        this.updateMousePosUniform(mousePosition);
+      } // this is called once our mouseup / touchend event occurs and the drag started
+
+    }, {
+      key: "onDragEnded",
+      value: function onDragEnded(mousePosition) {
+        // calculate duration based on easing
+        var duration = 100 / this.options.easing;
+        var easing = 'linear'; // if there's no movement just tween the shader pass effect
+
+        if (Math.abs(this.translation - this.currentPosition) < 5) {
+          easing = 'easeOutCubic';
+          duration = this.options.duration;
+        } // pause remove previous animation
+
+
+        if (this.animation) this.animation.pause();
+        anime.remove(slider); // get a ref
+
+        var self = this;
+        this.animation = anime({
+          targets: self,
+          effect: 0,
+          easing: easing,
+          duration: duration,
+          update: function update() {
+            if (self.shaderPass) {
+              // update drag effect
+              self.shaderPass.uniforms.dragEffect.value = self.effect;
+            }
+          }
+        }); // update our shader pass mouse position uniform
+
+        this.updateMousePosUniform(mousePosition);
+      } // this is called continuously while the slider is translating
+
+    }, {
+      key: "onTranslation",
+      value: function onTranslation() {
+        // get our slider translation and take our previous translation into account
+        var planeTranslation = {
+          x: this.direction === 0 ? this.translation - this.previousTranslation.x : 0,
+          y: this.direction === 1 ? this.translation - this.previousTranslation.y : 0
+        }; // keep our WebGL planes position in sync with their HTML elements
+
+        for (var i = 0; i < this.planes.length; i++) {
+          // in the previous CodePen we were using updatePosition the method which handles positioning automatically
+          // however this method internally calls getBoundingClientRect() which causes a reflow and therefore impacts performance
+          // so we will position our planes manually with setRelativePosition instead, which does not trigger a layout repaint call
+          this.planes[i].setRelativePosition(planeTranslation.x, planeTranslation.y);
+        } // shader pass displacement texture offset
+
+
+        if (this.shaderPass) {
+          // we will offset our displacement effect on main axis so it follows the drag
+          var offset = ((this.direction - 1) * 2 + 1) * this.translation / this.boundaries.referentSize;
+          this.shaderPass.uniforms.offset.value[this.direction] = offset;
+        }
+      } // this is called once the translation has ended
+
+    }, {
+      key: "onTranslationEnded",
+      value: function onTranslationEnded() {
+        // we will stop rendering our WebGL until next drag occurs
+        if (this.curtains) {
+          this.curtains.disableDrawing();
+        }
+      } // this is called after our slider has been resized
+
+    }, {
+      key: "onSliderResized",
+      value: function onSliderResized() {
+        // we need to update our previous translation value
+        this.previousTranslation = {
+          x: this.direction === 0 ? this.translation : 0,
+          y: this.direction === 1 ? this.translation : 0
+        }; // reset our slides relative positions
+        // because during the resize their positions has already been updated internally
+
+        for (var i = 0; i < this.planes.length; i++) {
+          this.planes[i].setRelativePosition(0, 0);
+        } // update our direction uniform
+
+
+        if (this.shaderPass) {
+          // update direction
+          this.shaderPass.uniforms.direction.value = this.direction;
+        }
+      }
+      /*** DESTROY ***/
+      // destroy all WebGL related things
+
+    }, {
+      key: "destroyWebGL",
+      value: function destroyWebGL() {
+        // if you want to totally remove the WebGL context uncomment next line
+        // and remove what's after
+        //this.curtains.dispose();
+        // if you want to only remove planes and shader pass and keep the context available
+        // that way you could re init the WebGL later to display the slider again
+        if (this.shaderPass) {
+          this.curtains.removeShaderPass(this.shaderPass);
+        }
+
+        for (var i = 0; i < this.planes.length; i++) {
+          this.curtains.removePlane(this.planes[i]);
+        }
+      } // call this method publicly to destroy our slider and the WebGL part
+      // override the destroy method of the Slider class
+
+    }, {
+      key: "destroy",
+      value: function destroy() {
+        // destroy everything related to WebGL and the slider
+        this.destroyWebGL();
+        this.destroySlider();
+      }
+    }]);
+
+    return WebGLSlider;
+  }(Slider); // custom options
+
+
+  var options = {
+    duration: 500,
+    dragSpeed: 1.5
+  }; // let's go!
+
+  var slider = new WebGLSlider(options);
 }
 
 /***/ }),
@@ -39111,10 +39139,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
-/**
- * STATE: DEVELOPMENT!
- */
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+/* STATE: DEVELOPMENT! */
 
 /**
  * * * USED COMPONENTS:
@@ -39134,26 +39160,28 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 // import toggleMenu from "./components/main/ToggleMenu";
 // toggleMenu();
 
-document.addEventListener("DOMContentLoaded", function () {
-  Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".main").classList.add("main-loaded");
+document.addEventListener('DOMContentLoaded', function () {
+  /*
+   * Distortion links run
+   */
+  var distortedLinks = _toConsumableArray(document.querySelectorAll('a.link'));
 
-  _toConsumableArray(document.querySelectorAll("a.link")).forEach(function (el) {
+  distortedLinks.forEach(function (el) {
     var elPosition = _toConsumableArray(el.parentNode.children).indexOf(el);
 
     var fxObj = _components_common_LinkDistortionCircle__WEBPACK_IMPORTED_MODULE_5__["default"][elPosition];
-    fxObj && new fxObj(el);
+    new fxObj(el);
   });
   /**
    * * Disables right click for all images
    * * the first measure for preventing download
    * * the second one is using images as background
    */
-  // disableRightClick();
 
+  Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["disableRightClick"])();
   /**
    * * Material ripple button effect on click
    */
-
 
   Object(_components_main_RippleEffect__WEBPACK_IMPORTED_MODULE_2__["rippleButtonsInit"])();
   /**
@@ -39162,40 +39190,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
   new _components_main_Animation__WEBPACK_IMPORTED_MODULE_4__["default"]({
     offset: 20
-  }); // // toggle bubbles based on if modal is open or not
-  // const modalTrigger = query(".btn-split"), closeModal = query('.right__close');
-  // modalTrigger.addEventListener("click", () => {
-  // 	modalTrigger.classList.toggle("active");
-  // });
+  }); // run fade animation on page load
+  // TODO: Change this to better page transitions (but not resourceful)
 
+  document.querySelector('.main').classList.add('main-loaded');
   /**
    * * * Home page
    */
 
-  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".wrapper.home")) {
-    window.stopBubbles = _components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__["stopBubbles"];
-    window.runBubbles = _components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__["runBubbles"];
-    Object(_components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__["runBubbles"])(".brand", 3000);
+  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.wrapper.home')) {
+    Object(_components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__["runBubbles"])('.brand', 3000);
     Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["smoothScroll"])();
     Object(_components_main_Gallery__WEBPACK_IMPORTED_MODULE_3__["homeParallaxGallery"])();
-  }
+  } // /gallery page
 
-  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".gallery")) {
-    Object(_components_main_Gallery__WEBPACK_IMPORTED_MODULE_3__["galleryPageGallery"])();
-  }
+
+  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.gallery')) Object(_components_main_Gallery__WEBPACK_IMPORTED_MODULE_3__["galleryPageGallery"])();
   /**
    * * * Pomeranians page
-   *
    */
 
-
-  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".wrapper.pomeranian")) {
-    if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])(".show")) {
+  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.wrapper.pomeranian')) {
+    if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.show')) {
       // Carousel
       Object(_components_main_Swiper__WEBPACK_IMPORTED_MODULE_6__["default"])(); // Bubbles on header
-      // setTimeout(() => {
-      // 	runBubbles(".show__header", 1500);
-      // }, 1500);
+
+      setTimeout(function () {
+        Object(_components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__["runBubbles"])('.show__header', 1500);
+      }, 1500);
     }
   }
 }, false);
@@ -39231,9 +39253,9 @@ document.addEventListener("DOMContentLoaded", function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/bofc/resources/js/main.js */"./resources/js/main.js");
-__webpack_require__(/*! /var/www/bofc/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /var/www/bofc/resources/sass/admin.scss */"./resources/sass/admin.scss");
+__webpack_require__(/*! C:\xampp\htdocs\bofc\resources\js\main.js */"./resources/js/main.js");
+__webpack_require__(/*! C:\xampp\htdocs\bofc\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\bofc\resources\sass\admin.scss */"./resources/sass/admin.scss");
 
 
 /***/ })

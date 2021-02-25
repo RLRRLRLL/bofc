@@ -193,6 +193,10 @@ select {
   src: local(".SFNS-BoldItalic"), local(".SFNSText-BoldItalic"), local(".HelveticaNeueDeskInterface-BoldItalic"), local(".LucidaGrandeUI"), local("Segoe UI Bold Italic"), local("Ubuntu Bold Italic"), local("Roboto-BoldItalic"), local("DroidSans-Bold"), local("Tahoma Bold");
 }
 @font-face {
+  font-family: "roboto";
+  src: url("/fonts/RobotoCondensed/RobotoCondensed-Light.ttf");
+}
+@font-face {
   font-family: "manege";
   src: url("/fonts/Manege/Manege.ttf");
 }
