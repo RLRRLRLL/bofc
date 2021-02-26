@@ -29,13 +29,12 @@
 			</li> --}}
 			<li class="enough-padding">
 				<button 
-					class="btn-split button--bestia" 
+					class="btn-split btn-bestia" 
 					x-on:click="
 						$refs.overlay.classList.remove('out'); 
 						$refs.overlay.classList.add('split'); 
 						setTimeout(() => modalTransitionFinished = true, 350)
 					">
-					<div class="button__bg"></div>
 					<span>Get in touch</span>
 				</button>
 			</li>

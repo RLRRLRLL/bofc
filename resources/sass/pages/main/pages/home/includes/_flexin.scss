@@ -1,0 +1,51 @@
+.flexin {
+	padding: 100px 0;
+	min-height: 50vh;
+	// background-color: #323232;
+	// background-image: url('/images/textures/axiom-pattern.png');
+	@include flex-center(row);
+
+	&__inner {
+		width: 100%;
+		height: 100%;
+		@include flex-around(row);
+		align-items: flex-start;
+	}
+
+	&__item {
+		max-width: 25%;
+		// width: 20%;
+		// @include flex-center(column);
+		@include flex-column;
+
+		&--window {
+			width: 100%;
+			@include flex-center(row);
+			padding: 70px 100px;
+			background: rgba(black, 0.2);
+
+			svg {
+				width: 80px;
+				height: 80px;
+				fill: $accent;
+			}
+		}
+
+		&--desc {
+			margin-top: 10px;
+
+			p {
+				font-family: system;
+				color: $white06;
+				text-transform: uppercase;
+				font-size: 15px;
+
+				span {
+					font-family: leftonade;
+					font-size: 17px;
+					color: $white;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,128 @@
+.footer {
+	min-height: 30vh;
+	background: linear-gradient(to bottom, #101010, black);
+
+	&__inner {
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		align-items: flex-start;
+		padding: 100px 20px 40px;
+	}
+
+	&__section {
+		width: 24.5%;
+		@include flex-column;
+		align-items: center;
+		justify-content: center;
+
+		// Common
+		a, button {
+			font-size: 19px;
+			color: $white06;
+
+			svg {
+				width: 25px;
+				height: 25px;
+				fill: $white06;
+			}
+
+			&:hover {
+				svg {fill: #eee;}
+				color: #eee;
+			}
+		}
+
+		&--title {
+			width: 100%;
+			text-align: center;
+			margin-bottom: 15px;
+			font-family: system;
+			font-weight: 400;
+			font-size: 21px;
+			color: $white03;
+		}
+
+		&--list {
+			@include flex-column;
+			justify-content: center;
+
+			li {
+				display: inline-block;
+
+				&:not(:last-child) {
+					margin-bottom: 10px;
+				}
+
+				a {
+					display: block;
+					font-family: leftonade;
+
+					&:focus, &:active {
+						color: $accent;
+					}
+				}
+			}
+
+			// Social section
+			&.social {
+				display: inline-flex;
+				align-items: center;
+				flex-direction: row;
+
+				li {
+					margin-bottom: 0;
+
+					a {
+						margin-right: 7px;
+					}
+				}
+			}
+		}
+
+		// Copyright section
+		.copyright {
+			@include flex-column;
+			align-items: center;
+			position: relative;
+			padding: 25px 0;
+
+			&__img {
+				position: absolute;
+				top: 50%; left: 50%;
+				transform: translate(-50%, -50%);
+				width: 75%;
+				opacity: .1;
+			}
+
+			&__brand {
+				font-family: leftonade;
+				font-size: 23px;
+				@include bg-gradient-anim;
+			}
+
+			&__copy {
+				font-size: 16px;
+				font-weight: 400;
+				color: $white06;
+			}
+		}
+	}
+
+	&__ctas {
+		display: inline-flex;
+		flex-direction: column;
+
+		&--item {
+			display: inline-flex!important;
+			align-items: center;
+			background: transparent;
+			font-family: leftonade;
+			padding: 0;
+
+			svg {
+				margin-right: 7px;
+			}
+		}
+	}
+}

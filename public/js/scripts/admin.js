@@ -19445,7 +19445,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /*!******************************************!*\
   !*** ./resources/js/components/Utils.js ***!
   \******************************************/
-/*! exports provided: query, queryAll, randomNum, cursorIntoArrows, keepLinksActive, smoothScroll, classToggler, domReady, disableRightClick */
+/*! exports provided: query, queryAll, randomNum, cursorIntoArrows, keepLinksActive, scrollToElement, classToggler, domReady, disableRightClick */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19455,7 +19455,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "randomNum", function() { return randomNum; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cursorIntoArrows", function() { return cursorIntoArrows; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "keepLinksActive", function() { return keepLinksActive; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "smoothScroll", function() { return smoothScroll; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "scrollToElement", function() { return scrollToElement; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "classToggler", function() { return classToggler; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "domReady", function() { return domReady; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "disableRightClick", function() { return disableRightClick; });
@@ -19470,7 +19470,7 @@ var randomNum = function randomNum(min, max) {
 function cursorIntoArrows(e) {
   var positionX = e.offsetX / window.innerWidth - 0.5;
   var b = document.body;
-  return positionX >= 0 ? b.className = "right-arr" : b.className = "left-arr";
+  return positionX >= 0 ? b.className = 'right-arr' : b.className = 'left-arr';
 } // links: prevent default if '#' and add active class if current page
 
 function keepLinksActive() {
@@ -19478,13 +19478,13 @@ function keepLinksActive() {
    * !!! This fn is working altough not used,
    * !!! because its cleaner to use php solution
    */
-  var anchorTags = queryAll("a");
+  var anchorTags = queryAll('a');
   var currentUrl = window.location.pathname;
   anchorTags.forEach(function (element) {
-    var anchorAttr = element.getAttribute("href");
+    var anchorAttr = element.getAttribute('href');
     var cropped;
-    element.addEventListener("click", function (e) {
-      if (anchorAttr === "#") {
+    element.addEventListener('click', function (e) {
+      if (anchorAttr === '#') {
         // this is for removing # from url
         e.preventDefault();
       } else {
@@ -19492,26 +19492,26 @@ function keepLinksActive() {
         var thisTargetUrl = e.target.href;
         e.preventDefault();
         setTimeout(function () {
-          document.querySelector(".main").classList.remove("main-loaded");
+          document.querySelector('.main').classList.remove('main-loaded');
           window.location = thisTargetUrl;
         }, 250);
       }
     });
 
     if (cropped == currentUrl || anchorAttr == currentUrl) {
-      element.closest("a").classList.add("active");
+      element.closest('a').classList.add('active');
     }
   });
 } // scroll to section
 
-function smoothScroll() {
-  var aboutTrigger = query(".stripes"),
-      backToTop = query("#backToTop");
+function scrollToElement() {
+  var aboutTrigger = query('.stripes'),
+      backToTop = query('#backToTop');
 
   function scrollToSection(trigger) {
-    trigger.addEventListener("click", function (e) {
+    trigger.addEventListener('click', function (e) {
       e.preventDefault();
-      var thisAttr = this.getAttribute("data-target"),
+      var thisAttr = this.getAttribute('data-target'),
           target = document.querySelector(thisAttr),
           targetPos = target.offsetTop,
           startPos = window.pageYOffset,
@@ -19550,15 +19550,15 @@ function classToggler(el, className) {
 } // DOM Ready
 
 var domReady = function domReady(callBack) {
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", callBack);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', callBack);
   } else {
     callBack();
   }
 }; // Disable right click on images (make it harder to download)
 
 function disableRightClick() {
-  var allImages = document.querySelectorAll("img");
+  var allImages = document.querySelectorAll('img');
   allImages.forEach(function (value) {
     value.oncontextmenu = function (e) {
       e.preventDefault();

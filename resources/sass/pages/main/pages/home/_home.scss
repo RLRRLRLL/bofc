@@ -2,56 +2,36 @@
 	position: relative;
 	background: #101010;
 	overflow: hidden;
-	// background-image: url("/images/transparent/textures/brilliant.png");
+	padding-top: 150px;
 
 	.section {
 		position: relative;
-		overflow: hidden;
 		width: 100%;
-		height: 100vh;
-		// background-image: url('/images/random-dogs/2.jpg');
-		// background-repeat: no-repeat;
-		// background-size: cover;
-		// background-position: center bottom;
 
 		&__inner {
 			width: 100%;
 			height: 100%;
 		}
-
-		// header sec
-		&-header {
-			&__inner {
-				display: flex;
-				justify-content: center;
-				@include flex-center(column);
-			}
-		}
-
-		// about sec
-		&-about {
-			//
-		}
 	}
 }
 
-// social cta
-@import './includes/social-cta';
+// locomotive smooth scroll
+@import './../../../../helpers/locomotive';
 
-// parallax gallery
-@import './includes/grid';
+// tiles grid
+@import './includes/tiles';
 
 // brand
 @import './includes/brand';
 
-// stripes
-@import './includes/stripes';
-
-/* Section About */
-
 // about
 @import './includes/about';
 
-////////////////
-// demo
-// @import "./includes/planet";
+// flexin
+@import './includes/flexin';
+
+// reach us
+@import './includes/reach-us';
+
+// footer
+@import './../../components/footer';

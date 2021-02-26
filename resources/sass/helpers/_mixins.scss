@@ -162,13 +162,51 @@
 	}
 }
 
+// button background slide effect
+@mixin bg-slide($slidinBgColor, $resultColor) {
+	position: relative;
+	overflow: hidden;
+	outline: none;
+
+	&:hover {
+		&::before,
+		&::after {
+			transform: translate3d(0, -100%, 0);
+		}
+		&::after {
+			transition-delay: 0.125s;
+		}
+	}
+
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		top: 100%;
+		z-index: -1;
+		transition: all 0.25s;
+		transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+	}
+
+	&::before {
+		background: $slidinBgColor;
+	}
+
+	&::after {
+		background: $resultColor;
+	}
+}
+
 // double underline on hover effect for links
 @mixin double-underline($hoverColor, $focusColor, $lineColor) {
 	position: relative;
 
 	&::before,
 	&::after {
-		content: "";
+		content: '';
 		position: absolute;
 		height: 1px;
 		pointer-events: none;
@@ -218,6 +256,30 @@
 		&::before,
 		&::after {
 			opacity: 1;
+		}
+	}
+}
+
+@mixin bg-gradient-anim() {
+	background-image: $gradient-two;
+	background-size: 200%;
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	filter: drop-shadow(0 0 1px rgba(255, 200, 0, 0.3));
+	animation: MoveBackgroundPosition 6s ease-in-out infinite;
+
+	@keyframes MoveBackgroundPosition {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
 		}
 	}
 }
@@ -307,7 +369,7 @@
 
 // Radio input simple styles
 @mixin radio() {
-	[type="radio"] {
+	[type='radio'] {
 		&:checked,
 		&:not(:checked) {
 			position: absolute;
@@ -322,7 +384,7 @@
 
 				&::before,
 				&::after {
-					content: "";
+					content: '';
 					position: absolute;
 					top: 6.66px;
 					left: 6.66px;
@@ -386,7 +448,7 @@
 
 	// Box.
 	& + label:before {
-		content: "";
+		content: '';
 		margin-right: 10px;
 		display: inline-block;
 		vertical-align: text-top;
@@ -407,7 +469,7 @@
 
 	//
 	&:checked + label:after {
-		content: url("https://api.iconify.design/ant-design:check-outlined.svg?color=white&height=16");
+		content: url('https://api.iconify.design/ant-design:check-outlined.svg?color=white&height=16');
 		vertical-align: -0.125em;
 		position: absolute;
 		display: inline;

@@ -1,48 +1,13 @@
-// Variables
-// ---------
-$animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-$animation-duration: 1s;
+/* CSS Animations */
 
-// Keyframes
-// ---------
-@keyframes slideInUp {
+@keyframes fadeInDown {
 	0% {
 		opacity: 0;
-		transform: translateY(25%);
+		transform: translateY(-75px);
 	}
 	100% {
 		opacity: 1;
-		transform: none;
-	}
-}
-@keyframes slideInDown {
-	0% {
-		opacity: 0;
-		transform: translateY(-25%);
-	}
-	100% {
-		opacity: 1;
-		transform: none;
-	}
-}
-@keyframes slideInleft {
-	0% {
-		opacity: 0;
-		transform: translateX(25%);
-	}
-	100% {
-		opacity: 1;
-		transform: none;
-	}
-}
-@keyframes slideInRight {
-	0% {
-		opacity: 0;
-		transform: translateX(-25%);
-	}
-	100% {
-		opacity: 1;
-		transform: none;
+		transform: translateY(0);
 	}
 }
 
@@ -50,106 +15,97 @@ $animation-duration: 1s;
 	0% {
 		opacity: 0;
 	}
+	60% {
+		opacity: 0;
+	}
+	20% {
+		opacity: 0;
+	}
 	100% {
 		opacity: 1;
 	}
 }
 
-@keyframes zoomIn {
+@keyframes fadeInUp {
 	0% {
 		opacity: 0;
-		transform: scale(0.5);
+		transform: translateY(75px);
 	}
+
 	100% {
 		opacity: 1;
-		transform: none;
-	}
-}
-@keyframes zoomReverseIn {
-	0% {
-		opacity: 0;
-		transform: scale(1.5);
-	}
-	100% {
-		opacity: 1;
-		transform: none;
+		transform: translateY(0);
 	}
 }
 
-@keyframes flipInY {
+@keyframes moveUp {
 	0% {
 		opacity: 0;
-		transform: rotateY(90deg);
+		transform: translateY(75px);
 	}
+
 	100% {
 		opacity: 1;
-		transform: none;
+		transform: translateY(0);
 	}
 }
 
-// Animations
-// ----------
-[data-animation] {
-	opacity: 0;
-	animation-timing-function: $animation-timing-function;
+.anim-stop.anim-delay {
+	animation-delay: 0.2s;
+}
+
+.anim-stop.anim-delay-medium {
+	animation-delay: 0.4s;
+}
+
+.anim-stop.anim-delay-long {
+	animation-delay: 0.6s;
+}
+
+.anim-stop.fadeIn {
+	animation-name: fadeIn;
+}
+
+.anim-stop.fadeInDown {
+	animation-name: fadeInDown;
+}
+
+.anim-stop.fadeInUp {
+	animation-name: fadeInUp;
+}
+
+.anim-stop.moveUp {
+	animation-name: moveUp;
+}
+
+// text animation
+.anim-stop.track-in {
+	animation: track-in 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
+@keyframes track-in {
+	0% {
+		letter-spacing: 1em;
+		opacity: 0;
+	}
+	40% {
+		opacity: 0.6;
+	}
+	100% {
+		letter-spacing: normal;
+		opacity: 1;
+	}
+}
+
+/* Main */
+.anim-item {
+	visibility: hidden;
+	animation-play-state: paused;
+}
+
+.anim-stop {
+	visibility: visible;
 	animation-fill-mode: both;
-	animation-duration: $animation-duration;
-}
-
-// Disable animation of the childs
-// Disable animation in yourself
-.animations-disabled {
-	&,
-	[data-animation] {
-		animation: none !important;
-		opacity: 1 !important;
-	}
-}
-
-// Slide Animations
-.slideInUp {
-	animation-name: slideInUp;
-}
-.slideInDown {
-	animation-name: slideInDown;
-}
-.slideInLeft {
-	animation-name: slideInleft;
-}
-.slideInRight {
-	animation-name: slideInRight;
-}
-
-// Fade Animations
-.fadeIn {
-	animation-name: fadeIn;
-}
-.fadeOut {
-	animation-name: fadeIn;
-	animation-direction: reverse;
-}
-
-// Zoom Animations
-.zoomIn {
-	animation-name: zoomIn;
-}
-.zoomOut {
-	animation-name: zoomIn;
-	animation-direction: reverse;
-}
-.zoomReverseIn {
-	animation-name: zoomReverseIn;
-}
-.zoomReverseOut {
-	animation-name: zoomReverseIn;
-	animation-direction: reverse;
-}
-
-// Flip Animations
-.flipInY {
-	animation-name: flipInY;
-}
-.flipOutY {
-	animation-name: flipInY;
-	animation-direction: reverse;
+	animation-duration: 1s;
+	animation-play-state: running;
 }

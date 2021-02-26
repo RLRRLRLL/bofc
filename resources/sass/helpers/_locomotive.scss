@@ -1,0 +1,116 @@
+html.has-scroll-smooth {
+	overflow: hidden;
+}
+
+html.has-scroll-dragging {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.has-scroll-smooth body {
+	overflow: hidden;
+}
+
+.has-scroll-smooth [data-scroll-container] {
+	min-height: 100vh;
+}
+
+.c-scrollbar {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 11px;
+	height: 100vh;
+	transform-origin: center right;
+	transition: transform 0.3s, opacity 0.3s;
+	opacity: 0;
+}
+.c-scrollbar:hover {
+	transform: scaleX(1.45);
+}
+.c-scrollbar:hover,
+.has-scroll-scrolling .c-scrollbar,
+.has-scroll-dragging .c-scrollbar {
+	opacity: 1;
+}
+
+.c-scrollbar_thumb {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: black;
+	opacity: 0.5;
+	width: 7px;
+	border-radius: 10px;
+	margin: 2px;
+	cursor: -webkit-grab;
+	cursor: grab;
+}
+.has-scroll-dragging .c-scrollbar_thumb {
+	cursor: -webkit-grabbing;
+	cursor: grabbing;
+}
+
+@media screen and (min-width: 53em) {
+	.frame {
+		display: grid;
+		align-content: space-between;
+		width: 100%;
+		grid-gap: 5vw;
+		grid-template-columns: auto auto auto 1fr;
+		grid-template-areas: 'title title links demos';
+	}
+	.frame__title {
+		margin: 0;
+		grid-area: title;
+	}
+	.frame__demos {
+		margin: 0;
+		grid-area: demos;
+		justify-self: end;
+	}
+	.frame__links {
+		grid-area: links;
+		padding: 0;
+		justify-self: end;
+	}
+	.tiles--columns-rotated .tiles__line {
+		width: 33vmax;
+	}
+	.tiles--columns-rotated .tiles__line:nth-child(even) {
+		margin-top: -20vmax;
+	}
+	.tiles--columns-rotated .tiles__line-img {
+		height: 40vmax;
+	}
+	.content--numbered::after {
+		counter-increment: contentSection;
+		content: counter(contentSection, decimal-leading-zero);
+		position: absolute;
+		top: 50%;
+		right: 3rem;
+		border: 1px solid;
+		color: var(--color-alt);
+		width: 4rem;
+		height: 4rem;
+		margin-top: -2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+	}
+	.content__text {
+		max-width: 800px;
+		width: 50vw;
+		min-width: calc(300px - 6rem);
+	}
+	.content__text--wide {
+		max-width: 1000px;
+		width: 65vw;
+	}
+	.tiles--small {
+		--tiles-height: 240px;
+	}
+}

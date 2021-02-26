@@ -1,4 +1,4 @@
-<section class="poms__catalogue"  data-animation="slideInLeft"  data-animation-delay="300ms"
+<section class="poms__catalogue" data-animation="slideInLeft"  data-animation-delay="300ms"
 		:class="{'poms__catalogue--grid': gridViewActive, 'poms__catalogue--list': listViewActive}"
 >
 	@if($poms)

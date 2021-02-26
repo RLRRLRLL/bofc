@@ -7,16 +7,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 /**
  * * * USED COMPONENTS:
  */
-import { query, disableRightClick, smoothScroll } from './components/Utils'
+import { query, disableRightClick } from './components/Utils'
 import { runBubbles } from './components/common/Bubbles'
 import { rippleButtonsInit } from './components/main/RippleEffect'
-import {
-	homeParallaxGallery,
-	galleryPageGallery
-} from './components/main/Gallery'
-import Animation from './components/main/Animation'
+import { galleryPageGallery } from './components/main/Gallery'
+import { initAnimations } from './components/main/Animation'
 import LinkDistortionCircle from './components/common/LinkDistortionCircle'
 import initCarousel from './components/main/Swiper'
+import LocomotiveScroll from 'locomotive-scroll'
 
 /**
  * !!! NOT USED:
@@ -28,9 +26,30 @@ import initCarousel from './components/main/Swiper'
 document.addEventListener(
 	'DOMContentLoaded',
 	function () {
-		/*
-		 * Distortion links run
+		/**
+		 * * * * * * * * * * * * * * * * * *
+		 * * Common function are listed below.
+		 *
+		 * * These functions will be invoked on
+		 * * every page.
 		 */
+
+		// Locomotive scroll
+		if (query('[data-scroll-container]')) {
+			const scroll = new LocomotiveScroll({
+				el: query('[data-scroll-container]'),
+				smooth: true
+			})
+
+			const backToTopBtn = query('#backToTop')
+			backToTopBtn.addEventListener('click', () => {
+				scroll.scrollTo('top', {
+					duration: 500
+				})
+			})
+		}
+
+		// Distortion links (circle on hover)
 		const distortedLinks = [...document.querySelectorAll('a.link')]
 		distortedLinks.forEach((el) => {
 			const elPosition = [...el.parentNode.children].indexOf(el)
@@ -38,42 +57,46 @@ document.addEventListener(
 			new fxObj(el)
 		})
 
+		// Trigger animations on scroll
+		initAnimations()
+
 		/**
-		 * * Disables right click for all images
-		 * * the first measure for preventing download
-		 * * the second one is using images as background
+		 * * Disables right click for all images.
+		 * * It's the first measure for preventing download.
+		 * * The second one is using images as css backgrounds.
 		 */
 		disableRightClick()
 
-		/**
-		 * * Material ripple button effect on click
-		 */
-		rippleButtonsInit()
+		// Material ripple button effect on click
+		// rippleButtonsInit()
 
-		/**
-		 * * Initialize anim items
-		 */
-		new Animation({ offset: 20 })
-
-		// run fade animation on page load
+		// Run fade animation on page load
 		// TODO: Change this to better page transitions (but not resourceful)
-		document.querySelector('.main').classList.add('main-loaded')
+		query('.main').classList.add('main-loaded')
 
 		/**
-		 * * * Home page
+		 * * * * * * * * * * * * * * * * * *
+		 * * Main pages listed below.
+		 *
+		 * * Functions will be invoked based
+		 * * on current page.
 		 */
+
+		// | =========================================================
+		// | Home
+		// | =========================================================
 		if (query('.wrapper.home')) {
-			runBubbles('.brand', 3000)
-			smoothScroll()
-			homeParallaxGallery()
+			// runBubbles('.brand', 3000)
 		}
 
-		// /gallery page
-		if (query('.gallery')) galleryPageGallery()
+		// | =========================================================
+		// | Gallery
+		// | =========================================================
+		if (query('.wrapper.gallery')) galleryPageGallery()
 
-		/**
-		 * * * Pomeranians page
-		 */
+		// | =========================================================
+		// | Pomeranians
+		// | =========================================================
 		if (query('.wrapper.pomeranian')) {
 			if (query('.show')) {
 				// Carousel

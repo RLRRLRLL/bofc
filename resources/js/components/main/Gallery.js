@@ -1,15 +1,3 @@
-// Home page
-import Grid from './includes/gallery/grid'
-import { preloadImages } from './includes/gallery/utils'
-
-export function homeParallaxGallery() {
-	preloadImages('.grid__item-img, .bigimg').then(() => {
-		document.body.classList.remove('loading')
-		// init
-		const grid = new Grid(document.querySelector('.grid'))
-	})
-}
-
 export function galleryPageGallery() {
 	class Slider {
 		constructor(options = {}) {

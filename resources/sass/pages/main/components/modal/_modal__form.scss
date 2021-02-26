@@ -83,14 +83,12 @@ form {
 	}
 
 	button {
-		position: relative;
 		@include flex-center(row);
+		@include bg-slide($accent, white);
 		align-self: flex-start;
 		margin-top: 15px;
 		padding: 10px 10px 7px;
-		overflow: hidden;
 		z-index: $low;
-		outline: none;
 		// typography
 		font-family: bitter;
 		font-size: 1.2rem;
@@ -114,35 +112,6 @@ form {
 		&:hover {
 			color: black;
 			border-color: black;
-
-			&::before,
-			&::after {
-				transform: translate3d(0, -100%, 0);
-			}
-			&::after {
-				transition-delay: 0.175s;
-			}
-		}
-
-		&::before,
-		&::after {
-			content: "";
-			position: absolute;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			top: 100%;
-			z-index: -1;
-			transition: all 0.3s;
-			transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-		}
-
-		&::before {
-			background: $accent;
-		}
-
-		&::after {
-			background: white;
 		}
 	}
 }
