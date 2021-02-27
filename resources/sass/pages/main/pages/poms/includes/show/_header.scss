@@ -5,23 +5,19 @@
 	position: sticky;
 	overflow: hidden;
 
-	@import "./../../../home/includes/bubbles";
+	@import './../../../home/includes/bubbles';
 
 	& > h1 {
-		font-family: bitter;
-		font-size: 45px;
-		text-transform: uppercase;
-		color: white;
-		text-shadow: 1px 1px 1px $goldSecondary;
+		font-family: leftonade;
+		font-size: 2em;
+		color: $accent;
 	}
 
 	& > button {
 		background: transparent;
 		border: 1px solid $white;
 		color: $white;
-		padding: 5px 10px;
-		font-family: bitter;
-		letter-spacing: 1px;
-		font-size: 20px;
+		padding: 10px 15px;
+		font-size: 1em;
 	}
 }

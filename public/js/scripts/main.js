@@ -40569,11 +40569,11 @@ var runBubbles = function runBubbles(selector, timeout) {
   interval = setInterval(function () {
     var maxWidth = area.offsetWidth * 0.9;
     var size = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["randomNum"])(15, 25);
-    var bubble = document.createElement("span");
-    bubble.className = "b";
-    bubble.style.width = size + "px";
-    bubble.style.height = size + "px";
-    bubble.style.left = Math.random() * maxWidth + "px";
+    var bubble = document.createElement('span');
+    bubble.className = 'b';
+    bubble.style.width = size + 'px';
+    bubble.style.height = size + 'px';
+    bubble.style.left = Math.random() * maxWidth + 'px';
     area.appendChild(bubble);
     setTimeout(function () {
       bubble.remove();
@@ -41462,52 +41462,81 @@ function galleryPageGallery() {
 
 /***/ }),
 
-/***/ "./resources/js/components/main/RippleEffect.js":
-/*!******************************************************!*\
-  !*** ./resources/js/components/main/RippleEffect.js ***!
-  \******************************************************/
-/*! exports provided: rippleButtonsInit */
+/***/ "./resources/js/components/main/Modal.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/main/Modal.js ***!
+  \***********************************************/
+/*! exports provided: triggerModal */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rippleButtonsInit", function() { return rippleButtonsInit; });
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "triggerModal", function() { return triggerModal; });
+/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Utils */ "./resources/js/components/Utils.js");
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+var modalTransitionFinished = false;
+var modalTriggers = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["queryAll"])('.contact-modal-trigger');
+var modalOverlay = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.overlay');
+var modal = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.modal__inner');
+var closeModalBtn = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.right__close');
 
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function createRipple(e) {
-  var button = e.currentTarget;
-  var circle = document.createElement("span");
-  var diameter = Math.max(button.clientWidth, button.clientHeight);
-  var radius = diameter / 2;
-  circle.style.width = circle.style.height = "".concat(diameter, "px");
-  circle.style.left = "".concat(e.clientX - button.offsetLeft - radius, "px");
-  circle.style.top = "".concat(e.clientY - button.offsetTop - radius, "px");
-  circle.classList.add("ripple");
-  var ripple = button.getElementsByClassName("ripple")[0];
-  if (ripple) ripple.remove();
-  button.appendChild(circle);
+function closeModal() {
+  if (modalTransitionFinished) {
+    modalOverlay.classList.add('out');
+  }
 }
 
-function rippleButtonsInit() {
-  var buttons = document.querySelectorAll(".btn-ripple");
+function triggerModal() {
+  modalTriggers.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      modalOverlay.classList.remove('out');
+      modalOverlay.classList.add('split');
+      setTimeout(function () {
+        modalTransitionFinished = true;
+      }, 350); // animation duration
+    });
+  });
+  modalOverlay.addEventListener('click', function (e) {
+    var withinModal = e.composedPath().includes(modal);
+    !withinModal && closeModal();
+  });
+  closeModalBtn.addEventListener('click', function () {
+    closeModal();
+  });
+}
 
-  var _iterator = _createForOfIteratorHelper(buttons),
-      _step;
 
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var button = _step.value;
-      button.addEventListener("click", createRipple);
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
+
+/***/ }),
+
+/***/ "./resources/js/components/main/PageTransitions.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/main/PageTransitions.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return runTransition; });
+/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Utils */ "./resources/js/components/Utils.js");
+
+var transElement = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.transition');
+var leavePageLinks = Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["queryAll"])('.leave-page');
+function runTransition() {
+  setTimeout(function () {
+    transElement.classList.remove('transactive');
+  }, 250);
+  leavePageLinks.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var dest = e.target.href;
+      transElement.classList.add('transactive');
+      setTimeout(function () {
+        window.location.href = dest;
+      }, 200);
+    });
+  });
 }
 
 /***/ }),
@@ -41528,20 +41557,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function initCarousel() {
-  var galleryThumbs = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__["default"](".gallery-thumbs", {
+  var galleryThumbs = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__["default"]('.gallery-thumbs', {
     spaceBetween: 10,
     slidesPerView: 4,
-    loop: true,
+    loop: false,
     freeMode: false,
     watchSlidesVisibility: true,
     watchSlidesProgress: true
   });
-  var galleryTop = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__["default"](".gallery-top", {
+  var galleryTop = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__["default"]('.gallery-top', {
     spaceBetween: 10,
-    loop: true,
+    loop: false,
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev"
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
     },
     thumbs: {
       swiper: galleryThumbs
@@ -41562,12 +41591,13 @@ function initCarousel() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Utils */ "./resources/js/components/Utils.js");
 /* harmony import */ var _components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/common/Bubbles */ "./resources/js/components/common/Bubbles.js");
-/* harmony import */ var _components_main_RippleEffect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/main/RippleEffect */ "./resources/js/components/main/RippleEffect.js");
-/* harmony import */ var _components_main_Gallery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/main/Gallery */ "./resources/js/components/main/Gallery.js");
-/* harmony import */ var _components_main_Animation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/main/Animation */ "./resources/js/components/main/Animation.js");
+/* harmony import */ var _components_main_Gallery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/main/Gallery */ "./resources/js/components/main/Gallery.js");
+/* harmony import */ var _components_main_Animation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/main/Animation */ "./resources/js/components/main/Animation.js");
+/* harmony import */ var _components_main_Modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/main/Modal */ "./resources/js/components/main/Modal.js");
 /* harmony import */ var _components_common_LinkDistortionCircle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/common/LinkDistortionCircle */ "./resources/js/components/common/LinkDistortionCircle.js");
 /* harmony import */ var _components_main_Swiper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/main/Swiper */ "./resources/js/components/main/Swiper.js");
 /* harmony import */ var locomotive_scroll__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! locomotive-scroll */ "./node_modules/locomotive-scroll/dist/locomotive-scroll.esm.js");
+/* harmony import */ var _components_main_PageTransitions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/main/PageTransitions */ "./resources/js/components/main/PageTransitions.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -41585,9 +41615,7 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /* STATE: DEVELOPMENT! */
 
-/**
- * * * USED COMPONENTS:
- */
+/* USED COMPONENTS: */
 
 
 
@@ -41597,12 +41625,18 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
 
-/**
- * !!! NOT USED:
- *
- */
+
+/* <!-- NOT USED: --> */
 // import toggleMenu from "./components/main/ToggleMenu";
 // toggleMenu();
+// import { rippleButtonsInit } from './components/main/RippleEffect'
+// Material ripple button effect on click
+// rippleButtonsInit()
+
+window.onload = function () {
+  // Page transitions
+  Object(_components_main_PageTransitions__WEBPACK_IMPORTED_MODULE_8__["default"])();
+};
 
 document.addEventListener('DOMContentLoaded', function () {
   /**
@@ -41613,19 +41647,16 @@ document.addEventListener('DOMContentLoaded', function () {
    * * every page.
    */
   // Locomotive scroll
-  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('[data-scroll-container]')) {
-    var scroll = new locomotive_scroll__WEBPACK_IMPORTED_MODULE_7__["default"]({
-      el: Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('[data-scroll-container]'),
-      smooth: true
+  var scroll = new locomotive_scroll__WEBPACK_IMPORTED_MODULE_7__["default"]({
+    el: Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('[data-scroll-container]'),
+    smooth: true
+  });
+  var backToTopBtn = Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('#backToTop');
+  backToTopBtn.addEventListener('click', function () {
+    scroll.scrollTo('top', {
+      duration: 500
     });
-    var backToTopBtn = Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('#backToTop');
-    backToTopBtn.addEventListener('click', function () {
-      scroll.scrollTo('top', {
-        duration: 500
-      });
-    });
-  } // Distortion links (circle on hover)
-
+  }); // Distortion links (circle on hover)
 
   var distortedLinks = _toConsumableArray(document.querySelectorAll('a.link'));
 
@@ -41636,19 +41667,17 @@ document.addEventListener('DOMContentLoaded', function () {
     new fxObj(el);
   }); // Trigger animations on scroll
 
-  Object(_components_main_Animation__WEBPACK_IMPORTED_MODULE_4__["initAnimations"])();
+  Object(_components_main_Animation__WEBPACK_IMPORTED_MODULE_3__["initAnimations"])(); // Trigger modal (contact)
+
+  Object(_components_main_Modal__WEBPACK_IMPORTED_MODULE_4__["triggerModal"])();
   /**
    * * Disables right click for all images.
    * * It's the first measure for preventing download.
    * * The second one is using images as css backgrounds.
    */
 
-  Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["disableRightClick"])(); // Material ripple button effect on click
-  // rippleButtonsInit()
-  // Run fade animation on page load
-  // TODO: Change this to better page transitions (but not resourceful)
+  Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["disableRightClick"])(); // TODO: Change this to better page transitions (but not resourceful)
 
-  Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.main').classList.add('main-loaded');
   /**
    * * * * * * * * * * * * * * * * * *
    * * Main pages listed below.
@@ -41660,25 +41689,26 @@ document.addEventListener('DOMContentLoaded', function () {
   // | Home
   // | =========================================================
 
-  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.wrapper.home')) {// runBubbles('.brand', 3000)
+  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.main.home')) {// runBubbles('.brand', 3000)
   } // | =========================================================
   // | Gallery
   // | =========================================================
 
 
-  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.wrapper.gallery')) Object(_components_main_Gallery__WEBPACK_IMPORTED_MODULE_3__["galleryPageGallery"])(); // | =========================================================
+  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.main.gallery')) Object(_components_main_Gallery__WEBPACK_IMPORTED_MODULE_2__["galleryPageGallery"])(); // | =========================================================
   // | Pomeranians
   // | =========================================================
 
-  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.wrapper.pomeranian')) {
-    if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.show')) {
-      // Carousel
-      Object(_components_main_Swiper__WEBPACK_IMPORTED_MODULE_6__["default"])(); // Bubbles on header
+  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.main.pomeranian')) {} // Single pom
 
-      setTimeout(function () {
-        Object(_components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__["runBubbles"])('.show__header', 1500);
-      }, 1500);
-    }
+
+  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.main.show')) {
+    // Carousel
+    Object(_components_main_Swiper__WEBPACK_IMPORTED_MODULE_6__["default"])(); // Bubbles on header
+
+    setTimeout(function () {
+      Object(_components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__["runBubbles"])('.show__header', 1500);
+    }, 1500);
   }
 }, false);
 

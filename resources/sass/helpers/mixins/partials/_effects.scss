@@ -1,0 +1,119 @@
+// text fill effect
+@mixin fill-effect($color) {
+	position: relative;
+
+	&::before {
+		content: attr(data-text);
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		transition: all 0.3s ease-out;
+		color: $color;
+		width: 0%;
+		overflow: hidden;
+	}
+
+	&:hover::before {
+		width: 100%;
+	}
+}
+
+// button background slide effect
+@mixin bg-slide($slidinBgColor, $resultColor) {
+	position: relative;
+	overflow: hidden;
+	outline: none;
+
+	&:hover {
+		&::before,
+		&::after {
+			transform: translate3d(0, -100%, 0);
+		}
+		&::after {
+			transition-delay: 0.125s;
+		}
+	}
+
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		top: 100%;
+		z-index: -1;
+		transition: all 0.25s;
+		transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+	}
+
+	&::before {
+		background: $slidinBgColor;
+	}
+
+	&::after {
+		background: $resultColor;
+	}
+}
+
+// double underline on hover effect for links
+@mixin double-underline($hoverColor, $focusColor, $lineColor) {
+	position: relative;
+
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		height: 1px;
+		pointer-events: none;
+		transform-origin: 50% 0%;
+		transform: translate3d(0, 3px, 0);
+		transition-property: transform, opacity;
+		transition-duration: 0.3s;
+		transition-timing-function: cubic-bezier(0.2, 1, 0.8, 1);
+		background: $lineColor;
+		opacity: 0;
+	}
+
+	&::after {
+		top: calc(100% + 7px);
+		width: 70%;
+		left: 15%;
+	}
+
+	&::before {
+		top: calc(100% + 3px);
+		width: 90%;
+		left: 5%;
+		transition-delay: 0.1s;
+	}
+
+	&:hover {
+		&::before,
+		&::after {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+			transition-timing-function: cubic-bezier(0.2, 0, 0.3, 1);
+		}
+	}
+
+	&:hover,
+	&.active,
+	&.active:hover {
+		color: $hoverColor;
+	}
+
+	&:focus,
+	&:active {
+		color: $focusColor;
+	}
+
+	&.active {
+		&::before,
+		&::after {
+			opacity: 1;
+		}
+	}
+}

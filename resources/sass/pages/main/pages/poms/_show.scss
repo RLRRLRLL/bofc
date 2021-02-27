@@ -1,10 +1,10 @@
 $background: rgba(black, 0.4);
 
 .show {
-	margin-top: 50px;
 	padding: 75px;
 	@include flex-column;
 	align-items: stretch;
+	font-size: 20px;
 
 	& > section {
 		width: 100%;
@@ -13,7 +13,7 @@ $background: rgba(black, 0.4);
 		border-radius: 5px;
 	}
 
-	@import "./includes/show/header";
+	@import './includes/show/header';
 
-	@import "./includes/show/body";
+	@import './includes/show/body';
 }

@@ -1,9 +1,9 @@
-// helpers
-@import "./helpers/reset";
-@import "./helpers/vars";
-@import "./helpers/mixins";
-@import "./helpers/config";
-@import "./helpers/fonts";
+// main includes
+@import './helpers/config';
+@import './helpers/fonts';
+@import './helpers/variables/vars';
+@import './helpers/mixins/mixins';
+@import './helpers/classes';
 
 // pages
-@import "./pages/main/main";
+@import './pages/main/main';

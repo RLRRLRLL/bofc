@@ -1,19 +1,12 @@
-.wrapper.pomeranian {
-	width: 100%;
-	min-height: 100vh;
-	position: relative;
-	// background: radial-gradient($blackMain, darken($accent, 90%));
-	background: #151515;
+.main.pomeranian {
 	// overflow-x: hidden; // sticky
-	max-width: 100vw;
 }
 
 .poms {
-	margin-top: 75px;
-	padding: 75px;
+	padding: 25px 75px;
 	display: grid;
 	grid-gap: 5px 25px;
-	grid: min-content auto / minmax(250px, 18%) 1fr;
+	grid: min-content auto / minmax(250px, 23%) 1fr;
 
 	&__header {
 		grid-column: 1/ 3;
@@ -24,14 +17,14 @@
 	}
 
 	/* --------- Inputs ---------- */
-	@import "./includes/index/inputs";
+	@import './includes/index/inputs';
 
 	/* --------- Header ---------- */
-	@import "./includes/index/header";
+	@import './includes/index/header';
 
 	/* -------- Filters ---------- */
-	@import "./includes/index/filters";
+	@import './includes/index/filters';
 
 	/* -------- Catalogue -------- */
-	@import "./includes/index/catalogue";
+	@import './includes/index/catalogue';
 }

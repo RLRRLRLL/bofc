@@ -1,44 +1,26 @@
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
-
-html {
-}
-
-html,
-body,
-.main {
-	width: 100%;
-	height: 100%;
-	margin: 0px;
-	padding: 0px;
-}
-
 body {
-	font-family: "system";
+	height: 100%;
+	width: 100%;
+	font-family: 'system';
 	font-weight: 400;
 	font-size: 100%;
 	overflow-x: hidden !important;
 	overflow-y: scroll;
-	background: $blackMain;
+	background: $transition-bg;
 
-	&.left-arr {
-		cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" height="35" viewBox="0 0 476.213 476.213" width="35"><polygon points="476.213,223.106 57.426,223.106 91.819,188.713 70.606,167.5 0,238.106 70.606,308.713 91.819,287.5 57.426,253.106 476.213,253.106 "/></svg>'),
-			auto;
-	}
+	// &.left-arr {
+	// 	cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" height="35" viewBox="0 0 476.213 476.213" width="35"><polygon points="476.213,223.106 57.426,223.106 91.819,188.713 70.606,167.5 0,238.106 70.606,308.713 91.819,287.5 57.426,253.106 476.213,253.106 "/></svg>'),
+	// 		auto;
+	// }
 
-	&.right-arr {
-		cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" height="35" viewBox="0 0 476.213 476.213" width="35"><polygon points="405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 "/></svg>'),
-			auto;
-	}
+	// &.right-arr {
+	// 	cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" height="35" viewBox="0 0 476.213 476.213" width="35"><polygon points="405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 "/></svg>'),
+	// 		auto;
+	// }
 
-	&.no-arr {
-		cursor: auto;
-	}
+	// &.no-arr {
+	// 	cursor: auto;
+	// }
 
 	// scroll bar
 	@include scrollbar;
@@ -49,17 +31,33 @@ body {
 	}
 }
 
-// page transition
-.main {
-	opacity: 0;
-	visibility: hidden;
+#wrapper {
+	@include flex-column;
 	position: relative;
+	min-height: 100vh;
+	max-width: 100vw;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	background: $bgPrimary;
 
-	transition: opacity 0.5s $cubic, visibility 0.3s $cubic;
+	.main {
+		@include flex-column;
+		max-height: 80%;
+		position: relative;
+		width: inherit;
+		height: inherit;
+		padding: 40px 0 0 0;
 
-	&-loaded {
-		opacity: 1;
-		visibility: visible;
+		.section {
+			position: relative;
+			width: 100%;
+
+			&__inner {
+				width: 100%;
+				height: 100%;
+			}
+		}
 	}
 }
 
@@ -67,6 +65,7 @@ body {
 .container {
 	width: 100%;
 	height: 100%;
+	max-width: 1300px;
 	margin: 0 auto;
-	padding: 20px;
+	padding: 20px 40px;
 }

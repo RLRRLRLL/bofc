@@ -3,7 +3,7 @@
 @section('page-title', 'Gallery')
 
 @section('content')
-	<div class="wrapper gallery">
+	<main class="main gallery" data-scroll-section>
 		@include('includes.effects.shaders')
 
 		<div id="canvas"></div>
@@ -92,7 +92,7 @@
 				Drag to explore
 			</div>
 		</div>
-	</div>
+	</main>
 @endsection
 
 @push('scripts')

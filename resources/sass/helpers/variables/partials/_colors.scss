@@ -1,0 +1,37 @@
+// <!--------- Colors ---------->
+
+// Primary colors
+$accent: #fff1c0;
+$accentSecondary: #daf3e8;
+$bgPrimary: #121212;
+$bgSecondary: #1e1e1e;
+
+$green: #53dd6c;
+$blue: #80bdff;
+$gray: #999;
+$black: #100c08;
+$headerFooter: $bgSecondary;
+
+/* 
+ Transition background color.
+ Note: transition bg and body bg has to be the same,
+ or there will be some flickering on page load.
+*/
+$transition-bg: $bgPrimary;
+
+// Other colors
+$grayDarker: rgb(117, 117, 117);
+$blackSecondary: #141312;
+$grayLighter: #eaeaea;
+$gitdark: #0d1117;
+$white: #e3f2fd;
+
+// Used only in header for now
+$goldMain: #f7b900;
+$goldSecondary: #f7d801;
+
+// Admin dashboard colors
+$background: #1d1e24;
+$background-darker: #16171c;
+$and-even-darker: darken(#16171c, 5%);
+$height: 60px;

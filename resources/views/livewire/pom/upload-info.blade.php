@@ -180,19 +180,6 @@
 							</div>
 
 							<div class="form-check">
-								<input  id="junior"
-										value="junior"
-										wire:model="age"
-										type="radio" 
-										class="form-check-input">
-
-								<label for="junior" 
-										class="form-check-label">
-									Junior
-								</label>
-							</div>
-
-							<div class="form-check">
 								<input  id="adult"
 										value="adult"
 										wire:model="age"
@@ -202,19 +189,6 @@
 								<label for="adult" 
 										class="form-check-label">
 									Adult
-								</label>
-							</div>
-
-							<div class="form-check">
-								<input  id="mature"
-										value="mature"
-										wire:model="age"
-										type="radio" 
-										class="form-check-input">
-
-								<label for="mature" 
-										class="form-check-label">
-									Mature
 								</label>
 							</div>
 

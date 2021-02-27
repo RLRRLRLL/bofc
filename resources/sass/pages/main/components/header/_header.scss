@@ -1,10 +1,8 @@
 .header {
-	position: absolute;
-	top: 0;
-	left: 0;
 	width: 100%;
 	z-index: $medium;
-	padding: 20px 40px;
+	// padding: 20px 40px;
+	background: $headerFooter;
 
 	// desktop
 	&__desktop {

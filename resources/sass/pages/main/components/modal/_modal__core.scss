@@ -130,7 +130,7 @@
 
 					&:focus,
 					&:active {
-						outline: 1px dotted rgba($grayMain, 0.5);
+						outline: 1px dotted rgba($gray, 0.5);
 					}
 				}
 
@@ -258,13 +258,13 @@
 				font-weight: 300;
 
 				&.submit {
-					color: $blueMain;
-					border: 1px solid $blueMain;
+					color: $blue;
+					border: 1px solid $blue;
 					background: transparent;
 
 					&:focus {
-						color: $greenMain;
-						border-color: $greenMain;
+						color: $green;
+						border-color: $green;
 					}
 
 					&:hover {

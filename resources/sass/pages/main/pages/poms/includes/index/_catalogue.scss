@@ -2,16 +2,37 @@
 	&--grid,
 	&--list {
 		padding: 15px;
+
 		.cat-item {
-			box-shadow: 0 0 8px 2px black;
-			background: rgba(black, 0.1);
-			border-radius: 5px;
+			position: relative;
+			box-shadow: 0 0 8px 2px $black;
+			background: $bgSecondary;
+			border-radius: $bradius;
 			overflow: hidden;
-			transition: background 0.1s linear, box-shadow 0.1s linear;
+			transition: background $transition, box-shadow $transition;
+			// cursor: pointer;
 
 			&:hover {
-				box-shadow: 0 0 14px 5px black;
-				background: rgba(white, 0.05);
+				box-shadow: 0 0 14px 5px $black;
+				background: rgba($black, 0.05);
+
+				.cat-item__image {
+					opacity: 1;
+				}
+
+				.cat-item__desc--cta {
+					span::after {
+						transform: translateX(0);
+						transition: transform 0.15s ease, opacity 0.15s ease;
+						opacity: 1;
+					}
+				}
+			}
+
+			&__link {
+				@include absolute-stretch;
+				display: inline;
+				z-index: $low;
 			}
 
 			&__desc {
@@ -54,7 +75,7 @@
 							text-transform: uppercase;
 							font-weight: 300;
 							font-size: 15px;
-							color: $grayMain;
+							color: $gray;
 						}
 
 						&--indication {
@@ -66,20 +87,12 @@
 				}
 
 				&--cta {
-					background: $accent;
+					background: $accentSecondary;
 					border-radius: 7px;
 					padding: 8px 15px;
 					margin-bottom: 0;
 					text-decoration: none;
 					text-align: center;
-
-					&:hover {
-						& > span::after {
-							transform: translateX(0);
-							transition: transform 0.15s ease, opacity 0.15s ease;
-							opacity: 1;
-						}
-					}
 
 					& > span {
 						font-size: 18px;
@@ -89,7 +102,7 @@
 						pointer-events: none;
 
 						&::after {
-							content: "\2192";
+							content: '\2192';
 							position: absolute;
 							left: 120%;
 							top: 41%;
@@ -102,6 +115,11 @@
 						}
 					}
 				}
+			}
+
+			&__image {
+				opacity: 0.8;
+				transition: opacity $transition;
 			}
 		}
 	}

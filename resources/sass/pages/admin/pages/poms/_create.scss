@@ -24,9 +24,9 @@
 	grid-gap: 20px;
 	grid-template-columns: repeat(6, 1fr);
 	grid-template-areas:
-		"i i i i i i"
-		"c c c c t t"
-		"s s s s s s";
+		'i i i i i i'
+		'c c c c t t'
+		's s s s s s';
 
 	& > .info-item {
 		background: #202020;
@@ -125,7 +125,7 @@
 
 			p {
 				margin-right: 8px;
-				color: $blueMain;
+				color: $blue;
 			}
 		}
 	}
@@ -137,7 +137,7 @@
 			margin-bottom: 7px;
 
 			span {
-				color: $greenMain;
+				color: $green;
 			}
 		}
 
@@ -158,14 +158,14 @@
 .card-body__titles {
 	button {
 		background: transparent;
-		border: 1px solid $greenMain;
+		border: 1px solid $green;
 		border-radius: 7px;
 		font-size: 18px;
 		font-weight: 500;
 		padding: 4px 13px;
 		transition: all 0.2s ease;
 
-		color: $greenMain;
+		color: $green;
 		margin-bottom: 20px;
 
 		&:hover {
@@ -175,15 +175,15 @@
 
 		&:focus,
 		&:active {
-			color: $blueMain;
-			border-color: $blueMain;
+			color: $blue;
+			border-color: $blue;
 		}
 	}
 
 	&--show {
 		padding: 15px;
-		border: 1px solid rgba($grayMain, 0.1);
-		box-shadow: 0 0 4px 0 inset $blackMain;
+		border: 1px solid rgba($gray, 0.1);
+		box-shadow: 0 0 4px 0 inset $bgSecondary;
 		@include flex-column;
 	}
 }
@@ -237,7 +237,7 @@
 
 		button {
 			background: transparent;
-			color: $sky-blue;
+			color: $blue;
 			width: 100%;
 			&:hover {
 				color: #252525;
@@ -250,7 +250,7 @@
 			right: 0;
 			font-size: 18px;
 			color: $white09;
-			background: rgba($grayMain, 0.3);
+			background: rgba($gray, 0.3);
 			line-height: 0.7;
 			padding: 5px;
 			border-radius: 5px;
@@ -261,7 +261,7 @@
 
 			&:hover {
 				color: white;
-				background: rgba($grayMain, 0.5);
+				background: rgba($gray, 0.5);
 			}
 		}
 	}
@@ -286,7 +286,7 @@
 			color: #721c24;
 
 			&:hover {
-				color: $blackMain;
+				color: $bgSecondary;
 			}
 
 			i {
@@ -309,8 +309,8 @@
 }
 
 .c-alert {
-	color: $blueMain;
+	color: $blue;
 	font-size: 20px;
 	padding: 5px;
-	border: 1px solid $blueMain;
+	border: 1px solid $blue;
 }

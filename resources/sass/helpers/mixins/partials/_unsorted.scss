@@ -1,0 +1,218 @@
+// scroll bar
+@mixin scrollbar() {
+	&::-webkit-scrollbar {
+		background: $black09;
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $white04;
+	}
+}
+
+// scroll bar with transparent bg
+@mixin scrollbar-modal() {
+	&::-webkit-scrollbar {
+		background: transparent;
+		width: 4px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $gray;
+	}
+}
+
+// Gradient borders
+@mixin border-gradient($gradient) {
+	border: 0px solid;
+	border-image-slice: 1;
+	border-width: 2px;
+	border-image-source: $gradient;
+}
+
+// Position absolute stretch
+@mixin absolute-stretch() {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+}
+
+// Image standart styles
+@mixin image() {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+// admin pages: Cancel image when uploading or from show page
+// parent div has to have posrel
+@mixin cancel-image-button() {
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: 30px;
+	line-height: 0.7;
+	background: transparent;
+	color: #830f0f;
+	outline: none !important;
+	border: none !important;
+	transition: color 0.15s;
+
+	&:hover {
+		color: white;
+		background: rgba(black, 0.35);
+	}
+}
+
+// admin pages: cta buttons with dashed border
+// : next or save button
+@mixin cta-dashed() {
+	background: transparent;
+	outline: none !important;
+	border: none;
+	//
+	width: 100%;
+	cursor: pointer;
+	color: $gray;
+	box-shadow: none;
+	border: 1px solid rgba($gray, 0.5);
+	border-radius: 7px;
+	padding: 20px;
+	transition: all 0.15s ease-in;
+
+	&:hover {
+		background: rgba(black, 0.05);
+		color: $blue;
+		border: 1px dashed $blue;
+	}
+
+	&:active,
+	&:focus {
+		background-color: rgba(black, 0.1) !important;
+		color: $green !important;
+		border: 1px dashed $green !important;
+		box-shadow: none !important;
+	}
+}
+
+// : upload images
+@mixin cta-dashed--upload() {
+	@include cta-dashed;
+	border: 1px dashed $gray;
+	&:hover {
+		color: white;
+		border: 1px dashed white;
+	}
+}
+
+@mixin bg-gradient-anim() {
+	background-image: $gradient-two;
+	background-size: 200%;
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	filter: drop-shadow(0 0 1px rgba(255, 200, 0, 0.3));
+	animation: MoveBackgroundPosition 6s ease-in-out infinite;
+
+	@keyframes MoveBackgroundPosition {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+}
+
+// select dropdown
+@mixin select() {
+	.select {
+		width: 100%;
+		position: relative;
+
+		/* Styles for create pom page START */
+		&__button,
+		&__list li {
+			padding: 10px;
+		}
+
+		&__button {
+			@include flex-between(row);
+			width: 100%;
+			border: none;
+			outline: none !important;
+			background: $bg;
+			border: $border;
+			border-radius: 4px;
+			cursor: pointer;
+			transition: background 0.15s, border 0.15s;
+
+			&--txt {
+				color: $white07;
+				font-weight: 300;
+				font-size: 18px;
+				text-align: left;
+			}
+
+			&--arr {
+				width: 20px;
+				height: 20px;
+				fill: $white07;
+				transition: transform 0.15s ease;
+			}
+
+			&.active {
+				.select__button--arr {
+					transform: rotate(180deg);
+				}
+			}
+
+			&:hover,
+			&.active {
+				border-color: rgba($blue, 0.7);
+				color: $white08;
+			}
+		}
+
+		&__list {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			width: 100%;
+			@include flex-column;
+			align-items: stretch;
+			z-index: $medium;
+
+			border: 1px solid rgba($blue, 0.3);
+			background: $blackSecondary;
+			box-shadow: 0 4px 5px 0 $black04;
+
+			li {
+				display: block;
+				cursor: pointer;
+				color: $white06;
+				padding: 12px 10px;
+
+				&.fallback {
+					color: $white02;
+				}
+
+				&:hover {
+					color: white;
+					background: rgba(white, 0.06);
+				}
+			}
+		}
+	}
+}

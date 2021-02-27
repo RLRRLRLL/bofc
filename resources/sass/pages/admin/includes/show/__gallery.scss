@@ -10,15 +10,15 @@
 			& > button {
 				border: none;
 				background: transparent;
-				color: lighten($grayMain, 10%);
-				border: 1px solid lighten($grayMain, 10%);
+				color: lighten($gray, 10%);
+				border: 1px solid lighten($gray, 10%);
 				border-radius: 5px;
 				transition: 0.15s;
 				@include flex-center(row);
 
 				&:hover {
-					color: $greenMain;
-					border-color: $greenMain;
+					color: $green;
+					border-color: $green;
 				}
 			}
 
@@ -76,11 +76,11 @@
 			img {
 				@include image;
 				opacity: 0.6;
-				border: 1px solid rgba($grayMain, 0.4);
+				border: 1px solid rgba($gray, 0.4);
 				transition: opacity 0.15s ease-out;
 
 				&.avatar {
-					border: 2px solid $blueMain;
+					border: 2px solid $blue;
 				}
 			}
 

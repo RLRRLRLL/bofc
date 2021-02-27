@@ -45,8 +45,7 @@
 			</header>
 
 			<aside class="sidebar">
-				<div class="sidebar__header">
-				</div>
+				<div class="sidebar__header"></div>
 
 				<ul class="sidebar__nav">
 					<li>

@@ -3,18 +3,20 @@
 @section('page-title', 'Home')
 
 @section('content')
-	<div class="wrapper home" data-scroll-container>
+	<main class="main home" data-scroll-container>
 		@include('includes.common.special-svgs')
 
 		<!-- Brand -->
 		<section class="brand" data-scroll-section>
-			<h1 class="brand__title" data-scroll data-scroll-speed="1">
-				{{ config('app.name') }}
-			</h1>
-
-			<h2 class="brand__desc anim-item track-in" data-scroll data-scroll-speed="3">
-				The pomeranian spitz breed kennel
-			</h2>
+			<div class="container">
+				<h1 class="brand__title" data-scroll data-scroll-speed="1">
+					{{ config('app.name') }}
+				</h1>
+	
+				<h2 class="brand__desc anim-item track-in" data-scroll data-scroll-speed="3">
+					The pomeranian spitz breed kennel
+				</h2>
+			</div>
 		</section>
 
 		<!-- Grid -->
@@ -144,7 +146,7 @@
 						<h1 class="reach-us__text reach-us__text--bigger">Reach us out!</h1>
 					</div>
 					<div class="reach-us__col anim-item fadeInUp">
-						<button class="reach-us__btn btn-bestia" type="button">
+						<button class="reach-us__btn btn-bestia contact-modal-trigger" type="button">
 							<div class="btn-bestia__bg"></div>
 							<span class="btn-bestia__text">Contact us</span>
 						</button>
@@ -152,96 +154,7 @@
 				</div>
 			</div>
 		</section>
-
-		<!-- Footer -->
-		<section id="footer" class="section footer" data-scroll-section>
-			<div class="container">
-				<div class="footer__inner">
-
-					<!-- Copyright -->
-					<div class="footer__section copyright">
-						<div class="copyright">
-							<h3 class="copyright__brand">
-								{{ config('app.name') }}
-							</h3>
-							<p class="copyright__copy">
-								2014-2020 &copy; All rights reserved.
-							</p>
-							<img class="copyright__img" src="{{asset('images/logo-circle.png')}}" alt="">
-						</div>
-					</div>
-
-					<!-- Ctas -->
-					<div class="footer__section footer__ctas">
-						<h3 class="footer__section--title">&times;&times;&times;</h3>
-						<ul class="footer__section--list">
-							<li>
-								<button type="button" id="backToTop" class="footer__ctas--item back-to-top">
-									<svg class="footer__ctas--svgs">
-										<use xlink:href="/sprite.svg#backToTop"></use>
-									</svg>
-									Back to top
-								</button>
-							</li>
-							<li>
-								<a href="#" class="footer__ctas--item cta-poms">
-									<svg class="footer__ctas--svgs">
-										<use xlink:href="/sprite.svg#search"></use>
-									</svg>
-									Browse poms
-								</a>
-							</li>
-						</ul>
-					</div>
-					
-					<!-- Social -->
-					<div class="footer__section">
-						<h3 class="footer__section--title">&times;&times;&times;</h3>
-						<ul class="footer__section--list social">
-							<li>
-								<a href="#" class="social__item">
-									<svg>
-										<use xlink:href="/sprite.svg#inst"></use>
-									</svg>
-								</a>
-							</li>
-							<li>
-								<a href="#" class="social__item">
-									<svg>
-										<use xlink:href="/sprite.svg#fb"></use>
-									</svg>
-								</a>
-							</li>
-							<li>
-								<a href="#" class="social__item">
-									<svg>
-										<use xlink:href="/sprite.svg#wp"></use>
-									</svg>
-								</a>
-							</li>
-						</ul>
-					</div>
-					
-					<!-- Navigation -->
-					<div class="footer__section">
-						<h3 class="footer__section--title">&times;&times;&times;</h3>
-						<ul class="footer__section--list">
-							<li>
-								<a href="#" class="social__item">Pomeranian</a>
-							</li>
-							<li>
-								<a href="#" class="social__item">Gallery</a>
-							</li>
-							<li>
-								<a href="#" class="social__item">About</a>
-							</li>
-						</ul>
-					</div>
-
-				</div>
-			</div>
-		</section>
-	</div>
+	</main>
 @endsection
 
 @push('scripts')

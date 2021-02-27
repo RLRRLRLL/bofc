@@ -1,5 +1,5 @@
 <div class="show">
-	<section class="show__header" data-animation="slideInUp"  data-animation-delay="100ms">
+	<section class="show__header anim-item fadeInUp anim-delay">
 		<h1>
 			{{ ucfirst($pom->name) }}
 		</h1>
@@ -8,7 +8,7 @@
 		</button>
 	</section>
 
-	<section class="show__body" data-animation="slideInUp"  data-animation-delay="500ms">
+	<section class="show__body anim-item fadeInUp anim-delay-medium">
 		<figure class="show__body--slider">
 			
 			<!-- Swiper -->
@@ -22,6 +22,7 @@
 				<div class="swiper-button-next swiper-button-white"></div>
 				<div class="swiper-button-prev swiper-button-white"></div>
 			</div>
+
 			<div class="swiper-container gallery-thumbs">
 				<div class="swiper-wrapper">
 					@foreach($pom->images as $image)
@@ -45,19 +46,19 @@
 				</div>
 				<div class="info__primary--item">
 					<p class="item-title">color</p>
-					<p class="item-value">{{ ucfirst($pom->color) }}</p>
+					<p class="item-value">{{ !is_null($pom->color) ? ucfirst($pom->color) : 'N/A' }}</p>
 				</div>
 				<div class="info__primary--item">
 					<p class="item-title">age</p>
-					<p class="item-value">{{ ucfirst($pom->age) }}</p>
+					<p class="item-value">{{ ucfirst($pom->age) ?? 'N/A' }}</p>
 				</div>
 				<div class="info__primary--item">
 					<p class="item-title">birthday</p>
-					<p class="item-value">{{ $pom->birthday }}</p>
+					<p class="item-value">{{ $pom->birthday ?? 'N/A' }}</p>
 				</div>
 				<div class="info__primary--item">
 					<p class="item-title">teeth</p>
-					<p class="item-value">{{ $pom->teeth }}</p>
+					<p class="item-value">{{ $pom->teeth ?? 'N/A' }}</p>
 				</div>
 				<div class="info__primary--item">
 					<p class="item-title">fontanel</p>

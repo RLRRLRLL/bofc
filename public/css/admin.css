@@ -145,6 +145,110 @@ select {
   vertical-align: middle;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 100;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 19px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 12px;
+}
+
+p {
+  line-height: 1.6;
+  font-weight: 300;
+  font-size: 17px;
+  letter-spacing: 0.7px;
+}
+
+li {
+  list-style: none;
+  display: inline;
+}
+
+a,
+a:focus,
+a:visited {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  box-shadow: none;
+  padding: 7px 12px;
+  cursor: pointer;
+}
+
+button:focus,
+button:active {
+  outline: none;
+}
+
+/* Change autocomplete styles in WebKit */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid rgba(153, 153, 153, 0.5);
+  -webkit-text-fill-color: white;
+  box-shadow: 0 0 0px 1000px #2b2c2e inset;
+  -webkit-box-shadow: 0 0 0px 1000px #2b2c2e inset;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+#wrapper {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
 @font-face {
   font-family: "system";
   font-style: normal;
@@ -216,32 +320,11 @@ select {
   src: url("/fonts/Bitter/Bitter-Light.ttf");
 }
 
-/**
- * Effects
- */
-
-li {
-  list-style: none;
-  display: inline;
-}
-
-a,
-a:focus,
-a:visited {
-  text-decoration: none;
-}
-
-button {
-  border: none;
-  box-shadow: none;
-  padding: 7px 12px;
-  cursor: pointer;
-}
-
-button:focus,
-button:active {
-  outline: none;
-}
+/* 
+ Transition background color.
+ Note: transition bg and body bg has to be the same,
+ or there will be some flickering on page load.
+*/
 
 .is_fillable {
   position: relative;
@@ -309,8 +392,9 @@ span.ripple {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  transition: all 0.25s ease;
+  transition: all 0.25s ease-in;
   color: white;
+  background: #fff1c0;
   font-size: 19px;
   font-weight: 300;
   letter-spacing: 0.9px;
@@ -370,6 +454,13 @@ span.ripple {
           animation: MoveScaleUpInitial 0.3s forwards, MoveScaleUpEnd 0.3s forwards 0.3s;
 }
 
+.btn-bestia:focus,
+.btn-bestia:active {
+  background: transparent;
+  border: 1px solid #fff1c0;
+  color: #fff1c0;
+}
+
 @-webkit-keyframes MoveScaleUpInitial {
   to {
     transform: translate3d(0, -105%, 0) scale3d(1, 2, 1);
@@ -408,70 +499,7 @@ span.ripple {
   }
 }
 
-/* Change autocomplete styles in WebKit */
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  border: 1px solid rgba(153, 153, 153, 0.5);
-  -webkit-text-fill-color: white;
-  box-shadow: 0 0 0px 1000px #2b2c2e inset;
-  -webkit-box-shadow: 0 0 0px 1000px #2b2c2e inset;
-  -webkit-transition: background-color 5000s ease-in-out 0s;
-  transition: background-color 5000s ease-in-out 0s;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  line-height: 1.25;
-}
-
-h1,
-h2,
-h3 {
-  font-weight: 100;
-}
-
-h1 {
-  font-size: 32px;
-}
-
-h2 {
-  font-size: 24px;
-}
-
-h3 {
-  font-size: 19px;
-}
-
-h4 {
-  font-size: 16px;
-}
-
-h5 {
-  font-size: 14px;
-}
-
-h6 {
-  font-size: 12px;
-}
-
-p {
-  line-height: 1.6;
-  font-weight: 300;
-  font-size: 17px;
-  letter-spacing: 0.7px;
-}
+/* Spinner for submit buttons */
 
 .spinner-wrapper {
   margin-left: 10px;
@@ -689,7 +717,7 @@ hr {
 
 .choices__item {
   color: #f2f2f2;
-  background: #272727 !important;
+  background: #1e1e1e !important;
 }
 
 .choices__item:hover {
@@ -745,7 +773,7 @@ brightness when sidebar expanded
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  box-shadow: 0 0 5px 0 #272727;
+  box-shadow: 0 0 5px 0 #1e1e1e;
   z-index: 100;
 }
 
@@ -854,7 +882,6 @@ brightness when sidebar expanded
   padding: 15px;
   height: 40%;
   background-color: black;
-  background-image: url("/images/logo.jpg");
   background-size: 200px auto;
   background-position: center;
   background-repeat: no-repeat;
@@ -929,7 +956,7 @@ brightness when sidebar expanded
 }
 
 .alert-main a:hover {
-  color: #272727;
+  color: #1e1e1e;
 }
 
 .alert-main a i {
@@ -1036,8 +1063,8 @@ brightness when sidebar expanded
   text-align: center;
   transition: all 0.15s;
   border-radius: 5px;
-  border: 1px solid #69949d;
-  color: #69949d;
+  border: 1px solid #daf3e8;
+  color: #daf3e8;
 }
 
 .poms-inner .pom-info__cta:hover {
@@ -1265,7 +1292,7 @@ brightness when sidebar expanded
 }
 
 .card-body__info .car .car__item.car__radio [type=radio]:checked + label::before {
-  background: #272727;
+  background: #1e1e1e;
 }
 
 .card-body__info .car .car__item.car__radio [type=radio]:checked + label::after {
@@ -1342,7 +1369,7 @@ brightness when sidebar expanded
 .card-body__titles--show {
   padding: 15px;
   border: 1px solid rgba(153, 153, 153, 0.1);
-  box-shadow: 0 0 4px 0 inset #272727;
+  box-shadow: 0 0 4px 0 inset #1e1e1e;
   display: flex;
   flex-direction: column;
 }
@@ -1438,7 +1465,7 @@ brightness when sidebar expanded
 
 .upload-imgs__item button {
   background: transparent;
-  color: #41aae8;
+  color: #80bdff;
   width: 100%;
 }
 
@@ -1488,7 +1515,7 @@ brightness when sidebar expanded
 }
 
 .upload-imgs__alert-item a:hover {
-  color: #272727;
+  color: #1e1e1e;
 }
 
 .upload-imgs__alert-item a i {
@@ -1585,7 +1612,7 @@ brightness when sidebar expanded
   justify-content: center;
   flex-direction: row;
   width: 50%;
-  background: #272727;
+  background: #1e1e1e;
   color: rgba(255, 255, 255, 0.4);
   outline: none !important;
   transition: 0.15s ease;
@@ -2159,7 +2186,7 @@ brightness when sidebar expanded
 }
 
 .person-form__radio [type=radio]:checked + label::before {
-  background: #272727;
+  background: #1e1e1e;
 }
 
 .person-form__radio [type=radio]:checked + label::after {
@@ -2231,7 +2258,7 @@ brightness when sidebar expanded
 }
 
 .person-list ul h3 {
-  color: #dea54e;
+  color: #fff1c0;
 }
 
 .person-list ul li {

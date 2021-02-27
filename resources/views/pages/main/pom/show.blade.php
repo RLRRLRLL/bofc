@@ -3,9 +3,7 @@
 @section('page-title', ucfirst($pom->name))
 
 @section('content')
-    <div class="wrapper pomeranian">
-		<div class="container">
-			<livewire:pom.user.show :pom="$pom"/>
-		</div>
-    </div>
+	<main class="main show" data-scroll-section>
+		<livewire:pom.user.show :pom="$pom"/>
+    </main>
 @endsection

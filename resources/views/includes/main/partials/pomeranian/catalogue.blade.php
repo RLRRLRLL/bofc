@@ -1,14 +1,16 @@
-<section class="poms__catalogue" data-animation="slideInLeft"  data-animation-delay="300ms"
+<section class="poms__catalogue anim-item fadeInUp anim-delay"
 		:class="{'poms__catalogue--grid': gridViewActive, 'poms__catalogue--list': listViewActive}"
 >
 	@if($poms)
 		@foreach ($poms as $pom)
 			
-			<figure class="cat-item scale">
+			<figure class="cat-item" title="Click to learn more.">
+				<a href="{{ route('poms.show', ['id' => $pom->id]) }}" class="cat-item__link"></a>
+
 				<img class="cat-item__image" src="{{ '/storage/images/'.$pom->id.'/'}}{{ ($pom->images()->where('is_avatar', 1)->first() !== null) ? $pom->images()->where('is_avatar', 1)->first()->url : $pom->images()->first()->url }}"
 				>
 
-				<div class="cat-item__desc">
+				<figcaption class="cat-item__desc">
 					<div class="cat-item__desc--title">
 						<h3>
 							{{ ucfirst($pom->name) }}
@@ -40,10 +42,10 @@
 						</div>
 					</div>
 
-					<a href="{{ route('poms.show', ['id' => $pom->id]) }}" class="cat-item__desc--cta btn-ripple">
+					<button type="button" class="cat-item__desc--cta">
 						<span>Learn more</span>
-					</a>
-				</div>
+					</button>
+				</figcaption>
 			</figure>
 
 		@endforeach

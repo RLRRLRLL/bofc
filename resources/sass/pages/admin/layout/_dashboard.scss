@@ -11,7 +11,7 @@ html {
 }
 
 body {
-	font-family: "system";
+	font-family: 'system';
 	font-weight: 300;
 	font-size: 18px;
 }
@@ -41,7 +41,7 @@ brightness when sidebar expanded
 		background: $bg;
 		padding: 0 200px;
 		@include flex-between(row);
-		box-shadow: 0 0 5px 0 $blackMain;
+		box-shadow: 0 0 5px 0 $bgSecondary;
 		z-index: $medium;
 
 		&__left {
@@ -50,7 +50,7 @@ brightness when sidebar expanded
 			a,
 			button {
 				font-size: 17px;
-				color: $grayMain;
+				color: $gray;
 				transition: 0.15s;
 
 				&:hover {
@@ -143,7 +143,7 @@ brightness when sidebar expanded
 			height: 40%;
 
 			background-color: black;
-			background-image: url("/images/logo.jpg");
+			// background-image: url('/images/logo.png');
 			background-size: 200px auto;
 			background-position: center;
 			background-repeat: no-repeat;
@@ -162,7 +162,7 @@ brightness when sidebar expanded
 					display: block;
 					width: 100%;
 					padding: 10px 15px 10px 15px;
-					color: $grayMain;
+					color: $gray;
 					text-decoration: none;
 					border-radius: 5px;
 					transition: all 0.15s ease;
@@ -203,10 +203,10 @@ brightness when sidebar expanded
 	width: 100%;
 	margin: 15px 0 15px 0;
 	color: white;
-	background: $grayMain;
+	background: $gray;
 
 	&.success {
-		background: rgba($greenMain, 0.5);
+		background: rgba($green, 0.5);
 	}
 
 	&.error {
@@ -224,7 +224,7 @@ brightness when sidebar expanded
 		color: white;
 
 		&:hover {
-			color: $blackMain;
+			color: $bgSecondary;
 		}
 
 		i {

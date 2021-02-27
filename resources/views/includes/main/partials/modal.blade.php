@@ -2,8 +2,7 @@
 	@include('includes.common.special-svgs')
 
 	<div class="modal">
-		<div class="modal__inner" 
-			x-on:click.away="if (modalTransitionFinished) $refs.overlay.classList.add('out'); modalTransitionFinished = false">
+		<div class="modal__inner">
 			<div class="modal__body">
 				<div class="left" x-data="{ marque: false }" x-on:message-sent.window="marque = true" >
 					<div class="left__marque" :class="{'go': marque}">
@@ -15,12 +14,7 @@
 				</div>
 				<div class="right">
 					<!-- Close -->
-					<button 
-						class="right__close" 
-						type="button" 
-						title="Close"
-						x-on:click="if (modalTransitionFinished) $refs.overlay.classList.add('out'); modalTransitionFinished = false"
-					>
+					<button class="right__close" type="button" title="Close">
 						<svg>
 							<use xlink:href="/sprite.svg#x_without_border"></use>
 						</svg>

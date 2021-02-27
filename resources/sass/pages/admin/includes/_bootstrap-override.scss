@@ -29,7 +29,7 @@ input {
 	&:focus {
 		color: $white;
 		background: $bg;
-		border: 1px solid $blueMain;
+		border: 1px solid $blue;
 	}
 }
 
@@ -49,7 +49,7 @@ input {
 
 label {
 	font-size: 17px;
-	color: $grayMain;
+	color: $gray;
 }
 
 button {
@@ -61,6 +61,6 @@ hr {
 	clear: both;
 	display: block;
 	width: 100%;
-	background-color: rgba($grayMain, 0.4);
+	background-color: rgba($gray, 0.4);
 	height: 1px;
 }

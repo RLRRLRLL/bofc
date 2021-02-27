@@ -63,14 +63,12 @@
 // }
 
 .brand {
-	padding: 35px 35px 0 35px;
-
 	&__title {
 		position: relative;
 		// typography
-		font-family: 'system';
+		font-family: 'leftonade';
 		font-size: 50px;
-		letter-spacing: 1px;
+		letter-spacing: -0.5px;
 
 		// Gold gradient
 		@include bg-gradient-anim;

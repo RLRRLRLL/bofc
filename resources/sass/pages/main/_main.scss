@@ -1,25 +1,39 @@
 /* 
 Components
 */
-@import "./components/base";
-@import "./components/header/header";
-@import "./components/animations";
-@import "./../../helpers/spinner";
+
+// Base
+@import './components/base';
+
+// Header
+@import './components/header/header';
+
+// Footer
+@import './components/footer';
+
+// Little fade-in / zoom-in animations trigger by scroll
+@import './components/animations';
+
+// Page transitions
+@import './components/page-transitions';
+
+// Locomotive smooth scroll plugin
+@import './../../plugins/locomotive';
 
 // modal
-@import "./components/modal/modal__core";
-@import "./components/modal/modal__form";
+@import './components/modal/modal__core';
+@import './components/modal/modal__form';
 
 /* 
  Main pages 
 */
 
 // home
-@import "./pages/home/home";
+@import './pages/home/home';
 
 // gallery
-@import "./pages/gallery/gallery";
+@import './pages/gallery/gallery';
 
 // poms
-@import "./pages/poms/index";
-@import "./pages/poms/show";
+@import './pages/poms/index';
+@import './pages/poms/show';

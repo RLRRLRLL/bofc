@@ -3,8 +3,7 @@
     <head>
         <meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="keywords"
-		content="pomeranian, bubbles of champain, dog, dogs, poms, spitz, spitz baku">
+		<meta name="keywords" content="pomeranian, bubbles of champain, dog, dogs, poms, spitz, spitz baku">
         @include('includes.common.favicon')
         <title>[ @yield('page-title') ] {{ config('app.name') }}</title>
 		@if (app()->isLocal())
@@ -14,15 +13,26 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         @yield('styles')
     </head>
-    <body x-data="{ modalTransitionFinished: false }" x-ref="body">
-		@include('includes.effects.distortion-circle')
-		@include('includes.main.partials.modal')
-		
-        <main class="main">
+    <body>
+		<div class="transition transactive">
+			<div class="transition__layer"></div>
+		</div>
+
+		<div id="wrapper" data-scroll-container>
+			@include('includes.effects.distortion-circle')
+			@include('includes.main.partials.modal')
+
+			<!-- Header -->
 			@include('includes.main.partials.header')
+			
+			<!-- Main -->
 			@yield('content')
-        </main>
+
+			<!-- Footer -->
+			@include('includes.main.partials.footer')
+		</div>
         
+		<!-- Scripts -->
 		<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 		@livewireScripts
 		<script src="{{asset('js/scripts/main.js')}}" type="module" defer></script>

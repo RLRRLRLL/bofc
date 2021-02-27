@@ -1,14 +1,16 @@
 .filter-wrapper {
 	position: relative;
 }
+
 &__filter {
 	position: sticky;
 	top: 30px;
-
-	// background: rgba(olive, 0.1);
-	padding: 25px 35px;
 	display: grid;
-	grid-template: 0.5fr 2.25fr 2.25fr / 1fr;
+	grid-template: min-content / 1fr;
+	padding: 25px 35px;
+
+	border-radius: $bradius;
+	background: $bgSecondary;
 
 	// title
 	&--title {
@@ -24,9 +26,10 @@
 		display: flex;
 		flex-direction: column;
 		padding: 15px;
+		font-size: 18px;
 
 		&:not(:last-child) {
-			border-bottom: 1px solid rgba($white, 0.6);
+			border-bottom: 1px solid $white03;
 		}
 
 		& > * {
@@ -34,13 +37,13 @@
 		}
 
 		&__title {
-			font-size: 18px;
-			color: rgba($white, 0.6);
+			color: $white06;
+			font-size: 1.3em;
 			margin-bottom: 15px;
 		}
 
 		&__item {
-			padding-left: 25px;
+			font-size: 1em;
 			label {
 				color: $white;
 			}

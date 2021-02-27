@@ -1,4 +1,4 @@
-<section class="poms__header slideInUp" data-animation="slideInUp" data-animation-delay="300ms">
+<section class="poms__header anim-item fadeInUp">
 	<h1 class="poms__header--title">
 		Find yourself a best friend.
 	</h1>

@@ -16,16 +16,19 @@ input:disabled {
 		position: relative;
 		vertical-align: middle;
 		cursor: pointer;
-		font-weight: 500;
+		font-weight: 400;
 		padding-left: 35px;
+
+		&:not(span.box) {
+			color: $gray;
+		}
 	}
 	span.box {
 		display: inline-block;
-		width: 20px;
 		border-radius: 5px;
-		border: 1px solid $grayMain;
-		width: 24px;
-		height: 24px;
+		border: 1px solid $gray;
+		width: 21px;
+		height: 21px;
 		vertical-align: middle;
 		margin-right: 3px;
 		transition: 0.3s ease;
@@ -33,10 +36,11 @@ input:disabled {
 		left: 0;
 		&:before,
 		&:after {
-			content: "";
+			content: '';
 			position: absolute;
-			width: 4px;
-			height: 16px;
+			top: calc(100% - 20px);
+			width: 3px;
+			height: 15px;
 			border-radius: 40px;
 			background: $blackSecondary;
 			transition: all 0.3s ease;
@@ -45,12 +49,15 @@ input:disabled {
 			transform: rotate(45deg) translateY(-5px) translateX(10px) scale(0);
 		}
 		&:after {
-			height: 8px;
+			height: 5px;
 			transform: rotate(-45deg) translateY(10px) translateX(-4px) scale(0);
 		}
 	}
 	input:checked {
 		+ label {
+			&:not(span.box) {
+				color: $accent;
+			}
 			span.box {
 				background: $accent;
 				border-color: $accent;
@@ -67,8 +74,8 @@ input:disabled {
 		}
 	}
 	input:disabled:checked + span.box {
-		background: $grayMain;
-		border: $grayMain;
+		background: $gray;
+		border: $gray;
 	}
 	input:disabled:checked ~ label {
 		&:before,

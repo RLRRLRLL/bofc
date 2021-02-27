@@ -4,24 +4,28 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 /* STATE: DEVELOPMENT! */
 
-/**
- * * * USED COMPONENTS:
- */
+/* USED COMPONENTS: */
 import { query, disableRightClick } from './components/Utils'
 import { runBubbles } from './components/common/Bubbles'
-import { rippleButtonsInit } from './components/main/RippleEffect'
 import { galleryPageGallery } from './components/main/Gallery'
 import { initAnimations } from './components/main/Animation'
+import { triggerModal } from './components/main/Modal'
 import LinkDistortionCircle from './components/common/LinkDistortionCircle'
 import initCarousel from './components/main/Swiper'
 import LocomotiveScroll from 'locomotive-scroll'
+import runTransition from './components/main/PageTransitions'
 
-/**
- * !!! NOT USED:
- *
- */
+/* <!-- NOT USED: --> */
 // import toggleMenu from "./components/main/ToggleMenu";
 // toggleMenu();
+// import { rippleButtonsInit } from './components/main/RippleEffect'
+// Material ripple button effect on click
+// rippleButtonsInit()
+
+window.onload = () => {
+	// Page transitions
+	runTransition()
+}
 
 document.addEventListener(
 	'DOMContentLoaded',
@@ -35,19 +39,17 @@ document.addEventListener(
 		 */
 
 		// Locomotive scroll
-		if (query('[data-scroll-container]')) {
-			const scroll = new LocomotiveScroll({
-				el: query('[data-scroll-container]'),
-				smooth: true
-			})
+		const scroll = new LocomotiveScroll({
+			el: query('[data-scroll-container]'),
+			smooth: true
+		})
 
-			const backToTopBtn = query('#backToTop')
-			backToTopBtn.addEventListener('click', () => {
-				scroll.scrollTo('top', {
-					duration: 500
-				})
+		const backToTopBtn = query('#backToTop')
+		backToTopBtn.addEventListener('click', () => {
+			scroll.scrollTo('top', {
+				duration: 500
 			})
-		}
+		})
 
 		// Distortion links (circle on hover)
 		const distortedLinks = [...document.querySelectorAll('a.link')]
@@ -60,6 +62,9 @@ document.addEventListener(
 		// Trigger animations on scroll
 		initAnimations()
 
+		// Trigger modal (contact)
+		triggerModal()
+
 		/**
 		 * * Disables right click for all images.
 		 * * It's the first measure for preventing download.
@@ -67,12 +72,7 @@ document.addEventListener(
 		 */
 		disableRightClick()
 
-		// Material ripple button effect on click
-		// rippleButtonsInit()
-
-		// Run fade animation on page load
 		// TODO: Change this to better page transitions (but not resourceful)
-		query('.main').classList.add('main-loaded')
 
 		/**
 		 * * * * * * * * * * * * * * * * * *
@@ -85,28 +85,30 @@ document.addEventListener(
 		// | =========================================================
 		// | Home
 		// | =========================================================
-		if (query('.wrapper.home')) {
+		if (query('.main.home')) {
 			// runBubbles('.brand', 3000)
 		}
 
 		// | =========================================================
 		// | Gallery
 		// | =========================================================
-		if (query('.wrapper.gallery')) galleryPageGallery()
+		if (query('.main.gallery')) galleryPageGallery()
 
 		// | =========================================================
 		// | Pomeranians
 		// | =========================================================
-		if (query('.wrapper.pomeranian')) {
-			if (query('.show')) {
-				// Carousel
-				initCarousel()
+		if (query('.main.pomeranian')) {
+		}
 
-				// Bubbles on header
-				setTimeout(() => {
-					runBubbles('.show__header', 1500)
-				}, 1500)
-			}
+		// Single pom
+		if (query('.main.show')) {
+			// Carousel
+			initCarousel()
+
+			// Bubbles on header
+			setTimeout(() => {
+				runBubbles('.show__header', 1500)
+			}, 1500)
 		}
 	},
 	false

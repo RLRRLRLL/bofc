@@ -1,157 +1,147 @@
-li {
-	list-style: none;
-	display: inline;
+/* CSS reset */
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
 }
 
-a,
-a:focus,
-a:visited {
-	text-decoration: none;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
 }
 
-button {
-	border: none;
-	box-shadow: none;
-	padding: 7px 12px;
-	cursor: pointer;
-
-	&:focus, &:active {
-		outline: none;
-	}
+blockquote,
+q {
+	quotes: none;
 }
 
-.is_fillable {
-	@include fill-effect($white08);
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
 }
 
-// hidden class
-// used for svgs for now
-.hidden {
-	position: absolute;
-	overflow: hidden;
-	width: 0;
-	height: 0;
-	pointer-events: none;
+ins {
+	background-color: #ff9;
+	color: #000;
 }
 
-// ripple effect
-.btn-ripple {
-	position: relative;
-	overflow: hidden;
+mark {
+	background-color: #ff9;
+	color: #000;
+	font-style: italic;
+	font-weight: bold;
 }
 
-span.ripple {
-	position: absolute;
-	border-radius: 50%;
-	transform: scale(0);
-	animation: ripple 600ms linear;
-	background-color: rgba(255, 255, 255, 0.5);
+del {
+	text-decoration: line-through;
 }
 
-@keyframes ripple {
-	to {
-		transform: scale(4);
-		opacity: 0;
-	}
+abbr[title],
+dfn[title] {
+	border-bottom: 1px dotted;
+	cursor: help;
 }
 
-/* circle expand effect (bestia) */
-.btn-bestia {
-	position: relative;
-	display: inline-block;
-	overflow: hidden;
-	padding: 10px;
-
-	border: none;
-	border-radius: 5px;
-	transition: all 0.25s ease;
-	color: white;
-	font-size: 19px;
-	font-weight: 300;
-	letter-spacing: 0.9px;
-
-	&::before, &::after {
-		@include absolute-stretch;
-	}
-
-	&::before {
-		content: '';
-		background: #000;
-		width: 120%;
-		height: 0;
-		padding-bottom: 120%;
-		top: -110%;
-		left: -10%;
-		border-radius: 50%;
-		transform: translate3d(0,68%,0) scale3d(0,0,0);
-	}
-
-	&::after {
-		content: '';
-		background: #000;
-		transform: translate3d(0,-100%,0);
-		transition: transform 0.3s cubic-bezier(0.1, 0, 0.3, 1);
-	}
-
-	span {
-		display: block;
-		position: relative;
-		mix-blend-mode: difference;
-		z-index: 10;
-	}
-
-	&:hover {
-		&::before {
-			transform: translate3d(0,0,0) scale3d(1,1,1);
-			transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
-		}
-
-		&::after {
-			transform: translate3d(0,0,0);
-			transition-duration: 0.05s;
-			transition-delay: 0.4s;
-			transition-timing-function: linear;
-		}
-
-		span {
-			animation: MoveScaleUpInitial 0.3s forwards, MoveScaleUpEnd 0.3s forwards 0.3s;
-		}
-	}
-
-	@keyframes MoveScaleUpInitial {
-		to {
-			transform: translate3d(0,-105%,0) scale3d(1,2,1);
-			opacity: 0;
-		}
-	}
-
-	@keyframes MoveScaleUpEnd {
-		from {
-			transform: translate3d(0,100%,0) scale3d(1,2,1);
-			opacity: 0;
-		}
-		to {
-			transform: translate3d(0,0,0);
-			opacity: 1;
-		}
-	}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
-/* Change autocomplete styles in WebKit */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-	border: 1px solid rgba(153, 153, 153, 0.5);
-	-webkit-text-fill-color: white;
-	box-shadow: 0 0 0px 1000px #2b2c2e inset;
-	-webkit-box-shadow: 0 0 0px 1000px #2b2c2e inset;
-	transition: background-color 5000s ease-in-out 0s;
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
+input,
+select {
+	vertical-align: middle;
 }
 
 // standart heading styles
@@ -200,4 +190,60 @@ p {
 	font-weight: 300;
 	font-size: 17px;
 	letter-spacing: 0.7px;
+}
+
+li {
+	list-style: none;
+	display: inline;
+}
+
+a,
+a:focus,
+a:visited {
+	text-decoration: none;
+}
+
+button {
+	border: none;
+	box-shadow: none;
+	padding: 7px 12px;
+	cursor: pointer;
+
+	&:focus,
+	&:active {
+		outline: none;
+	}
+}
+
+/* Change autocomplete styles in WebKit */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+	border: 1px solid rgba(153, 153, 153, 0.5);
+	-webkit-text-fill-color: white;
+	box-shadow: 0 0 0px 1000px #2b2c2e inset;
+	-webkit-box-shadow: 0 0 0px 1000px #2b2c2e inset;
+	transition: background-color 5000s ease-in-out 0s;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body,
+#wrapper {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
 }

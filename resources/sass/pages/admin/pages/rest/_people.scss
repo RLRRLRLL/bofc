@@ -13,12 +13,12 @@
 		background: rgba(black, 0.1);
 		display: grid;
 		grid-template-areas:
-			"a b"
-			"c c";
+			'a b'
+			'c c';
 		grid-gap: 15px;
 
 		span {
-			color: $greenMain;
+			color: $green;
 		}
 
 		& > div {

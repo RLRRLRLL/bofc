@@ -22,7 +22,9 @@
 			width: 100%;
 			@include flex-center(row);
 			padding: 70px 100px;
-			background: rgba(black, 0.2);
+			background: $bgSecondary;
+			border-radius: $bradius;
+			box-shadow: 0 1px 6px 1px $black;
 
 			svg {
 				width: 80px;
@@ -43,7 +45,7 @@
 				span {
 					font-family: leftonade;
 					font-size: 17px;
-					color: $white;
+					color: $accent;
 				}
 			}
 		}
