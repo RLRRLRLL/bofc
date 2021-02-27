@@ -1,5 +1,5 @@
 <div class="filter-wrapper">
-	<section class="poms__filter anim-item fadeInUp anim-delay">
+	<section class="poms__filter anim-item fadeInUp anim-delay-medium" data-scroll data-scroll-class="anim-stop">
 		<h3 class="poms__filter--title">
 			Filters
 		</h3>

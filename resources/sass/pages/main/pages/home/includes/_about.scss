@@ -21,18 +21,17 @@
 	}
 
 	&__inner {
+		margin-top: 100px;
 		height: 100%;
 		@include flex-center(row);
-		padding: 100px 20px 50px;
 
 		// logotype
 		.logo {
-			width: 40%;
-
 			&__image {
 				// @include image;
-				max-width: 400px;
+				max-width: 300px;
 				max-height: auto;
+				margin-left: 50px;
 			}
 		}
 
@@ -46,7 +45,7 @@
 				p {
 					// font-family: leftonade;
 					font-size: 18px;
-					max-width: 90%;
+					max-width: 85%;
 					line-height: 1.8;
 					color: $white09;
 

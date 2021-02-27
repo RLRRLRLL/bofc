@@ -1,11 +1,12 @@
-<section class="poms__catalogue anim-item fadeInUp anim-delay"
+<section class="poms__catalogue anim-item fadeInUp anim-delay-medium"
+		data-scroll data-scroll-class="anim-stop"
 		:class="{'poms__catalogue--grid': gridViewActive, 'poms__catalogue--list': listViewActive}"
 >
 	@if($poms)
 		@foreach ($poms as $pom)
 			
 			<figure class="cat-item" title="Click to learn more.">
-				<a href="{{ route('poms.show', ['id' => $pom->id]) }}" class="cat-item__link"></a>
+				<a href="{{ route('poms.show', ['id' => $pom->id]) }}" class="cat-item__link leave-page"></a>
 
 				<img class="cat-item__image" src="{{ '/storage/images/'.$pom->id.'/'}}{{ ($pom->images()->where('is_avatar', 1)->first() !== null) ? $pom->images()->where('is_avatar', 1)->first()->url : $pom->images()->first()->url }}"
 				>

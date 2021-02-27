@@ -1,5 +1,5 @@
 <div class="show">
-	<section class="show__header anim-item fadeInUp anim-delay">
+	<section class="show__header anim-item fadeInUp anim-delay show-section" data-scroll data-scroll-class="anim-stop">
 		<h1>
 			{{ ucfirst($pom->name) }}
 		</h1>
@@ -8,34 +8,33 @@
 		</button>
 	</section>
 
-	<section class="show__body anim-item fadeInUp anim-delay-medium">
-		<figure class="show__body--slider">
-			
-			<!-- Swiper -->
-			<div class="swiper-container gallery-top">
+	<div class="show__body anim-item fadeInUp anim-delay-medium" data-scroll data-scroll-class="anim-stop">
+		<div class="show__body--slider">
+			<!-- Gallery Lighthouse -->
+			<section class="swiper-container gallery-top show-section">
 				<div class="swiper-wrapper">
 					@foreach($pom->images as $image)
-						<div class="swiper-slide" style="background-image:url({{ '/storage/images/'.$pom->id.'/'.$image->url}})"></div>
+						<div class="swiper-slide" style="background-image: url({{ '/storage/images/'.$pom->id.'/'.$image->url}});">
+						</div>
 					@endforeach
 				</div>
-				<!-- Add Arrows -->
-				<div class="swiper-button-next swiper-button-white"></div>
-				<div class="swiper-button-prev swiper-button-white"></div>
-			</div>
+			</section>
 
-			<div class="swiper-container gallery-thumbs">
+			<!-- Gallery Thumbnails -->
+			<section class="swiper-container gallery-thumbs show-section">
 				<div class="swiper-wrapper">
 					@foreach($pom->images as $image)
-						<div class="swiper-slide" style="background-image:url({{ '/storage/images/'.$pom->id.'/'.$image->url}})"></div>
+						<div class="swiper-slide swiper-lazy" data-background="{{ '/storage/images/'.$pom->id.'/'.$image->url}}">
+							<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+						</div>
 					@endforeach
 				</div>
-			</div>
-
-		</figure>
+			</section>
+		</div>
 		
 		<!-- Info -->
-		<figure class="show__body--info">
-			<div class="info__primary">
+		<div class="show__body--info">
+			<section class="info__primary show-section">
 				<div class="info__primary--item">
 					<p class="item-title">name</p>
 					<p class="item-value">{{ ucfirst($pom->name) }}</p>
@@ -68,17 +67,20 @@
 					<p class="item-title">for sale</p>
 					<p class="item-value">{{ $pom->is_for_sale === 1 ? 'Yes' : 'No' }}</p>
 				</div>
-			</div>
+			</section>
 
 			@if ($pom->is_open_for_breeding)
-				<div class="info__is-open">
-					<h3>{{ $pom->name }} is open for breeding</h3>
-				</div>
+				<section class="info__is-open show-section">
+					<span>
+						<svg class="info__is-open--svg">
+							<use xlink:href="/sprite.svg#info"></use>
+						</svg>
+					</span>
+					<h3 class="info__is-open--txt">{{ $pom->name }} is open for breeding</h3>
+				</section>
 			@endif
-
-			<hr>
 			
-			<div class="info__rels">
+			<section class="info__rels show-section">
 				<h3 class="info__rels--title">
 					More about {{ $pom->name }}
 				</h3>
@@ -133,11 +135,11 @@
 						@endif
 					</li>
 				</ul>
-			</div>
-		</figure>
-	</section>
+			</section>
+		</div>
+	</div>
 
-	<section class="show__footer">
-
-	</section>
+	{{-- <section class="show__footer show-section">
+		<!-- -->
+	</section> --}}
 </div>

@@ -5,7 +5,7 @@
 
 		.cat-item {
 			position: relative;
-			box-shadow: 0 0 8px 2px $black;
+			box-shadow: $bshadow;
 			background: $bgSecondary;
 			border-radius: $bradius;
 			overflow: hidden;
@@ -21,6 +21,7 @@
 				}
 
 				.cat-item__desc--cta {
+					background: $accentSecondary;
 					span::after {
 						transform: translateX(0);
 						transition: transform 0.15s ease, opacity 0.15s ease;
@@ -87,7 +88,7 @@
 				}
 
 				&--cta {
-					background: $accentSecondary;
+					background: $accent;
 					border-radius: 7px;
 					padding: 8px 15px;
 					margin-bottom: 0;
@@ -96,7 +97,7 @@
 
 					& > span {
 						font-size: 18px;
-						font-weight: 500;
+						font-weight: 600;
 						color: $blackSecondary;
 						position: relative;
 						pointer-events: none;

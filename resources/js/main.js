@@ -8,7 +8,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 import { query, disableRightClick } from './components/Utils'
 import { runBubbles } from './components/common/Bubbles'
 import { galleryPageGallery } from './components/main/Gallery'
-import { initAnimations } from './components/main/Animation'
 import { triggerModal } from './components/main/Modal'
 import LinkDistortionCircle from './components/common/LinkDistortionCircle'
 import initCarousel from './components/main/Swiper'
@@ -21,6 +20,9 @@ import runTransition from './components/main/PageTransitions'
 // import { rippleButtonsInit } from './components/main/RippleEffect'
 // Material ripple button effect on click
 // rippleButtonsInit()
+// import { initAnimations } from './components/main/Animation'
+// Trigger animations on scroll
+// initAnimations()
 
 window.onload = () => {
 	// Page transitions
@@ -41,7 +43,8 @@ document.addEventListener(
 		// Locomotive scroll
 		const scroll = new LocomotiveScroll({
 			el: query('[data-scroll-container]'),
-			smooth: true
+			smooth: true,
+			lerp: 0.11
 		})
 
 		const backToTopBtn = query('#backToTop')
@@ -56,11 +59,8 @@ document.addEventListener(
 		distortedLinks.forEach((el) => {
 			const elPosition = [...el.parentNode.children].indexOf(el)
 			const fxObj = LinkDistortionCircle[elPosition]
-			new fxObj(el)
+			fxObj && new fxObj(el)
 		})
-
-		// Trigger animations on scroll
-		initAnimations()
 
 		// Trigger modal (contact)
 		triggerModal()
@@ -71,8 +71,6 @@ document.addEventListener(
 		 * * The second one is using images as css backgrounds.
 		 */
 		disableRightClick()
-
-		// TODO: Change this to better page transitions (but not resourceful)
 
 		/**
 		 * * * * * * * * * * * * * * * * * *
@@ -85,14 +83,12 @@ document.addEventListener(
 		// | =========================================================
 		// | Home
 		// | =========================================================
-		if (query('.main.home')) {
-			// runBubbles('.brand', 3000)
-		}
+		// query('.main.home') && runBubbles('.brand', 3000)
 
 		// | =========================================================
 		// | Gallery
 		// | =========================================================
-		if (query('.main.gallery')) galleryPageGallery()
+		query('.main.gallery') && galleryPageGallery()
 
 		// | =========================================================
 		// | Pomeranians
@@ -106,9 +102,9 @@ document.addEventListener(
 			initCarousel()
 
 			// Bubbles on header
-			setTimeout(() => {
-				runBubbles('.show__header', 1500)
-			}, 1500)
+			// setTimeout(() => {
+			// 	runBubbles('.show__header', 1500)
+			// }, 1500)
 		}
 	},
 	false

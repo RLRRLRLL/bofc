@@ -8,19 +8,19 @@ body {
 	overflow-y: scroll;
 	background: $transition-bg;
 
-	// &.left-arr {
-	// 	cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" height="35" viewBox="0 0 476.213 476.213" width="35"><polygon points="476.213,223.106 57.426,223.106 91.819,188.713 70.606,167.5 0,238.106 70.606,308.713 91.819,287.5 57.426,253.106 476.213,253.106 "/></svg>'),
-	// 		auto;
-	// }
+	&.left-arr {
+		cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" height="55" viewBox="0 0 476.213 476.213" width="55"><polygon points="476.213,223.106 57.426,223.106 91.819,188.713 70.606,167.5 0,238.106 70.606,308.713 91.819,287.5 57.426,253.106 476.213,253.106 "/></svg>'),
+			auto;
+	}
 
-	// &.right-arr {
-	// 	cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" height="35" viewBox="0 0 476.213 476.213" width="35"><polygon points="405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 "/></svg>'),
-	// 		auto;
-	// }
+	&.right-arr {
+		cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" height="55" viewBox="0 0 476.213 476.213" width="55"><polygon points="405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 "/></svg>'),
+			auto;
+	}
 
-	// &.no-arr {
-	// 	cursor: auto;
-	// }
+	&.no-arr {
+		cursor: auto;
+	}
 
 	// scroll bar
 	@include scrollbar;

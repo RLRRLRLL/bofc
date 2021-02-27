@@ -1,4 +1,4 @@
-<div class="poms" x-data="{gridViewActive: true, listViewActive: false}">
+<div class="poms" x-data="{gridViewActive: true, listViewActive: false}" data-scroll-container>
 	<!-- header not relevant, only for grid styling purposes -->
 	@include('includes.main.partials.pomeranian.header')
 	<!-- lw related -->

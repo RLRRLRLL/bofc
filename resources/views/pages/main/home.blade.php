@@ -13,7 +13,7 @@
 					{{ config('app.name') }}
 				</h1>
 	
-				<h2 class="brand__desc anim-item track-in" data-scroll data-scroll-speed="3">
+				<h2 class="brand__desc" data-scroll data-scroll-speed="2">
 					The pomeranian spitz breed kennel
 				</h2>
 			</div>
@@ -73,15 +73,15 @@
 			</div>
 			<div class="container">
 				<div class="section__inner about__inner">
-					<div class="logo anim-item moveUp">
-						<img src="{{ asset('images/logo-circle.png') }}" class="logo__image">
-					</div>
-					<div class="info anim-item fadeInUp">
+					<div class="info fadeInUp anim-item" data-scroll data-scroll-class="anim-stop">
 						<div class="info-text">
 							<p>
 								Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев более менее осмысленного текста рыбы на русском языке, а начинающему оратору отточить навык публичных выступлений в домашних условиях. При создании генератора мы использовали небезизвестный универсальный код речей. Текст генерируется абзацами случайным образом от двух до десяти предложений в абзаце, что позволяет сделать текст более привлекательным и живым для визуально-слухового восприятия.
 							</p>
 						</div>
+					</div>
+					<div class="logo anim-item fadeInUp anim-delay" data-scroll data-scroll-class="anim-stop">
+						<img src="{{ asset('images/logo-circle.png') }}" class="logo__image">
 					</div>
 				</div>
 			</div>
@@ -91,7 +91,7 @@
 		<section id="flexin" class="section flexin" data-scroll-section>
 			<div class="container">
 				<div class="flexin__inner" data-scroll data-scroll-speed="1.5">
-					<div class="flexin__item anim-item fadeInUp">
+					<div class="flexin__item anim-item fadeInUp" data-scroll data-scroll-class="anim-stop">
 						<div class="flexin__item--window">
 							<svg>
 								<use xlink:href="/sprite.svg#certificate"></use>
@@ -105,7 +105,7 @@
 							</p>
 						</div>
 					</div>
-					<div class="flexin__item anim-item fadeInUp anim-delay">
+					<div class="flexin__item anim-item fadeInUp anim-delay" data-scroll data-scroll-class="anim-stop">
 						<div class="flexin__item--window">
 							<svg>
 								<use xlink:href="/sprite.svg#trophey"></use>
@@ -119,7 +119,7 @@
 							</p>
 						</div>
 					</div>
-					<div class="flexin__item anim-item fadeInUp anim-delay-medium">
+					<div class="flexin__item anim-item fadeInUp anim-delay-medium" data-scroll data-scroll-class="anim-stop">
 						<div class="flexin__item--window">
 							<svg>
 								<use xlink:href="/sprite.svg#care"></use>
@@ -141,11 +141,11 @@
 		<section id="reach-us" class="section reach-us" data-scroll-section>
 			<div class="container">
 				<div class="reach-us__inner">
-					<div class="reach-us__col anim-item track-in">
-						<h1 class="reach-us__text">Got questions?</h1>
-						<h1 class="reach-us__text reach-us__text--bigger">Reach us out!</h1>
+					<div class="reach-us__col">
+						<h1 class="reach-us__text anim-item fadeInUp" data-scroll data-scroll-class="anim-stop">Got questions?</h1>
+						<h1 class="reach-us__text reach-us__text--bigger anim-item fadeInUp anim-delay" data-scroll data-scroll-class="anim-stop">Reach us out!</h1>
 					</div>
-					<div class="reach-us__col anim-item fadeInUp">
+					<div class="reach-us__col anim-item fadeInUp" data-scroll data-scroll-class="anim-stop">
 						<button class="reach-us__btn btn-bestia contact-modal-trigger" type="button">
 							<div class="btn-bestia__bg"></div>
 							<span class="btn-bestia__text">Contact us</span>

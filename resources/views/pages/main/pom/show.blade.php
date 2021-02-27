@@ -4,6 +4,9 @@
 
 @section('content')
 	<main class="main show" data-scroll-section>
-		<livewire:pom.user.show :pom="$pom"/>
+		<div class="container">
+			<livewire:pom.user.show :pom="$pom"/>
+			<hr>
+		</div>
     </main>
 @endsection

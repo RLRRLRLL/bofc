@@ -5,12 +5,12 @@
 	&__inner {
 		width: 100%;
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 		align-items: flex-start;
 	}
 
 	&__section {
-		width: 24.5%;
+		max-width: 24.5%;
 		@include flex-column;
 		align-items: center;
 		justify-content: center;

@@ -1,23 +1,30 @@
 &__header {
-	padding: 20px 25px;
 	@include flex-between(row);
-	background: $background;
 	position: sticky;
 	overflow: hidden;
 
 	@import './../../../home/includes/bubbles';
 
 	& > h1 {
+		margin-left: 20px;
 		font-family: leftonade;
 		font-size: 2em;
-		color: $accent;
+		color: $accentSecondary;
 	}
 
 	& > button {
+		margin-right: 20px;
 		background: transparent;
-		border: 1px solid $white;
-		color: $white;
+		border: 2px solid $accentSecondary;
+		border-radius: $bradius;
+		color: $accentSecondary;
 		padding: 10px 15px;
 		font-size: 1em;
+		transition: border $transition, color $transition;
+
+		&:hover {
+			border-color: $accent;
+			color: $accent;
+		}
 	}
 }

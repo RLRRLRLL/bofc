@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         @yield('styles')
     </head>
-    <body>
+    <body class="no-arr">
 		<div class="transition transactive">
 			<div class="transition__layer"></div>
 		</div>
