@@ -28,7 +28,7 @@ form {
 		font-weight: 300;
 		font-size: 17px;
 		margin-bottom: 10px;
-		color: darken($accent, 25%);
+		color: $contactAccent;
 
 		span {
 			color: red;
@@ -44,47 +44,37 @@ form {
 		outline: none;
 		transition: all 0.15s ease-in;
 		background: transparent;
-		color: #252525;
-
-		// typography
+		color: $bgSecondary;
+		font-weight: 300;
 		line-height: 1.5;
-		color: #252525;
+		font-family: bitter;
+		font-weight: 300;
+		font-size: 18px;
+
+		&:focus,
+		&:active {
+			outline: none;
+			border-color: $bgSecondary;
+		}
 	}
 
 	input {
 		border: none;
 		outline: none;
 		box-shadow: none;
-		border-bottom: 1px solid darken($accent, 25%);
+		border-bottom: 1px solid $contactAccent;
 		transition: all 0.15s ease-in;
-		font-family: bitter;
-		font-weight: 300;
-		font-size: 18px;
-
-		&:focus {
-			border-color: #252525;
-		}
 	}
 
 	textarea {
 		min-height: 7rem;
-		border: 1px solid rgba($gray, 0.3);
+		border: 1px solid $contactAccent;
 		box-shadow: none;
-		font-family: system;
-		font-size: 17px;
-		font-weight: 300;
-		line-height: 1.5;
-
-		&:focus,
-		&:active {
-			outline: none;
-			border: 1px solid darken($accent, 25%);
-		}
 	}
 
 	button {
 		@include flex-center(row);
-		@include bg-slide($accent, white);
+		@include bg-slide($bgPrimary, white);
 		align-self: flex-start;
 		margin-top: 15px;
 		padding: 10px 10px 7px;
@@ -95,8 +85,8 @@ form {
 		font-weight: 400;
 		//
 		background: transparent;
-		border: 1px solid darken($accent, 25%);
-		color: darken($accent, 25%);
+		border: 1px solid $contactAccent;
+		color: $contactAccent;
 		line-height: 1.3;
 		transition: color 0.3s, border 0.4s;
 

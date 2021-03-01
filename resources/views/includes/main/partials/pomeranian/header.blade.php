@@ -1,6 +1,6 @@
 <section class="poms__header anim-item fadeInUp anim-delay" data-scroll data-scroll-class="anim-stop">
 	<h1 class="poms__header--title">
-		Find yourself a best friend.
+		{{ __('Find yourself a best friend.') }}
 	</h1>
 	<div class="poms__header--view">
 		<div class="option__btn option--grid "

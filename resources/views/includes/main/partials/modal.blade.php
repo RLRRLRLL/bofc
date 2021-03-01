@@ -7,7 +7,7 @@
 				<div class="left" x-data="{ marque: false }" x-on:message-sent.window="marque = true" >
 					<div class="left__marque" :class="{'go': marque}">
 						<h1>
-							Thank you. Your message received.
+							{{ __('Message received') }}
 						</h1>
 					</div>
 					<livewire:visitor.contact-form/>
@@ -22,9 +22,9 @@
 
 					<!-- Inner -->
 					<div class="right__text">
-						<pre>We would love to hear from you!</pre>
-						<h1>Contact Us</h1>
-						<p>I’m a social animal. Animal because I’ve some degree of randomness in my behaviour. Social because I love to hear and share with people.</p>
+						<pre>{{ __('We would love to hear from you!') }}</pre>
+						<h1>{{ __('Modal Contact Us') }}</h1>
+						<p>{{ __('Contact description') }}</p>
 					</div>
 
 					<hr class="right__hr">

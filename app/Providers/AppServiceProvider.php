@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+		$langs = [
+			'en', 'ru', 'de', 'az'
+		];
+		
+        view()->share('langs', $langs);
     }
 }

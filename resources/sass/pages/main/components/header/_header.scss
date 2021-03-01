@@ -3,6 +3,11 @@
 	z-index: $medium;
 	// padding: 20px 40px;
 	background: $headerFooter;
+	box-shadow: $bshadow;
+
+	.container {
+		padding: 5px 40px;
+	}
 
 	// desktop
 	&__desktop {
@@ -49,7 +54,7 @@
 					&-text {
 						display: block;
 						position: relative;
-						color: rgba($white, 0.6);
+						color: $navColor;
 						pointer-events: none;
 						transition: color $cubic;
 						// typography
@@ -92,23 +97,89 @@
 				}
 
 				// cta
-				& > button {
+				& > .btn-split {
+					box-shadow: $bshadow;
 					margin-left: 15px;
 				}
+			}
 
-				// gradient move on hover
-				// --c1: #f6d365;
-				// --c2: #fda085;
-				// background: linear-gradient(
-				// 		90deg,
-				// 		var(--c1, #f6d365),
-				// 		var(--c2, #fda085) 51%,
-				// 		var(--c1, #f6d365)
-				// 	)
-				// // 	var(--x, 0) / 200%;
-				// &:hover {
-				// 	--x: 100%;
-				// }
+			.lang {
+				position: relative;
+
+				&-result {
+					@include flex-center(row);
+					margin: 0;
+					background: transparent;
+
+					&:hover,
+					&.active {
+						background: $white01;
+
+						.lang-result__text {
+							color: $white08;
+						}
+
+						.lang-result__svg {
+							fill: $white08;
+						}
+					}
+
+					&__text {
+						color: $navColor;
+						margin-right: 2px;
+					}
+
+					&__svg {
+						width: 15px;
+						height: 15px;
+						fill: $navColor;
+					}
+				}
+
+				&-drop {
+					position: absolute;
+					top: 85%;
+					left: 15%;
+					right: 15%;
+					width: 70%;
+					@include flex-column;
+					align-items: stretch;
+					background: lighten($bgSecondary, 5%);
+					box-shadow: $bshadow;
+
+					&__item {
+						padding: 0 !important;
+						display: inline;
+
+						&:hover,
+						&.active {
+							.lang-link {
+								color: rgba($accent, 0.7);
+								background: rgba(white, 0.025);
+							}
+						}
+
+						&.active,
+						&.active:hover {
+							.lang-link {
+								color: $accent;
+								background: $white01;
+							}
+						}
+
+						.lang-link {
+							margin: 0;
+							background: transparent;
+							padding: 5px 10px;
+							display: block;
+							width: 100%;
+
+							font-size: 14px;
+							color: $navColor;
+							text-align: center;
+						}
+					}
+				}
 			}
 		}
 	}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pom;
+use Illuminate\Support\Facades\Request;
 
 class MainPagesController extends Controller
 {

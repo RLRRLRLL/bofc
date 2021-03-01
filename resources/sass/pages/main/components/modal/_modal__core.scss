@@ -71,7 +71,7 @@
 			}
 
 			.left {
-				background: rgb(248, 244, 244);
+				background: #f2f6fa;
 				@include flex-column;
 				justify-content: center;
 				padding: 10px 70px;
@@ -87,7 +87,9 @@
 					width: 200%;
 					display: block;
 					padding: 15px;
-					transition: 8.5s cubic-bezier(0, 0.55, 0.45, 1);
+					transition: left 8s linear;
+					font-family: manege;
+					font-size: 40px;
 					background: transparent;
 					color: black;
 
@@ -142,9 +144,8 @@
 					padding: 10px;
 
 					pre {
-						font-family: system;
-						font-weight: 300;
-						font-size: 20px;
+						font-family: manege;
+						font-size: 25px;
 						color: $white;
 					}
 

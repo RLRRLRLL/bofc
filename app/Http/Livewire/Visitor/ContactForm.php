@@ -30,7 +30,7 @@ class ContactForm extends Component
 		]);
 
 		sleep(1);
-		
+
 		$this->reset();
 		$this->dispatchBrowserEvent('message-sent');
 	}

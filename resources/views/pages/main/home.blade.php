@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('page-title', 'Home')
+@section('page-title', __('Home'))
 
 @section('content')
 	<main class="main home" data-scroll-container>
@@ -14,13 +14,13 @@
 				</h1>
 	
 				<h2 class="brand__desc" data-scroll data-scroll-speed="2">
-					The pomeranian spitz breed kennel
+					{{ __('The pomeranian spitz breed kennel') }}
 				</h2>
 			</div>
 		</section>
 
 		<!-- Grid -->
-		<section class="tiles tiles--rotated" id="grid2" style="margin-top: 100px;" data-scroll-section>
+		<section class="tiles tiles--rotated" id="grid2" data-scroll-section>
 			<div class="tiles__wrap">
 				<div class="tiles__line" data-scroll data-scroll-speed="1" data-scroll-target="#grid2" data-scroll-direction="horizontal">
 					<div class="tiles__line-img"></div>
@@ -68,15 +68,29 @@
 		<!-- About -->
 		<section id="about" class="section about" data-scroll-section>
 			<div class="about__title">
-				<h2 data-scroll data-scroll-speed="3" data-scroll-direction="horizontal">About us &prop; About us &prop; About us &prop; About us &prop; About us</h2>
-				<h2 data-scroll data-scroll-speed="1" data-scroll-direction="horizontal">What we do &prop; What we do &prop; What we do &prop; What we do</h2>
+				<h2 data-scroll data-scroll-speed="3" data-scroll-direction="horizontal">
+					{{ __('About us') }} &prop; 
+					{{ __('About us') }} &prop; 
+					{{ __('About us') }} &prop; 
+					{{ __('About us') }} &prop; 
+					{{ __('About us') }} &prop;
+					{{ __('About us') }} &prop; 
+					{{ __('About us') }} &prop;
+				</h2>
+				<h2 data-scroll data-scroll-speed="1" data-scroll-direction="horizontal">
+					{{ __('What we do') }} &prop; 
+					{{ __('What we do') }} &prop; 
+					{{ __('What we do') }} &prop; 
+					{{ __('What we do') }} &prop; 
+					{{ __('What we do') }}
+				</h2>
 			</div>
 			<div class="container">
 				<div class="section__inner about__inner">
 					<div class="info fadeInUp anim-item" data-scroll data-scroll-class="anim-stop">
 						<div class="info-text">
 							<p>
-								Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев более менее осмысленного текста рыбы на русском языке, а начинающему оратору отточить навык публичных выступлений в домашних условиях. При создании генератора мы использовали небезизвестный универсальный код речей. Текст генерируется абзацами случайным образом от двух до десяти предложений в абзаце, что позволяет сделать текст более привлекательным и живым для визуально-слухового восприятия.
+								{{ __('About description') }}
 							</p>
 						</div>
 					</div>
@@ -99,9 +113,9 @@
 						</div>
 						<div class="flexin__item--desc">
 							<p>
-								<span>Certified gangsters</span>
+								<span>{{ __('AdvantageOneTitle') }}</span>
 								&#8212;
-								Our poms are hella certified. Not to mention their "gansta" possibilities.
+								{{ __('AdvantageOneText') }}
 							</p>
 						</div>
 					</div>
@@ -113,9 +127,9 @@
 						</div>
 						<div class="flexin__item--desc">
 							<p>
-								<span>1 trophey, 2 trophey, finish</span>
+								<span>{{ __('AdvantageTwoTitle') }}</span>
 								&#8212;
-								Tropheys are like cups, but more like tropheys. That's why they could be called trophecups. 
+								{{ __('AdvantageTwoText') }}
 							</p>
 						</div>
 					</div>
@@ -127,9 +141,9 @@
 						</div>
 						<div class="flexin__item--desc">
 							<p>
-								<span>Sharing is not caring</span>
+								<span>{{ __('AdvantageThreeTitle') }}</span>
 								&#8212;
-								That's right. Our poms are beloved and cared, and so much more.
+								{{ __('AdvantageThreeText') }}
 							</p>
 						</div>
 					</div>
@@ -142,13 +156,13 @@
 			<div class="container">
 				<div class="reach-us__inner">
 					<div class="reach-us__col">
-						<h1 class="reach-us__text anim-item fadeInUp" data-scroll data-scroll-class="anim-stop">Got questions?</h1>
-						<h1 class="reach-us__text reach-us__text--bigger anim-item fadeInUp anim-delay" data-scroll data-scroll-class="anim-stop">Reach us out!</h1>
+						<h1 class="reach-us__text anim-item fadeInUp" data-scroll data-scroll-class="anim-stop">{{ __('Got questions?') }}</h1>
+						<h1 class="reach-us__text reach-us__text--bigger anim-item fadeInUp anim-delay" data-scroll data-scroll-class="anim-stop">{{ __('Reach us out!') }}</h1>
 					</div>
 					<div class="reach-us__col anim-item fadeInUp" data-scroll data-scroll-class="anim-stop">
 						<button class="reach-us__btn btn-bestia contact-modal-trigger" type="button">
 							<div class="btn-bestia__bg"></div>
-							<span class="btn-bestia__text">Contact us</span>
+							<span class="btn-bestia__text">{{ __('Contact us') }}</span>
 						</button>
 					</div>
 				</div>

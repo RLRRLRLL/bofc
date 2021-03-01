@@ -1,0 +1,1 @@
+Pomeranian spitz breed kennel

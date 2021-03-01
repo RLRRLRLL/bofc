@@ -6,7 +6,6 @@
 	<main class="main show" data-scroll-section>
 		<div class="container">
 			<livewire:pom.user.show :pom="$pom"/>
-			<hr>
 		</div>
     </main>
 @endsection

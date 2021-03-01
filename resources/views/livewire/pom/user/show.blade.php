@@ -138,8 +138,4 @@
 			</section>
 		</div>
 	</div>
-
-	{{-- <section class="show__footer show-section">
-		<!-- -->
-	</section> --}}
 </div>

@@ -8,7 +8,7 @@
 						{{ config('app.name') }}
 					</h3>
 					<p class="copyright__copy">
-						2014-2020 &copy; All rights reserved.
+						2014-2020 &copy; {{ __('All rights reserved.') }}
 					</p>
 					<img class="copyright__img" src="{{asset('images/logo-circle.png')}}" alt="">
 				</div>
@@ -23,7 +23,7 @@
 							<svg class="footer__ctas--svgs">
 								<use xlink:href="/sprite.svg#backToTop"></use>
 							</svg>
-							Back to top
+							{{ __('Back to top') }}
 						</button>
 					</li>
 					<li>
@@ -31,7 +31,7 @@
 							<svg class="footer__ctas--svgs">
 								<use xlink:href="/sprite.svg#search"></use>
 							</svg>
-							Browse poms
+							{{ __('Browse poms') }}
 						</a>
 					</li>
 				</ul>
@@ -70,13 +70,13 @@
 				<h3 class="footer__section--title">&times;&times;&times;</h3>
 				<ul class="footer__section--list">
 					<li>
-						<a href="#" class="social__item">Pomeranian</a>
+						<a href="#" class="social__item">{{ __('pomeranian') }}</a>
 					</li>
 					<li>
-						<a href="#" class="social__item">Gallery</a>
+						<a href="#" class="social__item">{{ __('gallery') }}</a>
 					</li>
 					<li>
-						<a href="#" class="social__item">About</a>
+						<a href="#" class="social__item">{{ __('news') }}</a>
 					</li>
 				</ul>
 			</div>

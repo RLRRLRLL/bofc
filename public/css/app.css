@@ -397,8 +397,6 @@ span.ripple {
   transition: all 0.25s ease-in;
   color: white;
   background: #fff1c0;
-  font-size: 19px;
-  font-weight: 300;
   letter-spacing: 0.9px;
 }
 
@@ -437,6 +435,9 @@ span.ripple {
   position: relative;
   mix-blend-mode: difference;
   z-index: 10;
+  font-family: leftonade;
+  font-size: 19px;
+  font-weight: 400;
 }
 
 .btn-bestia:hover::before {
@@ -623,6 +624,11 @@ body.body-admin {
   width: 100%;
   z-index: 100;
   background: #1e1e1e;
+  box-shadow: 0 0.5px 8px 1px #100c08;
+}
+
+.header .container {
+  padding: 5px 40px;
 }
 
 .header__desktop {
@@ -671,7 +677,7 @@ body.body-admin {
 .header__desktop ul li .link-text {
   display: block;
   position: relative;
-  color: rgba(227, 242, 253, 0.6);
+  color: rgba(255, 255, 255, 0.3);
   pointer-events: none;
   transition: color 0.3s cubic-bezier(0.8, 0.02, 0.16, 0.99);
   font-size: 19px;
@@ -721,8 +727,89 @@ body.body-admin {
   }
 }
 
-.header__desktop ul li > button {
+.header__desktop ul li > .btn-split {
+  box-shadow: 0 0.5px 8px 1px #100c08;
   margin-left: 15px;
+}
+
+.header__desktop ul .lang {
+  position: relative;
+}
+
+.header__desktop ul .lang-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin: 0;
+  background: transparent;
+}
+
+.header__desktop ul .lang-result:hover,
+.header__desktop ul .lang-result.active {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.header__desktop ul .lang-result:hover .lang-result__text,
+.header__desktop ul .lang-result.active .lang-result__text {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.header__desktop ul .lang-result:hover .lang-result__svg,
+.header__desktop ul .lang-result.active .lang-result__svg {
+  fill: rgba(255, 255, 255, 0.8);
+}
+
+.header__desktop ul .lang-result__text {
+  color: rgba(255, 255, 255, 0.3);
+  margin-right: 2px;
+}
+
+.header__desktop ul .lang-result__svg {
+  width: 15px;
+  height: 15px;
+  fill: rgba(255, 255, 255, 0.3);
+}
+
+.header__desktop ul .lang-drop {
+  position: absolute;
+  top: 85%;
+  left: 15%;
+  right: 15%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #2b2b2b;
+  box-shadow: 0 0.5px 8px 1px #100c08;
+}
+
+.header__desktop ul .lang-drop__item {
+  padding: 0 !important;
+  display: inline;
+}
+
+.header__desktop ul .lang-drop__item:hover .lang-link,
+.header__desktop ul .lang-drop__item.active .lang-link {
+  color: rgba(255, 241, 192, 0.7);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.header__desktop ul .lang-drop__item.active .lang-link,
+.header__desktop ul .lang-drop__item.active:hover .lang-link {
+  color: #fff1c0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.header__desktop ul .lang-drop__item .lang-link {
+  margin: 0;
+  background: transparent;
+  padding: 5px 10px;
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.3);
+  text-align: center;
 }
 
 .footer {
@@ -1339,7 +1426,7 @@ html.has-scroll-dragging {
 }
 
 .overlay .modal__body .left {
-  background: #f8f4f4;
+  background: #f2f6fa;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1378,7 +1465,7 @@ html.has-scroll-dragging {
   font-weight: 300;
   font-size: 17px;
   margin-bottom: 10px;
-  color: #ffd541;
+  color: #756b54;
 }
 
 .overlay .modal__body .left form label span {
@@ -1394,40 +1481,34 @@ html.has-scroll-dragging {
   outline: none;
   transition: all 0.15s ease-in;
   background: transparent;
-  color: #252525;
+  color: #1e1e1e;
+  font-weight: 300;
   line-height: 1.5;
-  color: #252525;
+  font-family: bitter;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.overlay .modal__body .left form input:focus,
+.overlay .modal__body .left form input:active,
+.overlay .modal__body .left form textarea:focus,
+.overlay .modal__body .left form textarea:active {
+  outline: none;
+  border-color: #1e1e1e;
 }
 
 .overlay .modal__body .left form input {
   border: none;
   outline: none;
   box-shadow: none;
-  border-bottom: 1px solid #ffd541;
+  border-bottom: 1px solid #756b54;
   transition: all 0.15s ease-in;
-  font-family: bitter;
-  font-weight: 300;
-  font-size: 18px;
-}
-
-.overlay .modal__body .left form input:focus {
-  border-color: #252525;
 }
 
 .overlay .modal__body .left form textarea {
   min-height: 7rem;
-  border: 1px solid rgba(153, 153, 153, 0.3);
+  border: 1px solid #756b54;
   box-shadow: none;
-  font-family: system;
-  font-size: 17px;
-  font-weight: 300;
-  line-height: 1.5;
-}
-
-.overlay .modal__body .left form textarea:focus,
-.overlay .modal__body .left form textarea:active {
-  outline: none;
-  border: 1px solid #ffd541;
 }
 
 .overlay .modal__body .left form button {
@@ -1446,8 +1527,8 @@ html.has-scroll-dragging {
   font-size: 1.2rem;
   font-weight: 400;
   background: transparent;
-  border: 1px solid #ffd541;
-  color: #ffd541;
+  border: 1px solid #756b54;
+  color: #756b54;
   line-height: 1.3;
   transition: color 0.3s, border 0.4s;
 }
@@ -1475,7 +1556,7 @@ html.has-scroll-dragging {
 }
 
 .overlay .modal__body .left form button::before {
-  background: #fff1c0;
+  background: #121212;
 }
 
 .overlay .modal__body .left form button::after {
@@ -1503,7 +1584,9 @@ html.has-scroll-dragging {
   width: 200%;
   display: block;
   padding: 15px;
-  transition: 8.5s cubic-bezier(0, 0.55, 0.45, 1);
+  transition: left 8s linear;
+  font-family: manege;
+  font-size: 40px;
   background: transparent;
   color: black;
 }
@@ -1559,9 +1642,8 @@ html.has-scroll-dragging {
 }
 
 .overlay .modal__body .right__text pre {
-  font-family: system;
-  font-weight: 300;
-  font-size: 20px;
+  font-family: manege;
+  font-size: 25px;
   color: #e3f2fd;
 }
 
@@ -1824,7 +1906,7 @@ form label {
   font-weight: 300;
   font-size: 17px;
   margin-bottom: 10px;
-  color: #ffd541;
+  color: #756b54;
 }
 
 form label span {
@@ -1840,40 +1922,34 @@ form textarea {
   outline: none;
   transition: all 0.15s ease-in;
   background: transparent;
-  color: #252525;
+  color: #1e1e1e;
+  font-weight: 300;
   line-height: 1.5;
-  color: #252525;
+  font-family: bitter;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+form input:focus,
+form input:active,
+form textarea:focus,
+form textarea:active {
+  outline: none;
+  border-color: #1e1e1e;
 }
 
 form input {
   border: none;
   outline: none;
   box-shadow: none;
-  border-bottom: 1px solid #ffd541;
+  border-bottom: 1px solid #756b54;
   transition: all 0.15s ease-in;
-  font-family: bitter;
-  font-weight: 300;
-  font-size: 18px;
-}
-
-form input:focus {
-  border-color: #252525;
 }
 
 form textarea {
   min-height: 7rem;
-  border: 1px solid rgba(153, 153, 153, 0.3);
+  border: 1px solid #756b54;
   box-shadow: none;
-  font-family: system;
-  font-size: 17px;
-  font-weight: 300;
-  line-height: 1.5;
-}
-
-form textarea:focus,
-form textarea:active {
-  outline: none;
-  border: 1px solid #ffd541;
 }
 
 form button {
@@ -1892,8 +1968,8 @@ form button {
   font-size: 1.2rem;
   font-weight: 400;
   background: transparent;
-  border: 1px solid #ffd541;
-  color: #ffd541;
+  border: 1px solid #756b54;
+  color: #756b54;
   line-height: 1.3;
   transition: color 0.3s, border 0.4s;
 }
@@ -1921,7 +1997,7 @@ form button::after {
 }
 
 form button::before {
-  background: #fff1c0;
+  background: #121212;
 }
 
 form button::after {
@@ -1947,7 +2023,10 @@ form button:hover {
 */
 
 .brand {
-  margin-top: 15px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0 0 25px;
 }
 
 .brand__title {
@@ -1980,6 +2059,7 @@ form button:hover {
 }
 
 .brand__desc {
+  font-family: manege;
   margin-top: 20px;
   color: white;
 }
@@ -2563,7 +2643,7 @@ form button:hover {
 }
 
 .poms {
-  padding: 25px 75px;
+  padding: 25px 75px 75px;
   display: grid;
   grid-gap: 5px 25px;
   grid: -webkit-min-content auto/minmax(250px, 23%) 1fr;
@@ -3030,6 +3110,7 @@ form button:hover {
   grid-auto-rows: min-content;
   grid-gap: 25px;
   font-size: 20px;
+  margin-bottom: 70px;
 }
 
 .show .container {

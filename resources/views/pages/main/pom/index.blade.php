@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('page-title', 'Pomeranian')
+@section('page-title', __('Pomeranian'))
 
 @section('content')
 	<main class="main pomeranian" data-scroll-section>

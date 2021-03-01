@@ -41635,6 +41635,16 @@ function initCarousel() {
     }
   };
 
+  area.addEventListener('mouseover', cursorIntoArrows);
+  window.addEventListener('click', changeSlides);
+
+  if (!window.matchMedia('(min-width: 991px)').matches) {
+    // if screen wider than standart tablet window width, change cursor to arrows
+    // reference: https://mediag.com/blog/popular-screen-resolutions-designing-for-all/
+    area.removeEventListener('mouseover', cursorIntoArrows);
+    window.removeEventListener('click', changeSlides);
+  }
+
   window.addEventListener('resize', function () {
     var currentWidth = window.innerWidth;
     var newWidth; // several things can be broken if we resize on purpose to a bigger(!) width,
@@ -41647,16 +41657,6 @@ function initCarousel() {
         window.location.reload();
       }
     }, 1500);
-
-    if (window.matchMedia('(min-width: 991px)').matches) {
-      // if screen wider than standart tablet window width, change cursor to arrows
-      // reference: https://mediag.com/blog/popular-screen-resolutions-designing-for-all/
-      area.addEventListener('mouseover', cursorIntoArrows);
-      window.addEventListener('click', changeSlides);
-    } else {
-      area.removeEventListener('mouseover', cursorIntoArrows);
-      window.removeEventListener('click', changeSlides);
-    }
   });
 }
 

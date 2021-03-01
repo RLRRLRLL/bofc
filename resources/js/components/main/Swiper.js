@@ -63,6 +63,15 @@ export default function initCarousel() {
 			galleryTop.slideNext()
 		}
 	}
+	area.addEventListener('mouseover', cursorIntoArrows)
+	window.addEventListener('click', changeSlides)
+
+	if (!window.matchMedia('(min-width: 991px)').matches) {
+		// if screen wider than standart tablet window width, change cursor to arrows
+		// reference: https://mediag.com/blog/popular-screen-resolutions-designing-for-all/
+		area.removeEventListener('mouseover', cursorIntoArrows)
+		window.removeEventListener('click', changeSlides)
+	}
 
 	window.addEventListener('resize', () => {
 		let currentWidth = window.innerWidth
@@ -77,15 +86,5 @@ export default function initCarousel() {
 				window.location.reload()
 			}
 		}, 1500)
-
-		if (window.matchMedia('(min-width: 991px)').matches) {
-			// if screen wider than standart tablet window width, change cursor to arrows
-			// reference: https://mediag.com/blog/popular-screen-resolutions-designing-for-all/
-			area.addEventListener('mouseover', cursorIntoArrows)
-			window.addEventListener('click', changeSlides)
-		} else {
-			area.removeEventListener('mouseover', cursorIntoArrows)
-			window.removeEventListener('click', changeSlides)
-		}
 	})
 }

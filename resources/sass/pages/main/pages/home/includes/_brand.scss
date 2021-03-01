@@ -63,7 +63,9 @@
 // }
 
 .brand {
-	margin-top: 15px; //locomotive data-speed
+	width: 30%;
+	@include flex-column;
+	margin: 15px 0 0 25px; //locomotive data-speed
 
 	&__title {
 		position: relative;
@@ -77,6 +79,7 @@
 	}
 
 	&__desc {
+		font-family: manege;
 		margin-top: 20px;
 		color: white;
 	}

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" lang="{{ App::getLocale() }}">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="keywords" content="pomeranian, bubbles of champain, dog, dogs, poms, spitz, spitz baku">
-        @include('includes.common.favicon')
+		<meta name="keywords" content="@include('includes.common.meta.keywords')">
+		<meta name="description" content="@include('includes.common.meta.description')">
+        @include('includes.common.meta.favicon')
         <title>[ @yield('page-title') ] {{ config('app.name') }}</title>
 		@if (app()->isLocal())
 			<script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
@@ -14,6 +15,7 @@
         @yield('styles')
     </head>
     <body class="no-arr">
+		
 		<div class="transition transactive">
 			<div class="transition__layer"></div>
 		</div>

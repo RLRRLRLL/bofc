@@ -1,0 +1,1 @@
+pomeranian, bubbles of champain, dog, dogs, poms, spitz, spitz baku
