@@ -55,7 +55,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="{{ route('create.new.pom') }}">
+						<a href="{{ route('create.new.pom', app()->getLocale()) }}">
 							<i class="fas fa-plus"></i>
 							Add pom
 						</a>
@@ -73,19 +73,19 @@
 						</a>
 					</li>
 					<li>
-						<a href="{{ route('settings') }}">
+						<a href="{{ route('settings', app()->getLocale()) }}">
 							<i class="fas fa-cog"></i>
 							Settings
 						</a>
 					</li>
 					<li>
-						<a href="{{ route('logout') }}"
+						<a href="{{ route('logout', app()->getLocale()) }}"
 							onclick="event.preventDefault();
 							document.getElementById('logout-form').submit();">
 							<i class="fas fa-sign-out-alt"></i>
 							Sign out
 							<form id="logout-form" 
-									action="{{ route('logout') }}" 
+									action="{{ route('logout', app()->getLocale()) }}" 
 									method="POST" 
 									class="d-none">
 								@csrf

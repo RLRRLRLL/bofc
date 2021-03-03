@@ -1,4 +1,4 @@
-<section class="poms__header anim-item fadeInUp anim-delay" data-scroll data-scroll-class="anim-stop">
+<section class="poms__header">
 	<h1 class="poms__header--title">
 		{{ __('Find yourself a best friend.') }}
 	</h1>

@@ -314,12 +314,6 @@ body,
   src: url("/fonts/Bitter/Bitter-Regular.ttf");
 }
 
-@font-face {
-  font-family: "bitter-300";
-  font-weight: 300;
-  src: url("/fonts/Bitter/Bitter-Light.ttf");
-}
-
 /* 
  Transition background color.
  Note: transition bg and body bg has to be the same,

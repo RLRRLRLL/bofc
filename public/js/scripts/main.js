@@ -40603,13 +40603,14 @@ function disableRightClick() {
 /*!***************************************************!*\
   !*** ./resources/js/components/common/Bubbles.js ***!
   \***************************************************/
-/*! exports provided: runBubbles, stopBubbles */
+/*! exports provided: runBubbles, stopBubbles, distortBubble */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "runBubbles", function() { return runBubbles; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "stopBubbles", function() { return stopBubbles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "distortBubble", function() { return distortBubble; });
 /* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Utils */ "./resources/js/components/Utils.js");
 
 var interval;
@@ -40632,6 +40633,15 @@ var runBubbles = function runBubbles(selector, timeout) {
 var stopBubbles = function stopBubbles() {
   window.clearInterval(interval);
   interval = null;
+};
+var distortBubble = function distortBubble() {
+  var turb = document.getElementById('turbulence');
+  var tl = new TimelineMax();
+  tl.to(turb, 3, {
+    attr: {
+      baseFrequency: '0 0'
+    }
+  });
 };
 
 /***/ }),
@@ -41770,9 +41780,13 @@ document.addEventListener('DOMContentLoaded', function () {
   // | Home
   // | =========================================================
   // query('.main.home') && runBubbles('.brand', 3000)
-  // | =========================================================
+
+  if (Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.main.home')) {
+    Object(_components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__["distortBubble"])();
+  } // | =========================================================
   // | Gallery
   // | =========================================================
+
 
   Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('.main.gallery') && Object(_components_main_Gallery__WEBPACK_IMPORTED_MODULE_2__["galleryPageGallery"])(); // | =========================================================
   // | Pomeranians

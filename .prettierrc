@@ -2,5 +2,8 @@
 	"trailingComma": "none",
 	"tabWidth": 4,
 	"semi": false,
-	"singleQuote": true
+	"singleQuote": true,
+	"bracketSpacing": true,
+	"arrowFunctionParentheses": "avoid",
+	"proseWrap": "never"
 }

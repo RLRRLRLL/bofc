@@ -6,7 +6,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 /* USED COMPONENTS: */
 import { query, disableRightClick } from './components/Utils'
-import { runBubbles } from './components/common/Bubbles'
+import { runBubbles, distortBubble } from './components/common/Bubbles'
 import { galleryPageGallery } from './components/main/Gallery'
 import { triggerModal } from './components/main/Modal'
 import LinkDistortionCircle from './components/common/LinkDistortionCircle'
@@ -84,6 +84,9 @@ document.addEventListener(
 		// | Home
 		// | =========================================================
 		// query('.main.home') && runBubbles('.brand', 3000)
+		if (query('.main.home')) {
+			distortBubble()
+		}
 
 		// | =========================================================
 		// | Gallery

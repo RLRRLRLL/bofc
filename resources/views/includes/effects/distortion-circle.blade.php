@@ -6,3 +6,10 @@
 		</filter>
 	</defs>
 </svg>
+
+<svg class="hidden">
+	<filter id="noise">
+		<feTurbulence baseFrequency="0.03 0.09" result="NOISE" numOctaves="1" id="turbulence" />
+		<feDisplacementMap in="SourceGraphic" in2="NOISE" scale="20" id="displacement"></feDisplacementMap>
+	</filter>
+</svg>

@@ -316,12 +316,6 @@ body,
   src: url("/fonts/Bitter/Bitter-Regular.ttf");
 }
 
-@font-face {
-  font-family: "bitter-300";
-  font-weight: 300;
-  src: url("/fonts/Bitter/Bitter-Light.ttf");
-}
-
 /* 
  Transition background color.
  Note: transition bg and body bg has to be the same,
@@ -625,10 +619,11 @@ body.body-admin {
   z-index: 100;
   background: #1e1e1e;
   box-shadow: 0 0.5px 8px 1px #100c08;
+  position: relative;
 }
 
 .header .container {
-  padding: 5px 40px;
+  padding: 10px 40px;
 }
 
 .header__desktop {
@@ -680,7 +675,7 @@ body.body-admin {
   color: rgba(255, 255, 255, 0.3);
   pointer-events: none;
   transition: color 0.3s cubic-bezier(0.8, 0.02, 0.16, 0.99);
-  font-size: 19px;
+  font-size: 17px;
 }
 
 .header__desktop ul li .link:hover .link-text,
@@ -813,6 +808,7 @@ body.body-admin {
 }
 
 .footer {
+  margin-top: auto;
   background: #1e1e1e;
   padding: 20px 0;
 }
@@ -908,7 +904,7 @@ body.body-admin {
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding: 25px 0;
+  padding-top: 7px;
 }
 
 .footer__section .copyright__img {
@@ -922,49 +918,15 @@ body.body-admin {
 
 .footer__section .copyright__brand {
   font-family: leftonade;
-  font-size: 23px;
-  background-image: repeating-linear-gradient(to right, #a2682a 0%, #be8c3c 8%, #be8c3c 18%, #d3b15f 27%, #faf0a0 35%, #ffffc2 40%, #faf0a0 50%, #d3b15f 58%, #be8c3c 67%, #b17b32 77%, #bb8332 83%, #d4a245 88%, #e1b453 93%, #a4692a 100%);
-  background-size: 200%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 1px rgba(255, 200, 0, 0.3));
-  -webkit-animation: MoveBackgroundPosition 6s ease-in-out infinite;
-          animation: MoveBackgroundPosition 6s ease-in-out infinite;
-}
-
-@-webkit-keyframes MoveBackgroundPosition {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes MoveBackgroundPosition {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .footer__section .copyright__copy {
   font-size: 16px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.6);
+  text-align: center;
 }
 
 .footer__ctas {
@@ -1049,7 +1011,7 @@ body.body-admin {
 @-webkit-keyframes fadeInUp {
   0% {
     opacity: 0;
-    transform: translateY(75px);
+    transform: translateY(50px);
   }
 
   100% {
@@ -1061,7 +1023,7 @@ body.body-admin {
 @keyframes fadeInUp {
   0% {
     opacity: 0;
-    transform: translateY(75px);
+    transform: translateY(50px);
   }
 
   100% {
@@ -1135,14 +1097,14 @@ body.body-admin {
   visibility: hidden;
   -webkit-animation-play-state: paused;
           animation-play-state: paused;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
 }
 
 .anim-stop {
   visibility: visible;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
   -webkit-animation-play-state: running;
           animation-play-state: running;
 }
@@ -2023,45 +1985,71 @@ form button:hover {
 */
 
 .brand {
-  width: 30%;
+  width: 100%;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   margin: 15px 0 0 25px;
+  position: relative;
 }
 
 .brand__title {
   position: relative;
-  font-family: "leftonade";
-  font-size: 50px;
-  letter-spacing: -0.5px;
-  background-image: repeating-linear-gradient(to right, #a2682a 0%, #be8c3c 8%, #be8c3c 18%, #d3b15f 27%, #faf0a0 35%, #ffffc2 40%, #faf0a0 50%, #d3b15f 58%, #be8c3c 67%, #b17b32 77%, #bb8332 83%, #d4a245 88%, #e1b453 93%, #a4692a 100%);
-  background-size: 200%;
-  background-clip: text;
+  background: linear-gradient(90deg, #252525, #e0cb84, #fff, #e0cb84, #252525);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  -webkit-animation: animate 8s linear infinite;
+          animation: animate 8s linear infinite;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 1px rgba(255, 200, 0, 0.3));
-  -webkit-animation: MoveBackgroundPosition 6s ease-in-out infinite;
-          animation: MoveBackgroundPosition 6s ease-in-out infinite;
+          background-clip: text;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.01);
+  margin-bottom: 0;
 }
 
-@keyframes MoveBackgroundPosition {
-  0% {
-    background-position: 0% 50%;
-  }
+.brand__title h1 {
+  font-family: "bitter";
+  font-size: 50px;
+  letter-spacing: -0.5px;
+}
 
-  50% {
-    background-position: 100% 50%;
+@-webkit-keyframes animate {
+  0% {
+    background-position: -500%;
   }
 
   100% {
-    background-position: 0% 50%;
+    background-position: 500%;
+  }
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+
+  100% {
+    background-position: 500%;
   }
 }
 
 .brand__desc {
   font-family: manege;
-  margin-top: 20px;
+  margin-top: 28px;
   color: white;
+}
+
+.brand__bubble {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  filter: url("#noise");
+}
+
+.brand__bubble img {
+  width: 420px;
+  height: 420px;
 }
 
 .brand .b {
@@ -2443,7 +2431,7 @@ form button:hover {
   flex-direction: row;
   padding: 0 15vw;
   background: linear-gradient(to top, #141414, rgba(37, 37, 37, 0.8)), url("/images/bgs/map.svg") no-repeat center;
-  background-size: cover cover;
+  background-size: 500px 500px;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
@@ -2705,6 +2693,7 @@ form button:hover {
   margin-right: 3px;
   transition: 0.3s ease;
   position: absolute;
+  top: 1.4px;
   left: 0;
 }
 
@@ -2836,6 +2825,7 @@ form button:hover {
   display: grid;
   grid-template: min-content/1fr;
   padding: 25px 35px;
+  box-shadow: 0 0.5px 8px 1px #100c08;
   border-radius: 10px;
   background: #1e1e1e;
 }
@@ -2858,21 +2848,89 @@ form button:hover {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.poms__filter .filter > * {
-  margin-bottom: 10px;
-}
-
 .poms__filter .filter__title {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 1.3em;
+  color: #daf3e8;
+  font-size: 1em;
   margin-bottom: 15px;
 }
 
 .poms__filter .filter__item {
-  font-size: 1em;
+  padding-left: 15px;
+  margin-bottom: 10px;
+}
+
+.poms__filter .filter__item .radio [type=radio]:checked,
+.poms__filter .filter__item .radio [type=radio]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+
+.poms__filter .filter__item .radio [type=radio]:checked + label,
+.poms__filter .filter__item .radio [type=radio]:not(:checked) + label {
+  position: relative;
+  display: inline-block;
+  padding-left: 25px;
+  color: #999;
+  cursor: pointer;
+}
+
+.poms__filter .filter__item .radio [type=radio]:checked + label::before,
+.poms__filter .filter__item .radio [type=radio]:checked + label::after,
+.poms__filter .filter__item .radio [type=radio]:not(:checked) + label::before,
+.poms__filter .filter__item .radio [type=radio]:not(:checked) + label::after {
+  content: "";
+  position: absolute;
+  top: 6.66px;
+  left: 6.66px;
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  transition: all 0.2s ease;
+}
+
+.poms__filter .filter__item .radio [type=radio]:checked + label::before,
+.poms__filter .filter__item .radio [type=radio]:not(:checked) + label::before {
+  background: #999;
+}
+
+.poms__filter .filter__item .radio [type=radio]:checked + label::after,
+.poms__filter .filter__item .radio [type=radio]:not(:checked) + label::after {
+  background: #53dd6c;
+}
+
+.poms__filter .filter__item .radio [type=radio]:checked + label::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.poms__filter .filter__item .radio [type=radio]:not(:checked) + label::after {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.poms__filter .filter__item .radio [type=radio]:checked + label {
+  color: #eaeaea;
+}
+
+.poms__filter .filter__item .radio [type=radio]:checked + label::before {
+  background: #1e1e1e;
+}
+
+.poms__filter .filter__item .radio [type=radio]:checked + label::after {
+  background: #53dd6c;
+}
+
+.poms__filter .filter__item .radio [type=radio]:checked + label::before,
+.poms__filter .filter__item .radio [type=radio]:checked + label::after,
+.poms__filter .filter__item .radio [type=radio]:not(:checked) + label::before,
+.poms__filter .filter__item .radio [type=radio]:not(:checked) + label::after {
+  top: 4.66px;
+  transition: none;
 }
 
 .poms__filter .filter__item label {
+  font-family: bitter;
+  font-size: 18px;
   color: #e3f2fd;
 }
 

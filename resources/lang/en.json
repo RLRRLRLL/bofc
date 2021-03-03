@@ -37,7 +37,7 @@
 	"Back to top": "Back to top",
 	"Browse poms": "Browse poms",
 
-	"__________________POMERANIAN INDEX PAGE__________": "____________________________________________",
+	"__________________POMERANIAN PAGE__________": "____________________________________________",
 	"Find yourself a best friend.": "Find yourself a best friend.",
 	"Filters": "Filters",
 	"Gender": "Gender",
@@ -55,8 +55,10 @@
 	"adult": "Adult",
 	"senior": "Senior",
 	"Open for breeding": "Open for breeding",
+	"Breeding": "Breeding",
 	"Has titles": "Has titles",
 	"Learn more": "Learn more",
+	"Click to learn more.": "Click to learn more.",
 
 	"_________________________________________CONTACT MODAL__________": "______________________",
 	"Name": "Name",

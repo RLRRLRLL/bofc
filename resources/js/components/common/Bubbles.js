@@ -25,3 +25,14 @@ export const stopBubbles = () => {
 	window.clearInterval(interval)
 	interval = null
 }
+
+export const distortBubble = () => {
+	const turb = document.getElementById('turbulence')
+	const tl = new TimelineMax()
+
+	tl.to(turb, 3, {
+		attr: {
+			baseFrequency: '0 0'
+		}
+	})
+}

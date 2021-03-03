@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\App;
 
 
 
-Route::redirect('/', fn() => redirect(app()->getLocale()));
+Route::redirect('/', '/en');
 
 Route::group([
 		'prefix' => '{lang}',

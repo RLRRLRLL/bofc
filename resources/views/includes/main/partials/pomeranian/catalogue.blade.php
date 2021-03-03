@@ -1,14 +1,13 @@
-<section class="poms__catalogue anim-item fadeInUp anim-delay-medium"
-		data-scroll data-scroll-class="anim-stop"
+<section class="poms__catalogue"
 		:class="{'poms__catalogue--grid': gridViewActive, 'poms__catalogue--list': listViewActive}"
 >
 	@if($poms)
 		@foreach ($poms as $pom)
 
 			@inject('app', 'Illuminate\Contracts\Foundation\Application')
-				@inject('urlGenerator', 'Illuminate\Routing\UrlGenerator')
+			@inject('urlGenerator', 'Illuminate\Routing\UrlGenerator')
 			
-			<figure class="cat-item" title="Click to learn more.">
+			<figure class="cat-item" title="{{ __('Click to learn more.') }}">
 				<a href="{{ route('poms.show', [ app()->getLocale(), 'id' => $pom->id]) }}" class="cat-item__link leave-page"></a>
 
 				<img class="cat-item__image" src="{{ '/storage/images/'.$pom->id.'/'}}{{ ($pom->images()->where('is_avatar', 1)->first() !== null) ? $pom->images()->where('is_avatar', 1)->first()->url : $pom->images()->first()->url }}"
@@ -21,7 +20,7 @@
 						</h3>
 						<svg class="gender-svgs">
 							<use xlink:href="/sprite.svg#{{ 
-								($pom->gender == 'male') ? 'male' : 'fem'
+								($pom->is_male === 1) ? 'male' : 'fem'
 								}}">
 							</use>
 						</svg>

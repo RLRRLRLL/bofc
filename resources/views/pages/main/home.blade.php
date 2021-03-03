@@ -8,14 +8,18 @@
 
 		<!-- Brand -->
 		<section class="brand" data-scroll-section>
-			<div class="container">
-				<h1 class="brand__title" data-scroll data-scroll-speed="1">
-					{{ config('app.name') }}
-				</h1>
+			<div class="container anim-item moveUp anim-delay-long" data-scroll data-scroll-class="anim-stop">
+				<div class="brand__title" data-scroll data-scroll-speed="3" data-scroll-target=".brand">
+					<h1>{{ config('app.name') }}</h1>
+				</div>
 	
-				<h2 class="brand__desc" data-scroll data-scroll-speed="2">
+				<h2 class="brand__desc" data-scroll data-scroll-speed="5" data-scroll-target=".brand">
 					{{ __('The pomeranian spitz breed kennel') }}
 				</h2>
+
+				<div class="brand__bubble" data-scroll data-scroll-speed="5" data-scroll-target=".brand">
+					<img src="{{ asset('images/transparent/bubble.png') }}" alt="">
+				</div>
 			</div>
 		</section>
 
@@ -86,8 +90,10 @@
 				</h2>
 			</div>
 			<div class="container">
-				<div class="section__inner about__inner">
-					<div class="info fadeInUp anim-item" data-scroll data-scroll-class="anim-stop">
+				<div class="section__inner about__inner" id="info" style="position:sticky;">
+					<div class="info fadeInUp anim-item" 
+						data-scroll 
+						data-scroll-class="anim-stop">
 						<div class="info-text">
 							<p>
 								{{ __('About description') }}
@@ -95,7 +101,7 @@
 						</div>
 					</div>
 					<div class="logo anim-item fadeInUp anim-delay" data-scroll data-scroll-class="anim-stop">
-						<img src="{{ asset('images/logo-circle.png') }}" class="logo__image">
+						<img src="{{ asset('images/transparent/logo-circle.png') }}" class="logo__image">
 					</div>
 				</div>
 			</div>
@@ -172,7 +178,5 @@
 @endsection
 
 @push('scripts')
-	<script>
-		//
-	</script>
+	<script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
 @endpush

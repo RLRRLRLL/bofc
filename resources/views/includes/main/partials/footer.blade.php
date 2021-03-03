@@ -3,14 +3,17 @@
 		<div class="footer__inner">
 			<!-- Copyright -->
 			<div class="footer__section copyright">
+				<h3 class="footer__section--title">&times;&times;&times;</h3>
 				<div class="copyright">
 					<h3 class="copyright__brand">
 						{{ config('app.name') }}
 					</h3>
 					<p class="copyright__copy">
-						2014-2020 &copy; {{ __('All rights reserved.') }}
+						&copy; 2014-2021
+						<br>
+						{{ __('All rights reserved.') }}
 					</p>
-					<img class="copyright__img" src="{{asset('images/logo-circle.png')}}" alt="">
+					<img class="copyright__img" src="{{asset('images/transparent/logo-circle.png')}}" alt="">
 				</div>
 			</div>
 

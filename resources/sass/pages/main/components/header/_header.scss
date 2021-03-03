@@ -4,9 +4,10 @@
 	// padding: 20px 40px;
 	background: $headerFooter;
 	box-shadow: $bshadow;
+	position: relative;
 
 	.container {
-		padding: 5px 40px;
+		padding: 10px 40px;
 	}
 
 	// desktop
@@ -58,8 +59,7 @@
 						pointer-events: none;
 						transition: color $cubic;
 						// typography
-						// font-family: bitter-300;
-						font-size: 19px;
+						font-size: 17px;
 					}
 
 					&:hover,

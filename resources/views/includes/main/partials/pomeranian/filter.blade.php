@@ -1,8 +1,5 @@
 <div class="filter-wrapper">
-	<section class="poms__filter anim-item fadeInUp anim-delay-medium" data-scroll data-scroll-class="anim-stop">
-		<h3 class="poms__filter--title">
-			{{ __('Filters') }}
-		</h3>
+	<section class="poms__filter">
 
 		<div class="filter">
 			<h2 class="filter__title">
@@ -10,25 +7,25 @@
 			</h2>
 
 			<div class="filter__item">
-				<div class="checkbox">
-					<input id="all" type="checkbox" checked/>
-					<label for="all">{{ __('All') }}<span class="box"></span></label>
+				<div class="radio">
+					<input id="all" type="radio" value="all" wire:model="pomGender" checked/>
+					<label for="all">{{ __('All') }}</label>
 				</div>
 				<span class="badge status-primary"></span>
 			</div>
 
 			<div class="filter__item">
-				<div class="checkbox">
-					<input id="male" type="checkbox" />
-					<label for="male">{{ __('Male') }}<span class="box"></span></label>
+				<div class="radio">
+					<input id="male" type="radio" value="1" wire:model="pomGender"/>
+					<label for="male">{{ __('Male') }}</label>
 				</div>
 				<span class="badge status-primary"></span>
 			</div>
 
 			<div class="filter__item">
-				<div class="checkbox">
-					<input id="female" type="checkbox" />
-					<label for="female">{{ __('Female') }}<span class="box"></span></label>
+				<div class="radio">
+					<input id="female" type="radio" value="0" wire:model="pomGender"/>
+					<label for="female">{{ __('Female') }}</label>
 				</div>
 				<span class="badge status-primary"></span>
 			</div>
@@ -38,14 +35,6 @@
 			<h2 class="filter__title">
 				{{ __('Age') }}
 			</h2>
-
-			<div class="filter__item">
-				<div class="checkbox">
-					<input id="all" type="checkbox" checked/>
-					<label for="all">{{ __('All') }}<span class="box"></span></label>
-				</div>
-				<span class="badge status-primary"></span>
-			</div>
 
 			<div class="filter__item">
 				<div class="checkbox">
@@ -88,7 +77,7 @@
 			<div class="filter__item">
 				<div class="checkbox">
 					<input id="open_for_breeding" type="checkbox" />
-					<label for="open_for_breeding">{{ __('Open for breeding') }}<span class="box"></span></label>
+					<label for="open_for_breeding">{{ __('Breeding') }}<span class="box"></span></label>
 				</div>
 				<span class="badge status-primary"></span>
 			</div>

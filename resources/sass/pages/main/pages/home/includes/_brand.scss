@@ -1,87 +1,67 @@
-// .brand {
-// 	max-width: 35%;
-// 	@include flex-center(column);
-// 	padding: 35px;
-// 	border: 1px solid $white05;
-// 	position: relative;
-
-// 	&__title {
-// 		position: relative;
-
-// 		// typography
-// 		font-family: bitter-300;
-// 		text-align: center;
-// 		font-size: 40px;
-// 		letter-spacing: 1px;
-// 		background-image: $gradient-two;
-// 		background-size: 200%;
-// 		background-clip: text;
-// 		-webkit-background-clip: text;
-// 		-webkit-text-fill-color: transparent;
-// 		filter: drop-shadow(0 0 1px rgba(255, 200, 0, 0.3));
-// 		animation: MoveBackgroundPosition 6s ease-in-out infinite;
-
-// 		@keyframes MoveBackgroundPosition {
-// 			0% {
-// 				background-position: 0% 50%;
-// 			}
-
-// 			50% {
-// 				background-position: 100% 50%;
-// 			}
-
-// 			100% {
-// 				background-position: 0% 50%;
-// 			}
-// 		}
-
-// 		&::after {
-// 			content: '';
-// 			display: block;
-// 			position: absolute;
-// 			top: 100%;
-// 			left: 5%;
-// 			right: 5%;
-// 			margin-top: 20px;
-// 			width: 90%;
-// 			height: 1px;
-// 			background-color: $white08;
-// 		}
-// 	}
-
-// 	&__subtitle {
-// 		font-family: 'manege';
-// 		margin-top: 50px;
-// 		color: $white09;
-// 		text-transform: uppercase;
-// 		text-align: center;
-// 		letter-spacing: 2px;
-// 		font-size: 18px;
-// 	}
-
-// 	@import './bubbles';
-// }
-
 .brand {
-	width: 30%;
+	width: 100%;
+	min-height: 70vh;
 	@include flex-column;
 	margin: 15px 0 0 25px; //locomotive data-speed
+	position: relative;
 
 	&__title {
 		position: relative;
-		// typography
-		font-family: 'leftonade';
-		font-size: 50px;
-		letter-spacing: -0.5px;
 
 		// Gold gradient
-		@include bg-gradient-anim;
+		// @include bg-gradient-anim;
+		background: linear-gradient(
+			90deg,
+			#252525,
+			#e0cb84,
+			#fff,
+			#e0cb84,
+			#252525
+		);
+		background-repeat: no-repeat;
+		background-size: 80%;
+		animation: animate 8s linear infinite;
+		background-clip: text;
+		-webkit-text-fill-color: rgba(black, 0.01);
+		margin-bottom: 0;
+
+		h1 {
+			// typography
+			font-family: 'bitter';
+			font-size: 50px;
+			letter-spacing: -0.5px;
+		}
+
+		@keyframes animate {
+			0% {
+				background-position: -500%;
+			}
+
+			100% {
+				background-position: 500%;
+			}
+		}
 	}
 
 	&__desc {
 		font-family: manege;
-		margin-top: 20px;
+		margin-top: 28px;
 		color: white;
+	}
+
+	&__bubble {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translateX(-50%);
+		display: inline-flex;
+		filter: url('#noise');
+		// margin: 50px 0 300px 25%;
+
+		img {
+			width: 420px;
+			height: 420px;
+		}
 	}
 
 	@import './bubbles';

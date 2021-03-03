@@ -34,7 +34,7 @@
 									<span>Created at</span>
 									<span>{{ date('d-m-Y', strtotime($pom->created_at)) }}</span>
 								</p>
-								<a href="{{ route('show.new.pom', ['id' => $pom->id]) }}" class="pom-info__cta">
+								<a href="{{ route('show.new.pom', ['id' => $pom->id, app()->getLocale()]) }}" class="pom-info__cta">
 									Learn more
 								</a>
 							</div>

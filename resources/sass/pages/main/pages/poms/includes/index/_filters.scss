@@ -8,6 +8,7 @@
 	display: grid;
 	grid-template: min-content / 1fr;
 	padding: 25px 35px;
+	box-shadow: $bshadow;
 
 	border-radius: $bradius;
 	background: $bgSecondary;
@@ -32,19 +33,38 @@
 			border-bottom: 1px solid $white03;
 		}
 
-		& > * {
-			margin-bottom: 10px;
+		form {
 		}
 
 		&__title {
-			color: $white06;
-			font-size: 1.3em;
+			color: $accentSecondary;
+			font-size: 1em;
 			margin-bottom: 15px;
 		}
 
 		&__item {
-			font-size: 1em;
+			padding-left: 15px;
+			margin-bottom: 10px;
+
+			.radio {
+				@include radio;
+				[type='radio'] {
+					&:checked,
+					&:not(:checked) {
+						& + label {
+							&::before,
+							&::after {
+								top: 4.66px;
+								transition: none;
+							}
+						}
+					}
+				}
+			}
+
 			label {
+				font-family: bitter;
+				font-size: 18px;
 				color: $white;
 			}
 		}
