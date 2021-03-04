@@ -7,28 +7,27 @@ use Livewire\Component;
 
 class Index extends Component
 {
-	public $poms;
-
 	// filter
 	public $pomGender = 'all';
-	public $pomAge = ['puppy', 'adult', 'senior'];
-	public $pomForSale = 1;
-	public $pomHasTitles = 0;
-	public $pomIsOpenForBreeding = 0;
+	public $pomAges = [];
+	public $pomForSale;
+	public $pomHasTitles;
+	public $pomIsOpen;
 
     public function render()
     {
-		$this->poms = Pom::where('is_published', 1)
+		$poms = Pom::where('is_published', 1)
+						 ->whereNotNull($this->pomHasTitles ? 'titles' : 'id')
+						 ->where('is_for_sale', $this->pomForSale ? 1 : '!=', 2)
+						 ->where('is_open_for_breeding', $this->pomIsOpen ? 1 : '!=', 2)
 						 ->where('is_male', $this->pomGender !== 'all' ? $this->pomGender : '!=', 2)
-						 ->where('age', count($this->pomAge) > 0 ? $this->pomAge[0] : '!=', 2)
-						 ->where('age', count($this->pomAge) > 1 ? $this->pomAge[1] : '!=', 2)
-						 ->where('age', count($this->pomAge) > 2 ? $this->pomAge[2] : '!=', 2)
-						 ->whereNotNull($this->pomHasTitles === 1 ? 'titles' : 'id')
-						 ->where('is_open_for_breeding', $this->pomIsOpenForBreeding)
-						 ->get();
+						 ->where('age', count($this->pomAges) > 0 ? $this->pomAges[0] : '!=', 2)
+						 ->where('age', count($this->pomAges) > 1 ? $this->pomAges[1] : '!=', 2)
+						 ->where('age', count($this->pomAges) > 2 ? $this->pomAges[2] : '!=', 2)
+						 ->paginate(10);
 
         return view('livewire.pom.user.index', [
-			'poms' => $this->poms
+			'poms' => $poms
 		]);
     }
 }

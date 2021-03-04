@@ -2,6 +2,8 @@
 	// overflow-x: hidden; // sticky
 }
 
+@import './../../components/_pagination.scss';
+
 .poms {
 	padding: 25px 75px 75px;
 	display: grid;
@@ -14,6 +16,11 @@
 
 	&__filter {
 		height: auto !important;
+	}
+
+	&__pagination {
+		grid-column: 2/3;
+		height: 100%;
 	}
 
 	/* --------- Inputs ---------- */

@@ -12,7 +12,7 @@
 		@endif
 		@livewireStyles
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
-        @yield('styles')
+        @stack('styles')
     </head>
     <body class="no-arr">
 		

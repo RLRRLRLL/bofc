@@ -195,4 +195,14 @@
 
 		<polygon id="bigS3" class="bigS3 slideAll" points="819.226 444.996 839.223 403.871 1090.947 403.871 1110.751 444.996 819.226 444.996"/>
 	</symbol>
+
+	<!-- Pagination double arrows -->
+	<symbol id='double-right' viewBox="0 0 15 15">
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M2.146 11.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 1 0-.708.708L5.793 7.5l-3.647 3.646zm6 0a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 1 0-.708.708L11.793 7.5l-3.647 3.646z"/>
+	</symbol>
+
+	<symbol id='double-left' viewBox="0 0 15 15">
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M6.854 3.854a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L3.207 7.5l3.647-3.646zm6 0a.5.5 0 0 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L9.207 7.5l3.647-3.646z"/>
+	</symbol>
+
 </svg>

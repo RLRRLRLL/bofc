@@ -2630,6 +2630,95 @@ form button:hover {
   }
 }
 
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.pagination li {
+  box-shadow: 0 0.5px 8px 1px #100c08;
+}
+
+.pagination__nav {
+  border-radius: 50%;
+  border: 1px solid transparent;
+  transition: border-color 0.15s ease-in;
+}
+
+.pagination__nav:hover {
+  border-color: #fff1c0;
+}
+
+.pagination__nav:hover svg {
+  fill: #fff1c0;
+}
+
+.pagination__nav:first-child {
+  margin-right: 10px;
+}
+
+.pagination__nav:last-child {
+  margin-left: 10px;
+}
+
+.pagination__nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding: 5px;
+}
+
+.pagination__link {
+  display: block;
+  margin: 0 5px;
+  border: 1px solid transparent;
+  background: #212121;
+  transition: background 0.15s ease-in, opacity 0.15s ease-out;
+  opacity: 0.45;
+}
+
+.pagination__link:hover,
+.pagination__link.active {
+  opacity: 1;
+}
+
+.pagination__link a,
+.pagination__link span {
+  display: block;
+  padding: 10px;
+}
+
+.pagination__link a {
+  color: #daf3e8;
+}
+
+.pagination__link.active {
+  border-color: rgba(218, 243, 232, 0.3);
+  background: #fff1c0;
+}
+
+.pagination__link.active span {
+  color: #121212;
+}
+
+.pagination__svg {
+  fill: #daf3e8;
+  transition: 0.15s ease-out;
+  width: 20px;
+  height: 20px;
+}
+
+.pagination__svg--left {
+  transform: rotate(90deg);
+}
+
+.pagination__svg--right {
+  transform: rotate(-90deg);
+}
+
 .poms {
   padding: 25px 75px 75px;
   display: grid;
@@ -2648,6 +2737,11 @@ form button:hover {
 
 .poms__filter {
   height: auto !important;
+}
+
+.poms__pagination {
+  grid-column: 2/3;
+  height: 100%;
 }
 
 .poms input:disabled ~ * {
@@ -2932,6 +3026,11 @@ form button:hover {
   font-family: bitter;
   font-size: 18px;
   color: #e3f2fd;
+}
+
+.poms__catalogue {
+  display: flex;
+  flex-direction: column;
 }
 
 .poms__catalogue--grid,

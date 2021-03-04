@@ -1,0 +1,80 @@
+.pagination
+{
+  @include flex-center(row);
+
+  li {
+    box-shadow: $bshadow;
+  }
+
+  &__nav {
+    border-radius: 50%;
+    border: 1px solid transparent;
+    transition: border-color .15s ease-in;
+
+    &:hover {
+      border-color: $accent;
+
+      svg {
+        fill: $accent;
+      }
+    }
+
+    &:first-child {
+      margin-right: 10px;
+    }
+
+    &:last-child {
+      margin-left: 10px;
+    }
+
+    a {
+      @include flex-center(row);
+      padding: 5px;
+    }
+  }
+
+  &__link {
+    display: block;
+    margin: 0 5px;
+    border: 1px solid transparent;
+    background: lighten($bgSecondary, 1%);
+    transition: background .15s ease-in, opacity .15s ease-out;
+    opacity: .45;
+
+    &:hover, &.active {
+      opacity: 1;
+    }
+
+    a, span {
+      display: block;
+      padding: 10px;
+    }
+
+    a {
+      color: $accentSecondary;
+    }
+
+    &.active {
+      border-color: rgba($accentSecondary, .3);
+      background: $accent;
+      span {
+        color: $bgPrimary;
+      }
+    }
+  }
+
+  &__svg {
+    fill: $accentSecondary;
+    transition: .15s ease-out;
+    width: 20px;
+    height: 20px;
+
+    &--left {
+      transform: rotate(90deg);
+    }
+
+    &--right {
+      transform: rotate(-90deg);
+    }
+  }
+}
