@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\App;
 Route::redirect('/', '/en');
 
 Route::group([
-		'prefix' => '{lang}',
+		'prefix' => '{lang?}',
 		'where' => ['locale' => '[a-zA-Z]{2}'],
 		'middleware' => 'setlocale'
 	], function() {
@@ -26,20 +26,20 @@ Route::group([
 	Route::get('/pomeranian', [MainPagesController::class, 'index'])->name('poms.index');
 	Route::get('/pomeranian/{id}', [MainPagesController::class, 'show'])->name('poms.show');
 	Route::get('/gallery', [MainPagesController::class, 'gallery'])->name('gallery');
-
-	// auth
-	Auth::routes();
-
-	// admin pages
-	Route::middleware('auth')->prefix('/admin')->group(function() {
-		// Settings
-		Route::get('/settings', [AdminPagesController::class, 'settings'])->name('settings');
-		// Pom related
-		Route::get('/', [AdminPagesController::class, 'index'])->name('admin');
-		Route::get('/create', [AdminPagesController::class, 'createPom'])->name('create.new.pom');
-		Route::get('/pom/{id}', [AdminPagesController::class, 'show'])->name('show.new.pom');
-	}); 
 });
+
+// auth
+Auth::routes();
+
+// admin pages
+Route::middleware('auth')->prefix('/admin')->group(function() {
+	// Settings
+	Route::get('/settings', [AdminPagesController::class, 'settings'])->name('settings');
+	// Pom related
+	Route::get('/', [AdminPagesController::class, 'index'])->name('admin');
+	Route::get('/create', [AdminPagesController::class, 'createPom'])->name('create.new.pom');
+	Route::get('/pom/{id}', [AdminPagesController::class, 'show'])->name('show.new.pom');
+}); 
 
 // Clear cache
 Route::get('/cache', function() {

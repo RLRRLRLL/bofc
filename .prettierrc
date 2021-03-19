@@ -4,6 +4,6 @@
 	"semi": false,
 	"singleQuote": true,
 	"bracketSpacing": true,
-	"arrowFunctionParentheses": "avoid",
+	"arrowParens": "avoid",
 	"proseWrap": "never"
 }

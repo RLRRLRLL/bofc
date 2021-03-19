@@ -36,11 +36,11 @@
 					</a>
 				</li>
 
-				{{-- <li>
+				<li>
 					<a class="link {{ checkLinks('dashboard') }}" href="/admin">
 						<span class="link-text">Dashboard</span>
 					</a>
-				</li> --}}
+				</li>
 
 				<li class="enough-padding">
 					<button class="btn-split btn-bestia contact-modal-trigger">
