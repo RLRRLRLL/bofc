@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 class SetLanguage
 {
@@ -17,16 +18,13 @@ class SetLanguage
      */
     public function handle(Request $request, Closure $next)
     {
-		App::setLocale($request->lang);
+		if (!Session::has('locale'))
+		{
+			Session::put('locale', config('app.locale'));
+		}
 
-		$request->route()->forgetParameter('lang');
-		// if ($request->route()->parameter()) {
-		// 	dd('test');
-		// 	$request->route()->forgetParameter('change-lang');
-		// } else {
-		// 	$request->route()->forgetParameter('lang');
-		// }
-        
+		App::setLocale(session('locale'));
+
 		return $next($request);
     }
 }

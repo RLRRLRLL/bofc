@@ -1,8 +1,8 @@
 <div class="poms" x-data="{gridViewActive: true, listViewActive: false}" data-scroll-container>
-	<!-- header not relevant, only for grid styling purposes -->
+	<!-- header not related, only for grid styling purposes -->
 	@include('includes.main.partials.pomeranian.header')
 
-	<!-- lw related -->
+	<!-- livewire related -->
     @include('includes.main.partials.pomeranian.filter')
 	@include('includes.main.partials.pomeranian.catalogue')
 

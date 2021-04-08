@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@layer components {
+  .leftonade {
+    font-family: "leftonade";
+  }
+
+  .bitter {
+    font-family: "bitter";
+  }
+
+  .manege {
+    font-family: "manege";
+  }
+
+  .container {
+    @apply h-full w-full;
+  }
+}
+@tailwind utilities;

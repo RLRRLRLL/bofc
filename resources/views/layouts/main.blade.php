@@ -11,7 +11,8 @@
 			<script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
 		@endif
 		@livewireStyles
-        <link rel="stylesheet" href="{{asset('css/app.css')}}">
+		<link rel="stylesheet" href="{{ asset('css/tailwind.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         @stack('styles')
     </head>
     <body class="no-arr">
