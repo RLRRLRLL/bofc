@@ -31,7 +31,7 @@ window.onload = () => {
 
 document.addEventListener(
 	'DOMContentLoaded',
-	function () {
+	() => {
 		/**
 		 * * * * * * * * * * * * * * * * * *
 		 * * Common function are listed below.
@@ -41,22 +41,27 @@ document.addEventListener(
 		 */
 
 		// Locomotive scroll
-		const scroll = new LocomotiveScroll({
-			el: query('[data-scroll-container]'),
-			smooth: true,
-			lerp: 0.11
-		})
+		const tabletWidth = '1025px'
 
-		const backToTopBtn = query('#backToTop')
-		backToTopBtn.addEventListener('click', () => {
-			scroll.scrollTo('top', {
-				duration: 500
+		if (!window.matchMedia(`(max-width: ${tabletWidth}`).matches) {
+			// console.log('tablet width or less')
+			const scroll = new LocomotiveScroll({
+				el: query('[data-scroll-container]'),
+				smooth: true,
+				lerp: 0.11
 			})
-		})
+
+			const backToTopBtn = query('#backToTop')
+			backToTopBtn.addEventListener('click', () => {
+				scroll.scrollTo('top', {
+					duration: 500
+				})
+			})
+		}
 
 		// Distortion links (circle on hover)
 		const distortedLinks = [...document.querySelectorAll('a.link')]
-		distortedLinks.forEach((el) => {
+		distortedLinks.forEach(el => {
 			const elPosition = [...el.parentNode.children].indexOf(el)
 			const fxObj = LinkDistortionCircle[elPosition]
 			fxObj && new fxObj(el)

@@ -10,32 +10,32 @@
 		@if (app()->isLocal())
 			<script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
 		@endif
+		{{-- Styles --}}
 		@livewireStyles
-		<link rel="stylesheet" href="{{ asset('css/tailwind.css') }}">
+		{{-- <link rel="stylesheet" href="{{ asset('css/tailwind.css') }}"> --}}
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         @stack('styles')
     </head>
     <body class="no-arr">
-		
-		<div class="transition transactive">
-			<div class="transition__layer"></div>
-		</div>
+		{{-- Slide transition between pages --}}
+		@include('includes.effects.page-transition')
 
+		{{-- Wrapper --}}
 		<div id="wrapper" data-scroll-container>
 			@include('includes.effects.distortion-circle')
 			@include('includes.main.partials.modal')
 
-			<!-- Header -->
+			{{-- Header --}}
 			@include('includes.main.partials.header')
 			
-			<!-- Main -->
+			{{-- Main --}}
 			@yield('content')
 
-			<!-- Footer -->
+			{{-- Footer --}}
 			@include('includes.main.partials.footer')
 		</div>
         
-		<!-- Scripts -->
+		{{-- Scripts --}}
 		<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 		@livewireScripts
 		<script src="{{asset('js/scripts/main.js')}}" type="module" defer></script>

@@ -1,23 +1,19 @@
 .flexin {
-	padding: 100px 0;
+	padding: 6rem 0;
 	min-height: 50vh;
-	// background-color: #323232;
-	// background-image: url('/images/textures/axiom-pattern.png');
 	@include flex-center(row);
 
 	&__inner {
 		width: 100%;
 		height: 100%;
-		@include flex-around(row);
-		align-items: flex-start;
+		// @include flex-around(row);
+		// align-items: flex-start;
+		display: grid;
+		grid-template: 1fr / repeat(3, 1fr);
+		gap: 1rem 7rem;
 	}
 
 	&__item {
-		max-width: 25%;
-		// width: 20%;
-		// @include flex-center(column);
-		@include flex-column;
-
 		&--window {
 			width: 100%;
 			@include flex-center(row);
@@ -48,6 +44,34 @@
 					color: $accent;
 				}
 			}
+		}
+	}
+}
+
+@media screen and (max-width: 1111px) {
+	.flexin {
+		&__inner {
+			gap: 1rem 2rem;
+		}
+
+		&__item {
+			&--window {
+				padding: 2rem;
+
+				svg {
+					width: 65px;
+					height: 65px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 735px) {
+	.flexin {
+		&__inner {
+			grid-template: repeat(3, 1fr) / 1fr;
+			gap: 5rem 2rem;
 		}
 	}
 }

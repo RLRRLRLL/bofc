@@ -28,9 +28,8 @@
 		// logotype
 		.logo {
 			&__image {
-				// @include image;
 				max-width: 300px;
-				max-height: auto;
+				max-height: 100%;
 				margin-left: 50px;
 			}
 		}
@@ -43,7 +42,7 @@
 
 			&-text {
 				p {
-					// font-family: leftonade;
+					font-weight: 400;
 					font-size: 18px;
 					max-width: 85%;
 					line-height: 1.8;
@@ -52,6 +51,57 @@
 					&:not(:last-child) {
 						margin-bottom: 15px;
 					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 320px) {
+	.about {
+		margin-top: 4rem;
+
+		&__title {
+			h2 {
+				font-size: 3rem;
+
+				&:last-child {
+					margin-top: 2rem;
+					font-size: 2rem;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.about {
+		&__inner {
+			margin-top: 5rem;
+			display: grid;
+			grid-template-columns: 1fr;
+
+			grid-gap: 1rem;
+
+			.info,
+			.logo {
+				width: auto;
+			}
+
+			.info-text p {
+				max-width: none;
+				text-align: center;
+				font-size: 1.01rem;
+			}
+
+			.logo {
+				@include flex-center(row);
+				margin-top: 3rem;
+
+				img {
+					margin: 0;
+					max-width: 100%;
+					width: 15rem;
 				}
 			}
 		}

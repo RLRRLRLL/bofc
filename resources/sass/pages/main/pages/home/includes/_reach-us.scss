@@ -38,5 +38,53 @@
 		align-self: flex-end;
 		display: inline-block;
 		padding: 10px 20px;
+
+		.btn-bestia__text {
+			font-size: 1.7rem;
+		}
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.reach-us {
+		padding: 0 4rem;
+
+		&__text {
+			font-size: 28px;
+
+			&--bigger {
+				font-size: 2.5rem;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 635px) {
+	.reach-us {
+		padding: 0;
+	}
+}
+
+@media screen and (max-width: 455px) {
+	.reach-us {
+		height: 300px;
+		padding: 0 1rem;
+
+		&__inner {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		&__col {
+			width: 100%;
+		}
+
+		&__text {
+			text-align: center;
+		}
+
+		&__btn {
+			align-self: stretch;
+		}
 	}
 }

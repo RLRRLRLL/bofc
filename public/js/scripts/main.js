@@ -1948,7 +1948,7 @@ module.exports = {
 
 /***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/swiper/components/effect-fade/effect-fade.min.css":
 /*!********************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--8-1!./node_modules/postcss-loader/src??ref--8-2!./node_modules/swiper/components/effect-fade/effect-fade.min.css ***!
+  !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/swiper/components/effect-fade/effect-fade.min.css ***!
   \********************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1967,7 +1967,7 @@ exports.push([module.i, ".swiper-container-fade.swiper-container-free-mode .swip
 
 /***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/swiper/swiper-bundle.min.css":
 /*!***********************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--8-1!./node_modules/postcss-loader/src??ref--8-2!./node_modules/swiper/swiper-bundle.min.css ***!
+  !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/swiper/swiper-bundle.min.css ***!
   \***********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -30587,7 +30587,7 @@ module.exports = function (css) {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../css-loader??ref--8-1!../../../postcss-loader/src??ref--8-2!./effect-fade.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/swiper/components/effect-fade/effect-fade.min.css");
+var content = __webpack_require__(/*! !../../../css-loader??ref--7-1!../../../postcss-loader/src??ref--7-2!./effect-fade.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/swiper/components/effect-fade/effect-fade.min.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -40529,7 +40529,7 @@ _esm_components_core_core_class__WEBPACK_IMPORTED_MODULE_0__["default"].use(comp
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../css-loader??ref--8-1!../postcss-loader/src??ref--8-2!./swiper-bundle.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/swiper/swiper-bundle.min.css");
+var content = __webpack_require__(/*! !../css-loader??ref--7-1!../postcss-loader/src??ref--7-2!./swiper-bundle.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/swiper/swiper-bundle.min.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -41883,17 +41883,23 @@ document.addEventListener('DOMContentLoaded', function () {
    * * every page.
    */
   // Locomotive scroll
-  var scroll = new locomotive_scroll__WEBPACK_IMPORTED_MODULE_6__["default"]({
-    el: Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('[data-scroll-container]'),
-    smooth: true,
-    lerp: 0.11
-  });
-  var backToTopBtn = Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('#backToTop');
-  backToTopBtn.addEventListener('click', function () {
-    scroll.scrollTo('top', {
-      duration: 500
+  var tabletWidth = '1025px';
+
+  if (!window.matchMedia("(max-width: ".concat(tabletWidth)).matches) {
+    // console.log('tablet width or less')
+    var scroll = new locomotive_scroll__WEBPACK_IMPORTED_MODULE_6__["default"]({
+      el: Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('[data-scroll-container]'),
+      smooth: true,
+      lerp: 0.11
     });
-  }); // Distortion links (circle on hover)
+    var backToTopBtn = Object(_components_Utils__WEBPACK_IMPORTED_MODULE_0__["query"])('#backToTop');
+    backToTopBtn.addEventListener('click', function () {
+      scroll.scrollTo('top', {
+        duration: 500
+      });
+    });
+  } // Distortion links (circle on hover)
+
 
   var distortedLinks = _toConsumableArray(document.querySelectorAll('a.link'));
 
@@ -41971,28 +41977,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /***/ }),
 
-/***/ "./resources/sass/plugins/tailwind/tailwind.scss":
-/*!*******************************************************!*\
-  !*** ./resources/sass/plugins/tailwind/tailwind.scss ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 0:
-/*!******************************************************************************************************************************************!*\
-  !*** multi ./resources/js/main.js ./resources/sass/app.scss ./resources/sass/admin.scss ./resources/sass/plugins/tailwind/tailwind.scss ***!
-  \******************************************************************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** multi ./resources/js/main.js ./resources/sass/app.scss ./resources/sass/admin.scss ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /var/www/bofc/resources/js/main.js */"./resources/js/main.js");
 __webpack_require__(/*! /var/www/bofc/resources/sass/app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! /var/www/bofc/resources/sass/admin.scss */"./resources/sass/admin.scss");
-module.exports = __webpack_require__(/*! /var/www/bofc/resources/sass/plugins/tailwind/tailwind.scss */"./resources/sass/plugins/tailwind/tailwind.scss");
+module.exports = __webpack_require__(/*! /var/www/bofc/resources/sass/admin.scss */"./resources/sass/admin.scss");
 
 
 /***/ })

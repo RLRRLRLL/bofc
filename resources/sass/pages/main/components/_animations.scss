@@ -78,15 +78,17 @@
 	animation-name: moveUp;
 }
 
-/* Main */
-.anim-item {
-	visibility: hidden;
-	animation-play-state: paused;
-	animation-duration: 1s;
-}
+@media screen and (min-width: 1024px) {
+	/* Main */
+	.anim-item {
+		visibility: hidden;
+		animation-play-state: paused;
+		animation-duration: 1s;
+	}
 
-.anim-stop {
-	visibility: visible;
-	animation-fill-mode: both;
-	animation-play-state: running;
+	.anim-stop {
+		visibility: visible;
+		animation-fill-mode: both;
+		animation-play-state: running;
+	}
 }

@@ -1,87 +1,34 @@
-<header class="header" data-scroll-section>
-	<div class="container">
-		<!-- desktop -->
-		<nav class="header__desktop">
-			<ul>
+<header class="header" data-scroll-section x-data="{ showBurgerMenu: false }">
+	<div class="container px-24">
+		<div class="header__inner">
+			{{-- Navigation: desktop --}}
+			<nav class="header__desktop">
+				@include('includes.main.partials.header.nav-menu')
+			</nav>
 
-				<li>
-					<a class="link leave-page {{ Route::currentRouteName() === 'homepage' ? 'active' : '' }}" href="{{ route('homepage') }}" >
-						<span class="link-text">
-							{{ __('home') }}
-						</span>
-					</a>
-				</li>
+			{{-- Btn burger --}}
+			<button class="header__burger--trigger" x-on:click="showBurgerMenu = !showBurgerMenu">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21">
+					<g fill="none" fill-rule="evenodd" stroke="#626262" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 6.5h12"/><path d="M4.498 10.5h11.997"/><path d="M4.5 14.5h11.995"/></g>
+				</svg>
+			</button>
 
-				<li>
-					<a class="link leave-page {{ checkLinks('pomeranian') }}" href="{{ route('poms.index') }}">
-						<span class="link-text">
-							{{ __('pomeranian') }}
-						</span>
-					</a>
-				</li>
+			{{-- Navigation: mobile --}}
+			<nav 
+				class="header__burger" 
+				:class="{'show': showBurgerMenu}"
+			>
+				<button class="header__burger--close" type="button" x-on:click="showBurgerMenu = false">
+					<svg>
+						<use xlink:href="/sprite.svg#x"></use>
+					</svg>
+				</button>
 
-				<li>
-					<a class="link leave-page {{ checkLinks('gallery') }}" href="{{ route('gallery') }}">
-						<span class="link-text">
-							{{ __('gallery') }}
-						</span>
-					</a>
-				</li>
+				@include('includes.main.partials.header.nav-menu')
+			</nav>
 
-				<li>
-					<a class="link leave-page {{ checkLinks('news') }}" href="#">
-						<span class="link-text">
-							{{ __('news') }}
-						</span>
-					</a>
-				</li>
-
-				<li>
-					<a class="link {{ checkLinks('dashboard') }}" href="{{ route('admin') }}">
-						<span class="link-text">
-							Dashboard
-						</span>
-					</a>
-				</li>
-
-				<li class="enough-padding">
-					<button class="btn-split btn-bestia contact-modal-trigger">
-						<span>
-							{{ __('get in touch') }}
-						</span>
-					</button>
-				</li>
-
-				<li class="lang" x-data="{ showDrop: false, result: '{{ app()->getLocale() }}'.toUpperCase() }">
-					<button 
-						class="lang-result" 
-						:class="{'active': showDrop}"
-						type="button" 
-						@click.prevent="showDrop = !showDrop"
-					>
-						<span class="lang-result__text" x-text="result.toUpperCase()"></span>
-						<svg class="lang-result__svg">
-							<use xlink:href="/sprite.svg#arrow"></use>
-						</svg>
-					</button>
-					<ul class="lang-drop" x-show.transition.duration.250ms="showDrop">
-						@foreach($langs as $lang)
-							<li class="lang-drop__item" :class="{'active': result === '{{ $lang }}'.toUpperCase()}">
-								<a 
-									class="lang-link leave-page"
-									href="{{'/change-language/'.$lang }}" 
-									x-on:click="result = '{{ $lang }}'; showDrop = false"
-									x-text="'{{ $lang }}'.toUpperCase()"
-								>
-								</a>
-							</li>
-						@endforeach
-					</ul>
-				</li>
-
-			</ul>
-		</nav>	
-
-		<!-- mobile -->
+			{{-- Language switcher --}}
+			@include('includes.main.partials.header.lang-switcher')
+		</div>
 	</div>
 </header>

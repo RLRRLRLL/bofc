@@ -169,41 +169,8 @@
 	opacity: 0.7;
 }
 
-.tiles__title {
-	position: absolute;
-	height: 100vh;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 10vw;
-	padding: 3rem;
-	margin: 0;
-	line-height: 0.8;
-	font-family: span, serif;
-	font-weight: 700;
-	font-style: normal;
-}
-
-.tiles__title--alt {
-	font-size: 9vw;
-	font-size: clamp(2rem, 9vw, 7.25rem);
-}
-
-.tiles__title--intro {
-	padding-top: 10vh;
-	align-items: flex-start;
-	justify-content: flex-start;
-}
-
-.tiles__title--right {
-	justify-content: flex-end;
-}
-
-.tiles__title--left {
-	justify-content: flex-start;
-}
-
-.tiles__title--full {
-	height: 100%;
+@media screen and (max-width: 1024px) {
+	.tiles {
+		display: none;
+	}
 }

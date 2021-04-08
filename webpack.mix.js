@@ -11,7 +11,7 @@ mix.js('resources/js/main.js', 'public/js/scripts')
 	.js('resources/js/admin.js', 'public/js/scripts')
 	.sass('resources/sass/app.scss', 'public/css')
 	.sass('resources/sass/admin.scss', 'public/css')
-	.sass('resources/sass/plugins/tailwind/tailwind.scss','public/css/tailwind.css')
+	// .sass('resources/sass/plugins/tailwind/tailwind.scss','public/css/tailwind.css')
 	.options({
 		processCssUrls: false,
 		// postCss: [tailwindJit]

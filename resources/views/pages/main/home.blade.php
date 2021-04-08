@@ -90,7 +90,7 @@
 				</h2>
 			</div>
 			<div class="container">
-				<div class="section__inner about__inner" id="info" style="position:sticky;">
+				<div class="section__inner about__inner" id="info">
 					<div class="info fadeInUp anim-item" 
 						data-scroll 
 						data-scroll-class="anim-stop">
