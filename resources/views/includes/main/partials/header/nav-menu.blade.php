@@ -1,6 +1,6 @@
 <ul>
 	<li> {{-- Homepage --}} 
-		<a class="link leave-page {{ Route::currentRouteName() === 'homepage' ? 'active' : '' }}" href="{{ route('homepage') }}" >
+		<a class="link leave-page {{ checkLinks('/') }}" href="{{ route('homepage') }}" >
 			<span class="link-text">
 				{{ __('home') }}
 			</span>

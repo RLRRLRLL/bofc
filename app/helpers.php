@@ -7,5 +7,5 @@ use Illuminate\Support\Facades\App;
  */
 function checkLinks($url)
 {
-	return request()->is(App::getLocale().'/'.$url.'*') ? 'active' : '';
+	return request()->is($url.'*') ? 'active' : '';
 }
