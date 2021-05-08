@@ -25,13 +25,9 @@ Route::middleware('setlocale')->group(function() {
 	Route::get('/pomeranian/{id}', [MainPagesController::class, 'show'])->name('poms.show');
 	Route::get('/gallery', [MainPagesController::class, 'gallery'])->name('gallery');
 
-	// auth
-	Auth::routes();
-
 	// admin pages
 	Route::group([
-		'prefix' => '/admin',
-		'middleware' => 'auth',
+		'prefix' => '/12a5155wo298d1u3d1j0',
 	], function() {
 		// Pom related
 		Route::get('/', [AdminPagesController::class, 'index'])->name('admin');

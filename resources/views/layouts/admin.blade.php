@@ -78,20 +78,6 @@
 							Settings
 						</a>
 					</li>
-					<li>
-						<a href="{{ route('logout', app()->getLocale()) }}"
-							onclick="event.preventDefault();
-							document.getElementById('logout-form').submit();">
-							<i class="fas fa-sign-out-alt"></i>
-							Sign out
-							<form id="logout-form" 
-									action="{{ route('logout', app()->getLocale()) }}" 
-									method="POST" 
-									class="d-none">
-								@csrf
-							</form>
-						</a>
-					</li>
 				</ul>
 
 				<button class="sidebar__close">&#10005;</button>

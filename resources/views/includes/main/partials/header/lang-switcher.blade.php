@@ -10,7 +10,7 @@
 			<use xlink:href="/sprite.svg#arrow"></use>
 		</svg>
 	</button>
-	<ul class="lang-drop" x-show.transition.duration.250ms="showDrop">
+	<ul class="lang-drop" x-show.transition.duration.250ms="showDrop" x-on:click.away="showDrop = false">
 		@foreach($langs as $lang)
 			<li class="lang-drop__item" :class="{'active': result === '{{ $lang }}'.toUpperCase()}">
 				<a 

@@ -12,7 +12,7 @@
 		@endif
 		{{-- Styles --}}
 		@livewireStyles
-		{{-- <link rel="stylesheet" href="{{ asset('css/tailwind.css') }}"> --}}
+		<link rel="stylesheet" href="{{ asset('css/tailwind.css') }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         @stack('styles')
     </head>

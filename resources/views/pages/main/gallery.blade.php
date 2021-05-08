@@ -90,7 +90,7 @@
 			</div>
 
 			<div id="drag-tip">
-				Drag to explore
+				{{ __('Drag to explore') }}
 			</div>
 		</div>
 	</main>

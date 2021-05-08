@@ -48,6 +48,7 @@ document.addEventListener(
 			const scroll = new LocomotiveScroll({
 				el: query('[data-scroll-container]'),
 				smooth: true,
+				multiplier: 1.7,
 				lerp: 0.11
 			})
 

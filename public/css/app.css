@@ -1115,8 +1115,6 @@ body.body-admin {
   bottom: 0;
   width: 100%;
   height: 100%;
-}
-.transition::after {
   content: "";
   background: #121212;
   transform: translate3d(100%, 0, 0);
@@ -2820,7 +2818,6 @@ form button:hover {
   position: relative;
 }
 .poms__filter {
-  position: -webkit-sticky;
   position: sticky;
   top: 30px;
   display: grid;
@@ -3016,7 +3013,7 @@ form button:hover {
   pointer-events: none;
 }
 .poms__catalogue--grid .cat-item__desc--cta > span::after, .poms__catalogue--list .cat-item__desc--cta > span::after {
-  content: "\2192";
+  content: "→";
   position: absolute;
   left: 120%;
   top: 41%;
@@ -3128,7 +3125,6 @@ form button:hover {
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  position: -webkit-sticky;
   position: sticky;
   overflow: hidden;
 }

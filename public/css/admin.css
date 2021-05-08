@@ -1431,8 +1431,6 @@ brightness when sidebar expanded
 .single__tabs button.active {
   background: #141312;
   color: white;
-}
-.single__tabs button.active {
   box-shadow: 0 0 5px 0 inset rbga(#80bdff, 1);
 }
 .single .info__name {
