@@ -39,20 +39,6 @@
 			width: 40%;
 			position: relative;
 			@include flex-center(column);
-
-			&-text {
-				p {
-					font-weight: 400;
-					font-size: 18px;
-					max-width: 85%;
-					line-height: 1.8;
-					color: $white09;
-
-					&:not(:last-child) {
-						margin-bottom: 15px;
-					}
-				}
-			}
 		}
 	}
 }

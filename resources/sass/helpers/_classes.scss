@@ -2,16 +2,6 @@
 	@include fill-effect($white08);
 }
 
-// hidden class
-// used for svgs for now
-.hidden {
-	position: absolute;
-	overflow: hidden;
-	width: 0;
-	height: 0;
-	pointer-events: none;
-}
-
 // ripple effect
 .btn-ripple {
 	position: relative;
@@ -38,14 +28,13 @@ span.ripple {
 	position: relative;
 	display: inline-block;
 	overflow: hidden;
-	padding: 10px;
+	padding: 10px 16px;
 
 	border: none;
 	border-radius: 5px;
 	transition: all 0.25s ease-in;
 	color: white;
-	background: $accent;
-	letter-spacing: 0.9px;
+	background: white;
 
 	&::before,
 	&::after {
@@ -77,7 +66,7 @@ span.ripple {
 		mix-blend-mode: difference;
 		z-index: 10;
 		font-family: leftonade;
-		font-size: 19px;
+		font-size: 1.5rem;
 		font-weight: 400;
 	}
 
@@ -126,6 +115,58 @@ span.ripple {
 	}
 }
 
+/* Header nav distortion circle effect links */
+.circle-link {
+	display: inline-block;
+	position: relative;
+	flex: none;
+	color: var(--color-menu-link);
+
+	&-circle {
+		outline: 120px solid transparent;
+		opacity: 0;
+		position: absolute;
+		pointer-events: none;
+		height: 1px;
+		background: white;
+		box-shadow: 0 0 5px 2px white inset, 0 0 10px 1px $goldMain;
+		bottom: 50%;
+		width: 9rem;
+		left: 50%;
+		margin-left: -4.5rem;
+		transform: rotate(-45deg);
+	}
+
+	&-text {
+		display: block;
+		position: relative;
+		color: #9ca3af;
+		pointer-events: none;
+		transition: color $cubic;
+	}
+
+	&:hover,
+	&.active {
+		.circle-link-text {
+			color: white;
+			// text-shadow: 2px 2px 1px black;
+		}
+		.circle-link-circle {
+			transition: opacity 0.25s ease 0.05s;
+			opacity: 1;
+			margin-top: 0;
+		}
+	}
+
+	&:active,
+	&:focus {
+		.circle-link-circle {
+			margin: 0;
+			opacity: 1;
+		}
+	}
+}
+
 /* Spinner for submit buttons */
 .spinner-wrapper {
 	margin-left: 10px;
@@ -148,6 +189,59 @@ span.ripple {
 
 		100% {
 			transform: rotate(360deg);
+		}
+	}
+}
+
+/* Button horizontal slide */
+.btn-border-zoom {
+	position: relative;
+	display: inline-block;
+	pointer-events: auto;
+	cursor: pointer;
+	border: none;
+	background: none;
+
+	&::before,
+	&::after {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	&::before {
+		content: '';
+		background: $amber;
+		transition: transform 0.3s cubic-bezier(0.2, 1, 0.7, 1);
+	}
+
+	&::after {
+		content: '';
+		border: 1px solid $amber;
+		transition: transform 0.3s cubic-bezier(0.2, 1, 0.7, 1);
+		border-radius: 0px;
+		transform: scale3d(0.85, 0.65, 1);
+	}
+
+	span {
+		display: inline-block;
+		position: relative;
+		color: $gitdark;
+	}
+
+	&:hover {
+		span {
+			color: $gitdark;
+		}
+
+		&::before {
+			transform: scale3d(0.9, 0.8, 1);
+		}
+
+		&::after {
+			transform: scale3d(1, 1, 1);
 		}
 	}
 }

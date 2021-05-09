@@ -1,3 +1,3 @@
-<div class="transition transactive">
+<div class="page-transition transactive">
 	<div class="transition__layer"></div>
 </div>

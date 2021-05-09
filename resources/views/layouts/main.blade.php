@@ -21,7 +21,7 @@
 		@include('includes.effects.page-transition')
 
 		{{-- Wrapper --}}
-		<div id="wrapper" data-scroll-container>
+		<div id="wrapper" class="flex flex-col justify-between" data-scroll-container>
 			@include('includes.effects.distortion-circle')
 			@include('includes.main.partials.modal')
 
@@ -36,7 +36,7 @@
 		</div>
         
 		{{-- Scripts --}}
-		<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+		<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
 		@livewireScripts
 		<script src="{{asset('js/scripts/main.js')}}" type="module" defer></script>
 		@stack('scripts')

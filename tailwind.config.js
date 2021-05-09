@@ -16,8 +16,10 @@ module.exports = {
 				gray: colors.trueGray,
 				green: colors.green,
 				'slightly-lighter': 'rgba(255, 255, 255, .03)',
-				'dark-secondary': '#26292E',
-				'dark-19': '#191919'
+				dark: '#121212',
+				'dark-secondary': '#242424',
+				accent: '#fff1c0',
+				amber: '#ffd54f'
 			},
 			width: {
 				120: '30rem'

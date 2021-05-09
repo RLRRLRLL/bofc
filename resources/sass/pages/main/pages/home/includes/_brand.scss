@@ -73,12 +73,6 @@
 		height: 75vh;
 		margin: 0;
 
-		.container {
-			@include flex-column();
-			align-items: center;
-			justify-content: space-between;
-		}
-
 		&__title {
 			h1 {
 				font-size: 2.5rem;

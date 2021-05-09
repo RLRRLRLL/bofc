@@ -1,48 +1,53 @@
-<ul>
+{{-- classes => ul, link => anchor, cta => btn-bestia --}}
+
+<ul class="{{ $classes ?? '' }}">
 	<li> {{-- Homepage --}} 
-		<a class="link leave-page {{ checkLinks('/') }}" href="{{ route('homepage') }}" >
-			<span class="link-text">
-				{{ __('home') }}
+		<a class="circle-link leave-page {{ checkLinks('/') }} {{ $link ?? '' }}" href="{{ route('homepage') }}">
+			<span class="circle-link-text">
+				{{ __('Home') }}
 			</span>
 		</a>
 	</li>
 
 	<li> {{-- Poms page --}} 
-		<a class="link leave-page {{ checkLinks('pomeranian') }}" href="{{ route('poms.index') }}">
-			<span class="link-text">
-				{{ __('pomeranian') }}
+		<a class="circle-link leave-page {{ checkLinks('pomeranian') }} {{ $link ?? '' }}" href="{{ route('poms.index') }}">
+			<span class="circle-link-text">
+				{{ __('Pomeranian') }}
 			</span>
 		</a>
 	</li>
 
 	<li> {{-- Gallery --}} 
-		<a class="link leave-page {{ checkLinks('gallery') }}" href="{{ route('gallery') }}">
-			<span class="link-text">
-				{{ __('gallery') }}
+		<a class="circle-link leave-page {{ checkLinks('gallery') }} {{ $link ?? '' }}" href="{{ route('gallery') }}">
+			<span class="circle-link-text">
+				{{ __('Gallery') }}
 			</span>
 		</a>
 	</li>
 
 	<li> {{-- News --}} 
-		<a class="link leave-page {{ checkLinks('news') }}" href="#">
-			<span class="link-text">
-				{{ __('news') }}
+		<a class="circle-link leave-page {{ checkLinks('news') }} {{ $link ?? '' }}" href="#">
+			<span class="circle-link-text">
+				{{ __('News') }}
 			</span>
 		</a>
 	</li>
 
-	<li> {{-- Admin Dashboard --}} 
-		<a class="link {{ checkLinks('dashboard') }}" href="{{ route('admin') }}">
-			<span class="link-text">
-				Dashboard
+	{{-- Admin Dashboard (TEMP) --}} 
+	{{-- <li> 
+		<a class="circle-link {{ checkLinks('Dashboard') }} {{ $link ?? '' }}" href="{{ route('admin') }}">
+			<span class="circle-link-text">
+				{{ __('Dashboard') }}
 			</span>
 		</a>
-	</li>
+	</li> --}}
 
-	<li class="enough-padding">  {{-- 'Contact Us' Modal --}} 
-		<button class="btn-split btn-bestia contact-modal-trigger">
+	<hr class="border-t border-gray-600">
+
+	<li> {{-- 'Contact Us' Modal --}}
+		<button class="btn-border-zoom contact-modal-trigger {{ $cta ?? '' }}">
 			<span>
-				{{ __('get in touch') }}
+				{{ __('Get in touch') }}
 			</span>
 		</button>
 	</li>

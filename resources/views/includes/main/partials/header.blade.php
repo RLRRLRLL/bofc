@@ -1,34 +1,50 @@
-<header class="header" data-scroll-section x-data="{ showBurgerMenu: false }">
-	<div class="container px-24">
-		<div class="header__inner">
+<header 
+	x-data="{ showBurgerMenu: false }" 
+	class="relative w-full z-50 overflow-hidden shadow-md py-3 lg:py-5 bg-dark-secondary" data-scroll-section
+>
+	<div class="container flex flex-col">
+		<div class="flex items-center justify-end">
+			{{-- App logo --}}
+			<a href="{{ request()->routeIs('homepage') ? '#' : route('homepage') }}">
+				<img src="{{ asset('images/transparent/logo-circle.png') }}" class="absolute left-1 top-1 w-60 md:w-96 md:-left-10 lg:left-1/4 xl:left-2/4 md:-top-10 object-center object-contain opacity-20" alt="">
+			</a>
+
 			{{-- Navigation: desktop --}}
-			<nav class="header__desktop">
-				@include('includes.main.partials.header.nav-menu')
-			</nav>
-
-			{{-- Btn burger --}}
-			<button class="header__burger--trigger" x-on:click="showBurgerMenu = !showBurgerMenu">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21">
-					<g fill="none" fill-rule="evenodd" stroke="#626262" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 6.5h12"/><path d="M4.498 10.5h11.997"/><path d="M4.5 14.5h11.995"/></g>
-				</svg>
-			</button>
-
-			{{-- Navigation: mobile --}}
-			<nav 
-				class="header__burger" 
-				:class="{'show': showBurgerMenu}"
-			>
-				<button class="header__burger--close" type="button" x-on:click="showBurgerMenu = false">
-					<svg>
-						<use xlink:href="/sprite.svg#x"></use>
-					</svg>
-				</button>
-
-				@include('includes.main.partials.header.nav-menu')
+			<nav class="hidden md:flex">
+				@include('includes.main.partials.header.nav-menu', [
+					'classes' => 'flex items-center justify-items-end',
+					'link' => 'px-4 py-2 text-xl leftonade tracking-wide',
+					'cta' => 'mx-5 px-5 py-3 tracking-wide shadow-lg'
+				])
 			</nav>
 
 			{{-- Language switcher --}}
 			@include('includes.main.partials.header.lang-switcher')
+
+			{{-- Btn burger --}}
+			<button type="button" class="md:hidden p-1 rounded text-accent focus:text-white focus:bg-slightly-lighter active:bg-slightly-lighter active:text-white transition duration-100" x-on:click="showBurgerMenu = !showBurgerMenu">
+				{{-- burger icon --}}
+				<template x-if="showBurgerMenu">
+					<svg class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+						<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+					</svg>
+				</template>
+				{{-- close menu icon --}}
+				<template x-if="!showBurgerMenu">
+					<svg class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+						<path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+					</svg>
+				</template>
+			</button>
 		</div>
+
+		{{-- Burger menu --}}
+		<nav class="md:hidden py-10" x-show="showBurgerMenu">
+			@include('includes.main.partials.header.nav-menu', [
+				'classes' => 'flex flex-col space-y-5',
+				'link' => 'leftonade text-2xl text-accent',
+				'cta' => 'mt-3 px-5 py-3 tracking-wide'
+			])
+		</nav>
 	</div>
 </header>

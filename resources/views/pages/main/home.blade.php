@@ -3,7 +3,7 @@
 @section('page-title', __('Home'))
 
 @section('content')
-	<main class="main home" data-scroll-container>
+	<main class="main home bg-dark" data-scroll-container>
 		@include('includes.common.special-svgs')
 
 		<!-- Brand -->
@@ -94,9 +94,17 @@
 					<div class="info fadeInUp anim-item" 
 						data-scroll 
 						data-scroll-class="anim-stop">
-						<div class="info-text">
-							<p>
-								{{ __('About description') }}
+						<div class="space-y-7">
+							<p class="text-xl leftonade text-gray-100 tracking-wide leading-loose">
+								{{ __('Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur aperiam velit asperiores et nemo labore, in ipsam quidem voluptates quod.') }}
+							</p>
+
+							<p class="text-xl leftonade text-gray-100 tracking-wide leading-loose">
+								{{ __('Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem molestiae veritatis ad reprehenderit dolores corrupti delectus aperiam sapiente dicta, maxime a laborum ex veniam amet, quis deserunt libero excepturi animi.') }}
+							</p>
+							
+							<p class="text-xl leftonade text-gray-100 tracking-wide leading-loose">
+								{{ __('Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, ducimus.') }}
 							</p>
 						</div>
 					</div>
@@ -119,9 +127,9 @@
 						</div>
 						<div class="flexin__item--desc">
 							<p>
-								<span>{{ __('AdvantageOneTitle') }}</span>
+								<span>{{ __('Certified gangsters') }}</span>
 								&#8212;
-								{{ __('AdvantageOneText') }}
+								{{ __('Our poms are hella certified. Not to mention their "gangsta" possibilities.') }}
 							</p>
 						</div>
 					</div>
@@ -133,9 +141,9 @@
 						</div>
 						<div class="flexin__item--desc">
 							<p>
-								<span>{{ __('AdvantageTwoTitle') }}</span>
+								<span>{{ __('1 trophey, 2 trophey, finish') }}</span>
 								&#8212;
-								{{ __('AdvantageTwoText') }}
+								{{ __('Tropheys are like cups, but more like tropheys. That\'s why they could be called trophecups.') }}
 							</p>
 						</div>
 					</div>
@@ -147,9 +155,9 @@
 						</div>
 						<div class="flexin__item--desc">
 							<p>
-								<span>{{ __('AdvantageThreeTitle') }}</span>
+								<span>{{ __('Sharing is not caring') }}</span>
 								&#8212;
-								{{ __('AdvantageThreeText') }}
+								{{ __('That\'s right. Our poms are beloved and cared, and so much more.') }}
 							</p>
 						</div>
 					</div>
@@ -166,9 +174,8 @@
 						<h1 class="reach-us__text reach-us__text--bigger anim-item fadeInUp anim-delay" data-scroll data-scroll-class="anim-stop">{{ __('Reach us out!') }}</h1>
 					</div>
 					<div class="reach-us__col anim-item fadeInUp" data-scroll data-scroll-class="anim-stop">
-						<button class="reach-us__btn btn-bestia contact-modal-trigger" type="button">
-							<div class="btn-bestia__bg"></div>
-							<span class="btn-bestia__text">{{ __('Contact us') }}</span>
+						<button class="reach-us__btn btn-border-zoom text-2xl px-5 py-3 contact-modal-trigger" type="button">
+							<span>{{ __('Contact us') }}</span>
 						</button>
 					</div>
 				</div>

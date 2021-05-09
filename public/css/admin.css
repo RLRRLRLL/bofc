@@ -202,7 +202,6 @@ a:visited {
 }
 
 button {
-  border: none;
   box-shadow: none;
   padding: 7px 12px;
   cursor: pointer;
@@ -316,14 +315,6 @@ select:-webkit-autofill:focus {
   width: 100%;
 }
 
-.hidden {
-  position: absolute;
-  overflow: hidden;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-}
-
 .btn-ripple {
   position: relative;
   overflow: hidden;
@@ -356,13 +347,12 @@ span.ripple {
   position: relative;
   display: inline-block;
   overflow: hidden;
-  padding: 10px;
+  padding: 10px 16px;
   border: none;
   border-radius: 5px;
   transition: all 0.25s ease-in;
   color: white;
-  background: #fff1c0;
-  letter-spacing: 0.9px;
+  background: white;
 }
 .btn-bestia::before, .btn-bestia::after {
   position: absolute;
@@ -396,7 +386,7 @@ span.ripple {
   mix-blend-mode: difference;
   z-index: 10;
   font-family: leftonade;
-  font-size: 19px;
+  font-size: 1.5rem;
   font-weight: 400;
 }
 .btn-bestia:hover::before {
@@ -451,6 +441,47 @@ span.ripple {
   }
 }
 
+/* Header nav distortion circle effect links */
+.circle-link {
+  display: inline-block;
+  position: relative;
+  flex: none;
+  color: var(--color-menu-link);
+}
+.circle-link-circle {
+  outline: 120px solid transparent;
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+  height: 1px;
+  background: white;
+  box-shadow: 0 0 5px 2px white inset, 0 0 10px 1px #f7b900;
+  bottom: 50%;
+  width: 9rem;
+  left: 50%;
+  margin-left: -4.5rem;
+  transform: rotate(-45deg);
+}
+.circle-link-text {
+  display: block;
+  position: relative;
+  color: #9ca3af;
+  pointer-events: none;
+  transition: color 0.3s cubic-bezier(0.8, 0.02, 0.16, 0.99);
+}
+.circle-link:hover .circle-link-text, .circle-link.active .circle-link-text {
+  color: white;
+}
+.circle-link:hover .circle-link-circle, .circle-link.active .circle-link-circle {
+  transition: opacity 0.25s ease 0.05s;
+  opacity: 1;
+  margin-top: 0;
+}
+.circle-link:active .circle-link-circle, .circle-link:focus .circle-link-circle {
+  margin: 0;
+  opacity: 1;
+}
+
 /* Spinner for submit buttons */
 .spinner-wrapper {
   margin-left: 10px;
@@ -481,6 +512,49 @@ span.ripple {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* Button horizontal slide */
+.btn-border-zoom {
+  position: relative;
+  display: inline-block;
+  pointer-events: auto;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+.btn-border-zoom::before, .btn-border-zoom::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.btn-border-zoom::before {
+  content: "";
+  background: #ffd54f;
+  transition: transform 0.3s cubic-bezier(0.2, 1, 0.7, 1);
+}
+.btn-border-zoom::after {
+  content: "";
+  border: 1px solid #ffd54f;
+  transition: transform 0.3s cubic-bezier(0.2, 1, 0.7, 1);
+  border-radius: 0px;
+  transform: scale3d(0.85, 0.65, 1);
+}
+.btn-border-zoom span {
+  display: inline-block;
+  position: relative;
+  color: #0d1117;
+}
+.btn-border-zoom:hover span {
+  color: #0d1117;
+}
+.btn-border-zoom:hover::before {
+  transform: scale3d(0.9, 0.8, 1);
+}
+.btn-border-zoom:hover::after {
+  transform: scale3d(1, 1, 1);
 }
 
 .translate-x-full {

@@ -43,25 +43,33 @@ document.addEventListener(
 		// Locomotive scroll
 		const tabletWidth = '1025px'
 
-		if (!window.matchMedia(`(max-width: ${tabletWidth}`).matches) {
-			// console.log('tablet width or less')
-			const scroll = new LocomotiveScroll({
-				el: query('[data-scroll-container]'),
-				smooth: true,
-				multiplier: 1.7,
-				lerp: 0.11
-			})
+		// if (!window.matchMedia(`(max-width: ${tabletWidth}`).matches) {
+		// console.log('tablet width or less')
+		const scroll = new LocomotiveScroll({
+			el: query('[data-scroll-container]'),
+			smooth: true,
+			multiplier: 1.5,
+			lerp: 0.2
+		})
 
-			const backToTopBtn = query('#backToTop')
-			backToTopBtn.addEventListener('click', () => {
-				scroll.scrollTo('top', {
-					duration: 500
-				})
+		const backToTopBtn = query('#backToTop')
+		backToTopBtn.addEventListener('click', () => {
+			scroll.scrollTo('top', {
+				duration: 400
 			})
-		}
+		})
+
+		const scrollToAbout = query('#scrollToAboutSection')
+		const aboutSection = query('#about')
+		scrollToAbout.addEventListener('click', () => {
+			scroll.scrollTo(aboutSection, {
+				duration: 400
+			})
+		})
+		// }
 
 		// Distortion links (circle on hover)
-		const distortedLinks = [...document.querySelectorAll('a.link')]
+		const distortedLinks = [...document.querySelectorAll('a.circle-link')]
 		distortedLinks.forEach(el => {
 			const elPosition = [...el.parentNode.children].indexOf(el)
 			const fxObj = LinkDistortionCircle[elPosition]

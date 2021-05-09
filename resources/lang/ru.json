@@ -1,23 +1,22 @@
 {
-	"________NAVIGATION____________": "_____________________",
-	"home": "Главная",
-	"pomeranian": "Шпицы",
-	"gallery": "Галерея",
-	"news": "Новости",
-	"get in touch": "Связаться",
-
-	"________PAGE TITLES___________": "_____________________",
+	"________Header, Footer, Page titles (links & buttons)____________": "_____________________",
 	"Home": "Главная",
-	"Gallery": "Галерея",
 	"Pomeranian": "Шпицы",
+	"Gallery": "Галерея",
+	"News": "Новости",
+	"Dashboard": "Админ-панель",
+	"News & Articles": "Новости & Статьи",
+	"Get in touch": "Связаться с нами",
+	"About": "О нас",
+	"All rights reserved.": "Все права защищены.",
+	"Back to top": "Назад к верху",
 
 	"________COMPANY DESCRIPTION____": "____________________",
 	"The pomeranian spitz breed kennel": "Питомник собак породы померанский шпиц",
 
 	"________ABOUT SECTION____": "____________________",
 	"About us": "О нас",
-	"What we do": "Чем мы занимаемся",
-	"About description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eligendi dolorem ab beatae! Libero itaque corporis molestias, quas aspernatur nemo modi voluptatum rerum illum culpa asperiores error sit est earum, accusantium neque? Blanditiis nulla eum perspiciatis, quis asperiores deleniti architecto alias ut aspernatur, nisi illo accusantium magni laudantium repudiandae doloremque modi enim ullam dolor aliquam libero nobis laboriosam est facere.",
+	"What we do": "Почему мы?",
 
 	"________ADVANTAGES____": "____________________",
 	"AdvantageOneTitle": "Certified gangsters",
@@ -31,11 +30,6 @@
 	"Got questions?": "Есть вопросы?",
 	"Reach us out!": "Свяжитесь с нами!",
 	"Contact us": "Связаться",
-
-	"________F00TER________": "______________________",
-	"All rights reserved.": "Все права защищены.",
-	"Back to top": "Назад к верху",
-	"Browse poms": "Посмотреть шпицов",
 
 	"__________________POMERANIAN INDEX PAGE__________": "____________________________________________",
 	"Find yourself a best friend.": "Найди себе лучшего друга.",

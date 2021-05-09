@@ -2059,10 +2059,10 @@ var LinkFx = /*#__PURE__*/function () {
         line: true
       }
     };
-    this.DOM.line = document.createElement("span");
-    this.DOM.line.classList = "link-circle";
+    this.DOM.line = document.createElement('span');
+    this.DOM.line.classList = 'circle-link-circle';
     this.DOM.el.appendChild(this.DOM.line);
-    this.DOM.el.dataset.line != undefined && (this.options.animation.line = this.DOM.el.dataset.line === "false" ? false : true);
+    this.DOM.el.dataset.line != undefined && (this.options.animation.line = this.DOM.el.dataset.line === 'false' ? false : true);
     this.initEvents();
   }
 
@@ -2079,8 +2079,8 @@ var LinkFx = /*#__PURE__*/function () {
         return _this.tl.progress(1).kill();
       };
 
-      this.DOM.el.addEventListener("mouseenter", this.onMouseEnterFn);
-      this.DOM.el.addEventListener("mouseleave", this.onMouseLeaveFn);
+      this.DOM.el.addEventListener('mouseenter', this.onMouseEnterFn);
+      this.DOM.el.addEventListener('mouseleave', this.onMouseLeaveFn);
     }
   }, {
     key: "createTimeline",
@@ -2094,7 +2094,7 @@ var LinkFx = /*#__PURE__*/function () {
           _this2.DOM.line.style.filter = "url(#circleDistortion)";
         },
         onComplete: function onComplete() {
-          _this2.DOM.line.style.filter = "none";
+          _this2.DOM.line.style.filter = 'none';
         }
       });
     }
@@ -2114,7 +2114,7 @@ var circleDistortion = /*#__PURE__*/function (_LinkFx) {
     _classCallCheck(this, circleDistortion);
 
     _this3 = _super.call(this, el);
-    _this3.filterId = "#circleDistortion";
+    _this3.filterId = '#circleDistortion';
     _this3.DOM.feDisplacementMap = document.querySelector("".concat(_this3.filterId, " > feDisplacementMap"));
     _this3.primitiveValues = {
       scale: 0
@@ -2122,13 +2122,13 @@ var circleDistortion = /*#__PURE__*/function (_LinkFx) {
 
     _this3.createTimeline();
 
-    _this3.tl.eventCallback("onUpdate", function () {
+    _this3.tl.eventCallback('onUpdate', function () {
       return _this3.DOM.feDisplacementMap.scale.baseVal = _this3.primitiveValues.scale;
     });
 
     _this3.tl.to(_this3.primitiveValues, {
       duration: 1,
-      ease: "Expo.easeOut",
+      ease: 'Expo.easeOut',
       startAt: {
         scale: 80
       },
@@ -2915,7 +2915,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Utils */ "./resources/js/components/Utils.js");
 
-var transElement = (0,_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('.transition');
+var transElement = (0,_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('.page-transition');
 var leavePageLinks = (0,_Utils__WEBPACK_IMPORTED_MODULE_0__.queryAll)('.leave-page');
 function runTransition() {
   setTimeout(function () {
@@ -3106,26 +3106,31 @@ document.addEventListener('DOMContentLoaded', function () {
    * * every page.
    */
   // Locomotive scroll
-  var tabletWidth = '1025px';
+  var tabletWidth = '1025px'; // if (!window.matchMedia(`(max-width: ${tabletWidth}`).matches) {
+  // console.log('tablet width or less')
 
-  if (!window.matchMedia("(max-width: ".concat(tabletWidth)).matches) {
-    // console.log('tablet width or less')
-    var scroll = new locomotive_scroll__WEBPACK_IMPORTED_MODULE_6__.default({
-      el: (0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('[data-scroll-container]'),
-      smooth: true,
-      multiplier: 1.7,
-      lerp: 0.11
+  var scroll = new locomotive_scroll__WEBPACK_IMPORTED_MODULE_6__.default({
+    el: (0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('[data-scroll-container]'),
+    smooth: true,
+    multiplier: 1.5,
+    lerp: 0.2
+  });
+  var backToTopBtn = (0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('#backToTop');
+  backToTopBtn.addEventListener('click', function () {
+    scroll.scrollTo('top', {
+      duration: 400
     });
-    var backToTopBtn = (0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('#backToTop');
-    backToTopBtn.addEventListener('click', function () {
-      scroll.scrollTo('top', {
-        duration: 500
-      });
+  });
+  var scrollToAbout = (0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('#scrollToAboutSection');
+  var aboutSection = (0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('#about');
+  scrollToAbout.addEventListener('click', function () {
+    scroll.scrollTo(aboutSection, {
+      duration: 400
     });
-  } // Distortion links (circle on hover)
+  }); // }
+  // Distortion links (circle on hover)
 
-
-  var distortedLinks = _toConsumableArray(document.querySelectorAll('a.link'));
+  var distortedLinks = _toConsumableArray(document.querySelectorAll('a.circle-link'));
 
   distortedLinks.forEach(function (el) {
     var elPosition = _toConsumableArray(el.parentNode.children).indexOf(el);

@@ -1,6 +1,6 @@
 import { query, queryAll } from './../Utils'
 
-const transElement = query('.transition')
+const transElement = query('.page-transition')
 const leavePageLinks = queryAll('.leave-page')
 
 export default function runTransition() {
@@ -8,8 +8,8 @@ export default function runTransition() {
 		transElement.classList.remove('transactive')
 	}, 250)
 
-	leavePageLinks.forEach((link) => {
-		link.addEventListener('click', (e) => {
+	leavePageLinks.forEach(link => {
+		link.addEventListener('click', e => {
 			e.preventDefault()
 			let dest = e.target.href
 

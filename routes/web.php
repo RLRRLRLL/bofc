@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\App;
 Route::get('change-language/{lang}', function($lang) {
 	\Session::put('locale', $lang);
 	return redirect()->back();
-});
+})->name('change-language');
 
 Route::middleware('setlocale')->group(function() {
 	Route::get('/', [MainPagesController::class, 'homepage'])->name('homepage');
