@@ -22,7 +22,7 @@
 			@include('includes.main.partials.header.lang-switcher')
 
 			{{-- Btn burger --}}
-			<button type="button" class="md:hidden p-1 rounded text-accent focus:text-white focus:bg-slightly-lighter active:bg-slightly-lighter active:text-white transition duration-100" x-on:click="showBurgerMenu = !showBurgerMenu">
+			<button type="button" class="md:hidden p-1 rounded text-amber focus:text-white focus:bg-slightly-lighter active:bg-slightly-lighter active:text-white transition duration-100" x-on:click="showBurgerMenu = !showBurgerMenu">
 				{{-- burger icon --}}
 				<template x-if="showBurgerMenu">
 					<svg class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
@@ -42,7 +42,7 @@
 		<nav class="md:hidden py-10" x-show="showBurgerMenu">
 			@include('includes.main.partials.header.nav-menu', [
 				'classes' => 'flex flex-col space-y-5',
-				'link' => 'leftonade text-2xl text-accent',
+				'link' => 'leftonade text-2xl text-amber',
 				'cta' => 'mt-3 px-5 py-3 tracking-wide'
 			])
 		</nav>

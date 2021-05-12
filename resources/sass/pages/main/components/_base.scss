@@ -42,11 +42,11 @@ body {
 
 	.main {
 		@include flex-column;
-		max-height: 80%;
+		// max-height: 80%;
 		position: relative;
 		width: inherit;
 		height: inherit;
-		padding: 40px 0 0 0;
+		padding: 40px 0;
 
 		.section {
 			position: relative;

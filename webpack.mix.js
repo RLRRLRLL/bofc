@@ -17,7 +17,7 @@ mix.js('resources/js/main.js', 'public/js/scripts')
 		postCss: [tailwindJit]
 	})
 	.browserSync({
-		proxy: 'http://127.0.0.1:8000',
+		proxy: 'http://bofc.local',
 		notify: {
 			styles: {
 				top: 'auto',

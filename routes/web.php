@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\AdminPagesController;
 use App\Http\Controllers\Main\MainPagesController;
+use App\Http\Livewire\Pom\Index;
+use App\Http\Livewire\Pom\Show;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
@@ -21,8 +23,8 @@ Route::get('change-language/{lang}', function($lang) {
 
 Route::middleware('setlocale')->group(function() {
 	Route::get('/', [MainPagesController::class, 'homepage'])->name('homepage');
-	Route::get('/pomeranian', [MainPagesController::class, 'index'])->name('poms.index');
-	Route::get('/pomeranian/{id}', [MainPagesController::class, 'show'])->name('poms.show');
+	Route::get('/pomeranian', Index::class)->name('poms.index');
+	Route::get('/pomeranian/{id}', Show::class)->name('poms.show');
 	Route::get('/gallery', [MainPagesController::class, 'gallery'])->name('gallery');
 
 	// admin pages

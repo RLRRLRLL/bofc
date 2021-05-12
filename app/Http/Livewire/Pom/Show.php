@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Pom\User;
+namespace App\Http\Livewire\Pom;
 
 use App\Models\Breeder;
 use Livewire\Component;
@@ -19,6 +19,6 @@ class Show extends Component
 	
     public function render()
     {
-        return view('livewire.pom.user.show');
+        return view('livewire.pom.show');
     }
 }

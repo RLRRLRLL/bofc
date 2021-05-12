@@ -7,11 +7,6 @@
 	top: 30px;
 	display: grid;
 	grid-template: min-content / 1fr;
-	padding: 25px 35px;
-	box-shadow: $bshadow;
-
-	border-radius: $bradius;
-	background: $bgSecondary;
 
 	// title
 	&--title {

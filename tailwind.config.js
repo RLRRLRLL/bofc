@@ -16,7 +16,7 @@ module.exports = {
 				gray: colors.trueGray,
 				green: colors.green,
 				'slightly-lighter': 'rgba(255, 255, 255, .03)',
-				dark: '#121212',
+				dark: '#191817',
 				'dark-secondary': '#242424',
 				accent: '#fff1c0',
 				amber: '#ffd54f'

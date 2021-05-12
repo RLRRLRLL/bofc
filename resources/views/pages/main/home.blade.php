@@ -9,16 +9,14 @@
 		<!-- Brand -->
 		<section class="brand" data-scroll-section>
 			<div class="container anim-item moveUp anim-delay-long" data-scroll data-scroll-class="anim-stop">
-				<div class="brand__title" data-scroll data-scroll-speed="3" data-scroll-target=".brand">
-					<h1>{{ config('app.name') }}</h1>
-				</div>
-	
-				<h2 class="brand__desc" data-scroll data-scroll-speed="5" data-scroll-target=".brand">
-					{{ __('The pomeranian spitz breed kennel') }}
-				</h2>
-
-				<div class="brand__bubble" data-scroll data-scroll-speed="5" data-scroll-target=".brand">
-					<img src="{{ asset('images/transparent/bubble.png') }}" alt="">
+				<div class="brand__inner">
+					<h1 class="brand__title" data-scroll data-scroll-speed="3" data-scroll-target=".brand">{{ config('app.name') }}</h1>
+					<h2 class="brand__desc" data-scroll data-scroll-speed="5" data-scroll-target=".brand">
+						{{ __('The pomeranian spitz breed kennel') }}
+					</h2>
+					<div class="brand__bubble" data-scroll data-scroll-speed="5" data-scroll-target=".brand">
+						<img src="{{ asset('images/transparent/bubble.png') }}" alt="">
+					</div>
 				</div>
 			</div>
 		</section>

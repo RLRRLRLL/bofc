@@ -1,11 +1,9 @@
-/* 
-Components
-*/
+/* Components */
 
 // Base
 @import './components/base';
 
-// Little fade-in / zoom-in animations trigger by scroll
+// Little fade/zoom animations triggered by scroll
 @import './components/animations';
 
 // Page transitions
@@ -18,9 +16,7 @@ Components
 @import './components/modal/modal__core';
 @import './components/modal/modal__form';
 
-/* 
- Main pages 
-*/
+/* Main pages */
 
 // home
 @import './pages/home/home';

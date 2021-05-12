@@ -123,17 +123,18 @@ span.ripple {
 	color: var(--color-menu-link);
 
 	&-circle {
-		outline: 120px solid transparent;
+		// outline: 240px solid transparent;
 		opacity: 0;
 		position: absolute;
 		pointer-events: none;
 		height: 1px;
+		// background: $amber;
 		background: white;
-		box-shadow: 0 0 5px 2px white inset, 0 0 10px 1px $goldMain;
+		// box-shadow: 0 0 5px 2px white inset, 0 0 10px 1px $goldMain;
 		bottom: 50%;
-		width: 9rem;
+		width: 6rem;
 		left: 50%;
-		margin-left: -4.5rem;
+		margin-left: -3rem;
 		transform: rotate(-45deg);
 	}
 
@@ -149,20 +150,11 @@ span.ripple {
 	&.active {
 		.circle-link-text {
 			color: white;
-			// text-shadow: 2px 2px 1px black;
 		}
 		.circle-link-circle {
-			transition: opacity 0.25s ease 0.05s;
+			transition: opacity 0.3s ease 0.05s;
 			opacity: 1;
 			margin-top: 0;
-		}
-	}
-
-	&:active,
-	&:focus {
-		.circle-link-circle {
-			margin: 0;
-			opacity: 1;
 		}
 	}
 }

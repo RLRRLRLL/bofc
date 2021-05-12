@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         @stack('styles')
     </head>
-    <body class="no-arr">
+    <body class="no-arr outline-none">
 		{{-- Slide transition between pages --}}
 		@include('includes.effects.page-transition')
 

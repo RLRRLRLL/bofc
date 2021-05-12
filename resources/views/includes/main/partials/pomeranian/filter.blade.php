@@ -1,6 +1,5 @@
 <div class="filter-wrapper">
-	<section class="poms__filter">
-
+	<section class="poms__filter bg-dark-secondary rounded shadow">
 		<div class="filter">
 			<h2 class="filter__title">
 				{{ __('Gender') }}

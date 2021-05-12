@@ -1,27 +1,36 @@
 &__header {
-	grid-column: span 2;
-	display: grid;
-	grid-template-columns: 1fr max-content;
+	// grid-column: span 2;
 
-	&--title {
-		font-family: manege;
-		font-size: 50px;
-		color: $accentSecondary;
-	}
+	// &--inner {
+	// 	display: grid;
+	// 	grid-template-columns: 1fr max-content;
+	// }
 
-	&--view {
-		display: grid;
-		grid-gap: 8px;
-		grid-template-columns: repeat(2, 1fr);
-		cursor: pointer;
-	}
+	// &--title {
+	// 	font-family: manege;
+	// 	font-size: 50px;
+	// 	color: $accentSecondary;
+	// }
+
+	// &--view {
+	// 	display: grid;
+	// 	grid-gap: 8px;
+	// 	grid-template-columns: repeat(2, 1fr);
+	// 	cursor: pointer;
+	// }
+
 	.option__btn {
 		display: grid;
-		grid-gap: 5px;
-		width: 55px;
-		height: 75px;
+		width: 45px;
+		height: 65px;
+		gap: 3px;
+		padding: 7px;
+		// md:
+		// grid-gap: 5px;
+		// width: 55px;
+		// height: 75px;
+		// padding: 10px;
 		border-radius: 5px;
-		padding: 10px;
 		overflow: hidden;
 		transition: 0.2s ease;
 		> span {
@@ -32,21 +41,21 @@
 				background: none !important;
 				text-align: center;
 				text-transform: uppercase;
-				font: 500 14px/1 'Poppins', sans-serif;
+				font-size: 13px;
 				display: block;
 				margin-top: 2px;
 			}
 		}
 		&:hover {
 			> span {
-				color: rgba($accent, 0.5);
-				background: rgba($accent, 0.5);
+				color: rgba($amber, 0.5);
+				background: rgba($amber, 0.5);
 			}
 		}
 		&.selected {
 			> span {
-				color: $accent;
-				background: $accent;
+				color: $amber;
+				background: $amber;
 			}
 		}
 	}

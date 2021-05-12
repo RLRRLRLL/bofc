@@ -1,15 +1,24 @@
 .brand {
-	width: 100%;
-	min-height: 70vh;
-	@include flex-column;
-	margin: 15px 0 0 25px; //locomotive data-speed
+	// height: 90vh;
 	position: relative;
 
-	&__title {
-		position: relative;
+	.container {
+		height: 100%;
+	}
 
-		// Gold gradient
-		// @include bg-gradient-anim;
+	&__inner {
+		height: 100%;
+		@include flex-center(column);
+		justify-content: flex-start;
+		padding: 50px 0;
+	}
+
+	&__title,
+	&__desc {
+		text-align: center;
+	}
+
+	&__title {
 		background: linear-gradient(
 			90deg,
 			#252525,
@@ -23,14 +32,8 @@
 		animation: animate 8s linear infinite;
 		background-clip: text;
 		-webkit-text-fill-color: rgba(black, 0.01);
-		margin-bottom: 0;
-
-		h1 {
-			// typography
-			font-family: 'bitter';
-			font-size: 50px;
-			letter-spacing: -0.5px;
-		}
+		font-family: 'bitter';
+		font-size: 40px;
 
 		@keyframes animate {
 			0% {
@@ -45,59 +48,125 @@
 
 	&__desc {
 		font-family: manege;
-		margin-top: 28px;
+		margin: 30px 0;
 		color: white;
 	}
 
 	&__bubble {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translateX(-50%);
-		display: inline-flex;
-		filter: url('#noise');
-		// margin: 50px 0 300px 25%;
-
+		width: 20rem;
+		height: 20rem;
 		img {
-			width: 420px;
-			height: 420px;
+			@include image;
 		}
 	}
-
-	@import './bubbles';
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 769px) {
 	.brand {
-		min-height: 0;
-		height: 75vh;
-		margin: 0;
-
 		&__title {
-			h1 {
-				font-size: 2.5rem;
-				text-align: center;
-			}
+			font-size: 45px;
 		}
 
 		&__desc {
-			text-align: center;
+			font-size: 25px;
+			margin-bottom: 50px;
 		}
 
 		&__bubble {
-			position: static;
-			transform: none;
-
-			img {
-				width: 19rem;
-				height: 19rem;
-			}
+			width: 24rem;
+			height: 24rem;
 		}
 	}
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (min-width: 1024px) {
 	.brand {
-		height: 82vh;
+		&__inner {
+			align-items: flex-start;
+		}
+
+		&__title,
+		&__desc {
+			text-align: left;
+		}
+
+		&__desc {
+			margin-top: 10px;
+			margin-bottom: 0;
+		}
+
+		&__bubble {
+			align-self: flex-end;
+			margin-right: 5rem;
+			width: 26rem;
+			height: 26rem;
+		}
 	}
 }
+
+// .brand {
+// 	width: 100%;
+// 	min-height: 70vh;
+//
+// 	margin: 15px 0 0 25px; //locomotive data-speed
+//
+
+//
+// 	}
+
+// 	&__desc {
+//
+// 	}
+
+// 	&__bubble {
+// 		position: absolute;
+// 		left: 50%;
+// 		top: 50%;
+// 		transform: translateX(-50%);
+// 		display: inline-flex;
+// 		filter: url('#noise');
+// 		// margin: 50px 0 300px 25%;
+
+// 		img {
+// 			width: 420px;
+// 			height: 420px;
+// 		}
+// 	}
+
+// 	@import './bubbles';
+// }
+
+// @media screen and (max-width: 1024px) {
+// 	.brand {
+// 		min-height: 0;
+// 		height: 75vh;
+// 		margin: 0;
+
+// 		&__title {
+// 			h1 {
+// 				font-size: 2.5rem;
+// 				text-align: center;
+// 			}
+// 		}
+
+// 		&__desc {
+// 			text-align: center;
+// 		}
+
+// 		&__bubble {
+// 			position: static;
+// 			transform: none;
+
+// 			img {
+// 				width: 19rem;
+// 				height: 19rem;
+// 			}
+// 		}
+// 	}
+// }
+
+// @media screen and (max-width: 500px) {
+// 	.brand {
+// 		height: 82vh;
+// 	}
+// }
