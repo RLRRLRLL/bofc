@@ -1,89 +1,59 @@
-<div>
-    <form 
-		wire:submit.prevent="storeImages"
-	>
-		<div class="card">
-			<div class="card-header">
-				<h2>Images</h2>
-			</div>
-			<div class="card-body">
-				<!-- -------------------------------------------- -->
-				<div id="wireImages"
-					 x-data="{ 
-					 	isUploading: false,
-					 	progress: 0,
-					 	open: true
-					 }"
-					 x-on:livewire-upload-start="isUploading = true"
-					 x-on:livewire-upload-finish="isUploading = false"
-					 x-on:livewire-upload-error="isUploading = false"
-					 x-on:livewire-upload-progress="progress = $event.detail.progress"
+<div class="space-y-5">
+	<h1 class="text-3xl text-gray-300 font-medium">
+		{{ __('Images') }}
+	</h1>
+
+    <form class="p-5 bg-admin-secondary rounded shadow transition" wire:submit.prevent="storeImages" wire:loading.class="opacity-50" wire:target="storeImages">
+		<div class="flex flex-col" id="wireImages" x-data="{ isUploading: false, open: true }">
+			<div class="pb-5 border-b border-gray-600 | flex flex-col">
+				<input 
+					type="file" 
+					wire:model="images" 
+					multiple
+					x-ref="fileInput"
+					class="hidden"
 				>
-					<div class="upload-imgs">
 
-						<input 
-							type="file" 
-							wire:model="images" 
-							multiple
-							x-ref="fileInput"
-							class="d-none"
-						>
+				<button class="py-3 px-5 rounded shadow font-medium bg-amber text-dark transition" type="button" x-on:click="$refs.fileInput.click()">
+					{{ __('Upload images') }}
+				</button>
 
-						<button class="upload-imgs__cta" 
-							type="button"
-							x-on:click="$refs.fileInput.click()">
-							Upload images
-						</button>
-
-						@error('images.*')
-							<div class="upload-imgs__alert-item">
-								<span class="alert alert-danger"
-										x-show="open">
-									{{ $message }}
-									<button class="alert-close"
-										type="button"
-										x-on:click="open = false">
-										<i class="fas fa-times"></i>	
+				@error('images.*')
+					<div class="upload-imgs__alert-item">
+						<span class="alert alert-danger"
+								x-show="open">
+							{{ $message }}
+							<button class="alert-close"
+								type="button"
+								x-on:click="open = false">
+								<i class="fas fa-times"></i>	
+							</button>
+						</span>
+					</div>
+				@enderror
+				
+				@if ($images)
+					<div class="pt-5 border-t border-gray-600 | grid gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+						@foreach($images as $img)
+							<div wire:key="{{ $loop->index }}" class="flex flex-col w-52 h-full">
+								<img class="w-full h-full object-center object-cover rounded-sm" src="{{ $img->temporaryUrl() }}">
+								
+								<div class="flex items-center justify-end p-3 bg-dark-secondary">
+									<button type="button" wire:click="cancelImage({{ $loop->index }})" class="text-red-400 hover:text-red-300 underline">
+										{{ __('Cancel Image') }}
 									</button>
-								</span>
+								</div>
 							</div>
-						@enderror
-						
-						<div class="upload-imgs__cont {{ $images ? '' : 'hide' }}">
-							@if ($images)
-								@foreach($images as $img)
-									<div wire:key="{{ $loop->index }}"
-										class="upload-imgs__item"
-									>
-										<img class="upload-imgs__item--img" 
-											src="{{ $img->temporaryUrl() }}">
-										
-										<a 	class="upload-imgs__item--cancel"
-											wire:click.prevent="cancelImage({{ $loop->index }})"
-											href="#" 
-										>
-											<i class="fas fa-times"></i>
-										</a>
-									</div>
-								@endforeach
-							@endif
-						</div>
+						@endforeach
+					</div>
+				@endif
 
-					</div>
-					
-					<div x-show="isUploading">
-						<progress max="100" x-bind:value="progress" style="width: 100%;"></progress>
-					</div>
-				</div>
-				<!-- -------------------------------------- -->
-				<button type="submit"
-						wire:click.prevent="storeImages"
-						class="submit-btn submit-btn__images mt-3 w-5">
-					Next
-					<div wire:loading wire:target="storeImages">
-						@include('includes.common.spinner')
-					</div>
-					<i wire:loading.class="d-none" class="fas fa-angle-double-right"></i>
+			</div>
+			
+			{{-- Submit --}}
+			<div class="pt-5 ">
+				<button type="submit" class="w-full flex items-center justify-center py-4 px-4 bg-green-600 hover:bg-green-700 text-lg text-white font-medium rounded shadow focus:ring-0" wire:click.prevent="storeImages" >
+					{{ __('Next') }}
 				</button>
 			</div>
 		</div>

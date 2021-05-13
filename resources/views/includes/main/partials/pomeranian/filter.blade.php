@@ -1,92 +1,125 @@
-<div class="filter-wrapper">
-	<section class="poms__filter bg-dark-secondary rounded shadow">
-		<div class="filter">
-			<h2 class="filter__title">
-				{{ __('Gender') }}
-			</h2>
+<div class="py-5 border-b border-gray-700" x-show="showFilters">
+	<section class="bg-dark-secondary rounded shadow">
+		{{-- Filter item --}}
+		<div class="w-full border-b border-gray-900" x-data="{ open: false }">
+			<button 
+				type="button"
+				class="w-full flex items-center justify-between py-2 px-4 text-gray-300 transition font-medium" 
+				@click="open = !open" 
+				:class="{'bg-slightly-lighter text-white': open}"
+			>
+				<span>
+					{{ __('Gender') }}
+				</span>
 
-			<div class="filter__item">
-				<div class="radio">
-					<input id="all" type="radio" value="all" wire:model="pomGender" checked/>
-					<label for="all">{{ __('All') }}</label>
+				<svg class="h-5 w-5 ml-2 transform transition" :class="{'rotate-180': !open}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+				</svg>
+			</button>
+
+			<div class="p-4 space-y-2" x-show="open">
+				<div>
+					<input class="radio-rounded" type="radio" id="all" wire:model="pomGender" value="all" checked>
+					<label for="all" class="text-gray-100">
+						{{ __('All') }}
+					</label>
 				</div>
-				<span class="badge status-primary"></span>
-			</div>
 
-			<div class="filter__item">
-				<div class="radio">
-					<input id="male" type="radio" value="1" wire:model="pomGender"/>
-					<label for="male">{{ __('Male') }}</label>
+				<div>
+					<input class="radio-rounded" type="radio" id="male" wire:model="pomGender" value="1">
+					<label for="male" class="text-gray-100">
+						{{ __('Male') }}
+					</label>
 				</div>
-				<span class="badge status-primary"></span>
-			</div>
 
-			<div class="filter__item">
-				<div class="radio">
-					<input id="female" type="radio" value="0" wire:model="pomGender"/>
-					<label for="female">{{ __('Female') }}</label>
+				<div>
+					<input class="radio-rounded" type="radio" id="female" wire:model="pomGender" value="0">
+					<label for="female" class="text-gray-100">
+						{{ __('Female') }}
+					</label>
 				</div>
-				<span class="badge status-primary"></span>
-			</div>
-		</div>
-
-		<div class="filter">
-			<h2 class="filter__title">
-				{{ __('Age') }}
-			</h2>
-
-			<div class="filter__item">
-				<div class="checkbox">
-					<input id="puppy" type="checkbox" wire:model="pomAges" value="puppy"/>
-					<label for="puppy">{{ __('Puppy') }}<span class="box"></span></label>
-				</div>
-				<span class="badge status-primary"></span>
-			</div>
-
-			<div class="filter__item">
-				<div class="checkbox">
-					<input id="adult" type="checkbox" wire:model="pomAges" value="adult"/>
-					<label for="adult">{{ __('Adult') }}<span class="box"></span></label>
-				</div>
-				<span class="badge status-primary"></span>
-			</div>
-
-			<div class="filter__item">
-				<div class="checkbox">
-					<input id="senior" type="checkbox" wire:model="pomAges" value="senior"/>
-					<label for="senior">{{ __('Senior') }}<span class="box"></span></label>
-				</div>
-				<span class="badge status-primary"></span>
 			</div>
 		</div>
 
-		<div class="filter">
-			<h2 class="filter__title">
-				{{ __('Other') }}
-			</h2>
+		{{-- Filter item --}}
+		<div class="w-full border-b border-gray-900" x-data="{ open: false }">
+			<button 
+				type="button"
+				class="w-full flex items-center justify-between py-2 px-4 text-gray-300 transition font-medium" 
+				@click="open = !open" 
+				:class="{'bg-slightly-lighter text-white': open}"
+			>
+				<span>
+					{{ __('Age') }}
+				</span>
 
-			<div class="filter__item">
-				<div class="checkbox">
-					<input id="for_sale" type="checkbox" checked="checked" wire:model="pomForSale" />
-					<label for="for_sale">{{ __('For sale') }}<span class="box"></span></label>
+				<svg class="h-5 w-5 ml-2 transform transition" :class="{'rotate-180': !open}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+				</svg>
+			</button>
+
+			<div class="p-4 space-y-2" x-show="open">
+				<div>
+					<input class="checkbox-squared" type="checkbox" id="puppy" wire:model="pomAges" value="puppy">
+					<label for="puppy" class="text-gray-100">
+						{{ __('Puppy') }}
+					</label>
 				</div>
-				<span class="badge status-primary"></span>
+
+				<div>
+					<input class="checkbox-squared" type="checkbox" id="adult" wire:model="pomAges" value="adult">
+					<label for="adult" class="text-gray-100">
+						{{ __('Adult') }}
+					</label>
+				</div>
+
+				<div>
+					<input class="checkbox-squared" type="checkbox" id="senior" wire:model="pomAges" value="senior">
+					<label for="senior" class="text-gray-100">
+						{{ __('Senior') }}
+					</label>
+				</div>
 			</div>
+		</div>
 
-			<div class="filter__item">
-				<div class="checkbox">
-					<input id="open_for_breeding" type="checkbox" wire:model="pomIsOpen" />
-					<label for="open_for_breeding">{{ __('Breeding') }}<span class="box"></span></label>
-				</div>
-				<span class="badge status-primary"></span>
-			</div>
+		{{-- Filter item --}}
+		<div class="w-full" x-data="{ open: false }">
+			<button 
+				type="button"
+				class="w-full flex items-center justify-between py-2 px-4 text-gray-300 transition font-medium" 
+				@click="open = !open" 
+				:class="{'bg-slightly-lighter text-white': open}"
+			>
+				<span>
+					{{ __('Other') }}
+				</span>
 
-			<div class="filter__item">
-				<div class="checkbox">
-					<input id="has_titles" type="checkbox" wire:model="pomHasTitles" />
-					<label for="has_titles">{{ __('Has titles') }}<span class="box"></span></label>
+				<svg class="h-5 w-5 ml-2 transform transition" :class="{'rotate-180': !open}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+				</svg>
+			</button>
+
+			<div class="p-4 space-y-2" x-show="open">
+				<div>
+					<input class="checkbox-squared" type="checkbox" id="for_sale" wire:model="pomForSale" checked="checked">
+					<label for="for_sale" class="text-gray-100">
+						{{ __('For sale') }}
+					</label>
 				</div>
-				<span class="badge status-primary"></span>
+
+				<div>
+					<input class="checkbox-squared" type="checkbox" id="open_for_breeding" wire:model="pomIsOpen">
+					<label for="open_for_breeding" class="text-gray-100">
+						{{ __('Breeding') }}
+					</label>
+				</div>
+
+				<div>
+					<input class="checkbox-squared" type="checkbox" id="has_titles" wire:model="pomHasTitles">
+					<label for="has_titles" class="text-gray-100">
+						{{ __('Has titles') }}
+					</label>
+				</div>
 			</div>
 		</div>
 	</section>

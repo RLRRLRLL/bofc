@@ -57,6 +57,7 @@ class UpdateImages extends Component
 	public function makeAvatar($id)
 	{
 		$images = $this->pom->images;
+		
 		foreach($images as $i) {
 			$i->update(['is_avatar' => 0]);
 		}
@@ -69,6 +70,8 @@ class UpdateImages extends Component
 
     public function render()
     {
-        return view('livewire.pom.update-images');
+        return view('livewire.pom.update-images', [
+			'images' => $this->pom->images
+		]);
     }
 }

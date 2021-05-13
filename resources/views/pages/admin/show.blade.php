@@ -1,31 +1,28 @@
 @extends('layouts.admin')
 
 @push('styles')
-	<link 
-		rel="stylesheet" 
-		href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css"
-	/>
+	<link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css"/>
 @endpush
 
 @section('content')
-	<div class="single" x-data="{activeTab: 'info'}" x-cloak>
-		<div class="single__tabs">
+	<div class="bg-admin-secondary p-5 rounded shadow" x-data="{activeTab: 'images'}" x-cloak>
+		<div class="w-full flex mb-5 rounded-md divide-x divide-gray-700 border border-gray-700">
 			<button 
-				class="single__tabs--item" 
-				:class="{'active': activeTab == 'info'}" 
+				class="w-2/4 text-lg p-3 transition focus:ring-0" 
+				:class="activeTab === 'info' ? 'text-white bg-[#424242]' : 'text-white text-opacity-60'" 
 				x-on:click="activeTab = 'info'"
 			>
 				Info
-				<i class="fas fa-info-circle"></i>
+				<i class="fas fa-info-circle ml-1"></i>
 			</button>
 
 			<button 
-				class="single__tabs--item" 
+				class="w-2/4 text-lg p-3 transition focus:ring-0" 
 				x-on:click="activeTab = 'images'" 
-				:class="{'active': activeTab == 'images'}"
+				:class="activeTab === 'images' ? 'text-white bg-[#424242]' : 'text-white text-opacity-60'" 
 			>
 				Images
-				<i class="fas fa-image"></i>
+				<i class="fas fa-image ml-1"></i>
 			</button>
 		</div>
 

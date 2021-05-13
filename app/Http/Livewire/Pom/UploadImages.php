@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Pom;
 use Livewire\WithFileUploads;
 use Livewire\Component;
 use App\Models\Image;
+use App\Models\Pom;
 
 class UploadImages extends Component
 {
@@ -30,9 +31,8 @@ class UploadImages extends Component
 		{
 			$fileName = $img->getClientOriginalName();
 
-			Image::create([
-				'pom_id' => $this->pom_id,
-				'url' => $fileName,
+			Pom::find($this->pom_id)->images()->create([
+				'url' => $fileName
 			]);
 
 			$img->storeAs('images/'.$this->pom_id, $fileName, 'public');

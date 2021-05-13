@@ -18,8 +18,10 @@ module.exports = {
 				'slightly-lighter': 'rgba(255, 255, 255, .03)',
 				dark: '#191817',
 				'dark-secondary': '#242424',
+				'admin-secondary': '#292929',
 				accent: '#fff1c0',
-				amber: '#ffd54f'
+				amber: '#ffd54f',
+				navy: '#192841'
 			},
 			width: {
 				120: '30rem'
@@ -57,5 +59,5 @@ module.exports = {
 			}
 		}
 	},
-	plugins: []
+	plugins: [require('@tailwindcss/forms')]
 }

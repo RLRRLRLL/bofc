@@ -27,7 +27,7 @@
 			</div>
 			
 			<!-- Social -->
-			<div class="py-8 md:py-10 border-t border-gray-300">
+			<div class="py-8 md:py-10">
 				<ul class="flex justify-center items-center space-x-5">
 					<li>
 						<a href="#" class="flex items-center justify-center p-2 shadow-md text-gray-900 rounded-full bg-amber">

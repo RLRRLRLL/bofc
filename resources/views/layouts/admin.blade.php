@@ -1,90 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full">
 	<head>
         <meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		@include('includes.common.meta.favicon')
 		<title>BOFC | Admin</title>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 		@if (app()->isLocal())
 			<script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
 		@endif
 		@livewireStyles
+		<link rel="stylesheet" href="{{ asset('css/tailwind.css') }}">
+		{{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
 		@stack('styles')
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/admin.css') }}">
-	</head>
-	<body>
-		<!-- wrapper -->
-		<div class="grid">
-			<header class="header">
-				<ul class="header__left">
-					<li>
-						<button class="burger">
-							<i class="fas fa-bars"></i>
-						</button>
-					</li>
-					<li>
-						<a href="/">{{ config('app.name') }}</a>
-					</li>
-				</ul>
 
-				<ul class="header__right">
-					@guest
-						<li>
-							<a href="/login">
-								Login
-							</a>
-						</li>
-						<li>
-							<a href="/register">
-								Register
-							</a>
-						</li>
-					@endguest
-				</ul>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+			html {
+				font-size: 15px;
+			}
+
+			body {
+				font-family: 'Roboto', sans-serif;
+			}
+		</style>
+	</head>
+
+	<body class="antialiased">
+		<div class="">
+			<header class="py-5 bg-admin-secondary shadow">
+				<div class="container">
+					<ul class="flex items-center space-x-3">
+						<x-admin.nav-items />
+					</ul>
+				</div>
 			</header>
 
-			<aside class="sidebar">
-				<div class="sidebar__header"></div>
-
-				<ul class="sidebar__nav">
-					<li>
-						<a href="/">
-							<i class="fas fa-home"></i>
-							Homepage
-						</a>
-					</li>
-					<li>
-						<a href="{{ route('create.new.pom', app()->getLocale()) }}">
-							<i class="fas fa-plus"></i>
-							Add pom
-						</a>
-					</li>
-					<li>
-						<a href="/admin">
-							<i class="fas fa-dog"></i>
-							Pomeranian
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fas fa-newspaper"></i>
-							News
-						</a>
-					</li>
-					<li>
-						<a href="{{ route('settings', app()->getLocale()) }}">
-							<i class="fas fa-cog"></i>
-							Settings
-						</a>
-					</li>
-				</ul>
-
-				<button class="sidebar__close">&#10005;</button>
-			</aside>
-
-			<main class="main">
-				@yield('content')
+			<main class="min-h-screen py-10 bg-dark">
+				<div class="container">
+					@yield('content')
+				</div>
 			</main>
 		</div>
 		

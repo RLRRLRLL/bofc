@@ -21,10 +21,10 @@ Route::get('change-language/{lang}', function($lang) {
 	return redirect()->back();
 })->name('change-language');
 
-Route::middleware('setlocale')->group(function() {
+Route::middleware('set.locale')->group(function() {
 	Route::get('/', [MainPagesController::class, 'homepage'])->name('homepage');
-	Route::get('/pomeranian', Index::class)->name('poms.index');
-	Route::get('/pomeranian/{id}', Show::class)->name('poms.show');
+	Route::get('/pomeranians', Index::class)->name('poms.index');
+	Route::get('/pomeranians/{id}/show', Show::class)->name('poms.show');
 	Route::get('/gallery', [MainPagesController::class, 'gallery'])->name('gallery');
 
 	// admin pages
@@ -32,9 +32,9 @@ Route::middleware('setlocale')->group(function() {
 		'prefix' => '/12a5155wo298d1u3d1j0',
 	], function() {
 		// Pom related
-		Route::get('/', [AdminPagesController::class, 'index'])->name('admin');
-		Route::get('/create', [AdminPagesController::class, 'createPom'])->name('create.new.pom');
-		Route::get('/pom/{id}', [AdminPagesController::class, 'show'])->name('show.new.pom');
+		Route::get('/', [AdminPagesController::class, 'index'])->name('admin.poms-index');
+		Route::get('/create', [AdminPagesController::class, 'createPom'])->name('admin.poms-create');
+		Route::get('/pom/{id}', [AdminPagesController::class, 'show'])->name('admin.poms-show');
 		// Settings
 		Route::get('/settings', [AdminPagesController::class, 'settings'])->name('settings');
 	}); 

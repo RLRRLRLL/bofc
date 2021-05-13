@@ -11,4 +11,9 @@
 	.manege {
 		font-family: 'manege';
 	}
+
+	/* ---- */
+	button {
+		@apply focus:outline-none focus:ring;
+	}
 }

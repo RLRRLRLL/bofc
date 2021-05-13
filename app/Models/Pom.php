@@ -21,6 +21,13 @@ class Pom extends Model
 		return $this->hasMany(Image::class);
 	}
 
+	public function avatarImage()
+	{
+		$chosen_avatar = $this->images->where('is_avatar', 1)->first();
+
+		return $chosen_avatar ? $chosen_avatar->url : $this->images->first()->url;
+	}
+
 	// Breeders, owners
 	public function people()
 	{
