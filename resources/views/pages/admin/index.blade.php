@@ -1,28 +1,36 @@
 @extends('layouts.admin')
 
-@section('content')
-	<div class="space-y-5">
-		<h1 class="text-3xl text-gray-300 font-medium">
-			{{ __('All poms') }}
-		</h1>
+@section('page_title', __('All poms'))
 
-		<div class="p-5 bg-admin-secondary rounded shadow grid gap-5 grid-cols-1 md:grid-cols-4">
+@section('content')
+	<x-admin.page-layout :title="__('All poms')">
+		<div class="grid gap-5 grid-cols-1 md:grid-cols-4">
 			@forelse ($poms as $pom)
 				<figure class="relative flex flex-col shadow rounded-md border border-gray-800 overflow-hidden group hover:shadow-md" title="{{ __('Click to learn more.') }}">
 					<a href="{{ route('admin.poms-show', $pom->id) }}" class="absolute top-0 left-0 bottom-0 right-0 z-0 inline active:opacity-70"></a>
-
+	
 					<img 
-						class="h-44 object-center object-cover" 
-						src="{{ '/storage/images/'.$pom->id.'/'.$pom->avatarImage()}}"
+						class="h-44 object-center object-cover"
+						@if ($pom->images()->exists())
+							src="{{ '/storage/images/'.$pom->id.'/'.$pom->avatarImage()}}"
+						@else
+							src="{{ asset('images/admin/image_placeholder.png') }}"
+						@endif
 					>
-
+	
 					<figcaption class="grid grid-cols-1 gap-y-3 p-5 bg-dark">
 						<div class="flex items-center">
 							<h3 class="text-xl text-white leading-none">
 								{{ ucfirst($pom->name) }}
+	
+								@if (!$pom->images()->exists())
+									<span class="text-red-400 text-opacity-50 text-sm">
+										({{ __('draft') }})
+									</span>
+								@endif
 							</h3>
 						</div>
-
+	
 						<div class="flex flex-col divide-y divide-gray-700">
 							<div class="space-x-1 py-2">
 								<span class="text-gray-400 font-light uppercase text-sm">
@@ -32,7 +40,7 @@
 									{{ ucfirst(__($pom->age)) }}
 								</span>
 							</div>
-
+	
 							<div class="space-x-1 py-2">
 								<span class="text-gray-400 font-light uppercase text-sm">
 									{{ __('Color') }}
@@ -41,14 +49,14 @@
 									{{ __(ucfirst($pom->color)) }}
 								</span>
 							</div>
-
+	
 							<div class="space-x-1 py-2">
 								<span class="text-gray-400 font-light uppercase text-sm">
 									{{ __('Gender') }}
 								</span>
 								<span class="text-gray-200 inline-flex items-center">
 									{{ $pom->is_male === 1 ? __('Male') : __('Female') }}
-
+	
 									@if ($pom->is_male)
 										<svg class="w-5 h-5 ml-1 fill-current text-blue-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M442 48h-90a22 22 0 0 0 0 44h36.89l-60.39 60.39c-68.19-52.86-167-48-229.54 14.57C31.12 234.81 31.12 345.19 99 413a174.21 174.21 0 0 0 246 0c62.57-62.58 67.43-161.35 14.57-229.54L420 123.11V160a22 22 0 0 0 44 0V70a22 22 0 0 0-22-22zM313.92 381.92a130.13 130.13 0 0 1-183.84 0c-50.69-50.68-50.69-133.16 0-183.84s133.16-50.69 183.84 0s50.69 133.16 0 183.84z"/></svg>
 									@else
@@ -58,7 +66,7 @@
 								
 							</div>
 						</div>
-
+	
 						<button type="button" class="py-2 px-4 rounded shadow bg-amber text-dark font-medium transition">
 							<span>{{ __('Learn more') }}</span>
 						</button>
@@ -66,11 +74,11 @@
 				</figure>
 			@empty
 				<div>
-					<p>
-						{{ __("Oops! We didn't find any poms :(") }}
+					<p class="text-gray-200">
+						{{ __("You have not added any poms yet.") }}
 					</p>
 				</div>		
 			@endforelse
 		</div>
-	</div>
+	</x-admin.page-layout>
 @endsection

@@ -1,27 +1,37 @@
+@php
+	$footer_link_classes = 'inline-block bitter text-lg tracking-wide font-medium text-gray-200 hover:text-gray-100 hover:border-gray-500 py-2 px-4 border-2 border-gray-700 active:border-gray-400 focus:border-gray-400 focus:text-gray-100 transition-colors';
+@endphp
+
 <footer id="footer" class="section py-10 lg:py-14 bg-dark-secondary" data-scroll-section>
 	<div class="container">
 		<div class="grid gap-y-5 grid-cols-1">
 			<!-- Navigation -->
 			<div class="">
-				<ul class="h-full flex flex-col justify-center md:flex-row items-center">
+				<ul class="h-full flex flex-col justify-center md:flex-row items-center space-y-5 md:space-y-0 md:space-x-5">
 					<li>
-						<button class="mb-5 md:mr-5 md:mb-0 inline-block bitter text-lg tracking-wide font-medium text-gray-200 hover:text-gray-100 hover:border-gray-500 py-2 px-4 border-2 border-gray-700 active:border-gray-400 focus:border-gray-400 focus:text-gray-100 transition-colors" id="backToTop" type="button">
+						<a class="{{ $footer_link_classes }}" href="{{ route('homepage') }}">
+							{{ __('Home') }}
+						</a>
+					</li>
+					<li>
+						<a class="{{ $footer_link_classes }}" href="#">
+							{{ __('News & Articles') }}
+						</a>
+					</li>
+					<li>
+						<a class="{{ $footer_link_classes }}" href="{{ route('poms.index') }}">
+							{{ __('Pomeranian') }}
+						</a>
+					</li>
+					<li>
+						<a class="{{ $footer_link_classes }}" href="{{ route('gallery') }}">
+							{{ __('Gallery') }}
+						</a>
+					</li>
+					<li>
+						<button class="{{ $footer_link_classes }}" type="button" id="back-to-top">
 							{{ __('Back to top') }}
 						</button>
-					</li>
-					<li>
-						<a class="mb-5 md:mr-5 md:mb-0 inline-block bitter text-lg tracking-wide font-medium text-gray-200 hover:text-gray-100 hover:border-gray-500 py-2 px-4 border-2 border-gray-700 active:border-gray-400 focus:border-gray-400 focus:text-gray-100 transition-colors" href="#">{{ __('News & Articles') }}</a>
-					</li>
-					<li>
-						<button class="mb-5 md:mr-5 md:mb-0 inline-block bitter text-lg tracking-wide font-medium text-gray-200 hover:text-gray-100 hover:border-gray-500 py-2 px-4 border-2 border-gray-700 active:border-gray-400 focus:border-gray-400 focus:text-gray-100 transition-colors" type="button" id="scrollToAboutSection">
-							{{ __('About') }}
-						</button>
-					</li>
-					<li>
-						<a class="mb-5 md:mr-5 md:mb-0 inline-block bitter text-lg tracking-wide font-medium text-gray-200 hover:text-gray-100 hover:border-gray-500 py-2 px-4 border-2 border-gray-700 active:border-gray-400 focus:border-gray-400 focus:text-gray-100 transition-colors" href="{{ route('poms.index') }}">{{ __('Pomeranian') }}</a>
-					</li>
-					<li>
-						<a class="inline-block bitter text-lg tracking-wide font-medium text-gray-200 hover:text-gray-100 hover:border-gray-500 py-2 px-4 border-2 border-gray-700 active:border-gray-400 focus:border-gray-400 focus:text-gray-100 transition-colors" href="{{ route('gallery') }}">{{ __('Gallery') }}</a>
 					</li>
 				</ul>
 			</div>

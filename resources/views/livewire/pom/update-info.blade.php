@@ -8,15 +8,15 @@
 	<h2 class="flex items-center mb-5 text-3xl text-gray-200">
 		{{ $pom->name }} 
 
-		<span class="inline-block ml-2 text-2xl text-gray-400">
-			({{ ($pom->is_published == 1) ? 'published' : 'not published' }})
-		</span>
-
 		@if ($pom->is_male)
 			<svg class="w-7 h-7 ml-2 fill-current text-blue-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M442 48h-90a22 22 0 0 0 0 44h36.89l-60.39 60.39c-68.19-52.86-167-48-229.54 14.57C31.12 234.81 31.12 345.19 99 413a174.21 174.21 0 0 0 246 0c62.57-62.58 67.43-161.35 14.57-229.54L420 123.11V160a22 22 0 0 0 44 0V70a22 22 0 0 0-22-22zM313.92 381.92a130.13 130.13 0 0 1-183.84 0c-50.69-50.68-50.69-133.16 0-183.84s133.16-50.69 183.84 0s50.69 133.16 0 183.84z"/></svg>
 		@else
 			<svg class="w-7 h-7 ml-2 fill-current text-red-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.691 2 6 4.691 6 8c0 2.967 2.167 5.432 5 5.91V17H8v2h3v2.988h2V19h3v-2h-3v-3.09c2.833-.479 5-2.943 5-5.91c0-3.309-2.691-6-6-6zm0 10c-2.206 0-4-1.794-4-4s1.794-4 4-4s4 1.794 4 4s-1.794 4-4 4z"/></svg>
 		@endif
+
+		<span class="inline-block ml-2 text-xl text-gray-500">
+			({{ ($pom->is_published == 1) ? __('published') : __('not published') }})
+		</span>
 	</h2>
 
 	<section class="grid grid-cols-3">
@@ -27,7 +27,7 @@
 					<li class="flex flex-col cursor-pointer p-1 space-y-1" x-data="{showEdit:false, focusChange:false}" x-on:click="if (!focusChange) {showEdit=true; if ($refs.{{ $item }}Input) setTimeout(() => $refs.{{ $item }}Input.focus(), 250)}" x-on:click.away="showEdit=false">
 						<div class="group">
 							<span class="{{ $label }}">
-								{{ ucfirst($item) }}:
+								{{ __(ucfirst($item)) }}:
 							</span>
 							<span class="{{ $value }} group-hover:underline">
 								{{ $pom->$item }}
@@ -48,7 +48,7 @@
 				<li class="flex flex-col cursor-pointer p-1 space-y-1" x-data="{showEdit:false, focusChange:false}" x-on:click="if (!focusChange) {showEdit=true; if ($refs.birthdayInput) setTimeout(() => $refs.birthdayInput.focus(), 250)}" x-on:click.away="showEdit=false">
 					<div class="group">
 						<span class="{{ $label }}">
-							Birthday:
+							{{ __('Birthday') }}:
 						</span>
 						<span class="{{ $value }} group-hover:underline">
 							{{ $pom->birthday }}
@@ -72,42 +72,42 @@
 			<ul>
 				<li class="p-1">
 					<span class="{{ $label }}">
-						Published:
+						{{ __('Published') }}:
 					</span>
 					<span wire:click="toggleParam('is_published')" class="{{ $value }} cursor-pointer underline hover:no-underline">
-						{{ ($pom->is_published) ? 'Yes' : 'No' }}
+						{{ ($pom->is_published) ? __('Yes') : __('No') }}
 					</span>
 				</li>
 				<li class="p-1">
 					<span class="{{ $label }}">
-						For sale:
+						{{ __('For sale') }}:
 					</span>
 					<span wire:click="toggleParam('is_for_sale')" class="{{ $value }} cursor-pointer underline hover:no-underline">
-						{{ ($pom->is_for_sale) ? 'Yes' : 'No' }}
+						{{ ($pom->is_for_sale) ? __('Yes') : __('No') }}
 					</span>
 				</li>
 				<li class="p-1">
 					<span class="{{ $label }}">
-						Has fontanel:
+						{{ __('Has fontanel') }}:
 					</span>
 					<span wire:click="toggleParam('has_fontanel')" class="{{ $value }} cursor-pointer underline hover:no-underline">
-						{{ ($pom->has_fontanel) ? 'Yes' : 'No' }}
+						{{ ($pom->has_fontanel) ? __('Yes') : __('No') }}
 					</span>
 				</li>
 				<li class="p-1">
 					<span class="{{ $label }}">
-						Open for breeding:
+						{{ __('Open for breeding') }}:
 					</span>
 					<span wire:click="toggleParam('is_open_for_breeding')" class="{{ $value }} cursor-pointer underline hover:no-underline">
-						{{ ($pom->is_open_for_breeding) ? 'Yes' : 'No' }}
+						{{ ($pom->is_open_for_breeding) ? __('Yes') : __('No') }}
 					</span>
 				</li>
 				<li class="p-1">
 					<span class="{{ $label }}">
-						Gender:
+						{{ __('Gender') }}:
 					</span>
 					<span wire:click="toggleParam('is_male')" class="{{ $value }} cursor-pointer underline hover:no-underline">
-						{{ ($pom->is_male) ? 'Male' : 'Female' }}
+						{{ ($pom->is_male) ? __('Male') : __('Female') }}
 					</span>
 				</li>
 			</ul>
@@ -120,19 +120,19 @@
 				<x-admin.forms.select-dropdown>
 					<x-slot name="label">
 						<span class="{{ $label }}">
-							Father:
+							{{ __('Father') }}:
 						</span>
 
 						@if ($father != null)
 							<span class="{{ $value }}">{{ $father->name }}</span>
 						@else
-							<span x-text="selected || 'Father not selected'" class="{{ $value }}"></span>
+							<span x-text="selected || '{{ __('Father not selected') }}'" class="{{ $value }}"></span>
 						@endif	
 					</x-slot>
 
 					<x-slot name="iteration">
 						<li class="py-2 px-3 text-gray-300 cursor-pointer" x-on:click="open = false; selected = ''" wire:click="detach('father', 'parents')">
-							Select later
+							{{ __('Select later') }}
 						</li>
 
 						@forelse ($poms->where('is_male', 1) as $male)
@@ -149,19 +149,19 @@
 				<x-admin.forms.select-dropdown>
 					<x-slot name="label">
 						<span class="{{ $label }}">
-							Mother:
+							{{ __('Mother') }}:
 						</span>
 
 						@if ($mother != null)
 							<span class="{{ $value }}">{{ $mother->name }}</span>
 						@else
-							<span x-text="selected || 'Mother not selected'" class="{{ $value }}"></span>
+							<span x-text="selected || '{{ __('Mother not selected') }}'" class="{{ $value }}"></span>
 						@endif	
 					</x-slot>
 
 					<x-slot name="iteration">
 						<li class="py-2 px-3 text-gray-300 cursor-pointer" x-on:click="open = false; selected = ''" wire:click="detach('mother', 'parents')">
-							Select later
+							{{ __('Select later') }}
 						</li>
 
 						@forelse($poms->where('is_male', 0) as $female)
@@ -177,19 +177,19 @@
 				<x-admin.forms.select-dropdown>
 					<x-slot name="label">
 						<span class="{{ $label }}">
-							Breeder:
+							{{ __('Breeder') }}:
 						</span>
 
 						@if ($breeder != null)
 							<span class="{{ $value }}">{{ $breeder->name }}</span>
 						@else
-							<span x-text="selected || 'Breeder not selected'" class="{{ $value }}"></span>
+							<span x-text="selected || '{{ __('Breeder not selected') }}'" class="{{ $value }}"></span>
 						@endif	
 					</x-slot>
 
 					<x-slot name="iteration">
 						<li class="py-2 px-3 text-gray-300 cursor-pointer" x-on:click="open = false; selected = ''" wire:click="detach('breeder', 'people')">
-							Select later
+							{{ __('Select later') }}
 						</li>
 
 						@forelse($people->where('type', 1) as $breeder)
@@ -205,19 +205,19 @@
 				<x-admin.forms.select-dropdown>
 					<x-slot name="label">
 						<span class="{{ $label }}">
-							Owner:
+							{{ __('Owner') }}:
 						</span>
 
 						@if ($owner != null)
 							<span class="{{ $value }}">{{ $owner->name }}</span>
 						@else
-							<span x-text="selected || 'Owner not selected'" class="{{ $value }}"></span>
+							<span x-text="selected || '{{ __('Owner not selected') }}'" class="{{ $value }}"></span>
 						@endif	
 					</x-slot>
 
 					<x-slot name="iteration">
 						<li class="py-2 px-3 text-gray-300 cursor-pointer" x-on:click="open = false; selected = ''" wire:click="detach('breeder', 'people')">
-							Select later
+							{{ __('Select later') }}
 						</li>
 
 						@forelse($people->where('type', 0) as $owner)
@@ -245,7 +245,7 @@
 					<textarea class="w-full mt-1 bg-gray-800 text-gray-100 rounded border border-gray-600 focus:border-gray-400 focus:ring-0 placeholder-amber" id="titles" wire:model="titles" x-ref="titles"></textarea>
 
 					<button type="button" wire:click="updateInfo('titles')" x-on:click="console.log($refs.titles.value)" class="mt-2 bg-dark bg-opacity-80 text-white py-2 px-4 rounded shadow">
-						{{ __('Save titles') }}
+						{{ __('Update titles') }}
 					</button>
 				</li>
 			</ul>

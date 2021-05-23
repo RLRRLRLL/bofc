@@ -5,14 +5,14 @@
 @endpush
 
 @section('content')
-	<div class="bg-admin-secondary p-5 rounded shadow" x-data="{activeTab: 'images'}" x-cloak>
+	<div class="bg-admin-secondary p-5 rounded shadow" x-data="{ activeTab: 'info' }" x-cloak>
 		<div class="w-full flex mb-5 rounded-md divide-x divide-gray-700 border border-gray-700">
 			<button 
 				class="w-2/4 text-lg p-3 transition focus:ring-0" 
 				:class="activeTab === 'info' ? 'text-white bg-[#424242]' : 'text-white text-opacity-60'" 
 				x-on:click="activeTab = 'info'"
 			>
-				Info
+				{{ __('Info') }}
 				<i class="fas fa-info-circle ml-1"></i>
 			</button>
 
@@ -21,7 +21,7 @@
 				x-on:click="activeTab = 'images'" 
 				:class="activeTab === 'images' ? 'text-white bg-[#424242]' : 'text-white text-opacity-60'" 
 			>
-				Images
+				{{ __('Images') }}
 				<i class="fas fa-image ml-1"></i>
 			</button>
 		</div>

@@ -26,7 +26,7 @@
 			</div>
 		@else
 			<button class="py-3 px-5 rounded shadow font-medium bg-green-600 hover:bg-green-700 text-white transition" type="button" x-on:click="if($refs.imagesInput) $refs.imagesInput.click()">
-				Upload new Images
+				{{ __('Upload new Images') }}
 			</button>
 		@endif
 

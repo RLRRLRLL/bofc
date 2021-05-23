@@ -2,8 +2,10 @@
 
 @section('page-title', __('Home'))
 
+@section('data-page', 'home')
+
 @section('content')
-	<main class="main home bg-dark" data-scroll-container>
+	{{-- <main class="main home bg-dark" data-scroll-container> --}}
 		@include('includes.common.special-svgs')
 
 		<!-- Brand -->
@@ -179,9 +181,9 @@
 				</div>
 			</div>
 		</section>
-	</main>
+	{{-- </main> --}}
 @endsection
 
 @push('scripts')
-	<script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js" integrity="sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @endpush

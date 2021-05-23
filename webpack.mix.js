@@ -18,6 +18,7 @@ mix.js('resources/js/main.js', 'public/js/scripts')
 	})
 	.browserSync({
 		proxy: 'http://bofc.local',
+		// proxy: 'http://127.0.0.1:8000',
 		notify: {
 			styles: {
 				top: 'auto',

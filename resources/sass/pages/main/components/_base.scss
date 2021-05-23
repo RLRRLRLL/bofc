@@ -6,8 +6,15 @@ body {
 	width: 100%;
 	height: 100%;
 	font-family: 'system';
-	overflow-x: hidden;
-	// background: $transition-bg;
+	background: $bgPrimary;
+	// overflow-x: hidden;
+
+	/* enable locomotive scroll from tablet and on */
+	@media screen and (min-width: 992px) {
+		body {
+			overflow: hidden;
+		}
+	}
 
 	&.left-arr {
 		cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" height="55" viewBox="0 0 476.213 476.213" width="55"><polygon points="476.213,223.106 57.426,223.106 91.819,188.713 70.606,167.5 0,238.106 70.606,308.713 91.819,287.5 57.426,253.106 476.213,253.106 "/></svg>'),
@@ -34,8 +41,7 @@ body {
 	// max-width: 100vw;
 	// height: 100%;
 	// width: 100%;
-	// overflow: hidden;
-	// background: $bgPrimary;
+	overflow-x: hidden;
 
 	.main {
 		// @include flex-column;

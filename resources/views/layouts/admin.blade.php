@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		@include('includes.common.meta.favicon')
-		<title>BOFC | Admin</title>
+		<title>{{ config('app.name') }} | {{ __('Admin dashboard') }} | @yield('page_title')</title>
 		@if (app()->isLocal())
 			<script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
 		@endif
@@ -23,6 +23,10 @@
 			body {
 				font-family: 'Roboto', sans-serif;
 			}
+
+			[x-cloak] {
+				display: none;
+			}
 		</style>
 	</head>
 
@@ -30,9 +34,14 @@
 		<div class="">
 			<header class="py-5 bg-admin-secondary shadow">
 				<div class="container">
-					<ul class="flex items-center space-x-3">
-						<x-admin.nav-items />
-					</ul>
+					{{-- header inner --}}
+					<div class="flex items-center justify-between">
+						<ul class="flex items-center space-x-3">
+							<x-admin.nav-items />
+						</ul>
+
+						@include('includes.main.partials.header.lang-switcher')
+					</div>
 				</div>
 			</header>
 

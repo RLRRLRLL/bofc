@@ -2,10 +2,7 @@ window._ = require('lodash')
 window.axios = require('axios')
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
-/* STATE: DEVELOPMENT! */
-
-/* USED COMPONENTS: */
-import { query, disableRightClick } from './components/Utils'
+import { query, disableRightClick, scrollToTop } from './components/Utils'
 import { runBubbles, distortBubble } from './components/common/Bubbles'
 import { galleryPageGallery } from './components/main/Gallery'
 import { triggerModal } from './components/main/Modal'
@@ -14,7 +11,7 @@ import initCarousel from './components/main/Swiper'
 import LocomotiveScroll from 'locomotive-scroll'
 import runTransition from './components/main/PageTransitions'
 
-/* <!-- NOT USED: --> */
+/* NOT USED: */
 // import toggleMenu from "./components/main/ToggleMenu";
 // toggleMenu();
 // import { rippleButtonsInit } from './components/main/RippleEffect'
@@ -41,32 +38,25 @@ document.addEventListener(
 		 */
 
 		// Locomotive scroll
-		const tabletWidth = '1025px'
-
-		// if (!window.matchMedia(`(max-width: ${tabletWidth}`).matches) {
-		// console.log('tablet width or less')
 		const scroll = new LocomotiveScroll({
 			el: query('[data-scroll-container]'),
 			smooth: true,
+			tablet: { smooth: false },
+			smartphone: { smooth: false },
 			multiplier: 1.5,
 			lerp: 0.2
 		})
 
-		const backToTopBtn = query('#backToTop')
-		backToTopBtn.addEventListener('click', () => {
-			scroll.scrollTo('top', {
-				duration: 400
-			})
-		})
+		/* Back to top button */
+		const backToTopBtn = document.getElementById('back-to-top')
 
-		const scrollToAbout = query('#scrollToAboutSection')
-		const aboutSection = query('#about')
-		scrollToAbout.addEventListener('click', () => {
-			scroll.scrollTo(aboutSection, {
-				duration: 400
+		if (window.matchMedia('(min-width: 1024px)')) {
+			backToTopBtn.addEventListener('click', () => {
+				scroll.scrollTo('top')
 			})
-		})
-		// }
+		} else {
+			backToTopBtn.addEventListener('click', scrollToTop)
+		}
 
 		// Distortion links (circle on hover)
 		const distortedLinks = [...document.querySelectorAll('a.circle-link')]
@@ -93,12 +83,14 @@ document.addEventListener(
 		 * * Functions will be invoked based
 		 * * on current page.
 		 */
+		const currentPage = document.body.getAttribute('data-page').trim()
+		console.log(currentPage)
 
 		// | =========================================================
 		// | Home
 		// | =========================================================
 		// query('.main.home') && runBubbles('.brand', 3000)
-		if (query('.main.home')) {
+		if (currentPage === 'home') {
 			distortBubble()
 		}
 

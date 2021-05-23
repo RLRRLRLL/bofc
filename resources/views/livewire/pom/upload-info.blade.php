@@ -5,12 +5,8 @@
 	$text_input = 'bg-gray-800 text-gray-100 rounded border border-gray-600 focus:border-gray-400 focus:ring-0';
 @endphp
 
-<div class="space-y-5">
-	<h1 class="text-3xl text-gray-300 font-medium">
-		{{ __('Info') }}
-	</h1>
-	
-	<form id="addPomForm" class="p-5 bg-admin-secondary rounded shadow transition" wire:submit.prevent="saveInfo" wire:loading.class="opacity-50" wire:target="saveInfo">
+<x-admin.page-layout :title="__('Info')">
+	<form id="addPomForm" class="" wire:submit.prevent="saveInfo" wire:loading.class="opacity-50" wire:target="saveInfo">
 		@csrf
 		
 		<div class="p-5">
@@ -20,7 +16,7 @@
 					@foreach ($base_info as $item)
 						<div class="flex flex-col p-2 space-y-2">
 							<label>
-								<span class="{{ $label }}">{{ ucfirst($item) }}: </span>
+								<span class="{{ $label }}">{{ __(ucfirst($item)) }}: </span>
 								<span class="{{ $value }}">{{ $this->$item }}</span>
 							</label>
 							<input wire:model.debounce.400ms="{{ $item }}" type="text" class="{{ $text_input }}">
@@ -30,7 +26,7 @@
 
 					<div class="flex flex-col p-2 space-y-2">
 						<label>
-							<span class="{{ $label }}">Birthday: </span>
+							<span class="{{ $label }}">{{ __('Birthday') }}: </span>
 							<span class="{{ $value }}">{{ $birthday }}</span>
 						</label>
 						<input wire:model.debounce.400ms="birthday" id="datepicker" class="{{ $text_input }}">
@@ -53,13 +49,13 @@
 				<div class="py-5 border-b border-gray-600 | grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
 					<x-admin.forms.select-dropdown>
 						<x-slot name="label">
-							<span class="{{ $label }}">Owner:</span> 
+							<span class="{{ $label }}">{{ __('Owner') }}:</span> 
 							<span class="{{ $value }}" x-text="selected"></span>
 						</x-slot>
 
 						<x-slot name="iteration">
 							<li x-on:click="open = false; selected = ''" wire:click="$set('owner', null)" class="py-2 px-3 text-gray-300 cursor-pointer hover:bg-slightly-lighter hover:text-gray-100">
-								Select later
+								{{ __('Select later') }}
 							</li>
 
 							@if($people)
@@ -74,13 +70,13 @@
 
 					<x-admin.forms.select-dropdown>
 						<x-slot name="label">
-							<span class="{{ $label }}">Breeder:</span> 
+							<span class="{{ $label }}">{{ __('Breeder') }}:</span> 
 							<span class="{{ $value }}" x-text="selected"></span>
 						</x-slot>
 
 						<x-slot name="iteration">
 							<li x-on:click="open = false; selected = ''" wire:click="$set('breeder', null)" class="py-2 px-3 text-gray-300 cursor-pointer hover:bg-slightly-lighter hover:text-gray-100">
-								Select later
+								{{ __('Select later') }}
 							</li>
 
 							@if($people)
@@ -95,13 +91,13 @@
 
 					<x-admin.forms.select-dropdown>
 						<x-slot name="label">
-							<span class="{{ $label }}">Father:</span> 
+							<span class="{{ $label }}">{{ __('Father') }}:</span> 
 							<span class="{{ $value }}" x-text="selected"></span>
 						</x-slot>
 
 						<x-slot name="iteration">
 							<li x-on:click="open = false; selected = ''" wire:click="$set('father', null)" class="py-2 px-3 text-gray-300 cursor-pointer hover:bg-slightly-lighter hover:text-gray-100">
-								Select later
+								{{ __('Select later') }}
 							</li>
 
 							@if($people)
@@ -116,13 +112,13 @@
 					
 					<x-admin.forms.select-dropdown>
 						<x-slot name="label">
-							<span class="{{ $label }}">Mother:</span> 
+							<span class="{{ $label }}">{{ __('Mother') }}:</span> 
 							<span class="{{ $value }}" x-text="selected"></span>
 						</x-slot>
 
 						<x-slot name="iteration">
 							<li x-on:click="open = false; selected = ''" wire:click="$set('mother', null)" class="py-2 px-3 text-gray-300 cursor-pointer hover:bg-slightly-lighter hover:text-gray-100">
-								Select later
+								{{ __('Select later') }}
 							</li>
 
 							@if($people)
@@ -152,7 +148,7 @@
 									checked>
 
 							<label for="puppy" class="text-gray-100">
-								Puppy
+								{{ __('Puppy') }}
 							</label>
 						</div>
 
@@ -164,7 +160,7 @@
 									class="mb-px focus:ring-0 focus:outline-none">
 
 							<label for="adult" class="text-gray-100">
-								Adult
+								{{ __('Adult') }}
 							</label>
 						</div>
 
@@ -176,7 +172,7 @@
 									class="mb-px focus:ring-0 focus:outline-none">
 
 							<label for="senior" class="text-gray-100">
-								Senior
+								{{ __('Senior') }}
 							</label>
 						</div>
 					</div>
@@ -193,7 +189,7 @@
 									type="radio"
 									value="male" >
 							<label class="text-gray-100" for="male">
-								Male
+								{{ __('Male') }}
 							</label>
 						</div>
 
@@ -205,7 +201,7 @@
 									type="radio"
 									value="female">
 							<label class="text-gray-100" for="female">
-								Female
+								{{ __('Female') }}
 							</label>
 						</div>
 
@@ -227,7 +223,7 @@
 								type="checkbox">
 								
 							<label for="is_for_sale" class="text-gray-100">
-								For sale
+								{{ __('For sale') }}
 							</label>
 						</div>
 				
@@ -238,7 +234,7 @@
 								type="checkbox">
 								
 							<label for="has_fontanel" class="text-gray-100">
-								Has fontanel
+								{{ __('Has fontanel') }}
 							</label>
 						</div>
 				
@@ -249,7 +245,7 @@
 								type="checkbox">
 								
 							<label for="is_open_for_breeding" class="text-gray-100">
-								Open for breeding
+								{{ __('Open for breeding') }}
 							</label>
 						</div>
 					</div>
@@ -259,7 +255,7 @@
 				<div class="py-5 border-b border-gray-600 |">
 					<div class="flex flex-col space-y-2">
 						<label for="titles" class="{{ $label }}">
-							Titles
+							{{ __('Titles') }}
 						</label>
 
 						<textarea wire:model="titles" id="titles" class="{{ $text_input }}"></textarea>
@@ -277,4 +273,4 @@
 			</div>
 		</div>
 	</form>
-</div>
+</x-admin.page-layout>

@@ -30,7 +30,8 @@ export const distortBubble = () => {
 	const turb = document.getElementById('turbulence')
 	const tl = new TimelineMax()
 
-	tl.to(turb, 3, {
+	tl.to(turb, {
+		duration: 3,
 		attr: {
 			baseFrequency: '0 0'
 		}

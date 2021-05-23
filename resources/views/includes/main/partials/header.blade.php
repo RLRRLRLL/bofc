@@ -1,14 +1,12 @@
 <header 
 	x-data="{ showBurgerMenu: false }" 
 	class="relative w-full z-50 overflow-hidden shadow-md py-3 lg:py-5 bg-dark-secondary" 
-	{{-- data-scroll-section --}}
+	data-scroll-section
 >
 	<div class="container flex flex-col">
 		<div class="flex items-center justify-end">
 			{{-- App logo --}}
-			<a href="{{ request()->routeIs('homepage') ? '#' : route('homepage') }}">
-				<img src="{{ asset('images/transparent/logo-circle.png') }}" class="absolute left-1 top-1 w-60 md:w-96 md:-left-10 lg:left-1/4 xl:left-2/4 md:-top-10 object-center object-contain opacity-20" alt="">
-			</a>
+			<img src="{{ asset('images/transparent/logo-circle.png') }}" class="w-60 md:w-96 | absolute left-1 top-1 md:-left-10 md:-top-24 lg:hidden | object-center object-contain opacity-20" alt="" style="z-index: -1;">
 
 			{{-- Navigation: desktop --}}
 			<nav class="hidden md:flex">

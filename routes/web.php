@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\Admin\AdminPagesController;
 use App\Http\Controllers\Main\MainPagesController;
-use App\Http\Livewire\Pom\Index;
-use App\Http\Livewire\Pom\Show;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\App;
+// Livewire
+use App\Http\Livewire\Pom\Index;
+use App\Http\Livewire\Pom\Show;
+use App\Http\Livewire\Rest\People;
 
 
 /*
@@ -36,7 +37,8 @@ Route::middleware('set.locale')->group(function() {
 		Route::get('/create', [AdminPagesController::class, 'createPom'])->name('admin.poms-create');
 		Route::get('/pom/{id}', [AdminPagesController::class, 'show'])->name('admin.poms-show');
 		// Settings
-		Route::get('/settings', [AdminPagesController::class, 'settings'])->name('settings');
+		Route::get('/people', People::class)->name('admin.people');
+		// Route::get('/people', [AdminPagesController::class, 'settings'])->name('settings');
 	}); 
 });
 

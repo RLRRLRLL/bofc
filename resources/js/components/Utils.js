@@ -29,7 +29,7 @@ export function keepLinksActive() {
 		let anchorAttr = element.getAttribute('href')
 		let cropped
 
-		element.addEventListener('click', (e) => {
+		element.addEventListener('click', e => {
 			if (anchorAttr === '#') {
 				// this is for removing # from url
 				e.preventDefault()
@@ -105,21 +105,25 @@ export function classToggler(el, className) {
 	}
 }
 
-// DOM Ready
-export const domReady = (callBack) => {
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', callBack)
-	} else {
-		callBack()
-	}
-}
-
 // Disable right click on images (make it harder to download)
 export function disableRightClick() {
 	let allImages = document.querySelectorAll('img')
-	allImages.forEach((value) => {
-		value.oncontextmenu = (e) => {
+	allImages.forEach(value => {
+		value.oncontextmenu = e => {
 			e.preventDefault()
 		}
 	})
+}
+
+// scroll to top
+export function scrollToTop() {
+	const offsetFromTop =
+		document.documentElement.scrollTop || document.body.scrollTop
+
+	if (offsetFromTop > 0) {
+		window.requestAnimationFrame(scrollToTop)
+		// ScrollTo takes an x and a y coordinate.
+		// Increase the '10' value to get a smoother/slower scroll!
+		window.scrollTo(0, offsetFromTop - offsetFromTop / 9)
+	}
 }

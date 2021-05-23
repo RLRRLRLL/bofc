@@ -23,8 +23,8 @@
 	</a>
 </li>
 <li>
-	<a href="{{ route('settings') }}" class="py-2 px-3 text-lg rounded text-white transition-colors duration-75 {{ request()->routeIs('settings') ? 'text-opacity-90' : 'text-opacity-50 hover:text-opacity-70' }}">
-		<i class="mr-2 fas fa-cog"></i>
-		{{ __('Settings') }}
+	<a href="{{ route('admin.people') }}" class="py-2 px-3 text-lg rounded text-white transition-colors duration-75 {{ request()->routeIs('admin.people') ? 'text-opacity-90' : 'text-opacity-50 hover:text-opacity-70' }}">
+		<i class="mr-2 fas fa-users"></i>
+		{{ __('People') }}
 	</a>
 </li>

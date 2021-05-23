@@ -1,9 +1,5 @@
-<div class="space-y-5">
-	<h1 class="text-3xl text-gray-300 font-medium">
-		{{ __('Images') }}
-	</h1>
-
-    <form class="p-5 bg-admin-secondary rounded shadow transition" wire:submit.prevent="storeImages" wire:loading.class="opacity-50" wire:target="storeImages">
+<x-admin.page-layout :title="__('Images')">
+	<form class="" wire:submit.prevent="storeImages" wire:loading.class="opacity-50" wire:target="storeImages">
 		<div class="flex flex-col" id="wireImages" x-data="{ isUploading: false, open: true }">
 			<div class="pb-5 border-b border-gray-600 | flex flex-col">
 				<input 
@@ -58,4 +54,4 @@
 			</div>
 		</div>
 	</form>
-</div>
+</x-admin.page-layout>

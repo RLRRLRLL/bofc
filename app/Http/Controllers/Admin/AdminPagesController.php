@@ -21,7 +21,8 @@ class AdminPagesController extends Controller
      */
     public function index()
     {
-		$poms = Pom::all();
+		$poms = Pom::with('images')->get();
+		
         return view('pages.admin.index')->with('poms', $poms);
 	}
 	
