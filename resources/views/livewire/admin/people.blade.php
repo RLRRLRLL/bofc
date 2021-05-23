@@ -2,40 +2,10 @@
 
 <div>
     <x-admin.page-layout :title="__('People')">
-		<div class="space-y-5">
-			{{-- Tip --}}
-			{{-- <div class="w-full lg:w-auto inline-flex items-start p-3 rounded-md shadow-md bg-[#bbdefb] bg-opacity-30 text-gray-50">
-				<svg class="h-5 w-5 lg:h-6 lg:w-6 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-					<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-				</svg>
-
-				<p>
-					{{ __('Here you can add breeders and owners so you can easily attach them to pomeranians later.') }}
-				</p>
-			</div> --}}
-
-			
-			{{-- <div 
-				class="success-wrapper"
-				x-cloak
-				x-data="{ showAlert: false, message: '' }" 
-				@person-updated.window="
-					showAlert = true; 
-					setTimeout(() => showAlert = false, 2500); 
-					message = $event.detail.message
-				"
-			>
-				<div class="alert alert-main success" x-show.transition.duration.500ms="showAlert">
-					<span x-text="message"></span>
-					<a href="#" x-on:click.prevent="showAlert = false">
-						&#10005;
-					</a>
-				</div> 
-			</div> --}}
-
+		<div class="space-y-10">
 			{{-- Create breeders / owners --}}
 			<div>
-				<h3 class="mb-3 text-gray-50 text-2xl font-light">
+				<h3 class="mb-2 text-gray-300 text-xl">
 					{{ __('Create breeder / owner') }}
 				</h3>
 
@@ -48,7 +18,7 @@
 						@csrf
 
 						{{-- Select person type --}}
-						<div class="flex flex-col space-y-1 pb-5">
+						<div class="flex flex-col space-y-2 pb-5">
 							<label class="text-gray-400 text-lg">
 								{{ __('Type') }}:
 								<span class="text-amber">
@@ -126,50 +96,74 @@
 			</div>
 
 			{{-- Show breeders / owners --}}
-			<div class="mt-10">
-				<h3 class="mb-3 text-gray-50 text-2xl font-light">
+			<div>
+				<h3 class="mb-2 text-gray-300 text-xl">
 					{{ __('All') }}
 				</h3>
 
-				<div class="w-full p-5 border border-gray-600 rounded-md shadow-sm bg-slightly-lighter">
+				<div class="w-full grid grid-cols-1 md:grid-cols-2 gap-10 p-5 border border-gray-600 rounded-md shadow-sm bg-slightly-lighter">
+					{{-- Breeders --}}
 					<div>
-						<h4 class="text-amber mb-3 text-xl">
+						<h4 class="text-amber mb-2 text-xl">
 							{{ __('Breeders') }}
 						</h4>
 
 						<ul class="space-y-2">
 							@forelse ($breeders as $breeder)
 								<li>
-									{{ $breeder->name }}
+									<div class="flex items-center justify-between py-2 px-3 rounded bg-admin-secondary">
+										<span class="text-gray-200 text-lg">
+											{{ $breeder->name }}
+										</span>
 
-									<button class="" wire:click.prevent="destroy({{ $breeder->id }})">
-										{{ __('Delete') }}
-									</button>
+										<button class="py-1 px-3 rounded shadow bg-red-500 bg-opacity-90 text-white hover:bg-red-600" wire:click.prevent="destroy({{ $breeder }})">
+											{{ __('Delete') }}
+										</button>
+									</div>
 								</li>
 							@empty
 								<li>
-									{{ __('No breeders yet.') }}
+									<div class="flex items-center justify-between py-2 px-3 rounded bg-admin-secondary">
+										<span class="text-gray-400">
+											{{ __('No breeders yet.') }}
+										</span>
+									</div>
+								</li>
+							@endforelse
+						</ul>
+					</div>
+
+					{{-- Owners --}}
+					<div>
+						<h4 class="text-amber mb-2 text-xl">
+							{{ __('Owners') }}
+						</h4>
+
+						<ul class="space-y-2">
+							@forelse ($owners as $owner)
+								<li>
+									<div class="flex items-center justify-between py-2 px-3 rounded bg-admin-secondary">
+										<span class="text-gray-200 text-lg">
+											{{ $owner->name }}
+										</span>
+
+										<button class="py-1 px-3 rounded shadow bg-red-500 bg-opacity-90 text-white hover:bg-red-600" wire:click.prevent="destroy({{ $owner }})">
+											{{ __('Delete') }}
+										</button>
+									</div>
+								</li>
+							@empty
+								<li>
+									<div class="flex items-center justify-between py-2 px-3 rounded bg-admin-secondary">
+										<span class="text-gray-400">
+											{{ __('No owners yet.') }}
+										</span>
+									</div>
 								</li>
 							@endforelse
 						</ul>
 					</div>
 				</div>
-
-				{{-- <ul>
-					<h3>Owners</h3>
-					@if($owners)
-						@foreach($owners as $owner)
-							<li>
-								{{ $owner->name }}
-								<button wire:click.prevent="destroy({{ $owner->id }})">
-									Delete
-								</button>
-							</li>
-						@endforeach
-					@else
-						<p>No owners yet.</p>
-					@endif
-				</ul> --}}
 			</div>
 		</div>
 	</x-admin.page-layout>

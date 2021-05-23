@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Pom;
+namespace App\Http\Livewire\Admin\Poms;
 
 use Livewire\WithFileUploads;
 use Livewire\Component;
@@ -13,7 +13,7 @@ class UploadImages extends Component
 
 	public $images = [];
 	public $pom_id = '';
-	public $is_avatar = 0;
+	public $is_main = 0;
 
 	protected $listeners = ['info-created' => 'receivePomID'];
 
@@ -50,6 +50,6 @@ class UploadImages extends Component
 	
     public function render()
     {
-        return view('livewire.pom.upload-images');
+        return view('livewire.admin.poms.upload-images');
     }
 }

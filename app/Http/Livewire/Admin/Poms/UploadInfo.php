@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Pom;
+namespace App\Http\Livewire\Admin\Poms;
 
 use Livewire\Component;
 use App\Models\Person;
@@ -89,6 +89,6 @@ class UploadInfo extends Component
 
     public function render()
     {
-        return view('livewire.pom.upload-info');
+        return view('livewire.admin.poms.upload-info');
     }
 }

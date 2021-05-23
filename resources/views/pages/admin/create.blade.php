@@ -16,11 +16,11 @@
 			x-cloak
 		>
 			<div x-show.transition.in.duration.500ms="infoShow">
-				<livewire:pom.upload-info />
+				<livewire:admin.poms.upload-info />
 			</div>
 
 			<div x-show.transition.duration.700ms="imagesShow">
-				<livewire:pom.upload-images />
+				<livewire:admin.poms.upload-images />
 			</div>
 
 			<div x-data="{pomID: ''}"

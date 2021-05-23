@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Pom;
+namespace App\Http\Livewire\Visitor\Poms;
 
 use App\Models\Pom;
 use Livewire\Component;
@@ -26,7 +26,7 @@ class Index extends Component
 					->where('age', count($this->pomAges) > 2 ? $this->pomAges[2] : '!=', 2)
 					->paginate(10);
 
-        return view('livewire.pom.index', [
+        return view('livewire.visitor.poms.index', [
 			'poms' => Pom::where('is_published', 1)->get()
 		])->extends('layouts.main')->section('content');
     }

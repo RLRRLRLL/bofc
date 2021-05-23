@@ -18,12 +18,12 @@ class Pom extends Model
 	// Images
 	public function images()
 	{
-		return $this->hasMany(Image::class);
+		return $this->morphMany(Image::class, 'imageable');
 	}
 
 	public function avatarImage()
 	{
-		$chosen_avatar = $this->images->where('is_avatar', 1)->first();
+		$chosen_avatar = $this->images->where('is_main', 1)->first();
 
 		return $chosen_avatar ? $chosen_avatar->url : $this->images->first()->url;
 	}

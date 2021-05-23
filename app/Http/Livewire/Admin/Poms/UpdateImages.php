@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Pom;
+namespace App\Http\Livewire\Admin\Poms;
 
 use Livewire\WithFileUploads;
 use Livewire\Component;
@@ -58,19 +58,22 @@ class UpdateImages extends Component
 	{
 		$images = $this->pom->images;
 		
-		foreach($images as $i) {
-			$i->update(['is_avatar' => 0]);
+		foreach($images as $image) {
+			$image->update(['is_main' => 0]);
 		}
 
 		$image = Image::find($id);
-		if ($image) $image->update(['is_avatar' => 1]);
+
+		if ($image) {
+			$image->update(['is_main' => 1]);
+		}
 
 		$this->emit('refreshImages');
 	}
 
     public function render()
     {
-        return view('livewire.pom.update-images', [
+        return view('livewire.admin.poms.update-images', [
 			'images' => $this->pom->images
 		]);
     }

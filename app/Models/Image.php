@@ -4,18 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Pom;
 
 class Image extends Model
 {
 	use HasFactory;
 
-	protected $fillable = [
-		'url', 'is_avatar', 'pom_id'
-	];
+	protected $guarded = [];
 	
-	public function pom()
+	public function imageable()
 	{
-		return $this->belongsTo(Pom::class);
+		return $this->morphTo();
 	}
 }

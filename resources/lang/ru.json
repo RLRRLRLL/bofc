@@ -119,6 +119,13 @@
 	"Type": "Тип",
 	"Create": "Создать",
 	"Person created successfully.": "Личность успешно создана.",
+	"Breeders": "Заводчики",
+	"Owners": "Хозяева",
 	"No breeders yet.": "На данный момент заводчиков нет.",
-	"No owners yet.": "На данный момент хозяев нет."
+	"No owners yet.": "На данный момент хозяев нет.",
+	"All news": "Все новости",
+	"No articles at the moment.": "На данный момент статей нет.",
+	"Create an article": "Написать статью",
+	"New article": "Новая статья",
+	"Go back": "Вернуться назад"
 }

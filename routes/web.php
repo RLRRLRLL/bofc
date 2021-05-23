@@ -1,13 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminPagesController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Main\MainPagesController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
-// Livewire
-use App\Http\Livewire\Pom\Index;
-use App\Http\Livewire\Pom\Show;
-use App\Http\Livewire\Rest\People;
 
 
 /*
@@ -24,9 +21,11 @@ Route::get('change-language/{lang}', function($lang) {
 
 Route::middleware('set.locale')->group(function() {
 	Route::get('/', [MainPagesController::class, 'homepage'])->name('homepage');
-	Route::get('/pomeranians', Index::class)->name('poms.index');
-	Route::get('/pomeranians/{id}/show', Show::class)->name('poms.show');
+	Route::get('/pomeranians', \App\Http\Livewire\Visitor\Poms\Index::class)->name('poms.index');
+	Route::get('/pomeranians/{id}/show', \App\Http\Livewire\Visitor\Poms\Show::class)->name('poms.show');
 	Route::get('/gallery', [MainPagesController::class, 'gallery'])->name('gallery');
+	Route::get('/news', [ArticleController::class, 'index'])->name('news.index');
+	Route::get('/news/{slug}', [ArticleController::class, 'show'])->name('news.show');
 
 	// admin pages
 	Route::group([
@@ -36,9 +35,13 @@ Route::middleware('set.locale')->group(function() {
 		Route::get('/', [AdminPagesController::class, 'index'])->name('admin.poms-index');
 		Route::get('/create', [AdminPagesController::class, 'createPom'])->name('admin.poms-create');
 		Route::get('/pom/{id}', [AdminPagesController::class, 'show'])->name('admin.poms-show');
-		// Settings
-		Route::get('/people', People::class)->name('admin.people');
-		// Route::get('/people', [AdminPagesController::class, 'settings'])->name('settings');
+
+		// People (breeders, owners)
+		Route::get('/people', \App\Http\Livewire\Admin\People::class)->name('admin.people');
+		
+		// Articles
+		Route::get('/articles', \App\Http\Livewire\Admin\Articles\Index::class)->name('admin.articles.index');
+		Route::get('/articles/create', \App\Http\Livewire\Admin\Articles\Create::class)->name('admin.articles.create');
 	}); 
 });
 

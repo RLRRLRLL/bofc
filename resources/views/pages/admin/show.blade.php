@@ -26,9 +26,9 @@
 			</button>
 		</div>
 
-		<livewire:pom.update-info :id="$id"/>
+		<livewire:admin.poms.update-info :id="$id"/>
 
-		<livewire:pom.update-images :id="$id"/>
+		<livewire:admin.poms.update-images :id="$id"/>
 	</div>
 @endsection
 

@@ -55,18 +55,18 @@
 
 	<div class="grid gap-5 grid-cols-4">
 		@foreach($pom->images as $image)
-			<div class="flex flex-col group rounded shadow border overflow-hidden {{ $image->is_avatar ? 'border-blue-400' : 'border-gray-700' }}">
+			<div class="flex flex-col group rounded shadow border overflow-hidden {{ $image->is_main ? 'border-blue-400' : 'border-gray-700' }}">
 				<img 
 					src="{{ '/storage/images/'.$pom->id.'/'.$image->url}}" 
 					alt="Bubbles of Champain | 	Pomeranian Spitz | Померанский шпиц | {{ $pom->name }}" 
-					class="w-full h-full object-center object-cover {{ ($image->is_avatar === 1) ? 'avatar' : '' }}"
+					class="w-full h-full object-center object-cover {{ ($image->is_main === 1) ? 'avatar' : '' }}"
 				>
 				<div class="flex items-center justify-between	 p-3 bg-dark-secondary">
 					<button type="button" wire:click="removeExistingImage({{ $image->id }})" class="text-red-400 hover:text-red-300 underline">
 						{{ __('Delete') }}
 					</button>
 
-					@if (!$image->is_avatar)
+					@if (!$image->is_main)
 						<button type="button" wire:click="makeAvatar({{ $image->id }})" class="text-blue-400 hover:text-blue-300 underline">
 							{{ __('Make avatar') }}
 						</button>
