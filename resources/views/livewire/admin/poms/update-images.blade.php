@@ -4,6 +4,7 @@
 			<button class="py-3 px-5 flex items-center mb-5 shadow rounded bg-green-500 text-white hover:bg-green-600 transition" type="submit" wire:click.prevent="updateImages">
 				{{ __('Save') }}
 
+				{{-- TODO: implement spinner back --}}
 				<div wire:loading wire:target="updateImages">
 					@include('includes.common.spinner')
 				</div>
@@ -12,7 +13,7 @@
 			<div class="p-3 bg-slightly-lighter grid gap-5 grid-cols-4">
 				@if ($images)
 					@foreach($images as $img)
-						<div wire:key="{{ $loop->index }}" class="flex flex-col w-52 h-full">
+						<div wire:key="{{ $loop->index }}" class="flex flex-col w-full h-full">
 							<img class="w-full h-full object-center object-cover rounded-sm" src="{{ $img->temporaryUrl() }}">
 							
 							<div class="flex items-center justify-end p-3 bg-dark-secondary">

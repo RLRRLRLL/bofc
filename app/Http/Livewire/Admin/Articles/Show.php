@@ -59,11 +59,7 @@ class Show extends Component
 			}
 		}
 
-		$this->dispatchBrowserEvent('show-alert', [
-			'type' => 'success',
-			'message' => __('Article was successfully updated.'),
-			'persistent' => false
-		]);
+		throwAlert($this, 'success', __('Article was successfully created.'));
 	}
 
 	public function publishArticle()
@@ -77,11 +73,7 @@ class Show extends Component
 	{
 		$image->delete();
 
-		$this->dispatchBrowserEvent('show-alert', [
-			'type' => 'success',
-			'message' => __('Image was successfully deleted.'),
-			'persistent' => false
-		]);
+		throwAlert($this, 'success', __('Image was successfully deleted.'));
 	}
 
 	public function cancelImage($index)

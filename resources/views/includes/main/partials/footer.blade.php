@@ -1,5 +1,5 @@
 @php
-	$footer_link_classes = 'inline-block bitter text-lg tracking-wide font-medium text-gray-200 hover:text-gray-100 hover:border-gray-500 py-2 px-4 border-2 border-gray-700 active:border-gray-400 focus:border-gray-400 focus:text-gray-100 transition-colors';
+	$footer_link_classes = 'inline-block bitter md:text-lg tracking-wide font-medium text-gray-200 hover:text-gray-100 hover:border-gray-500 py-2 px-4 border-2 border-gray-700 active:border-gray-400 focus:border-gray-400 focus:text-gray-100 transition-colors';
 @endphp
 
 <footer id="footer" class="section py-10 lg:py-14 bg-dark-secondary" data-scroll-section>

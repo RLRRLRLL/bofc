@@ -1,7 +1,3 @@
-.is_fillable {
-	@include fill-effect($white08);
-}
-
 // ripple effect
 .btn-ripple {
 	position: relative;
@@ -34,7 +30,7 @@ span.ripple {
 	&:checked + label,
 	&:not(:checked) + label {
 		position: relative;
-		padding-left: 1.5rem;
+		padding-left: 1.7rem;
 		cursor: pointer;
 		line-height: 20px;
 		display: inline-block;
@@ -91,7 +87,7 @@ span.ripple {
 	&:checked + label,
 	&:not(:checked) + label {
 		position: relative;
-		padding-left: 1.5rem;
+		padding-left: 1.7rem;
 		cursor: pointer;
 		line-height: 20px;
 		display: inline-block;
@@ -305,7 +301,7 @@ span.ripple {
 	}
 }
 
-/* Button horizontal slide */
+/* Button border on hover zoom */
 .btn-border-zoom {
 	position: relative;
 	display: inline-block;

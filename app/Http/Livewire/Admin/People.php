@@ -25,11 +25,7 @@ class People extends Component
 
 		$this->reset();
 
-		$this->dispatchBrowserEvent('show-alert', [
-			'type' => 'success',
-			'message' => __('Person was successfully created.'),
-			'persistent' => false
-		]);
+		throwAlert($this, 'success', __('Person was successfully created.'));
 	}
 
 	public function destroy(Person $person)

@@ -58,25 +58,6 @@
  Note: transition bg and body bg has to be the same,
  or there will be some flickering on page load.
 */
-.is_fillable {
-  position: relative;
-}
-.is_fillable::before {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: all 0.3s ease-out;
-  color: rgba(255, 255, 255, 0.8);
-  width: 0%;
-  overflow: hidden;
-}
-.is_fillable:hover::before {
-  width: 100%;
-}
-
 .btn-ripple {
   position: relative;
   overflow: hidden;
@@ -111,7 +92,7 @@ span.ripple {
 }
 .radio-rounded:checked + label, .radio-rounded:not(:checked) + label {
   position: relative;
-  padding-left: 1.5rem;
+  padding-left: 1.7rem;
   cursor: pointer;
   line-height: 20px;
   display: inline-block;
@@ -154,7 +135,7 @@ span.ripple {
 }
 .checkbox-squared:checked + label, .checkbox-squared:not(:checked) + label {
   position: relative;
-  padding-left: 1.5rem;
+  padding-left: 1.7rem;
   cursor: pointer;
   line-height: 20px;
   display: inline-block;
@@ -360,7 +341,7 @@ span.ripple {
   }
 }
 
-/* Button horizontal slide */
+/* Button border on hover zoom */
 .btn-border-zoom {
   position: relative;
   display: inline-block;
@@ -437,9 +418,6 @@ body::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.4);
 }
 
-#wrapper {
-  overflow-x: hidden;
-}
 /* CSS Animations */
 @-webkit-keyframes fadeInDown {
   0% {
@@ -2096,12 +2074,12 @@ form button:hover {
 }
 
 .poms {
-  /* --------- Inputs ---------- */
   /* --------- Header ---------- */
-  /* -------- Filters ---------- */
-  /* -------- Catalogue -------- */
 }
-.poms__header .option__btn {
+.poms__header {
+  /* Change view (grid || list) */
+}
+.poms__header .view {
   display: grid;
   width: 45px;
   height: 65px;
@@ -2110,13 +2088,22 @@ form button:hover {
   border-radius: 5px;
   overflow: hidden;
   transition: 0.2s ease;
+  cursor: pointer;
 }
-.poms__header .option__btn > span {
+@media screen and (min-width: 1024px) {
+  .poms__header .view {
+    grid-gap: 5px;
+    width: 55px;
+    height: 75px;
+    padding: 10px;
+  }
+}
+.poms__header .view > span {
   background: #e3f2fd;
   color: #e3f2fd;
   transition: 0.2s ease;
 }
-.poms__header .option__btn > span:last-child {
+.poms__header .view > span:last-child {
   background: none !important;
   text-align: center;
   text-transform: uppercase;
@@ -2124,21 +2111,21 @@ form button:hover {
   display: block;
   margin-top: 2px;
 }
-.poms__header .option__btn:hover > span {
+.poms__header .view:hover > span {
   color: rgba(255, 213, 79, 0.5);
   background: rgba(255, 213, 79, 0.5);
 }
-.poms__header .option__btn.selected > span {
+.poms__header .view.selected > span {
   color: #ffd54f;
   background: #ffd54f;
 }
-.poms__header .option--grid {
+.poms__header .view-grid {
   grid: repeat(2, 1fr) min-content/repeat(2, 1fr);
 }
-.poms__header .option--grid span:last-child {
+.poms__header .view-grid span:last-child {
   grid-column: span 2;
 }
-.poms__header .option--list {
+.poms__header .view-list {
   grid: repeat(3, 1fr) min-content/100%;
 }
 

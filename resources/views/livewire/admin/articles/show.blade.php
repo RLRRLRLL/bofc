@@ -12,9 +12,6 @@
 			</button>
 		</x-slot>
 
-		{{-- Alerts --}}
-		<x-global.alertbox />
-
 		{{-- Edit Article --}}
 		<div>
 			<form 

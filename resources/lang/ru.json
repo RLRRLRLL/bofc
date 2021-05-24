@@ -57,6 +57,7 @@
 	"Has titles": "Титулованный",
 	"Learn more": "Узнать больше",
 	"Click to learn more.": "Перейдите, чтобы узнать больше.",
+	"View": "Перейти",
 
 	"_________________________________________CONTACT MODAL__________": "______________________",
 	"Name": "Имя",
@@ -132,13 +133,14 @@
 	"Title of an article": "Заголовок статьи",
 	"Article": "Статья",
 	"The article": "Сама статья",
-	"Article was successfully created.": "Статья была успешно создана.",
-	"Article was successfully updated.": "Статья была успешно обновлена.",
+	"Article was successfully created.": "Статья успешно создана.",
+	"Article was successfully updated.": "Статья успешно обновлена.",
 	"Show all": "Посмотреть все",
 	"Publish article": "Опубликовать статью",
 	"Edit article": "Редактировать статью",
 	"Delete article": "Удалить статью",
 	"Save changes": "Сохранить изменения",
 	"Delete image": "Удалить изображение",
-	"Image was successfully deleted.": "Изображение было успешно удалено."
+	"Image was successfully deleted.": "Изображение успешно удалено.",
+	"Images were successfully uploaded": "Изображения успешно загружены."
 }

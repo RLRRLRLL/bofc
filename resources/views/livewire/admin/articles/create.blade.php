@@ -11,9 +11,6 @@
 				{{ __('Go back') }}
 			</button>
 		</x-slot>
-
-		{{-- Alerts --}}
-		<x-global.alertbox />
 		
 		<div x-on:article-created.window="showForm = false; showPublishLink = true; articleId = $event.detail.id">
 			<form 

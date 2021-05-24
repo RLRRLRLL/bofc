@@ -50,6 +50,9 @@
 					@yield('content')
 				</div>
 			</main>
+
+			{{-- Alerts --}}
+			<x-global.alertbox />
 		</div>
 		
 		<!-- scripts -->

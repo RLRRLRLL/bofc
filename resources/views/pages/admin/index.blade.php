@@ -22,13 +22,13 @@
 					<img 
 						class="h-44 object-center object-cover"
 						@if ($pom->images()->exists())
-							src="{{ '/storage/images/'.$pom->id.'/'.$pom->avatarImage()}}"
+							src="{{ '/storage/images/poms/'.$pom->id.'/'.$pom->avatarImage()}}"
 						@else
 							src="{{ asset('images/admin/image_placeholder.png') }}"
 						@endif
 					>
 	
-					<figcaption class="grid grid-cols-1 gap-y-3 p-5 bg-dark">
+					<figcaption class="grid grid-cols-1 gap-y-3 p-5 bg-dark" :class="{'w-full p-0': listViewActive}">
 						<div class="flex items-center">
 							<h3 class="text-xl text-white leading-none">
 								{{ ucfirst($pom->name) }}

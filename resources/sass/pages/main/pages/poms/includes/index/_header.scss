@@ -1,38 +1,24 @@
 &__header {
-	// grid-column: span 2;
+	/* Change view (grid || list) */
 
-	// &--inner {
-	// 	display: grid;
-	// 	grid-template-columns: 1fr max-content;
-	// }
-
-	// &--title {
-	// 	font-family: manege;
-	// 	font-size: 50px;
-	// 	color: $accentSecondary;
-	// }
-
-	// &--view {
-	// 	display: grid;
-	// 	grid-gap: 8px;
-	// 	grid-template-columns: repeat(2, 1fr);
-	// 	cursor: pointer;
-	// }
-
-	.option__btn {
+	.view {
 		display: grid;
 		width: 45px;
 		height: 65px;
 		gap: 3px;
 		padding: 7px;
-		// md:
-		// grid-gap: 5px;
-		// width: 55px;
-		// height: 75px;
-		// padding: 10px;
 		border-radius: 5px;
 		overflow: hidden;
 		transition: 0.2s ease;
+		cursor: pointer;
+
+		@media screen and (min-width: 1024px) {
+			grid-gap: 5px;
+			width: 55px;
+			height: 75px;
+			padding: 10px;
+		}
+
 		> span {
 			background: $white;
 			color: $white;
@@ -46,12 +32,14 @@
 				margin-top: 2px;
 			}
 		}
+
 		&:hover {
 			> span {
 				color: rgba($amber, 0.5);
 				background: rgba($amber, 0.5);
 			}
 		}
+
 		&.selected {
 			> span {
 				color: $amber;
@@ -59,13 +47,15 @@
 			}
 		}
 	}
-	.option--grid {
+
+	.view-grid {
 		grid: repeat(2, 1fr) min-content / repeat(2, 1fr);
 		span:last-child {
 			grid-column: span 2;
 		}
 	}
-	.option--list {
+
+	.view-list {
 		grid: repeat(3, 1fr) min-content / 100%;
 	}
 }

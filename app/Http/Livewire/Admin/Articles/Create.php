@@ -44,11 +44,7 @@ class Create extends Component
 
 		$this->reset();
 
-		$this->dispatchBrowserEvent('show-alert', [
-			'type' => 'success',
-			'message' => __('Article was successfully created.'),
-			'persistent' => false
-		]);
+		throwAlert($this, 'success', __('Article was successfully created.'));
 
 		$this->dispatchBrowserEvent('article-created', [
 			'id' => $article->id

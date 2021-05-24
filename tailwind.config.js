@@ -24,6 +24,9 @@ module.exports = {
 				navy: '#192841',
 				'amber-darker': '#ffca28'
 			},
+			screens: {
+				xs: '475px'
+			},
 			width: {
 				120: '30rem'
 			},

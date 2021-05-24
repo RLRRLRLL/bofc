@@ -1,6 +1,6 @@
 <section class="poms__header w-full">
 	<div class="poms__header--inner grid grid-cols-1">
-		<h1 class="leftonade md:manege text-3xl text-center tracking-wide text-blue-100 pb-3 border-b border-gray-700">
+		<h1 class="leftonade md:manege text-2xl xs:text-3xl text-center tracking-wide text-blue-100 pb-3 border-b border-gray-700">
 			{{ __('Find yourself a best friend.') }}
 		</h1>
 		
@@ -16,14 +16,15 @@
 
 			{{-- Change view --}}
 			<div class="flex items-center">
-				<div class="option__btn option--grid" :class="{'selected': gridViewActive}" x-on:click="gridViewActive = true; listViewActive = false">
+				<div class="view view-grid" :class="{'selected': gridViewActive}" x-on:click="gridViewActive = true; listViewActive = false">
 					<span></span>
 					<span></span>
 					<span></span>
 					<span></span>
 					<span>Grid</span>
 				</div>
-				<div class="option__btn option--list" :class="{'selected': listViewActive}" x-on:click="gridViewActive = false; listViewActive = true">
+
+				<div class="view view-list" :class="{'selected': listViewActive}" x-on:click="gridViewActive = false; listViewActive = true">
 					<span></span>
 					<span></span>
 					<span></span>

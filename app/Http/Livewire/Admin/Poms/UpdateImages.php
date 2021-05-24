@@ -30,17 +30,18 @@ class UpdateImages extends Component
 		{
 			$fileName = $img->getClientOriginalName();
 
-			Image::create([
-				'url' => $fileName,
-				'pom_id' => $this->pom_id,
+			$this->pom->images()->create([
+				'url' => $fileName
 			]);
 
 			$img->storeAs('images/poms/'.$this->pom_id, $fileName, 'public');
 		}
 
 		$this->images = [];
+
 		$this->emit('refreshImages');
-		$this->success = 'Images successfully uploaded';
+
+		throwAlert($this, 'success', __('Images were successfully uploaded.'));
 	}
 
 	public function cancelImage($index)
@@ -51,7 +52,10 @@ class UpdateImages extends Component
 	public function removeExistingImage($id)
 	{
 		$image = Image::find($id);
-		if ($image) $image->delete();
+
+		if ($image) {
+			$image->delete();
+		}
 	}
 
 	public function makeAvatar($id)

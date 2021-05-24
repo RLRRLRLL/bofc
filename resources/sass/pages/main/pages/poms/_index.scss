@@ -1,32 +1,6 @@
 @import './../../components/_pagination.scss';
 
 .poms {
-	// display: grid;
-	// grid-gap: 5px 25px;
-	// grid: min-content auto / minmax(250px, 23%) 1fr;
-
-	// &__header {
-	// 	grid-column: 1/ 3;
-	// }
-
-	// &__filter {
-	// 	height: auto !important;
-	// }
-
-	// &__pagination {
-	// 	grid-column: 2/3;
-	// 	height: 100%;
-	// }
-
-	/* --------- Inputs ---------- */
-	// @import './includes/index/inputs';
-
 	/* --------- Header ---------- */
 	@import './includes/index/header';
-
-	/* -------- Filters ---------- */
-	@import './includes/index/filters';
-
-	/* -------- Catalogue -------- */
-	@import './includes/index/catalogue';
 }
