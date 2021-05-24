@@ -4,6 +4,16 @@
 
 @section('content')
 	<x-admin.page-layout :title="__('All poms')">
+		<x-slot name="header_element">
+			<a href="{{ route('admin.poms-create') }}" class="flex items-center font-medium text-2xl text-gray-500 hover:text-amber transition-colors duration-100">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+				</svg>
+
+				{{ __('Create') }}
+			</a>
+		</x-slot>
+		
 		<div class="grid gap-5 grid-cols-1 md:grid-cols-4">
 			@forelse ($poms as $pom)
 				<figure class="relative flex flex-col shadow rounded-md border border-gray-800 overflow-hidden group hover:shadow-md" title="{{ __('Click to learn more.') }}">

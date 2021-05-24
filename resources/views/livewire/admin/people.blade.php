@@ -2,6 +2,9 @@
 
 <div>
     <x-admin.page-layout :title="__('People')">
+		{{-- Alerts --}}
+		<x-global.alertbox />
+		
 		<div class="space-y-10">
 			{{-- Create breeders / owners --}}
 			<div>

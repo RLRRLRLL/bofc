@@ -10,7 +10,9 @@ class Article extends Model
 {
     use HasFactory;
 
-	protected $EXCERPT_LENGTH = 60;
+	protected $guarded = [];
+
+	const EXCERPT_LENGTH = 60;
 
 	public function excerpt()
 	{
@@ -21,5 +23,12 @@ class Article extends Model
 	public function images()
 	{
 		return $this->morphMany(Image::class, 'imageable');
+	}
+
+	// Get first or main image url
+	public function firstOrMain(): String
+	{
+		// For now only returns first one!
+		return asset('storage/images/articles').'/'.$this->id.'/'.$this->images->first()->url;
 	}
 }

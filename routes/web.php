@@ -5,6 +5,11 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Main\MainPagesController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+// Livewire
+use App\Http\Livewire\Admin\Articles\Create;
+use App\Http\Livewire\Admin\Articles\Index;
+use App\Http\Livewire\Admin\Articles\Show;
+use App\Http\Livewire\Admin\People;
 
 
 /*
@@ -37,11 +42,12 @@ Route::middleware('set.locale')->group(function() {
 		Route::get('/pom/{id}', [AdminPagesController::class, 'show'])->name('admin.poms-show');
 
 		// People (breeders, owners)
-		Route::get('/people', \App\Http\Livewire\Admin\People::class)->name('admin.people');
+		Route::get('/people', People::class)->name('admin.people');
 		
 		// Articles
-		Route::get('/articles', \App\Http\Livewire\Admin\Articles\Index::class)->name('admin.articles.index');
-		Route::get('/articles/create', \App\Http\Livewire\Admin\Articles\Create::class)->name('admin.articles.create');
+		Route::get('/articles', Index::class)->name('admin.articles.index');
+		Route::get('/articles/create', Create::class)->name('admin.articles.create');
+		Route::get('/articles/show/{id}', Show::class)->name('admin.articles.show');
 	}); 
 });
 

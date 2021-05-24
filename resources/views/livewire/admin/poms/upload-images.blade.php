@@ -43,7 +43,6 @@
 						@endforeach
 					</div>
 				@endif
-
 			</div>
 			
 			{{-- Submit --}}

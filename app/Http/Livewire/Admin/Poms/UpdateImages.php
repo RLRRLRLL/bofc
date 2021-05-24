@@ -35,7 +35,7 @@ class UpdateImages extends Component
 				'pom_id' => $this->pom_id,
 			]);
 
-			$img->storeAs('images/'.$this->pom_id, $fileName, 'public');
+			$img->storeAs('images/poms/'.$this->pom_id, $fileName, 'public');
 		}
 
 		$this->images = [];

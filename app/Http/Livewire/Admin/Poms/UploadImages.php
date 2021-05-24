@@ -35,7 +35,7 @@ class UploadImages extends Component
 				'url' => $fileName
 			]);
 
-			$img->storeAs('images/'.$this->pom_id, $fileName, 'public');
+			$img->storeAs('images/poms/'.$this->pom_id, $fileName, 'public');
 		}
 
 		$this->dispatchBrowserEvent('hide-images-section');

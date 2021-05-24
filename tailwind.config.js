@@ -21,7 +21,8 @@ module.exports = {
 				'admin-secondary': '#292929',
 				accent: '#fff1c0',
 				amber: '#ffd54f',
-				navy: '#192841'
+				navy: '#192841',
+				'amber-darker': '#ffca28'
 			},
 			width: {
 				120: '30rem'

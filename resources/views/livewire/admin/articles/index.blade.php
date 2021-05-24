@@ -8,26 +8,51 @@
 			</a>
 		</x-slot>
 
-		<div class="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+		<div class="grid gap-5 grid-cols-1 md:grid-cols-4">
 			@forelse ($articles as $article)
-				<div class="flex flex-col space-y-3">
-					<h2>
-						{{ $article->title }}
-					</h2>
+				<figure class="relative flex flex-col shadow rounded-md border border-gray-800 overflow-hidden group hover:shadow-md">
+					<a href="{{ route('admin.articles.show', $article->id) }}" class="absolute top-0 left-0 bottom-0 right-0 z-0 inline active:opacity-70"></a>
+	
+					<img 
+						class="h-44 object-center object-cover"
+						src="{{ $article->firstOrMain() }}"
+					>
+	
+					<figcaption class="grid grid-cols-1 gap-3 p-5 bg-dark">
+						<div class="flex items-center">
+							<h3 class="text-xl text-white leading-none">
+								{{ $article->title }}
+	
+								@if (!$article->is_published)
+									<span class="text-red-400 text-opacity-50 text-sm">
+										({{ __('draft') }})
+									</span>
+								@endif
+							</h3>
+						</div>
+	
+						<div class="flex flex-col">
+							<p class="mb-3 text-gray-300">
+								{{ $article->excerpt() }}
+							</p>
 
-					<p>
-						{{ $article->excerpt() }}
-					</p>
-
-					<p>
-						{{ $article->created_at() }}
-					</p>
-				</div>
+							<p class="text-gray-500">
+								{{ $article->created_at }}
+							</p>
+						</div>
+	
+						<button type="button" class="py-2 px-4 rounded shadow bg-amber text-dark font-medium transition">
+							<span>{{ __('Learn more') }}</span>
+						</button>
+					</figcaption>
+				</figure>
 			@empty
-				<p class="text-gray-300">
-					{{ __('No articles at the moment.') }}
-				</p>
-			@endforelse 
+				<div>
+					<p class="text-gray-200">
+						{{ __("No articles at the moment.") }}
+					</p>
+				</div>		
+			@endforelse
 		</div>
 	</x-admin.page-layout>
 </div>

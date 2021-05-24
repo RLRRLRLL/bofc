@@ -57,11 +57,11 @@
 		@foreach($pom->images as $image)
 			<div class="flex flex-col group rounded shadow border overflow-hidden {{ $image->is_main ? 'border-blue-400' : 'border-gray-700' }}">
 				<img 
-					src="{{ '/storage/images/'.$pom->id.'/'.$image->url}}" 
+					src="{{ '/storage/images/poms/'.$pom->id.'/'.$image->url}}" 
 					alt="Bubbles of Champain | 	Pomeranian Spitz | Померанский шпиц | {{ $pom->name }}" 
 					class="w-full h-full object-center object-cover {{ ($image->is_main === 1) ? 'avatar' : '' }}"
 				>
-				<div class="flex items-center justify-between	 p-3 bg-dark-secondary">
+				<div class="flex items-center justify-between p-3 bg-dark-secondary">
 					<button type="button" wire:click="removeExistingImage({{ $image->id }})" class="text-red-400 hover:text-red-300 underline">
 						{{ __('Delete') }}
 					</button>
