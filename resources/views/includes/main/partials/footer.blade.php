@@ -2,7 +2,7 @@
 	$footer_link_classes = 'inline-block bitter md:text-lg tracking-wide font-medium text-gray-200 hover:text-gray-100 hover:border-gray-500 py-2 px-4 border-2 border-gray-700 active:border-gray-400 focus:border-gray-400 focus:text-gray-100 transition-colors';
 @endphp
 
-<footer id="footer" class="section py-10 lg:py-14 bg-dark-secondary" data-scroll-section>
+<footer id="footer" class="section py-10 lg:py-14 bg-dark-secondary">
 	<div class="container">
 		<div class="grid gap-y-5 grid-cols-1">
 			<!-- Navigation -->
@@ -27,6 +27,11 @@
 						<a class="{{ $footer_link_classes }}" href="{{ route('gallery') }}">
 							{{ __('Gallery') }}
 						</a>
+					</li>
+					<li>
+						<button class="{{ $footer_link_classes }} contact-modal-trigger" type="button">
+							{{ __('Contact us') }}
+						</button>
 					</li>
 					<li>
 						<button class="{{ $footer_link_classes }}" type="button" id="back-to-top">

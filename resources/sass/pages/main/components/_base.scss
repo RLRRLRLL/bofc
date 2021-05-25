@@ -6,7 +6,7 @@ body {
 	width: 100%;
 	height: 100%;
 	font-family: 'system';
-	background: $bgPrimary;
+	background: #191817;
 	// overflow-x: hidden;
 
 	/* enable locomotive scroll from tablet and on */
@@ -29,7 +29,4 @@ body {
 	&.no-arr {
 		cursor: auto;
 	}
-
-	// scroll bar
-	@include scrollbar;
 }

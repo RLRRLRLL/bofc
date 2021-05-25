@@ -1,23 +1,15 @@
 /* Components */
-
-// Base
-@import './components/base';
-
 // Little fade/zoom animations triggered by scroll
 @import './components/animations';
 
 // Page transitions
 @import './components/page-transitions';
 
-// Locomotive smooth scroll plugin
-@import './../../plugins/locomotive';
-
 // modal
 @import './components/modal/modal__core';
 @import './components/modal/modal__form';
 
 /* Main pages */
-
 // home
 @import './pages/home/home';
 

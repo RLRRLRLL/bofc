@@ -9,7 +9,7 @@
 		@include('includes.common.special-svgs')
 
 		<!-- Brand -->
-		<section class="brand" data-scroll-section>
+		<section class="brand">
 			<div class="container anim-item moveUp anim-delay-long" data-scroll data-scroll-class="anim-stop">
 				<div class="brand__inner">
 					<h1 class="brand__title" data-scroll data-scroll-speed="3" data-scroll-target=".brand">{{ config('app.name') }}</h1>
@@ -24,7 +24,7 @@
 		</section>
 
 		<!-- Grid -->
-		<section class="tiles tiles--rotated" id="grid2" data-scroll-section>
+		<section class="tiles tiles--rotated" id="grid2">
 			<div class="tiles__wrap">
 				<div class="tiles__line" data-scroll data-scroll-speed="1" data-scroll-target="#grid2" data-scroll-direction="horizontal">
 					<div class="tiles__line-img"></div>
@@ -70,7 +70,7 @@
 		</section>
 
 		<!-- About -->
-		<section id="about" class="section about" data-scroll-section>
+		<section id="about" class="section about">
 			<div class="about__title">
 				<h2 data-scroll data-scroll-speed="3" data-scroll-direction="horizontal">
 					{{ __('About us') }} &prop; 
@@ -116,7 +116,7 @@
 		</section>
 
 		<!-- Flexin' -->
-		<section id="flexin" class="section flexin" data-scroll-section>
+		<section id="flexin" class="section flexin">
 			<div class="container">
 				<div class="flexin__inner" data-scroll data-scroll-speed="1.5">
 					<div class="flexin__item anim-item fadeInUp" data-scroll data-scroll-class="anim-stop">
@@ -166,7 +166,7 @@
 		</section>
 
 		<!-- Reach us out -->
-		<section id="reach-us" class="section reach-us" data-scroll-section>
+		<section id="reach-us" class="section reach-us">
 			<div class="container">
 				<div class="reach-us__inner">
 					<div class="reach-us__col">

@@ -1834,6 +1834,152 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/js/app.js":
+/*!*****************************!*\
+  !*** ./resources/js/app.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Utils */ "./resources/js/components/Utils.js");
+/* harmony import */ var _components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/common/Bubbles */ "./resources/js/components/common/Bubbles.js");
+/* harmony import */ var _components_main_Gallery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/main/Gallery */ "./resources/js/components/main/Gallery.js");
+/* harmony import */ var _components_main_Modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/main/Modal */ "./resources/js/components/main/Modal.js");
+/* harmony import */ var _components_common_LinkDistortionCircle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/common/LinkDistortionCircle */ "./resources/js/components/common/LinkDistortionCircle.js");
+/* harmony import */ var _components_main_Swiper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/main/Swiper */ "./resources/js/components/main/Swiper.js");
+/* harmony import */ var locomotive_scroll__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! locomotive-scroll */ "./node_modules/locomotive-scroll/dist/locomotive-scroll.esm.js");
+/* harmony import */ var _components_main_PageTransitions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/main/PageTransitions */ "./resources/js/components/main/PageTransitions.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+
+
+
+
+
+
+
+/* NOT USED: */
+// import toggleMenu from "./components/main/ToggleMenu";
+// toggleMenu();
+// import { rippleButtonsInit } from './components/main/RippleEffect'
+// Material ripple button effect on click
+// rippleButtonsInit()
+// import { initAnimations } from './components/main/Animation'
+// Trigger animations on scroll
+// initAnimations()
+
+window.onload = function () {
+  // Page transitions
+  (0,_components_main_PageTransitions__WEBPACK_IMPORTED_MODULE_7__.default)();
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+  /**
+   * * * * * * * * * * * * * * * * * *
+   * * Common function are listed below.
+   *
+   * * These functions will be invoked on
+   * * every page.
+   */
+  // Locomotive scroll
+  var scroll = new locomotive_scroll__WEBPACK_IMPORTED_MODULE_6__.default({
+    el: document.querySelector('[data-scroll-container]'),
+    smooth: true,
+    tablet: {
+      smooth: false
+    },
+    smartphone: {
+      smooth: false
+    },
+    multiplier: 1.2,
+    lerp: 0.15
+  });
+  setTimeout(function () {
+    scroll.update();
+  });
+  /* Back to top button */
+
+  var backToTopBtn = document.getElementById('back-to-top');
+
+  if (window.matchMedia('(min-width: 1024px)')) {
+    backToTopBtn.addEventListener('click', function () {
+      scroll.scrollTo('top');
+    });
+  } else {
+    backToTopBtn.addEventListener('click', _components_Utils__WEBPACK_IMPORTED_MODULE_0__.scrollToTop);
+  } // Distortion links (circle on hover)
+
+
+  var distortedLinks = _toConsumableArray(document.querySelectorAll('a.circle-link'));
+
+  distortedLinks.forEach(function (el) {
+    var elPosition = _toConsumableArray(el.parentNode.children).indexOf(el);
+
+    var fxObj = _components_common_LinkDistortionCircle__WEBPACK_IMPORTED_MODULE_4__.default[elPosition];
+    fxObj && new fxObj(el);
+  }); // Trigger modal (contact)
+
+  (0,_components_main_Modal__WEBPACK_IMPORTED_MODULE_3__.triggerModal)();
+  /**
+   * * Disables right click for all images.
+   * * It's the first measure for preventing download.
+   * * The second one is using images as css backgrounds.
+   */
+
+  (0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.disableRightClick)();
+  /**
+   * * * * * * * * * * * * * * * * * *
+   * * Main pages listed below.
+   *
+   * * Functions will be invoked based
+   * * on current page.
+   */
+
+  var currentPage = document.body.getAttribute('data-page').trim(); // | =========================================================
+  // | Home
+  // | =========================================================
+  // query('.main.home') && runBubbles('.brand', 3000)
+
+  if (currentPage === 'home') {
+    (0,_components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__.distortBubble)();
+  } // | =========================================================
+  // | Gallery
+  // | =========================================================
+
+
+  (0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('.main.gallery') && (0,_components_main_Gallery__WEBPACK_IMPORTED_MODULE_2__.galleryPageGallery)(); // | =========================================================
+  // | Pomeranians
+  // | =========================================================
+
+  if ((0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('.main.pomeranian')) {} // Single pom
+
+
+  if ((0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('.main.show')) {
+    // Carousel
+    (0,_components_main_Swiper__WEBPACK_IMPORTED_MODULE_5__.default)(); // Bubbles on header
+    // setTimeout(() => {
+    // 	runBubbles('.show__header', 1500)
+    // }, 1500)
+  }
+}, false);
+
+/***/ }),
+
 /***/ "./resources/js/components/Utils.js":
 /*!******************************************!*\
   !*** ./resources/js/components/Utils.js ***!
@@ -3043,153 +3189,9 @@ function initCarousel() {
 
 /***/ }),
 
-/***/ "./resources/js/main.js":
-/*!******************************!*\
-  !*** ./resources/js/main.js ***!
-  \******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Utils */ "./resources/js/components/Utils.js");
-/* harmony import */ var _components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/common/Bubbles */ "./resources/js/components/common/Bubbles.js");
-/* harmony import */ var _components_main_Gallery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/main/Gallery */ "./resources/js/components/main/Gallery.js");
-/* harmony import */ var _components_main_Modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/main/Modal */ "./resources/js/components/main/Modal.js");
-/* harmony import */ var _components_common_LinkDistortionCircle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/common/LinkDistortionCircle */ "./resources/js/components/common/LinkDistortionCircle.js");
-/* harmony import */ var _components_main_Swiper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/main/Swiper */ "./resources/js/components/main/Swiper.js");
-/* harmony import */ var locomotive_scroll__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! locomotive-scroll */ "./node_modules/locomotive-scroll/dist/locomotive-scroll.esm.js");
-/* harmony import */ var _components_main_PageTransitions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/main/PageTransitions */ "./resources/js/components/main/PageTransitions.js");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
-
-
-
-
-
-
-
-/* NOT USED: */
-// import toggleMenu from "./components/main/ToggleMenu";
-// toggleMenu();
-// import { rippleButtonsInit } from './components/main/RippleEffect'
-// Material ripple button effect on click
-// rippleButtonsInit()
-// import { initAnimations } from './components/main/Animation'
-// Trigger animations on scroll
-// initAnimations()
-
-window.onload = function () {
-  // Page transitions
-  (0,_components_main_PageTransitions__WEBPACK_IMPORTED_MODULE_7__.default)();
-};
-
-document.addEventListener('DOMContentLoaded', function () {
-  /**
-   * * * * * * * * * * * * * * * * * *
-   * * Common function are listed below.
-   *
-   * * These functions will be invoked on
-   * * every page.
-   */
-  // Locomotive scroll
-  var scroll = new locomotive_scroll__WEBPACK_IMPORTED_MODULE_6__.default({
-    el: (0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('[data-scroll-container]'),
-    smooth: true,
-    tablet: {
-      smooth: false
-    },
-    smartphone: {
-      smooth: false
-    },
-    multiplier: 1.5,
-    lerp: 0.2
-  });
-  /* Back to top button */
-
-  var backToTopBtn = document.getElementById('back-to-top');
-
-  if (window.matchMedia('(min-width: 1024px)')) {
-    backToTopBtn.addEventListener('click', function () {
-      scroll.scrollTo('top');
-    });
-  } else {
-    backToTopBtn.addEventListener('click', _components_Utils__WEBPACK_IMPORTED_MODULE_0__.scrollToTop);
-  } // Distortion links (circle on hover)
-
-
-  var distortedLinks = _toConsumableArray(document.querySelectorAll('a.circle-link'));
-
-  distortedLinks.forEach(function (el) {
-    var elPosition = _toConsumableArray(el.parentNode.children).indexOf(el);
-
-    var fxObj = _components_common_LinkDistortionCircle__WEBPACK_IMPORTED_MODULE_4__.default[elPosition];
-    fxObj && new fxObj(el);
-  }); // Trigger modal (contact)
-
-  (0,_components_main_Modal__WEBPACK_IMPORTED_MODULE_3__.triggerModal)();
-  /**
-   * * Disables right click for all images.
-   * * It's the first measure for preventing download.
-   * * The second one is using images as css backgrounds.
-   */
-
-  (0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.disableRightClick)();
-  /**
-   * * * * * * * * * * * * * * * * * *
-   * * Main pages listed below.
-   *
-   * * Functions will be invoked based
-   * * on current page.
-   */
-
-  var currentPage = document.body.getAttribute('data-page').trim();
-  console.log(currentPage); // | =========================================================
-  // | Home
-  // | =========================================================
-  // query('.main.home') && runBubbles('.brand', 3000)
-
-  if (currentPage === 'home') {
-    (0,_components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__.distortBubble)();
-  } // | =========================================================
-  // | Gallery
-  // | =========================================================
-
-
-  (0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('.main.gallery') && (0,_components_main_Gallery__WEBPACK_IMPORTED_MODULE_2__.galleryPageGallery)(); // | =========================================================
-  // | Pomeranians
-  // | =========================================================
-
-  if ((0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('.main.pomeranian')) {} // Single pom
-
-
-  if ((0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('.main.show')) {
-    // Carousel
-    (0,_components_main_Swiper__WEBPACK_IMPORTED_MODULE_5__.default)(); // Bubbles on header
-    // setTimeout(() => {
-    // 	runBubbles('.show__header', 1500)
-    // }, 1500)
-  }
-}, false);
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[8].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[8].oneOf[1].use[2]!./node_modules/swiper/swiper-bundle.min.css":
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/swiper/swiper-bundle.min.css":
 /*!*************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[8].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[8].oneOf[1].use[2]!./node_modules/swiper/swiper-bundle.min.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/swiper/swiper-bundle.min.css ***!
   \*************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
@@ -30919,23 +30921,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/admin.scss":
-/*!***********************************!*\
-  !*** ./resources/sass/admin.scss ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./resources/sass/plugins/tailwind/tailwind.scss":
-/*!*******************************************************!*\
-  !*** ./resources/sass/plugins/tailwind/tailwind.scss ***!
-  \*******************************************************/
+/***/ "./resources/sass/tailwind.scss":
+/*!**************************************!*\
+  !*** ./resources/sass/tailwind.scss ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -31321,7 +31310,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _css_loader_dist_cjs_js_ruleSet_1_rules_8_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_8_oneOf_1_use_2_swiper_bundle_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../css-loader/dist/cjs.js??ruleSet[1].rules[8].oneOf[1].use[1]!../postcss-loader/dist/cjs.js??ruleSet[1].rules[8].oneOf[1].use[2]!./swiper-bundle.min.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[8].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[8].oneOf[1].use[2]!./node_modules/swiper/swiper-bundle.min.css");
+/* harmony import */ var _css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_swiper_bundle_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./swiper-bundle.min.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/swiper/swiper-bundle.min.css");
 
             
 
@@ -31330,11 +31319,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_ruleSet_1_rules_8_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_8_oneOf_1_use_2_swiper_bundle_min_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_swiper_bundle_min_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_ruleSet_1_rules_8_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_8_oneOf_1_use_2_swiper_bundle_min_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_swiper_bundle_min_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
@@ -41798,9 +41787,8 @@ _esm_components_core_core_class__WEBPACK_IMPORTED_MODULE_0__.default.use(compone
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"/js/scripts/main": 0,
+/******/ 			"/js/scripts/app": 0,
 /******/ 			"css/tailwind": 0,
-/******/ 			"css/admin": 0,
 /******/ 			"css/app": 0
 /******/ 		};
 /******/ 		
@@ -41849,10 +41837,9 @@ _esm_components_core_core_class__WEBPACK_IMPORTED_MODULE_0__.default.use(compone
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/tailwind","css/admin","css/app"], () => (__webpack_require__("./resources/js/main.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/tailwind","css/admin","css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/tailwind","css/admin","css/app"], () => (__webpack_require__("./resources/sass/admin.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/tailwind","css/admin","css/app"], () => (__webpack_require__("./resources/sass/plugins/tailwind/tailwind.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/tailwind","css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/tailwind","css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/tailwind","css/app"], () => (__webpack_require__("./resources/sass/tailwind.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

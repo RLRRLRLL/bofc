@@ -67,7 +67,7 @@
 					</div>
 				</div>
 
-				<button type="button" class="py-2 px-4 rounded shadow bg-amber text-center text-dark font-medium" :class="gridViewActive ? 'block' : 'hidden'">
+				<button type="button" class="py-2 px-4 rounded shadow bg-amber text-center text-dark font-bold" :class="gridViewActive ? 'block' : 'hidden'">
 					<span>{{ __('Learn more') }}</span>
 				</button>
 			</figcaption>

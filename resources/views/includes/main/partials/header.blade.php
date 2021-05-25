@@ -1,8 +1,4 @@
-<header 
-	x-data="{ showBurgerMenu: false }" 
-	class="relative w-full z-50 overflow-hidden shadow-md py-3 lg:py-5 bg-dark-secondary" 
-	data-scroll-section
->
+<header x-data="{ showBurgerMenu: false }" class="relative w-full z-50 overflow-hidden shadow-md py-3 lg:py-5 bg-dark-secondary">
 	<div class="container flex flex-col">
 		<div class="flex items-center justify-end">
 			{{-- App logo --}}

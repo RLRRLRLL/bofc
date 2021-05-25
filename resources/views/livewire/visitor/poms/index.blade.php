@@ -1,10 +1,10 @@
 @section('page-title', __('Pomeranian'))
 
-<main class="bg-dark py-12" data-scroll-section>
+<main class="bg-dark py-12">
 	<div class="container">
 		<div 
 			class="w-full grid gap-5 grid-cols-1" 
-			x-data="{ showFilters: false, gridViewActive: false, listViewActive: true }"
+			x-data="{ showFilters: false, gridViewActive: true, listViewActive: false }"
 			x-init="() => {
 				showFilters = window.matchMedia('(min-width: 1024px)').matches
 			}"

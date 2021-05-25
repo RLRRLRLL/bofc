@@ -1,21 +1,4 @@
 @import './partials/alpha';
 @import './partials/gradients';
 @import './partials/colors';
-
-// trans
-$cubic: 0.3s cubic-bezier(0.8, 0.02, 0.16, 0.99);
-
-$bradius: 10px;
-$bshadow: 0 0.5px 8px 1px $black;
-
-$transition: 0.23s cubic-bezier(0.72, 0.12, 0.22, 1.14);
-
-// z-indexes
-$low: 10;
-$medium: 100;
-$high: 1000;
-
-// dark admin dashboard
-$border: 1px solid rgba($gray, 0.3);
-$bg: #171717;
-$bgLighter: #202020;
+@import './partials/unsorted';

@@ -1,5 +1,6 @@
+/* Tailwind assets */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 // acl - additional components layer
-@import './acl';
+@import './libs/tailwind_acl';
 @import 'tailwindcss/utilities';

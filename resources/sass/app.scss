@@ -1,9 +1,13 @@
+/* Visitor pages a.k.a. App itself */
 // main includes
-@import './helpers/config';
 @import './helpers/fonts';
+@import './pages/main/components/base';
 @import './helpers/variables/vars';
 @import './helpers/mixins/mixins';
 @import './helpers/classes';
 
 // pages
 @import './pages/main/main';
+
+// locomotive-scroll
+@import './libs/locomotive';

@@ -39,12 +39,16 @@ document.addEventListener(
 
 		// Locomotive scroll
 		const scroll = new LocomotiveScroll({
-			el: query('[data-scroll-container]'),
+			el: document.querySelector('[data-scroll-container]'),
 			smooth: true,
 			tablet: { smooth: false },
 			smartphone: { smooth: false },
-			multiplier: 1.5,
-			lerp: 0.2
+			multiplier: 1.2,
+			lerp: 0.15
+		})
+
+		setTimeout(() => {
+			scroll.update()
 		})
 
 		/* Back to top button */
@@ -84,7 +88,6 @@ document.addEventListener(
 		 * * on current page.
 		 */
 		const currentPage = document.body.getAttribute('data-page').trim()
-		console.log(currentPage)
 
 		// | =========================================================
 		// | Home

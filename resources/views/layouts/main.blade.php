@@ -12,20 +12,21 @@
 		@endif
 		{{-- Styles --}}
 		@livewireStyles
-		<link rel="stylesheet" href="{{ asset('css/tailwind.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/tailwind.css') }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         @stack('styles')
     </head>
 	{{-- "data-page" needed for js to define current page --}}
-    <body class="no-arr outline-none" data-page="@yield('data-page')">
+    <body class="no-arr outline-none" data-page="@yield('data-page')" data-app>
 		{{-- Slide transition between pages --}}
 		@include('includes.effects.page-transition')
+		{{-- Header links hover distortion --}}
+		@include('includes.effects.distortion-circle')
+		{{-- Contact us modal --}}
+		@include('includes.main.partials.modal')
 
 		{{-- Wrapper --}}
 		<div id="wrapper" class="flex flex-col justify-between" data-scroll-container>
-			@include('includes.effects.distortion-circle')
-			@include('includes.main.partials.modal')
-
 			{{-- Header --}}
 			@include('includes.main.partials.header')
 			
@@ -39,7 +40,7 @@
 		{{-- Scripts --}}
 		<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
 		@livewireScripts
-		<script src="{{asset('js/scripts/main.js')}}" type="module" defer></script>
+		<script src="{{asset('js/scripts/app.js')}}" type="module" defer></script>
 		@stack('scripts')
     </body>
 </html>

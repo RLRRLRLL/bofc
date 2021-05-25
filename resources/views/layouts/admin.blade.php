@@ -9,8 +9,7 @@
 			<script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
 		@endif
 		@livewireStyles
-		<link rel="stylesheet" href="{{ asset('css/tailwind.css') }}">
-		{{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
+		<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 		@stack('styles')
 
 		<style>
@@ -58,7 +57,6 @@
 		<!-- scripts -->
 		<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 		<script src="https://kit.fontawesome.com/7b1766dcee.js" crossorigin="anonymous"></script>
-		<script src="{{ asset('js/scripts/admin.js') }}"></script>
 		@livewireScripts
 		@stack('scripts')
 	</body>

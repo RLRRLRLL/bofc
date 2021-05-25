@@ -7,15 +7,13 @@ const tailwindJit = require('@tailwindcss/jit')
 */
 
 // prettier-ignore
-mix.js('resources/js/main.js', 'public/js/scripts')
-	.js('resources/js/admin.js', 'public/js/scripts')
-	.sass('resources/sass/app.scss', 'public/css')
-	.sass('resources/sass/admin.scss', 'public/css')
-	.sass('resources/sass/plugins/tailwind/tailwind.scss','public/css/tailwind.css')
+mix.sass('resources/sass/app.scss', 'public/css')
+	.sass('resources/sass/tailwind.scss', 'public/css')
 	.options({
 		processCssUrls: false,
 		postCss: [tailwindJit]
 	})
+	.js('resources/js/app.js', 'public/js/scripts')
 	.browserSync({
 		proxy: 'http://bofc.local',
 		// proxy: 'http://127.0.0.1:8000',
