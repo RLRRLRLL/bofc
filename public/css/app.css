@@ -1175,37 +1175,38 @@ form button:hover {
 }
 
 /* Main pages */
-/*** canvas ***/
-#canvas {
+section.ripple {
+  height: 100vh;
+  /*** canvas ***/
+  /*** content ***/
+  /*** handling errors ***/
+}
+section.ripple #canvas {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 1;
 }
-
-/*** content ***/
-.dg.ac {
+section.ripple .dg.ac {
   z-index: 3 !important;
 }
-
-#content {
+section.ripple #content {
   position: relative;
   z-index: 2;
   touch-action: none;
   /* disable pull to refresh on mobile */
 }
-
-#water-ripples {
+section.ripple #water-ripples {
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-#water-ripples-title {
+section.ripple #water-ripples-title {
   position: absolute;
   top: 0;
   right: 0;
@@ -1215,33 +1216,27 @@ form button:hover {
   justify-content: center;
   align-items: center;
 }
-
-#water-ripples-title h1 {
+section.ripple #water-ripples-title h1 {
   color: white;
   font-size: 8.5vw;
   margin: 0;
   opacity: 0;
 }
-
-#water-ripples img {
+section.ripple #water-ripples img {
   display: none;
 }
-
-/*** handling errors ***/
-.no-curtains #water-ripples {
+section.ripple .no-curtains #water-ripples {
   display: flex;
   overflow: hidden;
 }
-
-.no-curtains #water-ripples img {
+section.ripple .no-curtains #water-ripples img {
   display: block;
   min-width: 100%;
   min-height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-
-.no-curtains #water-ripples-title h1 {
+section.ripple .no-curtains #water-ripples-title h1 {
   opacity: 1;
 }
 
@@ -1308,6 +1303,7 @@ form button:hover {
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+  filter: url(#noise);
 }
 
 @media screen and (min-width: 769px) {

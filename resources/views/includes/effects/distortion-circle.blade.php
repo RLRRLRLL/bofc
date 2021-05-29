@@ -7,6 +7,7 @@
 	</defs>
 </svg>
 
+{{-- Brand Section bubble distortion --}}
 <svg class="hidden">
 	<filter id="noise">
 		<feTurbulence baseFrequency="0.03 0.09" result="NOISE" numOctaves="1" id="turbulence" />

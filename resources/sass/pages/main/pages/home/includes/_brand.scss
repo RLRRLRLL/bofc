@@ -58,6 +58,7 @@
 		height: 20rem;
 		img {
 			@include image;
+			filter: url(#noise);
 		}
 	}
 }

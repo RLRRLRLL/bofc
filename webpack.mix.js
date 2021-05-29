@@ -15,8 +15,8 @@ mix.sass('resources/sass/app.scss', 'public/css')
 	})
 	.js('resources/js/app.js', 'public/js')
 	.browserSync({
-		proxy: 'http://bofc.local',
-		// proxy: 'http://127.0.0.1:8000',
+		// proxy: 'http://bofc.local',
+		proxy: 'http://127.0.0.1:8000',
 		notify: {
 			styles: {
 				top: 'auto',

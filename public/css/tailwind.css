@@ -873,6 +873,9 @@ button:focus {
 .h-44 {
 	height: 11rem !important;
 }
+.h-0 {
+	height: 0px !important;
+}
 .h-48 {
 	height: 12rem !important;
 }
@@ -911,6 +914,9 @@ button:focus {
 }
 .w-2\/4 {
 	width: 50% !important;
+}
+.w-0 {
+	width: 0px !important;
 }
 .w-24 {
 	width: 6rem !important;

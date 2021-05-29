@@ -9,7 +9,7 @@
 		@include('includes.common.special-svgs')
 
 		{{-- Ripple --}}
-		<section class="ripple">
+		{{-- <section class="ripple">
 			<div id="canvas"></div>
 
 			<div id="content">
@@ -22,7 +22,7 @@
 					<img src="https://source.unsplash.com/NpMWgJ1_Ohk/1280x720" alt="Photo by David Pisnoy on Unsplash" crossorigin data-sampler="planeTexture" />
 				</div>
 			</div>
-		</section>
+		</section> --}}
 
 		<!-- Brand -->
 		<section class="brand">
@@ -201,5 +201,11 @@
 @endsection
 
 @push('scripts')
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js" integrity="sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script> --}}
+	<script>
+		
+	</script>
+	{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js" integrity="sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+	{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
+	<script src="https://www.curtainsjs.com/build/curtains.min.js"></script> --}}
 @endpush

@@ -10,6 +10,7 @@ import LinkDistortionCircle from './components/common/LinkDistortionCircle'
 import initCarousel from './components/main/Swiper'
 import LocomotiveScroll from 'locomotive-scroll'
 import runTransition from './components/main/PageTransitions'
+import SectionRipple from './components/main/SectionRipple'
 
 window.onload = () => {
 	// Page transitions
@@ -83,6 +84,7 @@ document.addEventListener(
 		// | Home
 		// | =========================================================
 		if (currentPage === 'home') {
+			// SectionRipple()
 			distortBubble()
 		}
 

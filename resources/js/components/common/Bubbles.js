@@ -1,8 +1,9 @@
+import gsap from 'gsap'
 import { query, randomNum } from './../Utils'
 
 let interval
 
-export const runBubbles = (selector, timeout) => {
+const runBubbles = (selector, timeout) => {
 	const area = query(selector)
 
 	interval = setInterval(() => {
@@ -21,19 +22,36 @@ export const runBubbles = (selector, timeout) => {
 	}, 150)
 }
 
-export const stopBubbles = () => {
+const stopBubbles = () => {
 	window.clearInterval(interval)
 	interval = null
 }
 
-export const distortBubble = () => {
-	const turb = document.getElementById('turbulence')
-	const tl = new TimelineMax()
-
-	tl.to(turb, {
-		duration: 3,
-		attr: {
-			baseFrequency: '0 0'
-		}
+const distortBubble = () => {
+	gsap.from('.brand__desc', {
+		opacity: 0,
+		duration: 1,
+		y: 10
 	})
+
+	setTimeout(() => {
+		// prettier-ignore
+		gsap.to('#turbulence', {
+			opacity: 1,
+			rotationX: 180,
+			duration: 3,
+			attr: {
+				baseFrequency: '0 0'
+			}
+		})
+
+		gsap.to('#displacement', {
+			duration: 3,
+			attr: {
+				scale: '5'
+			}
+		})
+	}, 1000)
 }
+
+export { runBubbles, stopBubbles, distortBubble }
