@@ -8,6 +8,22 @@
 	{{-- <main class="main home bg-dark" data-scroll-container> --}}
 		@include('includes.common.special-svgs')
 
+		{{-- Ripple --}}
+		<section class="ripple">
+			<div id="canvas"></div>
+
+			<div id="content">
+				<div id="canvas"></div>
+
+				<div id="water-ripples">
+					<div id="water-ripples-title">
+						<h1>Ripples</h1>
+					</div>
+					<img src="https://source.unsplash.com/NpMWgJ1_Ohk/1280x720" alt="Photo by David Pisnoy on Unsplash" crossorigin data-sampler="planeTexture" />
+				</div>
+			</div>
+		</section>
+
 		<!-- Brand -->
 		<section class="brand">
 			<div class="container anim-item moveUp anim-delay-long" data-scroll data-scroll-class="anim-stop">
@@ -95,15 +111,15 @@
 						data-scroll 
 						data-scroll-class="anim-stop">
 						<div class="space-y-7">
-							<p class="text-xl leftonade text-gray-100 tracking-wide leading-loose">
+							<p class="text-xl font-leftonade text-gray-100 tracking-wide leading-loose">
 								{{ __('Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur aperiam velit asperiores et nemo labore, in ipsam quidem voluptates quod.') }}
 							</p>
 
-							<p class="text-xl leftonade text-gray-100 tracking-wide leading-loose">
+							<p class="text-xl font-leftonade text-gray-100 tracking-wide leading-loose">
 								{{ __('Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem molestiae veritatis ad reprehenderit dolores corrupti delectus aperiam sapiente dicta, maxime a laborum ex veniam amet, quis deserunt libero excepturi animi.') }}
 							</p>
 							
-							<p class="text-xl leftonade text-gray-100 tracking-wide leading-loose">
+							<p class="text-xl font-leftonade text-gray-100 tracking-wide leading-loose">
 								{{ __('Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, ducimus.') }}
 							</p>
 						</div>

@@ -8,7 +8,7 @@
 			<nav class="hidden md:flex">
 				@include('includes.main.partials.header.nav-menu', [
 					'classes' => 'flex items-center justify-items-end',
-					'link' => 'px-4 py-2 text-xl leftonade tracking-wide',
+					'link' => 'px-4 py-2 text-xl font-leftonade tracking-wide',
 					'cta' => 'mx-5 px-5 py-3 tracking-wide shadow-lg'
 				])
 			</nav>
@@ -37,7 +37,7 @@
 		<nav class="md:hidden py-10" x-show="showBurgerMenu">
 			@include('includes.main.partials.header.nav-menu', [
 				'classes' => 'flex flex-col space-y-5',
-				'link' => 'leftonade text-2xl text-amber',
+				'link' => 'font-leftonade text-2xl text-amber',
 				'cta' => 'mt-3 px-5 py-3 tracking-wide'
 			])
 		</nav>

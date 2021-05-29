@@ -5,17 +5,17 @@
 			:class="gridViewActive ? 'flex-col' : 'items-center justify-center p-5'"
 			title="{{ __('Click to learn more.') }}"
 		>
-			<a href="{{ route('poms.show', $pom->id) }}" class="leave-page absolute pointer-events-none top-0 left-0 bottom-0 right-0 z-0 inline active:opacity-70"></a>
+			<a href="{{ $pom->path() }}" class="leave-page absolute top-0 left-0 bottom-0 right-0 z-0 inline active:opacity-70"></a>
 
 			<img 
 				class="object-center object-cover" 
 				:class="gridViewActive ? 'w-full h-48' : 'w-24 h-24 rounded-full shadow'"
-				src="{{ '/storage/images/poms/'.$pom->id.'/'.$pom->avatarImage()}}"
+				src="{{ $pom->avatarImage()}}"
 			>
 
 			<figcaption class="grid grid-cols-1" :class="gridViewActive ? 'h-full gap-3 p-5' : 'w-full pl-5 gap-5'">
 				<div class="flex items-center" :class="{ 'justify-between': listViewActive }">
-					<h3 class="text-xl leftonade tracking-wide text-white leading-none">
+					<h3 class="text-xl font-leftonade tracking-wide text-white leading-none">
 						{{ ucfirst($pom->name) }}
 					</h3>
 

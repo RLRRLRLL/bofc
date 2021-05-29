@@ -1873,15 +1873,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
 
-/* NOT USED: */
-// import toggleMenu from "./components/main/ToggleMenu";
-// toggleMenu();
-// import { rippleButtonsInit } from './components/main/RippleEffect'
-// Material ripple button effect on click
-// rippleButtonsInit()
-// import { initAnimations } from './components/main/Animation'
-// Trigger animations on scroll
-// initAnimations()
 
 window.onload = function () {
   // Page transitions
@@ -1953,7 +1944,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var currentPage = document.body.getAttribute('data-page').trim(); // | =========================================================
   // | Home
   // | =========================================================
-  // query('.main.home') && runBubbles('.brand', 3000)
 
   if (currentPage === 'home') {
     (0,_components_common_Bubbles__WEBPACK_IMPORTED_MODULE_1__.distortBubble)();
@@ -1962,15 +1952,18 @@ document.addEventListener('DOMContentLoaded', function () {
   // | =========================================================
 
 
-  (0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('.main.gallery') && (0,_components_main_Gallery__WEBPACK_IMPORTED_MODULE_2__.galleryPageGallery)(); // | =========================================================
+  if (currentPage === 'gallery') {
+    (0,_components_main_Gallery__WEBPACK_IMPORTED_MODULE_2__.Gallery)();
+  } // | =========================================================
   // | Pomeranians
   // | =========================================================
 
-  if ((0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('.main.pomeranian')) {} // Single pom
+
+  if (currentPage === 'poms-index') {// ...
+  } // Single pom
 
 
-  if ((0,_components_Utils__WEBPACK_IMPORTED_MODULE_0__.query)('.main.show')) {
-    // Carousel
+  if (currentPage === 'poms-show') {
     (0,_components_main_Swiper__WEBPACK_IMPORTED_MODULE_5__.default)(); // Bubbles on header
     // setTimeout(() => {
     // 	runBubbles('.show__header', 1500)
@@ -2304,7 +2297,7 @@ var circleDistortion = /*#__PURE__*/function (_LinkFx) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "galleryPageGallery": () => (/* binding */ galleryPageGallery)
+/* harmony export */   "Gallery": () => (/* binding */ Gallery)
 /* harmony export */ });
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -2328,7 +2321,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function galleryPageGallery() {
+function Gallery() {
   var Slider = /*#__PURE__*/function () {
     function Slider() {
       var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -41787,7 +41780,7 @@ _esm_components_core_core_class__WEBPACK_IMPORTED_MODULE_0__.default.use(compone
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"/js/scripts/app": 0,
+/******/ 			"/js/app": 0,
 /******/ 			"css/tailwind": 0,
 /******/ 			"css/app": 0
 /******/ 		};

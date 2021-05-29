@@ -4,22 +4,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 import { query, disableRightClick, scrollToTop } from './components/Utils'
 import { runBubbles, distortBubble } from './components/common/Bubbles'
-import { galleryPageGallery } from './components/main/Gallery'
+import { Gallery } from './components/main/Gallery'
 import { triggerModal } from './components/main/Modal'
 import LinkDistortionCircle from './components/common/LinkDistortionCircle'
 import initCarousel from './components/main/Swiper'
 import LocomotiveScroll from 'locomotive-scroll'
 import runTransition from './components/main/PageTransitions'
-
-/* NOT USED: */
-// import toggleMenu from "./components/main/ToggleMenu";
-// toggleMenu();
-// import { rippleButtonsInit } from './components/main/RippleEffect'
-// Material ripple button effect on click
-// rippleButtonsInit()
-// import { initAnimations } from './components/main/Animation'
-// Trigger animations on scroll
-// initAnimations()
 
 window.onload = () => {
 	// Page transitions
@@ -92,7 +82,6 @@ document.addEventListener(
 		// | =========================================================
 		// | Home
 		// | =========================================================
-		// query('.main.home') && runBubbles('.brand', 3000)
 		if (currentPage === 'home') {
 			distortBubble()
 		}
@@ -100,17 +89,19 @@ document.addEventListener(
 		// | =========================================================
 		// | Gallery
 		// | =========================================================
-		query('.main.gallery') && galleryPageGallery()
+		if (currentPage === 'gallery') {
+			Gallery()
+		}
 
 		// | =========================================================
 		// | Pomeranians
 		// | =========================================================
-		if (query('.main.pomeranian')) {
+		if (currentPage === 'poms-index') {
+			// ...
 		}
 
 		// Single pom
-		if (query('.main.show')) {
-			// Carousel
+		if (currentPage === 'poms-show') {
 			initCarousel()
 
 			// Bubbles on header

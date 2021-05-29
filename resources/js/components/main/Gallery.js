@@ -1,4 +1,4 @@
-export function galleryPageGallery() {
+export function Gallery() {
 	class Slider {
 		constructor(options = {}) {
 			// our options

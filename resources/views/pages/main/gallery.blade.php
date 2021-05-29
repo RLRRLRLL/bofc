@@ -2,8 +2,10 @@
 
 @section('page-title', __('Gallery'))
 
+@section('data-page', 'gallery')
+
 @section('content')
-	<main class="main gallery" data-scroll-section>
+	<main class="gallery">
 		@include('includes.effects.shaders')
 
 		<div id="canvas"></div>

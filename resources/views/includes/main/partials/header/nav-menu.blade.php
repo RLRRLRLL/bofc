@@ -45,7 +45,7 @@
 	<hr class="border-t border-gray-600">
 
 	<li> {{-- 'Contact Us' Modal --}}
-		<button class="btn-border-zoom contact-modal-trigger {{ $cta ?? '' }}">
+		<button class="btn-border-zoom contact-modal-trigger font-medium {{ $cta ?? '' }}">
 			<span>
 				{{ __('Get in touch') }}
 			</span>

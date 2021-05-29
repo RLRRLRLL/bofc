@@ -1,4 +1,4 @@
-<div class="py-5 border-b border-gray-700" x-show="showFilters">
+<div class="md:hidden py-5 border-b border-gray-700" x-show="showFilters">
 	<section class="bg-dark-secondary rounded shadow">
 		{{-- Filter item --}}
 		<div class="w-full border-b border-gray-900" x-data="{ open: false }">

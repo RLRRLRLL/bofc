@@ -13,7 +13,7 @@ mix.sass('resources/sass/app.scss', 'public/css')
 		processCssUrls: false,
 		postCss: [tailwindJit]
 	})
-	.js('resources/js/app.js', 'public/js/scripts')
+	.js('resources/js/app.js', 'public/js')
 	.browserSync({
 		proxy: 'http://bofc.local',
 		// proxy: 'http://127.0.0.1:8000',

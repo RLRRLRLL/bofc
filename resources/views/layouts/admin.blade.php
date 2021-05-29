@@ -5,9 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		@include('includes.common.meta.favicon')
 		<title>{{ config('app.name') }} | {{ __('Admin dashboard') }} | @yield('page_title')</title>
-		@if (app()->isLocal())
-			<script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
-		@endif
+		
 		@livewireStyles
 		<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 		@stack('styles')
@@ -55,6 +53,9 @@
 		</div>
 		
 		<!-- scripts -->
+		@if (app()->isLocal())
+			<script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
+		@endif
 		<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 		<script src="https://kit.fontawesome.com/7b1766dcee.js" crossorigin="anonymous"></script>
 		@livewireScripts

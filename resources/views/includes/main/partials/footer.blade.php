@@ -1,5 +1,5 @@
 @php
-	$footer_link_classes = 'inline-block bitter md:text-lg tracking-wide font-medium text-gray-200 hover:text-gray-100 hover:border-gray-500 py-2 px-4 border-2 border-gray-700 active:border-gray-400 focus:border-gray-400 focus:text-gray-100 transition-colors';
+	$footer_link_classes = 'inline-block font-bitter md:text-lg tracking-wide font-medium text-gray-200 hover:text-gray-100 hover:border-gray-500 py-2 px-4 border-2 border-gray-700 active:border-gray-400 focus:border-gray-400 focus:text-gray-100 transition-colors';
 @endphp
 
 <footer id="footer" class="section py-10 lg:py-14 bg-dark-secondary">
@@ -71,7 +71,7 @@
 			</div>
 
 			<!-- Copyright -->
-			<div class="leftonade">
+			<div class="font-leftonade">
 				<div class="flex flex-col items-center">
 					<h3 class="mb-2 text-xl text-gray-200">
 						{{ config('app.name') }} &copy; 2014-2021
@@ -82,7 +82,7 @@
 					@endphp
 
 					@if (!is_null($developer_website))
-						<div class="flex items-center space-x-1 leftonade text-gray-500">
+						<div class="flex items-center space-x-1 font-leftonade text-gray-500">
 							<span>
 								Made with
 							</span>

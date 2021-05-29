@@ -8,17 +8,17 @@ use App\Models\Pom;
 
 class Show extends Component
 {
-	public $poms;
 	public $pom;
 
-	public function mount($pom)
+	public function mount(Pom $pom)
 	{
 		$this->pom = $pom;
-		$this->poms = Pom::all();
 	}
 	
     public function render()
     {
-        return view('livewire.visitor.poms.show');
+        return view('livewire.visitor.poms.show', [
+			'poms' => Pom::all()
+		])->extends('layouts.main')->section('content');
     }
 }

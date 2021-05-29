@@ -1,8 +1,8 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
+	important: true,
 	mode: 'jit',
-	// important: true,
 	purge: [
 		'./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
 		'./storage/framework/views/*.php',
@@ -10,6 +10,12 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			// these fonts are defined in _fonts.scss
+			fontFamily: {
+				leftonade: ['leftonade', 'sans-serif'],
+				manege: ['manege', 'sans-serif'],
+				bitter: ['bitter', 'serif']
+			},
 			colors: {
 				transparent: 'transparent',
 				current: 'currentColor',

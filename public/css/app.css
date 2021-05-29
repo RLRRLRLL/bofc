@@ -1,47 +1,5 @@
 /* Visitor pages a.k.a. App itself */
 @font-face {
-  font-family: "system";
-  font-style: normal;
-  font-weight: 300;
-  src: local(".SFNS-Light"), local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Segoe UI Light"), local("Ubuntu Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
-}
-@font-face {
-  font-family: "system";
-  font-style: normal;
-  font-weight: 400;
-  src: local(".SFNS-Regular"), local(".SFNSText-Regular"), local(".HelveticaNeueDeskInterface-Regular"), local(".LucidaGrandeUI"), local("Segoe UI"), local("Ubuntu"), local("Roboto-Regular"), local("DroidSans"), local("Tahoma");
-}
-@font-face {
-  font-family: "system";
-  font-style: italic;
-  font-weight: 400;
-  src: local(".SFNS-Italic"), local(".SFNSText-Italic"), local(".HelveticaNeueDeskInterface-Italic"), local(".LucidaGrandeUI"), local("Segoe UI Italic"), local("Ubuntu Italic"), local("Roboto-Italic"), local("DroidSans"), local("Tahoma");
-}
-@font-face {
-  font-family: "system";
-  font-style: normal;
-  font-weight: 500;
-  src: local(".SFNS-Medium"), local(".SFNSText-Medium"), local(".HelveticaNeueDeskInterface-MediumP4"), local(".LucidaGrandeUI"), local("Segoe UI Semibold"), local("Ubuntu Medium"), local("Roboto-Medium"), local("DroidSans-Bold"), local("Tahoma Bold");
-}
-@font-face {
-  font-family: "system";
-  font-style: italic;
-  font-weight: 500;
-  src: local(".SFNS-MediumItalic"), local(".SFNSText-MediumItalic"), local(".HelveticaNeueDeskInterface-MediumItalicP4"), local(".LucidaGrandeUI"), local("Segoe UI Semibold Italic"), local("Ubuntu Medium Italic"), local("Roboto-MediumItalic"), local("DroidSans-Bold"), local("Tahoma Bold");
-}
-@font-face {
-  font-family: "system";
-  font-style: normal;
-  font-weight: 700;
-  src: local(".SFNS-Bold"), local(".SFNSText-Bold"), local(".HelveticaNeueDeskInterface-Bold"), local(".LucidaGrandeUI"), local("Segoe UI Bold"), local("Ubuntu Bold"), local("Roboto-Bold"), local("DroidSans-Bold"), local("Tahoma Bold");
-}
-@font-face {
-  font-family: "system";
-  font-style: italic;
-  font-weight: 700;
-  src: local(".SFNS-BoldItalic"), local(".SFNSText-BoldItalic"), local(".HelveticaNeueDeskInterface-BoldItalic"), local(".LucidaGrandeUI"), local("Segoe UI Bold Italic"), local("Ubuntu Bold Italic"), local("Roboto-BoldItalic"), local("DroidSans-Bold"), local("Tahoma Bold");
-}
-@font-face {
   font-family: "leftonade";
   src: url("/fonts/Leftonade/Leftonade-Regular.otf");
 }
@@ -54,18 +12,6 @@
   font-weight: 400;
   src: url("/fonts/Bitter/Bitter-Regular.ttf");
 }
-.leftonade {
-  font-family: "leftonade";
-}
-
-.bitter {
-  font-family: "bitter";
-}
-
-.manege {
-  font-family: "manege";
-}
-
 html {
   font-size: 15px;
 }
@@ -73,8 +19,8 @@ html {
 body {
   width: 100%;
   height: 100%;
-  font-family: "system";
   background: #191817;
+  overflow: hidden;
   /* enable locomotive scroll from tablet and on */
 }
 @media screen and (min-width: 992px) {
@@ -1229,6 +1175,76 @@ form button:hover {
 }
 
 /* Main pages */
+/*** canvas ***/
+#canvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 1;
+}
+
+/*** content ***/
+.dg.ac {
+  z-index: 3 !important;
+}
+
+#content {
+  position: relative;
+  z-index: 2;
+  touch-action: none;
+  /* disable pull to refresh on mobile */
+}
+
+#water-ripples {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#water-ripples-title {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#water-ripples-title h1 {
+  color: white;
+  font-size: 8.5vw;
+  margin: 0;
+  opacity: 0;
+}
+
+#water-ripples img {
+  display: none;
+}
+
+/*** handling errors ***/
+.no-curtains #water-ripples {
+  display: flex;
+  overflow: hidden;
+}
+
+.no-curtains #water-ripples img {
+  display: block;
+  min-width: 100%;
+  min-height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.no-curtains #water-ripples-title h1 {
+  opacity: 1;
+}
+
 .brand {
   position: relative;
 }
@@ -1722,12 +1738,6 @@ form button:hover {
     align-self: stretch;
   }
 }
-.wrapper.gallery {
-  position: relative;
-  background: #101010;
-  overflow: hidden;
-}
-
 #super-creative-circles {
   position: fixed;
   top: 50%;
@@ -2003,7 +2013,13 @@ form button:hover {
   grid-column: span 2;
 }
 .poms__header .view-list {
-  grid: repeat(3, 1fr) min-content/100%;
+  display: none;
+}
+@media screen and (min-width: 475px) {
+  .poms__header .view-list {
+    display: grid;
+    grid: repeat(3, 1fr) min-content/100%;
+  }
 }
 
 .show {

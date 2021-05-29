@@ -56,6 +56,12 @@
 	}
 
 	.view-list {
-		grid: repeat(3, 1fr) min-content / 100%;
+		display: none;
+
+		@media screen and (min-width: 475px) {
+			// min-width XS from tailwind docs
+			display: grid;
+			grid: repeat(3, 1fr) min-content / 100%;
+		}
 	}
 }
