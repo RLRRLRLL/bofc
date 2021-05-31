@@ -1,6 +1,4 @@
 <div class="overlay" x-ref="overlay">
-	@include('includes.common.special-svgs')
-
 	<div class="modal">
 		<div class="modal__inner">
 			<div class="modal__body">

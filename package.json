@@ -12,7 +12,7 @@
 	"devDependencies": {
 		"@tailwindcss/forms": "^0.2.1",
 		"@tailwindcss/jit": "^0.1.18",
-		"alpinejs": "^2.7.3",
+		"alpinejs": "^2.8.2",
 		"autoprefixer": "^10.1.0",
 		"axios": "^0.21",
 		"browser-sync": "^2.26.14",
@@ -30,6 +30,7 @@
 		"vue-template-compiler": "^2.6.12"
 	},
 	"dependencies": {
+		"@barba/core": "^2.9.7",
 		"axios": "^0.21.1",
 		"bootstrap": "^4.0.0",
 		"cross-env": "^7.0",

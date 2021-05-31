@@ -1,4 +1,10 @@
 /* Components */
+// global
+@import './app/header';
+
+// cursor
+@import './components/cursor';
+
 // Little fade/zoom animations triggered by scroll
 @import './components/animations';
 
@@ -17,5 +23,4 @@
 @import './pages/gallery/gallery';
 
 // poms
-@import './pages/poms/index';
-@import './pages/poms/show';
+@import './pages/poms/poms';

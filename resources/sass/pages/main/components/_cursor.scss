@@ -1,20 +1,44 @@
-.cursor {
-	position: absolute;
-	border-radius: 50%;
-	transform: translate(-50%, -50%);
-	pointer-events: none;
-	z-index: $low;
-	transform-origin: 100% 100%;
-	transition: width 0.25s ease 0.25s, height 0.25s ease 0.25s,
-		background $cubic;
-	width: 30px;
-	height: 30px;
-	background: $gradient-one__bubble;
-	border: 1px solid #252525;
-	backdrop-filter: saturate(1.5) contrast(120%);
+// $cursor_border: rgba(white, 0.7);
 
-	&.grow {
-		width: 125px;
-		height: 125px;
+// #cursor {
+// 	position: absolute;
+// 	transform: translate(-50%, -50%);
+// 	pointer-events: none;
+// 	z-index: $low;
+// 	transform-origin: 100% 100%;
+// 	transition: width 0.35s ease, height 0.35s ease, background $cubic;
+// 	width: 1rem;
+// 	height: 1rem;
+// 	background: transparent;
+// 	border-radius: 50%;
+// 	border: 1px solid $cursor_border;
+// 	backdrop-filter: saturate(1.5) contrast(120%);
+
+// 	&.grow {
+// 		width: 4rem;
+// 		height: 4rem;
+// 		background: rgba(white, 0.2);
+// 	}
+// }
+
+$cursor_color: $accent;
+
+.cursor {
+	width: var(--size);
+	height: var(--size);
+	border-radius: 50%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	pointer-events: none;
+	z-index: 100;
+	&--large {
+		--size: 40px;
+		border: 1px solid $cursor_color;
+	}
+	&--small {
+		--size: 10px;
+		background: $cursor_color;
+		transform: translate(-50%, -50%);
 	}
 }

@@ -9,32 +9,32 @@
 			<div class="">
 				<ul class="h-full flex flex-col justify-center md:flex-row items-center space-y-5 md:space-y-0 md:space-x-5">
 					<li>
-						<a class="{{ $footer_link_classes }}" href="{{ route('homepage') }}">
+						<a class="{{ $footer_link_classes }}" data-leave href="{{ route('homepage') }}" data-magnetic>
 							{{ __('Home') }}
 						</a>
 					</li>
 					<li>
-						<a class="{{ $footer_link_classes }}" href="#">
+						<a class="{{ $footer_link_classes }}" data-leave href="#" data-magnetic>
 							{{ __('News & Articles') }}
 						</a>
 					</li>
 					<li>
-						<a class="{{ $footer_link_classes }}" href="{{ route('poms.index') }}">
+						<a class="{{ $footer_link_classes }}" data-leave href="{{ route('poms.index') }}" data-magnetic>
 							{{ __('Pomeranian') }}
 						</a>
 					</li>
 					<li>
-						<a class="{{ $footer_link_classes }}" href="{{ route('gallery') }}">
+						<a class="{{ $footer_link_classes }}" data-leave href="{{ route('gallery') }}" data-magnetic>
 							{{ __('Gallery') }}
 						</a>
 					</li>
 					<li>
-						<button class="{{ $footer_link_classes }} contact-modal-trigger" type="button">
+						<button class="{{ $footer_link_classes }} contact-modal-trigger" type="button" data-magnetic>
 							{{ __('Contact us') }}
 						</button>
 					</li>
 					<li>
-						<button class="{{ $footer_link_classes }}" type="button" id="back-to-top">
+						<button class="{{ $footer_link_classes }}" type="button" id="back-to-top" data-magnetic>
 							{{ __('Back to top') }}
 						</button>
 					</li>

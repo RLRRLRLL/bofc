@@ -2,7 +2,7 @@
 
 <ul class="{{ $classes ?? '' }}">
 	<li> {{-- Homepage --}} 
-		<a class="circle-link leave-page {{ checkLinks('/') }} {{ $link ?? '' }}" href="{{ route('homepage') }}">
+		<a class="circle-link {{ checkLinks('/') }} {{ $link ?? '' }}" href="{{ route('homepage') }}" data-leave>
 			<span class="circle-link-text">
 				{{ __('Home') }}
 			</span>
@@ -10,7 +10,7 @@
 	</li>
 
 	<li> {{-- Poms page --}} 
-		<a class="circle-link leave-page {{ checkLinks('pomeranian') }} {{ $link ?? '' }}" href="{{ route('poms.index') }}">
+		<a class="circle-link {{ checkLinks('pomeranian') }} {{ $link ?? '' }}" href="{{ route('poms.index') }}" data-leave>
 			<span class="circle-link-text">
 				{{ __('Pomeranian') }}
 			</span>
@@ -18,7 +18,7 @@
 	</li>
 
 	<li> {{-- Gallery --}} 
-		<a class="circle-link leave-page {{ checkLinks('gallery') }} {{ $link ?? '' }}" href="{{ route('gallery') }}">
+		<a class="circle-link {{ checkLinks('gallery') }} {{ $link ?? '' }}" href="{{ route('gallery') }}" data-leave>
 			<span class="circle-link-text">
 				{{ __('Gallery') }}
 			</span>
@@ -26,7 +26,7 @@
 	</li>
 
 	<li> {{-- News --}} 
-		<a class="circle-link leave-page {{ checkLinks('news') }} {{ $link ?? '' }}" href="#">
+		<a class="circle-link {{ checkLinks('news') }} {{ $link ?? '' }}" href="#" data-leave>
 			<span class="circle-link-text">
 				{{ __('News') }}
 			</span>

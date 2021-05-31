@@ -1,13 +1,11 @@
-import { add } from 'lodash'
-
 /**
- * This little function works, but not used for lack of need.
- * Locomotive already has 'data-scroll-class' feature..
+ * This function works, but not used because not needed.
+ * Locomotive 'data-scroll-class' used instead
  */
 
 const initAnimations = function () {
 	const callback = function (entries) {
-		entries.forEach((entry) => {
+		entries.forEach(entry => {
 			if (entry.isIntersecting) {
 				entry.target.classList.add('anim-stop')
 			}

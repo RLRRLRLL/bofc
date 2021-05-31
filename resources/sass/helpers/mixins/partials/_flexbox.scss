@@ -1,18 +1,18 @@
-@mixin flex-around($dir) {
+@mixin flex-around($dir: row) {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
 	flex-direction: $dir;
 }
 
-@mixin flex-center($dir) {
+@mixin flex-center($dir: row) {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: $dir;
 }
 
-@mixin flex-between($dir) {
+@mixin flex-between($dir: row) {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;

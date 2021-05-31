@@ -7,6 +7,11 @@ body {
 	height: 100%;
 	background: #191817;
 	overflow: hidden;
+	cursor: none;
+
+	[data-magnetic] {
+		cursor: none !important;
+	}
 
 	/* enable locomotive scroll from tablet and on */
 	@media screen and (min-width: 992px) {

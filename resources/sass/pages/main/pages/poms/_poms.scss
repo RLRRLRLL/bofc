@@ -1,3 +1,12 @@
+/* poms index */
+@import './../../components/_pagination.scss';
+
+.poms {
+	/* --------- Header ---------- */
+	@import './includes/index/header';
+}
+
+/* poms show single */
 $background: rgba(black, 0.4);
 
 .show {
