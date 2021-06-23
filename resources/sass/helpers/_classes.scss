@@ -154,7 +154,7 @@ span.ripple {
 
 	&::before,
 	&::after {
-		@include absolute-stretch;
+		@include absolute-stretch(absolute);
 	}
 
 	&::before {

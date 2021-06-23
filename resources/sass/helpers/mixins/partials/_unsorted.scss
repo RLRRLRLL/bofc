@@ -30,9 +30,9 @@
 	border-image-source: $gradient;
 }
 
-// Position absolute stretch
-@mixin absolute-stretch() {
-	position: absolute;
+// Position absolute || fixed stretch
+@mixin absolute-stretch($position) {
+	position: $position;
 	top: 0;
 	left: 0;
 	right: 0;

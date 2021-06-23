@@ -1,0 +1,48 @@
+.pace {
+	-webkit-pointer-events: none;
+	pointer-events: none;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+
+	&-inactive {
+		opacity: 0;
+		transition: opacity 0.5s ease;
+
+		// added display none in js
+	}
+
+	&-progress {
+		position: fixed;
+		z-index: 2000;
+		top: 0;
+		right: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		width: 100%;
+		background: white;
+
+		-webkit-transform: translate3d(0, 0, 0) !important;
+		-ms-transform: translate3d(0, 0, 0) !important;
+		transform: translate3d(0, 0, 0) !important;
+
+		&::after {
+			content: attr(data-progress-text);
+			display: block;
+			position: absolute;
+			top: 50%;
+			right: 50%;
+			// transform: translate(-50%, -50%);
+			color: #191919;
+			font-size: 2rem;
+		}
+	}
+
+	&-done {
+		.pace-inactive {
+		}
+	}
+}

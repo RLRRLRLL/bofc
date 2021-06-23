@@ -1,4 +1,4 @@
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
 
 module.exports = {
 	important: true,
@@ -12,9 +12,9 @@ module.exports = {
 		extend: {
 			// these fonts are defined in _fonts.scss
 			fontFamily: {
-				leftonade: ['leftonade', 'sans-serif'],
-				manege: ['manege', 'sans-serif'],
-				bitter: ['bitter', 'serif']
+				astra: ['PT Astra Serif', 'serif'],
+				young: ['Young Serif', 'serif'],
+				golos: ['Golos Text', 'sans-serif']
 			},
 			colors: {
 				transparent: 'transparent',
@@ -53,8 +53,9 @@ module.exports = {
 			container: {
 				center: true,
 				padding: {
-					DEFAULT: '2rem',
+					DEFAULT: '1rem',
 					sm: '2rem',
+					md: '3rem',
 					lg: '4rem',
 					xl: '5rem',
 					'2xl': '6rem'
@@ -70,4 +71,4 @@ module.exports = {
 		}
 	},
 	plugins: [require('@tailwindcss/forms')]
-}
+};

@@ -1,0 +1,26 @@
+/* poms index */
+.poms {
+	/* --------- Header ---------- */
+	@import './includes/poms--index';
+}
+
+/* poms show single */
+.show {
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-auto-rows: min-content;
+	grid-gap: 25px;
+	font-size: 20px;
+	margin-bottom: 70px;
+
+	.show-section {
+		padding: 20px;
+		border-radius: $bradius;
+		background: $bgSecondary;
+		box-shadow: $bshadow;
+	}
+
+	@import './includes/poms--show';
+}

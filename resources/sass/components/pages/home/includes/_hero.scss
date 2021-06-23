@@ -1,0 +1,43 @@
+.hero {
+	padding-top: 13rem;
+	position: relative;
+	width: 100vw;
+	height: 80vh;
+	overflow: hidden;
+
+	.container {
+		height: 100%;
+	}
+
+	// morphing svg
+	.scene {
+		@include absolute-stretch(absolute);
+		z-index: -1;
+
+		path {
+			fill: rgba(white, .05);
+		}
+	}
+
+	&-inner {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		z-index: 2;
+		padding-bottom: 10rem;
+	}
+
+	&-title {
+		color: white;
+		font-family: 'Young Serif';
+		font-weight: 600;
+		font-size: 4rem;
+	}
+
+	&-desc {
+		font-size: 20px;
+		color: #777;
+	}
+}

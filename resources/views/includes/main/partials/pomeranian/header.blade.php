@@ -1,6 +1,6 @@
 <section class="poms__header w-full">
 	<div class="poms__header--inner grid grid-cols-1 sm:flex sm:items-end sm:justify-between sm:pb-5 sm:border-b sm:border-gray-700">
-		<h1 class="font-leftonade sm:font-manege text-3xl sm:text-5xl text-center sm:text-left tracking-wide text-blue-100 pb-3 border-b border-gray-700 sm:pb-0 sm:border-0 sm:mb-2">
+		<h1 class="font-astra text-3xl sm:text-5xl text-center sm:text-left tracking-wide text-blue-100 pb-3 border-b border-gray-700 sm:pb-0 sm:border-0 sm:mb-2">
 			{{ __('Find yourself a best friend.') }}
 		</h1>
 		

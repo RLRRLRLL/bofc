@@ -30,7 +30,7 @@
 		"vue-template-compiler": "^2.6.12"
 	},
 	"dependencies": {
-		"@barba/core": "^2.9.7",
+		"animejs": "^3.2.1",
 		"axios": "^0.21.1",
 		"bootstrap": "^4.0.0",
 		"cross-env": "^7.0",
@@ -38,6 +38,7 @@
 		"imagesloaded": "^4.1.4",
 		"locomotive-scroll": "^4.1.1",
 		"lodash": "^4.17.21",
+		"particles.js": "^2.0.0",
 		"resolve-url-loader": "^3.1.0",
 		"splitting": "^1.0.6",
 		"stylelint": "^13.12.0",

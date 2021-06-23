@@ -1,0 +1,110 @@
+$easeOutQuint: cubic-bezier(0.22, 1, 0.36, 1);
+
+#index-poms {
+	display: grid;
+	grid-template: minmax(400px, 500px) / repeat(9, minmax(300px, 1fr));
+	grid-gap: 0.2rem;
+	overflow-x: scroll;
+	// padding: 0 1rem;
+
+	.figure {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		padding: 1rem;
+		overflow: hidden;
+
+		border-top-left-radius: 0.5rem;
+		border-top-right-radius: 0.5rem;
+		cursor: pointer;
+
+		// bg styles
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+
+		@for $i from 1 through 7 {
+			&-#{$i} {
+				background-image: linear-gradient(to bottom, transparent, rgba(white, 1)),
+					url('/images/gallery/full/#{$i}.jpg');
+			}
+		}
+
+		// title
+		&-title {
+			font-family: 'PT Astra Serif';
+			font-size: 2rem;
+			margin-bottom: 0.7rem;
+			text-align: center;
+
+			transform: translateY(20px);
+
+			@include simple_transition(transform 0.7s $easeOutQuint);
+		}
+
+		// info
+		&-info {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+
+			transform: translateY(20px);
+			// margin-bottom: 1.5rem;
+
+			@include simple_transition(transform 0.8s $easeOutQuint);
+
+			li {
+				font-size: 1.2rem;
+				font-weight: 500;
+			}
+
+			&--title {
+				font-weight: 400;
+			}
+		}
+
+		// button
+		&-button {
+			margin: 0 3rem;
+
+			// hide
+			opacity: 0;
+			transform: translateY(70px);
+
+			padding: 0.5rem 1rem;
+			border-radius: 42px;
+			background: #555;
+			color: #ddd;
+			font-weight: 500;
+			font-size: 1.1rem;
+
+			@include transition(transform, opacity, 0.5s $easeOutQuint);
+
+			&:hover {
+				background: #333;
+				color: white;
+			}
+		}
+
+		// hover on figure
+		&:hover {
+			.figure-title {
+				transform: translateY(-50px);
+			}
+
+			.figure-info {
+				transform: translateY(-50px);
+
+				@include simple_transition(transform 0.8s $easeOutQuint 0.15s);
+			}
+
+			.figure-button {
+				transform: translateY(-20px);
+				opacity: 1;
+
+				@include transition(transform, opacity, 0.8s $easeOutQuint 0.15s);
+			}
+		}
+	}
+}

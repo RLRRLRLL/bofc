@@ -1,3 +1,59 @@
+// SASS ultimate transition mixin
+@function remove-nth($list, $index) {
+	$result: null;
+
+	@if type-of($index) != number {
+		@warn "$index: #{quote($index)} is not a number for `remove-nth`.";
+	} @else if $index == 0 {
+		@warn "List index 0 must be a non-zero integer for `remove-nth`.";
+	} @else if abs($index) > length($list) {
+		@warn "List index is #{$index} but list is only #{length($list)} item long for `remove-nth`.";
+	} @else {
+		$result: ();
+		$index: if($index < 0, length($list) + $index + 1, $index);
+
+		@for $i from 1 through length($list) {
+			@if $i != $index {
+				$result: append($result, nth($list, $i));
+			}
+		}
+	}
+
+	@return $result;
+}
+
+/* usage: @include simple_transition(prop 0.5s cubic-bezier(0.16, 0.85, 0.45, 1)); */
+@mixin simple_transition($value) {
+	-webkit-transition: $value;
+	-moz-transition: $value;
+	-ms-transition: $value;
+	-o-transition: $value;
+	transition: $value;
+}
+
+/* usage: @include transition(prop1, prop2, ..., 0.5s cubic-bezier(0.16, 0.85, 0.45, 1)); */
+@mixin transition($args...) {
+	$type: nth($args, length($args));
+	$props: remove-nth($args, length($args));
+	$result: ();
+
+	@for $i from 1 through length($props) {
+		$prop: nth($props, $i);
+		$result: append($result, $prop);
+		$result: append($result, $type);
+		@if $i != length($props) {
+			$result: append(
+				$result,
+				unquote(
+					$string: ','
+				)
+			);
+		}
+	}
+
+	@include simple_transition($result);
+}
+
 // button background slide effect
 @mixin bg-slide($slidinBgColor, $resultColor) {
 	position: relative;

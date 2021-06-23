@@ -1,0 +1,11 @@
+// // cross platform transition function
+// @function transition($props...) {
+// 	@each $prop in $props {
+
+// 	}
+// 	-webkit-transition: transform 0.5s $easeOutQuint, opacity 0.5s $easeOutQuint 0.15s;
+// 	-moz-transition: transform 0.5s $easeOutQuint, opacity 0.5s $easeOutQuint 0.15s;
+// 	-ms-transition: transform 0.5s $easeOutQuint, opacity 0.5s $easeOutQuint 0.15s;
+// 	-o-transition: transform 0.5s $easeOutQuint, opacity 0.5s $easeOutQuint 0.15s;
+// 	transition: transform 0.5s $easeOutQuint, opacity 0.5s $easeOutQuint 0.15s;
+// }

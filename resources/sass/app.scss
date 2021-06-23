@@ -1,13 +1,37 @@
-/* Visitor pages a.k.a. App itself */
+/*
+	app.scss only refers to visitor pages
+	admin pages were styled only with tailwind &
+	some additional inline styles
+*/
+
 // main includes
 @import './helpers/fonts';
-@import './pages/main/components/base';
+@import './components/global/base';
 @import './helpers/variables/vars';
 @import './helpers/mixins/mixins';
 @import './helpers/classes';
 
-// pages
-@import './pages/main/main';
-
 // locomotive-scroll
 @import './libs/locomotive';
+
+// pace js
+@import './libs/pace';
+
+/* Components */
+@import './components/global/header';
+
+// cursor
+@import './components/global/cursor';
+
+// Little fade/zoom animations triggered by scroll
+// @import './components/animations';
+
+/* Main pages */
+// home
+@import './components/pages/home/home';
+
+// gallery
+@import './components/pages/gallery/gallery';
+
+// poms
+@import './components/pages/poms/poms';

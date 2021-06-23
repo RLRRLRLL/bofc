@@ -1,0 +1,6 @@
+1. create cool blurred bubble effect on background
+2. hide the whole page under container
+3. create transparent spitz image for hero
+4. add some cool effects for that image
+5. change gallery completely
+6. change poms page to look like momentum page and add sick transition on click

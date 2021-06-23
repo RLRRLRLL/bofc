@@ -1,19 +1,32 @@
-// Custom fonts
-// Leftonade
+/* Young Serif (brand font) */
 @font-face {
-	font-family: 'leftonade';
-	src: url('/fonts/Leftonade/Leftonade-Regular.otf');
-}
-
-// Manege
-@font-face {
-	font-family: 'manege';
-	src: url('/fonts/Manege/Manege.ttf');
-}
-
-// Bitter
-@font-face {
-	font-family: 'bitter';
+	font-family: 'Young Serif';
 	font-weight: 400;
-	src: url('/fonts/Bitter/Bitter-Regular.ttf');
+	src: url('/fonts/Young/YoungSerif-Regular.woff');
+}
+
+/* PT Astra Serif (for headings) | src: https://www.paratype.ru/fonts/pt/pt-astra-serif?tab=packages */
+@font-face {
+	font-family: 'PT Astra Serif';
+	font-weight: 400;
+	src: url('/fonts/Astra/Astra-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'PT Astra Serif';
+	font-weight: 600;
+	src: url('/fonts/Astra/Astra-Bold.ttf');
+}
+
+/* Golos Text (for basic text) | src: https://www.paratype.ru/fonts/pt/golos-text?tab=packages */
+@font-face {
+	font-family: 'Golos Text';
+	font-weight: 400;
+	src: url('/fonts/Golos/Golos-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'Golos Text';
+	font-weight: 500;
+	src: url('/fonts/Golos/Golos-Medium.ttf');
 }
