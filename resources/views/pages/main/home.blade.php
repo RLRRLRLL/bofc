@@ -26,108 +26,28 @@
 	</section>
 
 	{{-- Poms --}}
-	<section id="index-poms">
-		<figure class="figure figure-1">
-			<h1 class="figure-title">Hermiona Nautilus</h1>
+	<section id="index-poms" class="mb-20">
+		@for ($i = 1; $i < 7; $i++)
+			<figure class="figure figure-{{ $i }}">
+				<figcaption>
+					<h1 class="figure-title">Hermiona Nautilus</h1>
 
-			<ul class="figure-info">
-				<li><span class="figure-info--title">Sex</span>: Male</li>
-				<li><span class="figure-info--title">For sale</span>: Yes</li>
-				<li><span class="figure-info--title">Age</span>: Puppy</li>
-			</ul>
+					<ul class="figure-info">
+						<li><span class="figure-info--title">Sex</span>: Male</li>
+						<li><span class="figure-info--title">For sale</span>: Yes</li>
+						<li><span class="figure-info--title">Age</span>: Puppy</li>
+					</ul>
 
-			<button class="figure-button">
-				Learn More
-			</button>
-		</figure>
-
-		<figure class="figure figure-2">
-			<h1 class="figure-title">Hermiona Nautilus</h1>
-
-			<ul class="figure-info">
-				<li><span class="figure-info--title">Sex</span>: Male</li>
-				<li><span class="figure-info--title">For sale</span>: Yes</li>
-				<li><span class="figure-info--title">Age</span>: Puppy</li>
-			</ul>
-
-			<button class="figure-button">
-				Learn More
-			</button>
-		</figure>
-
-		<figure class="figure figure-3">
-			<h1 class="figure-title">Hermiona Nautilus</h1>
-
-			<ul class="figure-info">
-				<li><span class="figure-info--title">Sex</span>: Male</li>
-				<li><span class="figure-info--title">For sale</span>: Yes</li>
-				<li><span class="figure-info--title">Age</span>: Puppy</li>
-			</ul>
-
-			<button class="figure-button">
-				Learn More
-			</button>
-		</figure>
-
-		<figure class="figure figure-4">
-			<h1 class="figure-title">Hermiona Nautilus</h1>
-
-			<ul class="figure-info">
-				<li><span class="figure-info--title">Sex</span>: Male</li>
-				<li><span class="figure-info--title">For sale</span>: Yes</li>
-				<li><span class="figure-info--title">Age</span>: Puppy</li>
-			</ul>
-
-			<button class="figure-button">
-				Learn More
-			</button>
-		</figure>
-
-		<figure class="figure figure-5">
-			<h1 class="figure-title">Hermiona Nautilus</h1>
-
-			<ul class="figure-info">
-				<li><span class="figure-info--title">Sex</span>: Male</li>
-				<li><span class="figure-info--title">For sale</span>: Yes</li>
-				<li><span class="figure-info--title">Age</span>: Puppy</li>
-			</ul>
-
-			<button class="figure-button">
-				Learn More
-			</button>
-		</figure>
-
-		<figure class="figure figure-6">
-			<h1 class="figure-title">Hermiona Nautilus</h1>
-
-			<ul class="figure-info">
-				<li><span class="figure-info--title">Sex</span>: Male</li>
-				<li><span class="figure-info--title">For sale</span>: Yes</li>
-				<li><span class="figure-info--title">Age</span>: Puppy</li>
-			</ul>
-
-			<button class="figure-button">
-				Learn More
-			</button>
-		</figure>
-
-		<figure class="figure figure-6">
-			<h1 class="figure-title">Hermiona Nautilus</h1>
-
-			<ul class="figure-info">
-				<li><span class="figure-info--title">Sex</span>: Male</li>
-				<li><span class="figure-info--title">For sale</span>: Yes</li>
-				<li><span class="figure-info--title">Age</span>: Puppy</li>
-			</ul>
-
-			<button class="figure-button">
-				Learn More
-			</button>
-		</figure>
+					<button class="figure-button">
+						Learn More
+					</button>
+				</figcaption>
+			</figure>
+		@endfor
 	</section>
 
 	{{-- About --}}
-	<section id="about" class="mt-20">
+	<section id="about" class="mb-10">
 		<div class="container">
 			<div class="space-y-32">
 				<div>
@@ -136,7 +56,7 @@
 						{{-- <svg class="inline ml-8 w-24 h-24" enable-background="new 0 0 24 24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m11.466 22.776c.141.144.333.224.534.224s.393-.08.534-.224l9.594-9.721c4.001-4.053 1.158-11.055-4.532-11.055-3.417 0-4.985 2.511-5.596 2.98-.614-.471-2.172-2.98-5.596-2.98-5.672 0-8.55 6.984-4.531 11.055z" fill="#f44336"/></svg> --}}
 					</h1>
 	
-					<h5 class="mt-7 md:mt-10 text-gray-400 text-xl sm:text-2xl lg:text-3xl text-center sm:text-left leading-relaxed">
+					<h5 class="mt-7 md:mt-10 text-gray-400 text-xl sm:text-2xl lg:text-3xl text-center sm:text-left">
 						{{ __('We have been breeding pomeranian dogs for 10 years. What we\'ve learned is that the key to happiness for the dogs is giving them perfect conditions for living and truly caring. All the dogs are living together in the same house. They have special comfortable rooms. We really love our poms and would like to find them the best families!') }}
 					</h5>
 				</div>
@@ -223,6 +143,33 @@
 							</h3>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{{-- Gallery --}}
+	<section id="gallery" class="mb-20">
+		<div class="container">
+			<div class="w-full h-full flex flex-col space-y-8 md:space-y-14">
+				<h1 class="font-young text-4xl md:text-5xl lg:text-6xl text-gray-100 text-center sm:text-left leading-relaxed">
+					Gallery
+				</h1>
+
+				<div id="slider"></div>
+
+				<div class="slides-wrapper">
+					{{-- <img class="slide" src="https://sun9-20.userapi.com/wbjJD1tXl2zADsHHjbnicOFeRphzjOG3x39IMA/5hjudIaehNA.jpg"/> --}}
+					
+					{{-- <img class="slide" src="https://sun9-5.userapi.com/J2yKnrpjJ2Qt3xq3b9Z-dxP6w9MlH7HRC7FiPQ/3YcZvs4Ovek.jpg"/>
+					
+					<img class="slide" src="https://sun9-56.userapi.com/F8m7DigTPnyc42yc1q_yHVnwqo4x3hQBqx1atA/c8eQ5PaqbZc.jpg"/> --}}
+
+					<img class="slide" src="{{ asset('images/gallery/full/12.jpg') }}"/>
+					<img class="slide" src="{{ asset('images/gallery/full/13.jpg') }}"/>
+					<img class="slide" src="{{ asset('images/gallery/full/14.jpg') }}"/>
+
+					<img class="displacementMap" src="https://sun9-33.userapi.com/oyXE4fwIIVoSQarMRSvvT7xmx-XUUJXsET5lHw/HrxVsQfpFh8.jpg"/></div>
 				</div>
 			</div>
 		</div>

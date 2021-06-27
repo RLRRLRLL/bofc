@@ -1,5 +1,5 @@
-const mix = require('laravel-mix')
-const tailwindJit = require('@tailwindcss/jit')
+const mix = require('laravel-mix');
+const tailwindJit = require('@tailwindcss/jit');
 
 /*
  | Mix Asset Management
@@ -14,6 +14,7 @@ mix.sass('resources/sass/app.scss', 'public/css')
 		postCss: [tailwindJit]
 	})
 	.js('resources/js/app.js', 'public/js')
+	.js('resources/js/admin.js', 'public/js').vue()
 	.browserSync({
 		// proxy: 'http://bofc.local',
 		proxy: 'http://127.0.0.1:8000',

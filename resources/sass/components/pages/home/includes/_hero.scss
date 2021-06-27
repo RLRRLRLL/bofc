@@ -1,9 +1,9 @@
 .hero {
-	padding-top: 13rem;
 	position: relative;
 	width: 100vw;
-	height: 80vh;
+	height: 88vh;
 	overflow: hidden;
+	padding-top: 13rem;
 
 	.container {
 		height: 100%;
@@ -15,7 +15,7 @@
 		z-index: -1;
 
 		path {
-			fill: rgba(white, .05);
+			fill: rgba(white, 0.05);
 		}
 	}
 

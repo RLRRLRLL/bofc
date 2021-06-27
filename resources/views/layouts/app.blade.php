@@ -45,12 +45,6 @@
 			{{-- Custom cursor --}}
 			{{-- @include('includes.main.partials.cursor') --}}
 
-			{{-- Header --}}
-			
-
-			{{-- Header (fixed) --}}
-			{{-- @include('includes.main.partials.frame') --}}
-
 			{{-- Main --}}
 			@yield('content')
 

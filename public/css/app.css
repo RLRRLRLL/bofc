@@ -581,11 +581,11 @@ header .header-link:hover > svg {
 
 /* Main pages */
 .hero {
-  padding-top: 13rem;
   position: relative;
   width: 100vw;
-  height: 80vh;
+  height: 88vh;
   overflow: hidden;
+  padding-top: 13rem;
 }
 .hero .container {
   height: 100%;
@@ -625,7 +625,7 @@ header .header-link:hover > svg {
 
 #index-poms {
   display: grid;
-  grid-template: minmax(400px, 500px)/repeat(9, minmax(300px, 1fr));
+  grid-template: 500px/repeat(13, minmax(300px, 1fr));
   grid-gap: 0.2rem;
   overflow-x: scroll;
 }
@@ -663,6 +663,11 @@ header .header-link:hover > svg {
 }
 #index-poms .figure-7 {
   background-image: linear-gradient(to bottom, transparent, white), url("/images/gallery/full/7.jpg");
+}
+#index-poms .figure figcaption {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 #index-poms .figure-title {
   font-family: "PT Astra Serif";
@@ -719,157 +724,26 @@ header .header-link:hover > svg {
   fill: url("#whiteYellowGradient");
 }
 
-#super-creative-circles {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 700px;
-  height: 700px;
-  display: block;
-  border: 1px solid rgba(153, 153, 153, 0.25);
-  border-radius: 50%;
-}
-#super-creative-circles > span {
-  position: absolute;
-  display: block;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
-  height: 500px;
-  border: 1px solid rgba(247, 185, 0, 0.5);
-  border-radius: 50%;
-}
-
-/* our canvas will have the size of our window */
-#canvas {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 100vh;
-  z-index: 1;
-}
-
-/*** content ***/
-#content {
+#gallery #slider {
   position: relative;
-  z-index: 2;
-  overflow: hidden;
+  width: 100% !important;
+  height: 100% !important;
 }
-
-#planes {
-  width: -webkit-min-content;
-  width: -moz-min-content;
-  width: min-content;
-  min-width: 2000px;
-  padding: 0 25px;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  cursor: move;
+#gallery #slider > canvas {
+  width: 100% !important;
+  height: 600px !important;
+  cursor: pointer;
 }
-
-.plane-wrapper {
-  position: relative;
-  height: 300px;
-  width: 500px;
-  margin: 0 20px;
-}
-
-/* disable pointer events and text selection during drag */
-#planes.dragged .plane-wrapper {
-  pointer-events: none;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.plane {
+#gallery .slides-wrapper {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  width: 400px;
+  left: -9999%;
 }
-.plane img {
-  /* hide original images if there's no WebGL error */
-  display: none;
-  /* prevent original image from dragging */
-  pointer-events: none;
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-  user-drag: none;
-}
-
-#drag-tip {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  left: 20px;
-  pointer-events: none;
-  font-size: 0.9em;
-  text-transform: uppercase;
-  color: #888;
-  text-align: center;
-}
-
-/*** handling WebGL errors ***/
-.no-curtains #planes {
-  transition: background-color 0.5s;
-}
-
-.no-curtains #planes.dragged {
-  background-color: #0d0d0d;
-}
-
-.no-curtains .plane-title {
-  opacity: 1;
-}
-
-.no-curtains .plane {
-  display: flex;
-  overflow: hidden;
-  transition: filter 0.5s;
-}
-
-.no-curtains #planes.dragged .plane {
-  filter: grayscale(1);
-}
-
-.no-curtains .plane img {
+#gallery .slides-wrapper img {
   display: block;
-  min-width: 100%;
-  min-height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  max-width: 100%;
 }
 
-@media screen and (orientation: portrait) {
-  #content {
-    max-height: 100vh;
-  }
-
-  #planes {
-    overflow: hidden;
-    width: 100vw;
-    padding: 2.5vh 0;
-    height: auto;
-    flex-direction: column;
-  }
-
-  .plane-wrapper {
-    position: relative;
-    width: 70vw;
-    height: calc(100vh / 1.75);
-    margin: 5vw 0;
-  }
-}
 /* poms index */
 .poms {
   /* --------- Header ---------- */

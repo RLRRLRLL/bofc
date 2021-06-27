@@ -6,8 +6,8 @@
 	<div class="relative ">
 		<button
 			type="button"
-			class="relative w-full flex items-center justify-between p-2 rounded shadow transitin duration-75 hover:text-white hover:bg-slightly-lighter border focus:ring-0"
-			x-on:click.prevent="open =! open"
+			class="relative w-full flex items-center justify-between p-2 rounded shadow transition duration-75 hover:text-white hover:bg-slightly-lighter border focus:ring-0"
+			x-on:click.prevent="open = !open"
 			:class="
 				open ? 
 				'border-gray-600 text-white bg-slightly-lighter' :

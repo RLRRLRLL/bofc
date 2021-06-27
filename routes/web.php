@@ -28,9 +28,9 @@ Route::middleware('set.locale')->group(function() {
 	Route::get('/', [MainPagesController::class, 'homepage'])->name('homepage');
 	Route::get('/pomeranians', \App\Http\Livewire\Visitor\Poms\Index::class)->name('poms.index');
 	Route::get('/pomeranians/{pom}-{slug}', \App\Http\Livewire\Visitor\Poms\Show::class)->name('poms.show');
-	Route::get('/gallery', [MainPagesController::class, 'gallery'])->name('gallery');
-	Route::get('/news', [ArticleController::class, 'index'])->name('news.index');
-	Route::get('/news/{slug}', [ArticleController::class, 'show'])->name('news.show');
+	// Route::get('/gallery', [MainPagesController::class, 'gallery'])->name('gallery');
+	// Route::get('/news', [ArticleController::class, 'index'])->name('news.index');
+	// Route::get('/news/{slug}', [ArticleController::class, 'show'])->name('news.show');
 
 	// admin pages
 	Route::group([

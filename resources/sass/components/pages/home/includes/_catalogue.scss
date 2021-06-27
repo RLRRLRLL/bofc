@@ -2,10 +2,9 @@ $easeOutQuint: cubic-bezier(0.22, 1, 0.36, 1);
 
 #index-poms {
 	display: grid;
-	grid-template: minmax(400px, 500px) / repeat(9, minmax(300px, 1fr));
+	grid-template: 500px / repeat(13, minmax(300px, 1fr));
 	grid-gap: 0.2rem;
 	overflow-x: scroll;
-	// padding: 0 1rem;
 
 	.figure {
 		position: relative;
@@ -26,9 +25,14 @@ $easeOutQuint: cubic-bezier(0.22, 1, 0.36, 1);
 
 		@for $i from 1 through 7 {
 			&-#{$i} {
-				background-image: linear-gradient(to bottom, transparent, rgba(white, 1)),
-					url('/images/gallery/full/#{$i}.jpg');
+				background-image: linear-gradient(to bottom, transparent, white), url('/images/gallery/full/#{$i}.jpg');
 			}
+		}
+
+		figcaption {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
 		}
 
 		// title

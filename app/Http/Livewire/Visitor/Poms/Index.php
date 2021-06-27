@@ -28,6 +28,6 @@ class Index extends Component
 
         return view('livewire.visitor.poms.index', [
 			'poms' => Pom::where('is_published', 1)->get()
-		])->extends('layouts.main')->section('content');
+		])->extends('layouts.app')->section('content');
     }
 }

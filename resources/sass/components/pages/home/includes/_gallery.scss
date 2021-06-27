@@ -1,0 +1,29 @@
+#gallery {
+	#slider {
+		position: relative;
+		width: 100% !important;
+		height: 100% !important;
+
+		& > canvas {
+			// position: absolute;
+			// left: 0;
+			// top: 0;
+			// right: 0;
+			// bottom: 0;
+			width: 100% !important;
+			height: 600px !important;
+			cursor: pointer;
+		}
+	}
+
+	.slides-wrapper {
+		position: absolute;
+		width: 400px;
+		left: -9999%;
+
+		img {
+			display: block;
+			max-width: 100%;
+		}
+	}
+}

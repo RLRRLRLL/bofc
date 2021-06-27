@@ -6,8 +6,9 @@
 		@include('includes.common.meta.favicon')
 		<title>{{ config('app.name') }} | {{ __('Admin dashboard') }} | @yield('page_title')</title>
 		
+		{{-- styles --}}
 		@livewireStyles
-		<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/tailwind.css') }}">
 		@stack('styles')
 
 		<style>
@@ -28,7 +29,7 @@
 	</head>
 
 	<body class="antialiased">
-		<div class="">
+		<div>
 			<header class="py-5 bg-admin-secondary shadow">
 				<div class="container">
 					{{-- header inner --}}
@@ -41,6 +42,11 @@
 					</div>
 				</div>
 			</header>
+
+			{{-- vue root --}}
+			<div id="app">
+				<app></app>
+			</div>
 
 			<main class="min-h-screen py-10 bg-dark">
 				<div class="container">
@@ -56,9 +62,15 @@
 		@if (app()->isLocal())
 			<script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
 		@endif
-		<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-		<script src="https://kit.fontawesome.com/7b1766dcee.js" crossorigin="anonymous"></script>
+		{{-- scripts --}}
+		<script src="{{ asset('js/admin.js') }}"></script>
+		{{-- livewire --}}
 		@livewireScripts
+		{{-- alpine.js --}}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.1.1/cdn.min.js" defer></script>
+		{{-- font awesome (replace later) --}}
+		<script src="https://kit.fontawesome.com/7b1766dcee.js" crossorigin="anonymous"></script>
+		{{-- additional --}}
 		@stack('scripts')
 	</body>
 </html>

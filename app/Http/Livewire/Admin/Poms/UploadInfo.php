@@ -60,7 +60,7 @@ class UploadInfo extends Component
 	{
 		$this->validate();
 
-		$pom = new Pom([
+		$pom = Pom::create([
 			'age' => $this->age,
 			'name' => $this->name,
 			'color' => $this->color,
