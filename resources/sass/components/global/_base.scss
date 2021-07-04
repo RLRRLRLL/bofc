@@ -45,4 +45,12 @@ body {
 		// change max width
 		max-width: 1300px !important;
 	}
+
+	// configs that are not worth their own files
+	button {
+		&:focus {
+			outline: none;
+			box-shadow: none;
+		}
+	}
 }

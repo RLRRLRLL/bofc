@@ -14,11 +14,11 @@ class CreateImagesTable extends Migration
     public function up()
     {
         Schema::create('images', function (Blueprint $table) {
-			$table->id();
-			$table->string('url');
-			$table->boolean('is_main')->default(false);
-			$table->morphs('imageable');
-			$table->timestamps();
+						$table->id();
+						$table->string('url');
+						$table->boolean('is_main')->default(false);
+						$table->morphs('imageable');
+						$table->timestamps();
         });
     }
 

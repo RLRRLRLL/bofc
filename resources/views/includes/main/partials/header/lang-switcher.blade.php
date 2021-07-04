@@ -3,7 +3,7 @@
 		<a 
 			href="{{ route('change-language', $lang) }}"
 			class="
-				inline-flex items-center text-gray-200 text-base
+				inline-flex items-center text-gray-200 font-medium
 				@if ($loop->first) pr-1 @endif
 				@if (!$loop->first) pl-2 border-l-2 border-gray-500 @endif
 				@if (app()->getLocale() === $lang) opacity-50 pointer-events-none @endif

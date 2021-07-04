@@ -1,0 +1,93 @@
+.card {
+	// -------------------------
+	/* Progress Bar */
+	.stepper {
+		margin: 0 auto 2rem;
+
+		&-items {
+			display: flex;
+			width: 100%;
+			list-style: none;
+			padding: 0px;
+			margin: initial;
+			justify-content: space-between;
+			z-index: 1;
+
+			li {
+				display: inline-flex;
+				justify-content: center;
+				align-items: center;
+				padding: 0.5rem;
+				background: #171817;
+				height: 20px;
+				color: #d4d4d4;
+
+				// &:not(:last-child) {
+				span {
+					display: inline-flex;
+					height: 1.5px;
+					background-color: gray;
+					width: 250px;
+				}
+				// }
+
+				h1 {
+					font-size: 2rem;
+					color: rgba(white, 0.3);
+					font-weight: 600;
+					letter-spacing: 0.025rem;
+					padding: 0 1.5rem;
+
+					&.active {
+						color: white;
+					}
+
+					&.done {
+						color: $green;
+					}
+				}
+			}
+		}
+	}
+
+	&--header {
+		@include flex-between;
+		align-items: flex-end;
+		@include space-y(0);
+
+		&__title {
+			font-size: 2.25rem;
+			color: white;
+			font-weight: 600;
+			letter-spacing: 0.025rem;
+		}
+
+		& > a,
+		& > button {
+			@include flex-center;
+			color: rgb(115, 115, 115);
+			font-size: 1.5rem;
+			font-weight: 500;
+			@include simple_transition(color 0.15s ease-in);
+
+			svg {
+				width: 1.7rem;
+				height: 1.7rem;
+				margin-left: 0.3rem;
+				fill: rgb(115, 115, 115);
+			}
+
+			&:hover,
+			&:hover svg {
+				color: rgb(255, 213, 79);
+				@include simple_transition(color 0.15s ease-in);
+			}
+		}
+	}
+
+	&--content {
+		padding: 1.25rem;
+		border-radius: 5px;
+		background: rgb(41, 41, 41);
+	}
+}

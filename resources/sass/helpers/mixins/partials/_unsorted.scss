@@ -1,3 +1,16 @@
+// evenly space between
+@mixin space-x($space) {
+	& > *:not(:last-child) {
+		margin-right: $space;
+	}
+}
+
+@mixin space-y($space) {
+	& > *:not(:last-child) {
+		margin-bottom: $space;
+	}
+}
+
 // scroll bar
 @mixin scrollbar() {
 	&::-webkit-scrollbar {

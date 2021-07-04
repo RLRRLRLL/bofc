@@ -1,0 +1,434 @@
+/* usage: @include simple_transition(prop 0.5s cubic-bezier(0.16, 0.85, 0.45, 1)); */
+/* usage: @include transition(prop1, prop2, ..., 0.5s cubic-bezier(0.16, 0.85, 0.45, 1)); */
+/* 
+ Transition background color.
+ Note: transition bg and body bg has to be the same,
+ or there will be some flickering on page load.
+*/
+.card {
+  /* Progress Bar */
+}
+.card .stepper {
+  margin: 0 auto 2rem;
+}
+.card .stepper-items {
+  display: flex;
+  width: 100%;
+  list-style: none;
+  padding: 0px;
+  margin: initial;
+  justify-content: space-between;
+  z-index: 1;
+}
+.card .stepper-items li {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  background: #171817;
+  height: 20px;
+  color: #d4d4d4;
+}
+.card .stepper-items li span {
+  display: inline-flex;
+  height: 1.5px;
+  background-color: gray;
+  width: 250px;
+}
+.card .stepper-items li h1 {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+  letter-spacing: 0.025rem;
+  padding: 0 1.5rem;
+}
+.card .stepper-items li h1.active {
+  color: white;
+}
+.card .stepper-items li h1.done {
+  color: #53dd6c;
+}
+.card--header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.card--header > *:not(:last-child) {
+  margin-bottom: 0;
+}
+.card--header__title {
+  font-size: 2.25rem;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.025rem;
+}
+.card--header > a, .card--header > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  color: #737373;
+  font-size: 1.5rem;
+  font-weight: 500;
+  transition: color 0.15s ease-in;
+}
+.card--header > a svg, .card--header > button svg {
+  width: 1.7rem;
+  height: 1.7rem;
+  margin-left: 0.3rem;
+  fill: #737373;
+}
+.card--header > a:hover, .card--header > a:hover svg, .card--header > button:hover, .card--header > button:hover svg {
+  color: #ffd54f;
+  transition: color 0.15s ease-in;
+}
+.card--content {
+  padding: 1.25rem;
+  border-radius: 5px;
+  background: #292929;
+}
+
+/* SORT LATER */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding: 0.45rem 1.7rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  opacity: 0.8;
+  transform: scale(1);
+  transition: all 0.2s ease-in;
+}
+.btn-next {
+  background: #16a34a;
+  color: white;
+}
+.btn-cta {
+  background: #ffd54f;
+  color: #262626;
+}
+.btn:hover {
+  opacity: 1;
+}
+.btn:active {
+  transform: scale(0.95);
+  transition: all 0.1s ease;
+}
+
+textarea {
+  margin-top: 0.3rem;
+  padding: 7px 10px;
+  color: #f5f5f5;
+  background: #262626;
+  border-radius: 5px;
+  border: 1px solid #525252;
+}
+textarea:focus {
+  border-color: #a3a3a3;
+}
+
+label {
+  color: #a3a3a3;
+  font-size: 1.125rem;
+}
+label .input-value {
+  display: inline-block;
+  margin-left: 3px;
+  color: #ffd54f;
+}
+
+input {
+  margin-top: 0.3rem;
+  padding: 7px 10px;
+  color: #f5f5f5;
+  transition: all 0.15s ease-in;
+}
+input[type=text], input[type=number], input[type=date] {
+  background: #262626;
+  border-radius: 5px;
+  border: 1px solid #525252;
+}
+input[type=text]:focus, input[type=number]:focus, input[type=date]:focus {
+  border-color: #a3a3a3;
+}
+input[type=radio] {
+  display: none;
+}
+input[type=radio] + label {
+  position: relative;
+}
+input[type=radio] + label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin: -6px 4px 0 0;
+  vertical-align: middle;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png) -38px top no-repeat;
+  cursor: pointer;
+}
+input[type=radio]:checked + label::before {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png) -57px top no-repeat;
+}
+input[type=checkbox] {
+  display: none;
+}
+input[type=checkbox] + label {
+  position: relative;
+}
+input[type=checkbox] + label::before {
+  content: "";
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  margin: -6px 4px 0 0;
+  vertical-align: middle;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png) left top no-repeat;
+  cursor: pointer;
+}
+input[type=checkbox]:checked + label::before {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png) -19px top no-repeat;
+}
+
+div.select {
+  position: relative;
+}
+div.select > button {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background: #262626;
+  color: #f5f5f5;
+  border: 1px solid #525252;
+  transition: all 0.15s ease-in;
+}
+div.select > button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+div.select > button.open {
+  color: white;
+  background: #222;
+  border-color: #a3a3a3;
+}
+div.select > ul {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+  z-index: 42;
+  border-radius: 5px;
+  background: #222;
+}
+div.select > ul > li {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  color: #d4d4d4;
+}
+div.select > ul > li:not(.empty):hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+div.select > ul > li.empty {
+  cursor: auto;
+}
+
+.form-section {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-flow: dense;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid #525252;
+}
+.form-section--block {
+  display: block;
+}
+@media (min-width: 992px) {
+  .form-section textarea {
+    grid-column: span 2;
+  }
+}
+.form-section:first-of-type {
+  padding-top: 0;
+}
+.form-section:last-of-type {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.form.form-create {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+@media (min-width: 576px) {
+  .form.form-create {
+    padding: 1.4rem;
+  }
+}
+.form .car-wrapper > label {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+}
+
+.errors-list {
+  display: flex;
+  flex-direction: column;
+  background: #ffcdd2;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+.errors-list li {
+  padding: 0.4rem;
+  font-weight: 500;
+  color: #8e0000;
+}
+
+/* Alert component */
+.alert {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  background: white;
+}
+.alert-container {
+  position: fixed;
+  top: 5.5rem;
+  right: 9rem;
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 42;
+}
+.alert-success .alert-icon {
+  background: green;
+}
+.alert-info .alert-icon {
+  background: blue;
+}
+.alert-error .alert-icon {
+  background: red;
+}
+.alert-warning .alert-icon {
+  background: orange;
+}
+.alert-icon {
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  bottom: -1px;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.7rem;
+}
+.alert-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
+}
+.alert-text {
+  display: inline-block;
+  padding-left: 3rem;
+  font-weight: 500;
+  color: #333;
+}
+.alert-close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  padding: 5px;
+  border-radius: 50%;
+  color: #131313;
+  transition: background 0.2s ease-in;
+}
+.alert-close:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+.alert-close:active {
+  background: rgba(0, 0, 0, 0.15);
+}
+.alert-close svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.alert.hide {
+  transform: translateY(-50px);
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1) , opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+#image-form > .btn {
+  margin-bottom: 2rem;
+}
+#image-form form > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+#image-form form button {
+  margin-top: 1rem;
+}
+#image-form .images-preview {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  gap: 1rem;
+  grid-template: repeat(auto-fit, minmax(150px, 250px))/repeat(auto-fill, minmax(200px, 1fr));
+  padding: 2rem 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+#image-form .images-preview__item {
+  position: relative;
+}
+#image-form .images-preview__image {
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#image-form .images-preview__cancel {
+  position: absolute;
+  padding: 0.2rem;
+  right: -0.8695652174rem;
+  top: -0.8695652174rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+  color: #c11919;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+#image-form .images-preview__cancel:hover {
+  background: #232323;
+}

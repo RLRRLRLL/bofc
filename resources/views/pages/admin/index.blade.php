@@ -3,6 +3,11 @@
 @section('page_title', __('All poms'))
 
 @section('content')
+	<poms-list
+		:poms="{{ $poms }}"
+	/>
+	
+	<!-- 
 	<x-admin.page-layout :title="__('All poms')">
 		<x-slot name="header_element">
 			<a href="{{ route('admin.poms-create') }}" class="flex items-center font-medium text-2xl text-gray-500 hover:text-amber transition-colors duration-100">
@@ -11,6 +16,10 @@
 				</svg>
 
 				{{ __('Create') }}
+			</a>
+
+			<a href="{{ route('create-with-vue') }}">
+				Create with vue
 			</a>
 		</x-slot>
 		
@@ -91,4 +100,5 @@
 			@endforelse
 		</div>
 	</x-admin.page-layout>
+	-->
 @endsection

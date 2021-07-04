@@ -10,10 +10,10 @@ class Person extends Model
 {
     use HasFactory;
 
-	protected $fillable = ['name', 'type'];
+		protected $fillable = ['name', 'type'];
 
-	public function poms()
-	{
-		return $this->belongsToMany(Pom::class);
-	}
+		public function poms()
+		{
+			return $this->belongsToMany(Pom::class);
+		}
 }
