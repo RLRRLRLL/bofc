@@ -1,0 +1,30 @@
+.btn {
+  @include flex-center;
+  padding: 0.45rem 1.7rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  opacity: 0.8;
+  transform: scale(1);
+  @include simple_transition(all 0.2s ease-in);
+
+  &-next {
+    background: rgb(22, 163, 74);
+    color: white;
+  }
+
+  &-cta {
+    background: rgb(255, 213, 79);
+    color: #262626;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:active {
+    transform: scale(0.95);
+    @include simple_transition(all 0.1s ease);
+  }
+}

@@ -5,122 +5,7 @@
  Note: transition bg and body bg has to be the same,
  or there will be some flickering on page load.
 */
-.card {
-  /* Progress Bar */
-}
-.card .stepper {
-  margin: 0 auto 2rem;
-}
-.card .stepper-items {
-  display: flex;
-  width: 100%;
-  list-style: none;
-  padding: 0px;
-  margin: initial;
-  justify-content: space-between;
-  z-index: 1;
-}
-.card .stepper-items li {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem;
-  background: #171817;
-  height: 20px;
-  color: #d4d4d4;
-}
-.card .stepper-items li span {
-  display: inline-flex;
-  height: 1.5px;
-  background-color: gray;
-  width: 250px;
-}
-.card .stepper-items li h1 {
-  font-size: 2rem;
-  color: rgba(255, 255, 255, 0.3);
-  font-weight: 600;
-  letter-spacing: 0.025rem;
-  padding: 0 1.5rem;
-}
-.card .stepper-items li h1.active {
-  color: white;
-}
-.card .stepper-items li h1.done {
-  color: #53dd6c;
-}
-.card--header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: flex-end;
-}
-.card--header > *:not(:last-child) {
-  margin-bottom: 0;
-}
-.card--header__title {
-  font-size: 2.25rem;
-  color: white;
-  font-weight: 600;
-  letter-spacing: 0.025rem;
-}
-.card--header > a, .card--header > button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  color: #737373;
-  font-size: 1.5rem;
-  font-weight: 500;
-  transition: color 0.15s ease-in;
-}
-.card--header > a svg, .card--header > button svg {
-  width: 1.7rem;
-  height: 1.7rem;
-  margin-left: 0.3rem;
-  fill: #737373;
-}
-.card--header > a:hover, .card--header > a:hover svg, .card--header > button:hover, .card--header > button:hover svg {
-  color: #ffd54f;
-  transition: color 0.15s ease-in;
-}
-.card--content {
-  padding: 1.25rem;
-  border-radius: 5px;
-  background: #292929;
-}
-
-/* SORT LATER */
-.btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  padding: 0.45rem 1.7rem;
-  font-weight: 500;
-  font-size: 1.1rem;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
-  opacity: 0.8;
-  transform: scale(1);
-  transition: all 0.2s ease-in;
-}
-.btn-next {
-  background: #16a34a;
-  color: white;
-}
-.btn-cta {
-  background: #ffd54f;
-  color: #262626;
-}
-.btn:hover {
-  opacity: 1;
-}
-.btn:active {
-  transform: scale(0.95);
-  transition: all 0.1s ease;
-}
-
+/* great box shadow collection: https://getcssscan.com/css-box-shadow-examples */
 textarea {
   margin-top: 0.3rem;
   padding: 7px 10px;
@@ -246,62 +131,90 @@ div.select > ul > li.empty {
   cursor: auto;
 }
 
-.form-section {
+.poms {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-auto-flow: dense;
-  padding: 1.4rem 0;
-  border-bottom: 1px solid #525252;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
 }
-.form-section--block {
-  display: block;
-}
-@media (min-width: 992px) {
-  .form-section textarea {
-    grid-column: span 2;
-  }
-}
-.form-section:first-of-type {
-  padding-top: 0;
-}
-.form-section:last-of-type {
-  padding-bottom: 0;
-  border-bottom: none;
-}
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-.form.form-create {
-  display: flex;
-  flex-direction: column;
-  padding: 0.5rem;
-}
-@media (min-width: 576px) {
-  .form.form-create {
-    padding: 1.4rem;
-  }
-}
-.form .car-wrapper > label {
-  display: inline-block;
-  margin-bottom: 0.4rem;
-}
-
-.errors-list {
-  display: flex;
-  flex-direction: column;
-  background: #ffcdd2;
+.poms-item {
+  padding: 1rem;
   border-radius: 5px;
-  padding: 0.5rem;
-}
-.errors-list li {
-  padding: 0.4rem;
-  font-weight: 500;
-  color: #8e0000;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-/* Alert component */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding: 0.45rem 1.7rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  opacity: 0.8;
+  transform: scale(1);
+  transition: all 0.2s ease-in;
+}
+.btn-next {
+  background: #16a34a;
+  color: white;
+}
+.btn-cta {
+  background: #ffd54f;
+  color: #262626;
+}
+.btn:hover {
+  opacity: 1;
+}
+.btn:active {
+  transform: scale(0.95);
+  transition: all 0.1s ease;
+}
+
+#spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.75);
+  display: none;
+}
+#spinner.show {
+  display: flex;
+}
+#spinner > div {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(24, 18, 18, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  -webkit-animation: spin 0.7s ease-in-out infinite;
+  animation: spin 0.7s ease-in-out infinite;
+}
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
 .alert {
   position: relative;
   display: flex;
@@ -381,6 +294,206 @@ div.select > ul > li.empty {
   will-change: transform, opacity;
   transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1) , opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
+.card {
+  /* Progress Bar */
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-bottom: 0.75rem;
+}
+.card-header > *:not(:last-child) {
+  margin-bottom: 0;
+}
+.card-header__title {
+  font-size: 2.25rem;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.025rem;
+}
+.card-header__links {
+  display: flex;
+  align-items: center;
+}
+.card-header__links > *:not(:last-child) {
+  margin-right: 1rem;
+}
+.card-header__links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  color: #737373;
+  font-size: 1.5rem;
+  font-weight: 500;
+  transition: color 0.15s ease-in;
+}
+.card-header__links a svg {
+  width: 1.7rem;
+  height: 1.7rem;
+  margin-left: 0.3rem;
+  fill: #737373;
+}
+.card-header__links a:hover, .card-header__links a:hover svg {
+  color: #ffd54f;
+  transition: color 0.15s ease-in;
+}
+.card-header__links button {
+  padding: 0.7rem 1.4rem;
+  border-radius: 5px;
+  background: #ffd54f;
+  color: #131313;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: background 0.15s ease-in;
+}
+.card-header__links button.btn-success {
+  background: #22C55E;
+  color: white;
+}
+.card-header__links button.btn-success:hover {
+  background: #1a9a49;
+}
+.card-content {
+  padding: 1.25rem;
+  border-radius: 5px;
+  background: #292929;
+}
+.card.no-padding .card--content {
+  padding: 0;
+}
+.card .stepper {
+  margin: 0 auto 2rem;
+}
+.card .stepper-items {
+  display: flex;
+  width: 100%;
+  list-style: none;
+  padding: 0px;
+  margin: initial;
+  justify-content: space-between;
+  z-index: 1;
+}
+.card .stepper-items li {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  background: #171817;
+  height: 20px;
+  color: #d4d4d4;
+}
+.card .stepper-items li span {
+  display: inline-flex;
+  height: 1.5px;
+  background-color: gray;
+  width: 250px;
+}
+.card .stepper-section {
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+.card .stepper-section.active {
+  color: white;
+}
+.card .stepper-section.done {
+  color: #ffd54f;
+}
+.card .stepper-section h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.025rem;
+}
+.card .stepper-section svg {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0.4rem;
+}
+.card .tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-radius: 7px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.card .tabs-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background: #131313;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  font-weight: 500;
+  transition: background 0.15s ease-out , color 0.15s ease-out;
+}
+.card .tabs-btn:hover {
+  color: white;
+}
+.card .tabs-btn.active {
+  color: white;
+  background: #232323;
+}
+.card .tabs-btn:not(:last-child) {
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+.card .tabs-btn svg {
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-left: 1rem;
+}
+
+/* SORT LATER */
+.form-section {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-flow: dense;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid #525252;
+}
+.form-section--block {
+  display: block;
+}
+@media (min-width: 992px) {
+  .form-section textarea {
+    grid-column: span 2;
+  }
+}
+.form-section:first-of-type {
+  padding-top: 0;
+}
+.form-section:last-of-type {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.form.form-create {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+@media (min-width: 576px) {
+  .form.form-create {
+    padding: 1.4rem;
+  }
+}
+.form .car-wrapper > label {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+}
+
 #image-form > .btn {
   margin-bottom: 2rem;
 }

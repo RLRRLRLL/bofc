@@ -1,5 +1,4 @@
-const webpack = require('webpack')
-const mix = require('laravel-mix')
+const mix = require('laravel-mix');
 // const tailwindJit = require('@tailwindcss/jit'); // merged into core from 2.1
 
 /*

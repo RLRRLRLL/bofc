@@ -33,6 +33,8 @@
 
     <!-- form -->
     <form enctype="multipart/form-data" @submit.prevent="saveImages">
+      <input type="hidden" name="_token" :value="csrf" />
+
       <input
         ref="fileInput"
         type="file"
@@ -41,7 +43,7 @@
         @change="getImages"
       />
 
-      <button class="btn btn-next">Save</button>
+      <button class="btn btn-next" @click="runSpinner">Save</button>
     </form>
   </div>
 </template>
@@ -49,7 +51,8 @@
 <script>
 export default {
   name: 'ImagesForm',
-  emits: ['images-ready'],
+  inject: ['csrf'],
+  emits: ['images-ready', 'run-spinner'],
   data() {
     return {
       images: [],
@@ -79,6 +82,10 @@ export default {
 
     saveImages() {
       this.$emit('images-ready', this.images);
+    },
+
+    runSpinner() {
+      this.$emit('run-spinner');
     },
   },
 };

@@ -1,0 +1,119 @@
+.alert {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  background: white;
+
+  &-container {
+    position: fixed;
+    top: 5.5rem;
+    right: 9rem;
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    z-index: 42;
+  }
+
+  &-success {
+    .alert-icon {
+      background: green;
+    }
+  }
+
+  &-info {
+    .alert-icon {
+      background: blue;
+    }
+  }
+
+  &-error {
+    .alert-icon {
+      background: red;
+    }
+  }
+
+  &-warning {
+    .alert-icon {
+      background: orange;
+    }
+  }
+
+  // icon
+  &-icon {
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    bottom: -1px;
+    width: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.7rem;
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: white;
+    }
+  }
+
+  // text
+  &-text {
+    display: inline-block;
+    padding-left: 3rem;
+    font-weight: 500;
+    color: #333;
+  }
+
+  // hide alert
+  &-close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    padding: 5px;
+    border-radius: 50%;
+    color: #131313;
+
+    @include simple_transition(background 0.2s ease-in);
+
+    &:hover {
+      background: rgba(black, 0.05);
+    }
+
+    &:active {
+      background: rgba(black, 0.15);
+    }
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  // hide transition
+  &.hide {
+    $easeOutQuart: cubic-bezier(0.25, 1, 0.5, 1);
+
+    transform: translateY(-50px);
+    opacity: 0;
+    will-change: transform, opacity;
+
+    @include transition(transform, opacity, 0.3s $easeOutQuart);
+
+    // -webkit-transition: transform 0.2s ease-in;
+    // -moz-transition: transform 0.2s ease-in;
+    // -ms-transition: transform 0.2s ease-in;
+    // -o-transition: transform 0.2s ease-in;
+    // transition: transform 0.2s ease-in;
+  }
+
+  // show transition
+  &.show {
+  }
+}

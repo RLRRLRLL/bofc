@@ -1,0 +1,146 @@
+textarea {
+  margin-top: 0.3rem;
+  padding: 7px 10px;
+  color: #f5f5f5;
+  background: #262626;
+  border-radius: 5px;
+  border: 1px solid #525252;
+
+  &:focus {
+    border-color: #a3a3a3;
+    // color: white;
+  }
+}
+
+label {
+  color: #a3a3a3;
+  font-size: 1.125rem;
+
+  .input-value {
+    display: inline-block;
+    margin-left: 3px;
+    color: rgb(255, 213, 79);
+  }
+}
+
+input {
+  margin-top: 0.3rem;
+  padding: 7px 10px;
+  color: #f5f5f5;
+  @include simple_transition(all 0.15s ease-in);
+
+  &[type='text'],
+  &[type='number'],
+  &[type='date'] {
+    background: #262626;
+    border-radius: 5px;
+    border: 1px solid #525252;
+
+    &:focus {
+      border-color: #a3a3a3;
+    }
+  }
+
+  &[type='radio'] {
+    display: none;
+
+    & + label {
+      position: relative;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        margin: -6px 4px 0 0;
+        vertical-align: middle;
+        background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png) -38px
+          top no-repeat;
+        cursor: pointer;
+      }
+    }
+
+    &:checked + label::before {
+      background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png) -57px
+        top no-repeat;
+    }
+  }
+
+  &[type='checkbox'] {
+    display: none;
+
+    & + label {
+      position: relative;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 19px;
+        height: 19px;
+        margin: -6px 4px 0 0;
+        vertical-align: middle;
+        background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png)
+          left top no-repeat;
+        cursor: pointer;
+      }
+    }
+
+    &:checked + label::before {
+      background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png) -19px
+        top no-repeat;
+    }
+  }
+}
+
+div.select {
+  position: relative;
+
+  & > button {
+    position: relative;
+    width: 100%;
+    @include flex-between;
+    padding: 0.5rem;
+    border-radius: 5px;
+    background: #262626;
+    color: #f5f5f5;
+    border: 1px solid #525252;
+    @include simple_transition(all 0.15s ease-in);
+
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    &.open {
+      color: white;
+      background: #222;
+      border-color: #a3a3a3;
+    }
+  }
+
+  & > ul {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    @include flex-column;
+    margin-top: 0.5rem;
+    z-index: 42;
+    border-radius: 5px;
+    background: #222;
+
+    & > li {
+      padding: 0.5rem 0.75rem;
+      cursor: pointer;
+      color: rgb(212, 212, 212);
+
+      &:not(.empty):hover {
+        background: rgba(white, 0.05);
+        color: white;
+      }
+
+      &.empty {
+        cursor: auto;
+      }
+    }
+  }
+}

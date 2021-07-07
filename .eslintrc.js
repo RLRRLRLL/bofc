@@ -15,12 +15,6 @@ module.exports = {
       experimentalObjectRestSpread: true,
     },
   },
-  // extends: [
-  //   'prettier',
-  //   'airbnb-base',
-  //   'plugin:vue/recommended',
-  //   'plugin:prettier/recommended',
-  // ],
   extends: ['eslint:recommended', 'plugin:vue/recommended', 'prettier'],
   plugins: ['prettier'],
   rules: {

@@ -1,55 +1,78 @@
 <template>
   <div id="wrapper">
-    <!-- <AlertContainer /> -->
-    <div class="card">
-      <div class="card--header">
+    <!-- spinner -->
+    <div id="spinner">
+      <div></div>
+    </div>
+
+    <card>
+      <template #card-header>
         <!-- form stepper -->
         <div class="stepper">
           <ul class="stepper-items">
             <li v-for="(section, idx) in sections" :key="idx">
-              <h1
-                :class="{ active: section.active, done: section.done }"
-                v-text="section.title"
-              ></h1>
+              <div
+                class="stepper-section"
+                :class="{
+                  active: section.active,
+                  done: section.done && !section.active,
+                }"
+              >
+                <h1 v-text="section.title"></h1>
+                <svg
+                  v-if="section.done && !section.active"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 1024 1024"
+                >
+                  <path
+                    d="M912 190h-69.9c-9.8 0-19.1 4.5-25.1 12.2L404.7 724.5L207 474a32 32 0 0 0-25.1-12.2H112c-6.7 0-10.4 7.7-6.3 12.9l273.9 347c12.8 16.2 37.4 16.2 50.3 0l488.4-618.9c4.1-5.1.4-12.8-6.3-12.8z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
               <span v-if="idx !== sections.length - 1"></span>
             </li>
           </ul>
         </div>
-      </div>
+      </template>
 
-      <div class="card--content">
+      <!-- form section component -->
+      <keep-alive>
         <component
           :is="currentSection"
-          v-bind="formData"
           @info-ready="saveInfo"
           @images-ready="saveImages"
+          @run-spinner="runSpinner"
         ></component>
-        <!-- <info-form /> -->
-      </div>
-    </div>
+      </keep-alive>
+    </card>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import Card from './../../layouts/Card.vue';
 import InfoForm from './Create/InfoForm.vue';
 import ImagesForm from './Create/ImagesForm.vue';
-import EditPomInfo from './EditPomInfo.vue';
 
 export default {
   name: 'CreatePom',
   components: {
+    Card,
     InfoForm,
     ImagesForm,
-    EditPomInfo,
   },
   provide() {
     return {
       csrf: this.csrf,
     };
   },
+  inject: ['burl'],
   props: {
-    csrf: String,
+    csrf: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -57,19 +80,13 @@ export default {
       sections: [
         {
           title: 'Info',
-          component: 'InfoForm',
+          componentName: 'InfoForm',
           active: true,
           done: false,
         },
         {
           title: 'Images',
-          component: 'ImagesForm',
-          active: false,
-          done: false,
-        },
-        {
-          title: 'Preview',
-          component: 'EditPomInfo',
+          componentName: 'ImagesForm',
           active: false,
           done: false,
         },
@@ -83,22 +100,22 @@ export default {
   },
   computed: {
     currentSection() {
-      const comp = this.sections.filter((section) => section.active)[0]
-        .component;
-      let compKebabCase = '';
+      let kebabCaseActiveComponent;
 
-      if (comp === 'InfoForm') compKebabCase = 'info-form';
-      if (comp === 'ImagesForm') compKebabCase = 'images-form';
-      if (comp === 'EditPomInfo') compKebabCase = 'edit-pom-form';
+      this.sections.forEach((section) => {
+        if (!section.active) return;
 
-      return compKebabCase;
-    },
-    createdPomData() {
-      if (this.currentSection === 'edit-pom-form') {
-        return this.formData;
-      }
+        if (section.active) {
+          const activeComponent = section.componentName;
 
-      return {};
+          if (activeComponent === 'InfoForm')
+            kebabCaseActiveComponent = 'info-form';
+          if (activeComponent === 'ImagesForm')
+            kebabCaseActiveComponent = 'images-form';
+        }
+      });
+
+      return kebabCaseActiveComponent;
     },
   },
   watch: {
@@ -133,20 +150,33 @@ export default {
       // update section values
       this.sections[1].active = false;
       this.sections[1].done = true;
-      this.sections[2].active = true;
+    },
+
+    runSpinner() {
+      document.getElementById('spinner').classList.add('show');
+    },
+
+    stopSpinner() {
+      document.getElementById('spinner').classList.remove('show');
     },
 
     storePomData() {
       /**
        * Create pom model
        */
-      const stringified = JSON.stringify(this.formData.info);
+      const pomInfo = JSON.stringify(this.formData.info);
+      const headers = {
+        info: {
+          'Content-Type': 'application/json',
+        },
+        files: {
+          'Content-Type': 'multipart/form-data',
+        },
+      };
 
       axios
-        .post('/12a5155wo298d1u3d1j0/store-pom-info', stringified, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
+        .post(`${this.burl.poms}/store-info`, pomInfo, {
+          headers: headers.info,
         })
         .then((res) => {
           // get pom ID then pass it to storeImage controller,
@@ -164,13 +194,16 @@ export default {
           formData.append('id', pomID);
 
           axios
-            .post('/12a5155wo298d1u3d1j0/store-pom-images', formData, {
-              headers: {
-                'Content-Type': 'multipart/form-data',
-              },
+            .post(`${this.burl.poms}/store-images`, formData, {
+              headers: headers.files,
             })
             .then((r) => {
-              console.log(r.data);
+              const message = r.data.message;
+              const pomID = r.data.id;
+
+              this.stopSpinner();
+
+              document.location.replace(`${this.burl.poms}/show/${pomID}`);
             })
             .catch((err) => {
               console.error(err);

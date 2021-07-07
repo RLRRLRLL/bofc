@@ -10,6 +10,7 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
+    "@prettier/plugin-php": "0.14.3",
     "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/jit": "^0.1.18",
     "@vue/compiler-sfc": "^3.1.2",
@@ -30,7 +31,6 @@
     "postcss-loader": "^6.1.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.3.2",
-    "@prettier/plugin-php": "0.14.3",
     "sass": "^1.32.8",
     "sass-loader": "^10.1.1",
     "tailwindcss": "^2.2.4",

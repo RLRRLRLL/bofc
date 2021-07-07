@@ -1,93 +1,174 @@
 .card {
-	// -------------------------
-	/* Progress Bar */
-	.stepper {
-		margin: 0 auto 2rem;
+  &-header {
+    @include flex-between;
+    align-items: flex-end;
+    @include space-y(0);
+    margin-bottom: 0.75rem;
 
-		&-items {
+    &__title {
+      font-size: 2.25rem;
+      color: white;
+      font-weight: 600;
+      letter-spacing: 0.025rem;
+    }
+
+		&__links {
 			display: flex;
-			width: 100%;
-			list-style: none;
-			padding: 0px;
-			margin: initial;
-			justify-content: space-between;
-			z-index: 1;
+			align-items: center;
+			@include space-x(1rem);
 
-			li {
-				display: inline-flex;
-				justify-content: center;
-				align-items: center;
-				padding: 0.5rem;
-				background: #171817;
-				height: 20px;
-				color: #d4d4d4;
-
-				// &:not(:last-child) {
-				span {
-					display: inline-flex;
-					height: 1.5px;
-					background-color: gray;
-					width: 250px;
+			a {
+				@include flex-center;
+				color: rgb(115, 115, 115);
+				font-size: 1.5rem;
+				font-weight: 500;
+				@include simple_transition(color 0.15s ease-in);
+	
+				svg {
+					width: 1.7rem;
+					height: 1.7rem;
+					margin-left: 0.3rem;
+					fill: rgb(115, 115, 115);
 				}
-				// }
+	
+				&:hover,
+				&:hover svg {
+					color: rgb(255, 213, 79);
+					@include simple_transition(color 0.15s ease-in);
+				}
+			}
+			
+			button {
+				padding: .7rem 1.4rem;
+				border-radius: 5px;
+				background: $amber;
+				color: #131313;
+				box-shadow: $bshadow3;
+				font-weight: 500;
+				font-size: 1.1rem;
+				line-height: 1;
+				@include simple_transition(background 0.15s ease-in);
 
-				h1 {
-					font-size: 2rem;
-					color: rgba(white, 0.3);
-					font-weight: 600;
-					letter-spacing: 0.025rem;
-					padding: 0 1.5rem;
+				&.btn-success {
+					background: #22C55E;
+					color: white;
 
-					&.active {
-						color: white;
-					}
-
-					&.done {
-						color: $green;
+					&:hover {
+						background: darken(#22C55E, 10%);
 					}
 				}
 			}
 		}
-	}
 
-	&--header {
-		@include flex-between;
-		align-items: flex-end;
-		@include space-y(0);
+     
+  }
 
-		&__title {
-			font-size: 2.25rem;
-			color: white;
-			font-weight: 600;
-			letter-spacing: 0.025rem;
-		}
+  &-content {
+    padding: 1.25rem;
+    border-radius: 5px;
+    background: rgb(41, 41, 41);
+  }
 
-		& > a,
-		& > button {
+  &.no-padding {
+    .card--content {
+      padding: 0;
+    }
+  }
+
+  /* Progress Bar */
+  .stepper {
+    margin: 0 auto 2rem;
+
+    &-items {
+      display: flex;
+      width: 100%;
+      list-style: none;
+      padding: 0px;
+      margin: initial;
+      justify-content: space-between;
+      z-index: 1;
+
+      li {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+        background: #171817;
+        height: 20px;
+        color: #d4d4d4;
+
+        span {
+          display: inline-flex;
+          height: 1.5px;
+          background-color: gray;
+          width: 250px;
+        }
+      }
+    }
+
+    &-section {
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      color: rgba(white, 0.3);
+
+      &.active {
+        color: white;
+      }
+
+      &.done {
+        color: $amber;
+      }
+
+      h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        letter-spacing: 0.025rem;
+      }
+
+      svg {
+        width: 2rem;
+        height: 2rem;
+        margin-left: 0.4rem;
+      }
+    }
+  }
+
+  // tabs (show pom)
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+		border-radius: 7px;
+		overflow: hidden;
+		border: 1px solid rgba(white, .3);
+
+		&-btn {
 			@include flex-center;
-			color: rgb(115, 115, 115);
-			font-size: 1.5rem;
+      background: #131313;
+      color: rgba(white, .5);
+      font-size: 1.5rem;
+      padding: .5rem;
 			font-weight: 500;
-			@include simple_transition(color 0.15s ease-in);
+			@include transition(background, color, .15s ease-out);
+
+			&:hover {
+				color: white;
+			}
+
+			&.active {
+				color: white;
+				background: #232323;
+			}
+
+			&:not(:last-child) {
+				border-right: 1px solid rgba(white, .3);
+			}
 
 			svg {
-				width: 1.7rem;
-				height: 1.7rem;
-				margin-left: 0.3rem;
-				fill: rgb(115, 115, 115);
-			}
-
-			&:hover,
-			&:hover svg {
-				color: rgb(255, 213, 79);
-				@include simple_transition(color 0.15s ease-in);
+				width: 1.3rem;
+				height: 1.3rem;
+				margin-left: 1rem;
 			}
 		}
-	}
-
-	&--content {
-		padding: 1.25rem;
-		border-radius: 5px;
-		background: rgb(41, 41, 41);
-	}
+  }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminPagesController;
+use App\Http\Controllers\Admin\PomeraniansController as AdminPomController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Main\MainPagesController;
 use Illuminate\Support\Facades\Artisan;
@@ -11,7 +12,6 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Livewire\Admin\Articles\Create;
 use App\Http\Livewire\Admin\Articles\Index;
 use App\Http\Livewire\Admin\Articles\Show;
-use App\Http\Livewire\Admin\People;
 
 
 /*
@@ -38,16 +38,14 @@ Route::middleware('set.locale')->group(function () {
 	Route::group([
 		'prefix' => '/12a5155wo298d1u3d1j0',
 	], function () {
-		// Pom related
-		Route::get('/', [AdminPagesController::class, 'index'])->name('admin.poms-index');
-		Route::get('/create', [AdminPagesController::class, 'createPom'])->name('admin.poms-create');
-		Route::get('/create-with-vue', [AdminPagesController::class, 'createWithVue'])->name('create-with-vue');
-		Route::post('/store-pom-info', [AdminPagesController::class, 'storePomInfo']);
-		Route::post('/store-pom-images', [AdminPagesController::class, 'storePomImages']);
-		Route::get('/pom/{id}', [AdminPagesController::class, 'show'])->name('admin.poms-show');
-
-		// People (breeders, owners)
-		Route::get('/people', People::class)->name('admin.people');
+		// Pomeranians
+		Route::group(['prefix' => '/pomeranians'], function() {
+			Route::get('/', [AdminPomController::class, 'index'])->name('admin.poms-index');
+			Route::get('/create', [AdminPomController::class, 'create'])->name('admin.poms-create');
+			Route::post('/store-info', [AdminPomController::class, 'storeInfo'])->name('admin.poms-store-info');
+			Route::post('/store-images', [AdminPomController::class, 'storeImages'])->name('admin.poms-store-images');
+			Route::get('/show/{id}', [AdminPomController::class, 'show'])->name('admin.poms-show');
+		});
 
 		// Articles
 		Route::get('/articles', Index::class)->name('admin.articles.index');
